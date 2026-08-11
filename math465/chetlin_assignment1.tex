@@ -1,0 +1,129 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym, amsfonts, enumitem, graphicx, environ,enumitem, fancyhdr, color, amssymb, amsthm, amsmath, mathtools, tikz, nicematrix}
+\usetikzlibrary{patterns}
+\usetikzlibrary{decorations.pathreplacing}
+\pagestyle{fancy}
+\setlength{\headheight}{65pt}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+    \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\DeclareMathOperator{\Ima}{Im}
+
+\usepackage{hyperref}
+\usepackage[capitalize]{cleveref}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cl}[thm]{Claim}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{obstruction}[thm]{Obstruction}
+
+\usepackage{mdframed}
+
+\theoremstyle{definition}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{question}{Question}
+\newtheorem{example}[thm]{Example}
+\newtheorem{exercise}[thm]{Exercise}
+\newtheorem{properties}[thm]{Properties}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems,skins,breakable}
+
+\tcolorboxenvironment{example}{
+enhanced jigsaw,colframe=cyan,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{thm}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{prop}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{properties}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{lem}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+\tcolorboxenvironment{cor}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+\tcolorboxenvironment{obstruction}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{proof}{
+enhanced jigsaw, frame hidden,%interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\lhead{Avi Chetlin \\ Assignment 01 \\ 31 August 2026}
+\rhead{Dr. David Singer \\ MATH 465 Differential Geometry \\ Fall 2026}
+
+\begin{document}
+\begin{problem}{1.2.5}
+	Let \(\alpha: I \rightarrow \mathbb{R}^3\) be a parametrized curve, with \(\alpha^{\prime}(t)\neq 0\) for all \( t \in I \). Show that \( \left| \alpha(t) \right| \) is a nonzero constant if and only if \(\alpha(t)\) is orthogonal to \(\alpha^{\prime}(t)\) for all \( t \in I \).
+\end{problem}
+\begin{proof}
+	Let \(\alpha: I \rightarrow \mathbb{R}^3\) be a regular parametrized curve, and write
+	\begin{equation}
+		\label{eq:3}
+		\alpha(t) = (x(t), y(t), z(t)).
+	\end{equation}
+	By definition,
+	\begin{equation}
+		\label{eq:2}
+		\left| \alpha(t) \right|^2 = x(t)^2 + y(t)^2 + z(t)^2,
+	\end{equation}
+	hence
+	\begin{equation}
+		\label{eq:4}
+		\frac{\mathrm{d} }{\mathrm{d} t}\left| \alpha(t) \right|^2 = 2(x(t)x^{\prime}(t) + y(t)y^{\prime}(t) + z(t)z^{\prime}(t)).
+	\end{equation}
+
+	Now, \( \left| \alpha(t) \right| \) is a nonzero constant if and only if \( \frac{\mathrm{d} }{\mathrm{d} t}\left| \alpha(t) \right|^2 = 0\) and \( \left| \alpha(t) \right|^2 \neq 0\) for all \( t \in I \).
+	That is,
+	\begin{equation}
+		\label{eq:5}
+		x(t)^2 + y(t)^2 + z(t)^2 \neq 0,
+	\end{equation}
+	and by \cref{eq:4},
+	\begin{equation}
+		\label{eq:6}
+		x(t)x^{\prime}(t) + y(t)y^{\prime}(t) + z(t)z^{\prime}(t) = 0
+	\end{equation}
+	for all \( t \in I \).
+
+	Noting that \cref{eq:6} is, by definition, the dot product \(x(t) \cdot x^{\prime}(t)\), we have that \( \left| \alpha(t) \right| \) is a nonzero constant if and only if \( x(t) \cdot x^{\prime}(t) = 0 \) for all \( t \in I \), that is, if and only if \( x(t) \) is orthogonal to \( x^{\prime}(t) \) for all \( t \in I \).
+\end{proof}
+
+\begin{problem}{1.3.2}
+	A circular disk of radius \( 1 \) in the plane \( xy \) rolls without slipping along the \( x \)-axis. The figure described by a point of the circumference of the disk is called a cycloid.
+	\begin{enumerate}[label=(\alph*)]
+		\item Obtain a parametrized curve \(\alpha: \mathbb{R} \rightarrow \mathbb{R}^2\) the trace of which is the cycloid, and determine its singular points.
+		\item Compute the arc length of the cycloid corresponding to a complete rotation of the disc.
+	\end{enumerate}
+\end{problem}
+
+\begin{problem}{1.3.4}
+	Lete \(\alpha: (0, \pi) \rightarrow \mathbb{R}^2 \) be given by \(\alpha(t) = (\sin t, \cos t + \log \tan \frac{t}{2})\), where \( t \) is the angle that the \( y \)-axis makes with the vector \(\alpha^{\prime}(t)\). The trace of \(\alpha\) is called the tractix. Show that \begin{enumerate}[label=(\alph*)]
+		\item \(\alpha\) is a differentiable parametrized curve, regular except at \( t = \frac{\pi}{2} \).
+		\item The length of the segment of the tangent of the tractrix between the point of tangency and the \( y \)-axis is constantly equal to \( 1 \).
+	\end{enumerate}
+\end{problem}
+\end{document}
