@@ -2,6 +2,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{latexsym, amsfonts, enumitem, graphicx, environ,enumitem, fancyhdr, color, amssymb, amsthm, amsmath, mathtools, tikz, nicematrix}
+\usepackage{physics}
 \usetikzlibrary{patterns}
 \usetikzlibrary{decorations.pathreplacing}
 \pagestyle{fancy}
@@ -116,14 +117,78 @@ breakable,%before skip=10pt,after skip=10pt
 	A circular disk of radius \( 1 \) in the plane \( xy \) rolls without slipping along the \( x \)-axis. The figure described by a point of the circumference of the disk is called a cycloid.
 	\begin{enumerate}[label=(\alph*)]
 		\item Obtain a parametrized curve \(\alpha: \mathbb{R} \rightarrow \mathbb{R}^2\) the trace of which is the cycloid, and determine its singular points.
+		      \begin{proof}
+			      With Figure 1-7 from the book, we see that the center of the circle starts at \( \beta(0) = (\beta_1(0), \beta_{2}(0)) = (0, 1) \), and is translated in the \( x \)-direction as \( \beta_1(t)=t \), so that the position of the center is \(\beta = (t, 1)\).
+			      Moreover, the point along the circumference is related to the center of the circle by
+			      \begin{equation}
+				      \alpha(t)=(\beta_1(t) - \cos t, \beta_2(t) - \sin t),
+			      \end{equation}
+			      hence the parametrized curve of the unit cycloid is
+			      \begin{equation}
+				      \label{eq:cycloid}
+				      \alpha(t)=(t - \cos t, 1 - \sin t).
+			      \end{equation}
+		      \end{proof}
 		\item Compute the arc length of the cycloid corresponding to a complete rotation of the disc.
+		      \begin{proof}
+			      The definition of arc length is \( s(t) = \int\limits_0^t \left| \alpha^{\prime}(t) \right| dt\).
+			      From \cref{eq:cycloid}, we have that
+			      \begin{equation}
+				      \label{eq:8}
+				      \alpha^{\prime}(t) = (1 + \sin t, -\cos t),
+			      \end{equation}
+			      hence
+			      \begin{align}
+				      \label{eq:9}
+				      s(t) & = \int\limits_0^t \left| \sqrt{1 + 2\sin t + \sin^2 t + \cos^2 t} \right| dt \\
+				           & = \int\limits_0^t \left| \sqrt{2 + 2\sin t} \right| dt.
+			      \end{align}
+			      Recalling that \( \sin\theta = \cos(\frac{\pi}{2} - \theta) \) and applying the double angle formula \( \cos^2\theta = \frac{1+\cos2\theta}{2} \), we have
+			      \begin{align}
+				      \label{eq:10}
+				      s(t) & = \int\limits_0^t \left| \sqrt{2 + 2\cos(\frac{\pi}{2} - t)} \right| dt                 \\
+				           & = \int\limits_0^t \left| \sqrt{2 + 4\cos^2(\frac{\pi}{4} - \frac{t}{2}) - 2} \right| dt \\
+				           & = 2\int\limits_0^t \left| \cos(\frac{\pi}{4} - \frac{t}{2}) \right| dt.
+			      \end{align}
+			      A full rotation occurs when \( t = 2\pi \).
+			      Plugging in and making a substitution, we have
+			      \begin{align}
+				      \label{eq:11}
+				      s(t) & = -4\int\limits_{\frac{\pi}{4}}^{\frac{\pi}{4} - \pi} \left| \cos u \right| du \\
+				           & = 4 \int\limits_{\frac{-3\pi}{4}}^{\frac{\pi}{4}} \left| \cos u \right| du.
+			      \end{align}
+			      To eliminate the absolute value, note the integral ranges over exactly one period of cosine, hence we may shift it by \( \frac{\pi}{4} \), making our bounds are precisely when cosine is positive, i.e., \( \left| \cos t \right| = \cos t\).
+			      \begin{align}
+				      \label{eq:14}
+				      s(2\pi) & = 4 \int\limits_{- \frac{\pi}{2}}^{\frac{\pi}{2}} \cos u \,du     \\
+				              & = 4 \sin u \eval_{-\frac{\pi}{2}}^{\frac{\pi}{2}}            = \boxed{8}.
+			      \end{align}
+		      \end{proof}
 	\end{enumerate}
 \end{problem}
 
 \begin{problem}{1.3.4}
-	Lete \(\alpha: (0, \pi) \rightarrow \mathbb{R}^2 \) be given by \(\alpha(t) = (\sin t, \cos t + \log \tan \frac{t}{2})\), where \( t \) is the angle that the \( y \)-axis makes with the vector \(\alpha^{\prime}(t)\). The trace of \(\alpha\) is called the tractix. Show that \begin{enumerate}[label=(\alph*)]
+	Let \(\alpha: (0, \pi) \rightarrow \mathbb{R}^2 \) be given by \(\alpha(t) = (\sin t, \cos t + \log \tan \frac{t}{2})\), where \( t \) is the angle that the \( y \)-axis makes with the vector \(\alpha^{\prime}(t)\). The trace of \(\alpha\) is called the tractix. Show that \begin{enumerate}[label=(\alph*)]
 		\item \(\alpha\) is a differentiable parametrized curve, regular except at \( t = \frac{\pi}{2} \).
+		      \begin{proof}
+			      By elementary calculus it is clear the each of the component functions \(\alpha_1(t) = \sin t\) and \( \alpha_2(t) = \cos t + \log \tan \frac{t}{2} \) are differentiable, hence \(\alpha\) is differnetiable.
+			      In particular,
+			      \begin{equation}
+				      \alpha^{\prime}(t) = \left(\cos t, -\sin t + \frac{\sec^2\frac{t}{2}}{2\tan \frac{t}{2}}\right).
+			      \end{equation}
+
+			      For regularity, the only solution to \( \cos t = 0 \) within the domain is \( t = \frac{\pi}{2} \).
+			      For \( \alpha_{2}^{\prime}(t) \),
+			      \begin{equation}
+				      \label{eq:13}
+				      \alpha_2^{\prime}(\frac{\pi}{2}) = -1 + \frac{2}{2} = 0,
+			      \end{equation}
+			      hence \(\alpha(t)\) is regular for all \( t \neq \frac{\pi}{2} \).
+		      \end{proof}
 		\item The length of the segment of the tangent of the tractrix between the point of tangency and the \( y \)-axis is constantly equal to \( 1 \).
+		      \begin{proof}
+			      From Figure 1-9, the length of the segment is given by \( \frac{\alpha_1(t)}{\sin t} = \frac{sin t}{sin t} = 1\).
+		      \end{proof}
 	\end{enumerate}
 \end{problem}
 \end{document}
