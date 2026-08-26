@@ -1,0 +1,144 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym, amsfonts, enumitem, graphicx, environ,enumitem, fancyhdr, color, amssymb, amsthm, amsmath, mathtools, tikz, nicematrix}
+\usetikzlibrary{patterns}
+\usetikzlibrary{decorations.pathreplacing}
+\pagestyle{fancy}
+\setlength{\headheight}{65pt}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+    \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\DeclareMathOperator{\Ima}{Im}
+
+\usepackage{hyperref}
+\usepackage[capitalize]{cleveref}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cl}[thm]{Claim}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{obstruction}[thm]{Obstruction}
+
+\usepackage{mdframed}
+
+\theoremstyle{definition}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{question}{Question}
+\newtheorem{example}[thm]{Example}
+\newtheorem{exercise}[thm]{Exercise}
+\newtheorem{properties}[thm]{Properties}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems,skins,breakable}
+
+\tcolorboxenvironment{example}{
+enhanced jigsaw,colframe=cyan,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{thm}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{prop}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{properties}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{lem}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+\tcolorboxenvironment{cor}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+\tcolorboxenvironment{obstruction}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{proof}{
+enhanced jigsaw, frame hidden,%interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\lhead{Avi Chetlin \\ Assignment 02 \\ 09 September 2026}
+\rhead{Dr. David Singer \\ MATH 465 Differential Geometry \\ Fall 2026}
+
+\begin{document}
+Unless explicitly stated, \(\alpha: I \rightarrow \mathbb{R}^3\) is a curve parametrized by arc length, \( s \), with curvature \( k(s) \neq 0 \), for all \( s \in I \).
+
+\begin{problem}{1.5.1}
+  Given the parametrized curve (helix)
+  \begin{equation}
+  \label{eq:1}
+  \alpha(s) = \left( a \cos \frac{s}{c}, a \sin \frac{s}{c}, b \frac{s}{c} \right), \quad s \in \mathbb{R},
+  \end{equation}
+  where \( c^2 = a^2 + b^2 \),
+
+  \begin{enumerate}[label=(\alph*)]
+    \item Show that the parameter \( s \) is the arc length.
+          \begin{proof}
+            To prove this, we show that for arbitrary \( s \in I \), the arc length satisfies
+            \begin{equation}
+            \label{eq:3}
+            \int\limits_0^s \left| \alpha^{\prime}(t) \right| \,dt = s.
+            \end{equation}
+            First of all,
+            \begin{equation}
+            \label{eq:4}
+            \alpha^{\prime}(s) = \left( -\frac{a}{c}\sin \frac{s}{c}, \frac{a}{c}\cos \frac{s}{c}, \frac{b}{c} \right),
+            \end{equation}
+            so
+            \begin{equation}
+            \label{eq:5}
+            \left| \alpha^{\prime} \right|^2 = \left( \frac{a}{c} \right)^2 + \left( \frac{b}{c} \right)^2 = \frac{a^2 + b^2}{c^2} = 1.
+            \end{equation}
+            Thus, our arc length integral becomes
+            \begin{equation}
+            \label{eq:6}
+            \int\limits_0^s dt \equiv s.
+            \end{equation}
+          \end{proof}
+    \item Determine the curvature and the torsion of \(\alpha\).
+          \begin{proof}
+
+          \end{proof}
+    \item Determine the osculating plane of \(\alpha\).
+    \item Show that the lines containing \( n(s) \) and passing through \(\alpha(s)\) meet the \( z \)-axis under a constant angle equal to \( \frac{\pi}{2} \).
+    \item Show that the tangent lines to \(\alpha\) make a constant angle with the \( z \)-axis.
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{1.5.14}
+  Let \(\alpha:(a,b) \rightarrow \mathbb{R}^2\) be a regular parametrized plane curve.
+  Assume that there exists \( t_0 \), \( a < t_0 < b \), such that the distance \( \left| \alpha(t) \right| \) from the origin to the trace of \(\alpha\) will be maximum at \( t_{0} \).
+  Prove that the curvature \( k \) of \(\alpha\) at \( t_0 \) satisfies \( \left| k(t_0) \right| \geq 1/\left| \alpha(t_0) \right|\).
+\end{problem}
+
+\begin{problem}{1.5.17}
+  In general, a curve \(\alpha\) is called a \textit{helix} if the tangent lines of \(\alpha\) make a constant angle with a fixed direction.
+  Assume that \(\tau(s) \neq 0\), \( s \in I \), and prove that
+  \begin{enumerate}[label=(\alph*)]
+    \item \(\alpha\) is a helix if and only if \( \frac{k}{\tau} \) is constant.
+    \item \(\alpha\) is a helix if and only if the lines containing \( n(s) \) and passing through \( \alpha(s) \) are parallel to a fixed plane.
+    \item \(\alpha\) is a helix if and only if the lines containing \( b(s) \) and passing through \(\alpha(s)\) make a constant angle with a fixed direction.
+    \item The curve
+          \begin{equation}
+          \label{eq:2}
+          \alpha(s) = \left( \frac{a}{c} \int\sin\theta(s) ds, \frac{a}{c} \int\cos\theta(s) ds, \frac{b}{c} s \right),
+          \end{equation}
+          where \( c^2 = a^2 + b^2 \), is a helix, and that \( \frac{k}{\tau} = \frac{a}{b} \).
+  \end{enumerate}
+\end{problem}
+\end{document}

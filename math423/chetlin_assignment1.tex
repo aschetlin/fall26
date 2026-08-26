@@ -1,0 +1,126 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym, amsfonts, enumitem, graphicx, environ,enumitem, fancyhdr, color, amssymb, amsthm, amsmath, mathtools, tikz, nicematrix}
+\usetikzlibrary{patterns}
+\usetikzlibrary{decorations.pathreplacing}
+\pagestyle{fancy}
+\setlength{\headheight}{65pt}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+    \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\DeclareMathOperator{\Ima}{Im}
+
+\usepackage{hyperref}
+\usepackage[capitalize]{cleveref}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cl}[thm]{Claim}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{obstruction}[thm]{Obstruction}
+
+\usepackage{mdframed}
+
+\theoremstyle{definition}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{question}{Question}
+\newtheorem{example}[thm]{Example}
+\newtheorem{exercise}[thm]{Exercise}
+\newtheorem{properties}[thm]{Properties}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems,skins,breakable}
+
+\tcolorboxenvironment{example}{
+enhanced jigsaw,colframe=cyan,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{thm}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{prop}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{properties}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{lem}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+\tcolorboxenvironment{cor}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+\tcolorboxenvironment{obstruction}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{proof}{
+enhanced jigsaw, frame hidden,%interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\lhead{Avi Chetlin \\ Assignment 01 \\ 31 August 2026}
+\rhead{Dr. Stanislaw Szarek \\ MATH 423 Measure Theory \\ Fall 2026}
+
+\begin{document}
+For a set \( A \subset [a,b] \), define the outer Riemann measure
+\begin{equation}
+\label{eq:1}
+m^{\star}(A) = \inf_{\cup J_i \subset A} \sum\limits_i l(J_i),
+\end{equation}
+where \( \left\{ J_i \right\} \) is a finite family of closed intervals contained in \( [a,b] \) and \( l(J) \) is the length of the interval \( J \).
+One similarly defines the inner measure as
+\begin{equation}
+\label{eq:2}
+m_{\star}(A) = \sup_{\cup J_i \subset A \\ J_i \text{disjoint}} \sum\limits_i l(J_i).
+\end{equation}
+If \( m^{\star}(A) = m_{\star}(A) \), then \( A \) is Riemann measureable and write \( A \in \mathcal{R}([a,b]) \).
+
+\begin{problem}{1}
+  Show that the value of \( m^{\star} \) remains unchanged if
+  \begin{enumerate}
+    \item we require that the intervals \( (J_i) \) in the definition \cref{eq:1} are disjoint
+    \item we require that the family \( (J_i) \) is minimal (i.e., no proper subfamily of \( (J_i) \) covers \( A \)).
+    \item we require that the intervals \( J_i \) are open (rather than closed).
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{2}
+  Show that \( m^{\star}(A) = U(\chi_A) \) (see the handout) where \(\chi_A\) is the indicator function of \( A \).
+  \textit{Note}: This is relatively subtle;
+  start by associating with a partition of \( [a,b] \) the family of intervals of that partition that intersect \( A \).
+\end{problem}
+
+\begin{problem}{3}
+  One can show that \( m_{\star}(A) = L(\chi_A) \).
+  Explain why this implies that \( A \) is Riemann measureable if and only if \(\chi_A \in \mathcal{R}[a,b]\), and that then \( m(A) = \int\limits_a^b \chi_A \).
+\end{problem}
+
+\begin{problem}{4}
+  Show that if \( m^{\star}(A) = 0 \), then \( A \) is Riemann measureable.
+\end{problem}
+
+\begin{problem}{5}
+  Suppose \(\mu: \mathcal{P}(\mathbb{R}) \rightarrow [0, \infty]\) is a finitely additive measure verifying
+  \begin{enumerate}
+    \item \(\mu(J) = l(J)\) for every interval \( J \subset \mathbb{R} \) and which is
+    \item translation invariant.
+  \end{enumerate}
+  What is \(\mu(N)\), where \( N \subset [0,1) \) is the non-measureable set defined on p. 20 of the textbook?
+  Recall that it was shown that \(\mu: \mathcal{P}(\mathbb{R}) \rightarrow [0, \infty]\) verifying (1) and (2) can not be countably additive, but the argument did not exclude the existence of such finitely additive measure.
+\end{problem}
+
+\end{document}
