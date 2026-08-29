@@ -112,7 +112,29 @@ Unless explicitly stated, \(\alpha: I \rightarrow \mathbb{R}^3\) is a curve para
           \end{proof}
     \item Determine the curvature and the torsion of \(\alpha\).
           \begin{proof}
+            Since \(\alpha\) is parametrized by arc length, we have that \( k(s) = \left| \alpha^{\prime\prime}(s) \right| \).
 
+            From \cref{eq:4},
+            \begin{equation}
+            \label{eq:7}
+            \alpha^{\prime\prime}(s) = \left( - \frac{a}{c^2}\cos \frac{s}{c}, - \frac{a}{c^2}\sin \frac{s}{c}, 0 \right),
+            \end{equation}
+            and hence
+            \begin{equation}
+            \label{eq:8}
+            \left| \alpha^{\prime\prime}(s) \right|^2 = \frac{a^2}{c^{4}},
+            \end{equation}
+            giving
+            \begin{equation}
+            \label{eq:9}
+            \boxed{k(s) = \frac{a}{c^2}}.
+            \end{equation}
+
+            For the torsion, \( \tau \), recall the unit normal is defined by \( \alpha^{\prime\prime}(s) = k(s)N(s) \), so
+            \begin{equation}
+            \label{eq:10}
+            N(s) = \frac{\alpha^{\prime\prime}(s)}{k(s)} = \left( -\cos \frac{s}{c}, -\sin \frac{s}{c}, 0 \right).
+            \end{equation}
           \end{proof}
     \item Determine the osculating plane of \(\alpha\).
     \item Show that the lines containing \( n(s) \) and passing through \(\alpha(s)\) meet the \( z \)-axis under a constant angle equal to \( \frac{\pi}{2} \).

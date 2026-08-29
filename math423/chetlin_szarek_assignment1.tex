@@ -79,39 +79,79 @@ breakable,%before skip=10pt,after skip=10pt
 For a set \( A \subset [a,b] \), define the outer Riemann measure
 \begin{equation}
 \label{eq:1}
-m^{\star}(A) = \inf_{\cup J_i \subset A} \sum\limits_i l(J_i),
+m^{*}(A) = \inf_{\cup J_i \supset A} \sum\limits_i l(J_i),
 \end{equation}
 where \( \left\{ J_i \right\} \) is a finite family of closed intervals contained in \( [a,b] \) and \( l(J) \) is the length of the interval \( J \).
 One similarly defines the inner measure as
 \begin{equation}
 \label{eq:2}
-m_{\star}(A) = \sup_{\cup J_i \subset A \\ J_i \text{disjoint}} \sum\limits_i l(J_i).
+m_{*}(A) = \sup_{\substack{\cup J_i \subset A \\ J_i \, \text{disjoint}}} \sum\limits_i l(J_i).
 \end{equation}
-If \( m^{\star}(A) = m_{\star}(A) \), then \( A \) is Riemann measureable and write \( A \in \mathcal{R}([a,b]) \).
+If \( m^{*}(A) = m_{*}(A) \), then \( A \) is Riemann measureable and write \( A \in \mathcal{R}([a,b]) \).
 
 \begin{problem}{1}
-  Show that the value of \( m^{\star} \) remains unchanged if
-  \begin{enumerate}
+  Show that the value of \( m^{*} \) remains unchanged if
+  \begin{enumerate}[label=(\roman*)]
     \item we require that the intervals \( (J_i) \) in the definition \cref{eq:1} are disjoint
+          \begin{proof}
+            Suppose that, with \( m^{*} \) defined as in \cref{eq:1}, a set \( A \) has outer measure \( m^{*}(A) = c \in [0, \infty] \).
+            Let \( \hat{m}^{*}\) be the measure defined to require disjoint intervals.
+
+            We consider two cases.
+            suppose there exists a sequence of intervals \( \left\{ J_i \right\}_{i=1}^n \) disjoint such that \( \bigsqcup\limits_{i=1}^n J_i \supset A\)
+          \end{proof}
     \item we require that the family \( (J_i) \) is minimal (i.e., no proper subfamily of \( (J_i) \) covers \( A \)).
     \item we require that the intervals \( J_i \) are open (rather than closed).
   \end{enumerate}
 \end{problem}
 
 \begin{problem}{2}
-  Show that \( m^{\star}(A) = U(\chi_A) \) (see the handout) where \(\chi_A\) is the indicator function of \( A \).
+  \label{prob:2}
+  Show that \( m^{*}(A) = U(\chi_A) \) (see the handout) where \(\chi_A\) is the indicator function of \( A \).
   \textit{Note}: This is relatively subtle;
   start by associating with a partition of \( [a,b] \) the family of intervals of that partition that intersect \( A \).
 \end{problem}
+\begin{proof}
+  Let \( P = \left\{ x_0, \dots, x_{n} \right\} \) be an arbitary partition of \( [a,b] \).
+  Define \( \mathcal{M} = \left\{ [x_0,x_1] \cap A, [x_1, x_2] \cap A, \dots, [x_{n-1}, x_n] \cap A \right\} \).
+  Denoting the elements of \( \mathcal{M} \) as \( \mathcal{M}_0, \dots, \mathcal{M}_n \), we have that
+  \begin{equation}
+  \label{eq:3}
+  \bigcup\limits_{i=0}^n \mathcal{M}_i = A.
+  \end{equation}
+
+  The upper Riemann integral is
+  \begin{equation}
+  \label{eq:4}
+  U(\chi_A) = \inf_P \left\{ \sum\limits_{i=1}^{n} M_i \Delta x_i \right\},
+  \end{equation}
+  where \( M_i = \sup\limits_{[x_{i-1}, x_i]}\chi_{A}\) and \( \Delta x_i = x_i - x_{i-1} \).
+\end{proof}
 
 \begin{problem}{3}
-  One can show that \( m_{\star}(A) = L(\chi_A) \).
+  One can show that \( m_{*}(A) = L(\chi_A) \).
   Explain why this implies that \( A \) is Riemann measureable if and only if \(\chi_A \in \mathcal{R}[a,b]\), and that then \( m(A) = \int\limits_a^b \chi_A \).
 \end{problem}
+\begin{proof}
+  Since in Problem 2 we showed that \( m^{*}(A) = U(\chi_A) \) and the definition of Riemann measureability is \( m^{*}(A) = U(\chi_{A}) = L(\chi_A) = m_{*}(A)\), we have precisely the definition of Riemann integrability for \( \chi_A \).
+
+  Moreover, by definition, since \( U(\chi_A) = L(\chi_A) \), the integral of \( \chi_A \) is
+  \begin{equation}
+  \int\limits_a^b \chi_A = U(\chi_A) = L(\chi_A) = m_{*}(A) = m^{*}(A) = m_A,
+  \end{equation}
+  as desired.
+\end{proof}
 
 \begin{problem}{4}
-  Show that if \( m^{\star}(A) = 0 \), then \( A \) is Riemann measureable.
+  Show that if \( m^{*}(A) = 0 \), then \( A \) is Riemann measureable.
 \end{problem}
+\begin{proof}
+  From problems 3 and 4, we know that \( m^{*}(A) = U(\chi_A) \) and \( m_{*}(A) = L(\chi_{A}) \).
+  Recall from real analysis that for any function \( f \), \( U(f) \geq L(f) \).
+  Also note that by definition, \( m_{*} \geq 0 \).
+  We hence have that \( 0 = m^{*}(A) \geq m_{*}(A) \geq 0 \) which forces \( m_{*}(A) \).
+  Thus, \( m^{*}(A) = m_{*}(A) = 0 \), so \( A \) is Riemann measureable.
+\end{proof}
 
 \begin{problem}{5}
   Suppose \(\mu: \mathcal{P}(\mathbb{R}) \rightarrow [0, \infty]\) is a finitely additive measure verifying
@@ -122,5 +162,19 @@ If \( m^{\star}(A) = m_{\star}(A) \), then \( A \) is Riemann measureable and wr
   What is \(\mu(N)\), where \( N \subset [0,1) \) is the non-measureable set defined on p. 20 of the textbook?
   Recall that it was shown that \(\mu: \mathcal{P}(\mathbb{R}) \rightarrow [0, \infty]\) verifying (1) and (2) can not be countably additive, but the argument did not exclude the existence of such finitely additive measure.
 \end{problem}
+\begin{proof}
+  Recall that \( N \) was defined as follows:
+  Consider the set \( [0, 1) \), and an arbitrary element \( x \in [0,1) \).
+  Define an equivalence relation \( \sim \) such that \( x \sim y  \) iff \( x - y \in \mathbb{Q} \).
+  Each element is thus associated with its equivalence class \( [x] \), i.e. \(x \rightarrow (x + \mathbb{Q}) \cap [0,1) \).
+  Then \( N \) is the set containing exactly one representative from each equivalence class of \( \sim \).
+
+  To find \(\mu(N)\), note that for any \( r \in \mathbb{Q} \cap [0,1) \),
+  \begin{align}
+  \label{eq:5}
+    \mu(N) &= \mu(\left( N \cap [0, 1-r) \right) \cup \left( N \cap [1-r, 1) \right)) \\
+    &= \mu(N \cap [0, 1-r)) + \mu(N \cap [1-r, 1))
+  \end{align}
+\end{proof}
 
 \end{document}

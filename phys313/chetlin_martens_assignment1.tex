@@ -1,0 +1,162 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym, amsfonts, enumitem, graphicx, environ,enumitem, fancyhdr, color, amssymb, amsthm, amsmath, mathtools, tikz, nicematrix}
+\usetikzlibrary{patterns}
+\usetikzlibrary{decorations.pathreplacing}
+\pagestyle{fancy}
+\setlength{\headheight}{65pt}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+    \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\DeclareMathOperator{\Ima}{Im}
+
+\usepackage{hyperref}
+\usepackage[capitalize]{cleveref}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cl}[thm]{Claim}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{obstruction}[thm]{Obstruction}
+
+\usepackage{mdframed}
+
+\theoremstyle{definition}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{question}{Question}
+\newtheorem{example}[thm]{Example}
+\newtheorem{exercise}[thm]{Exercise}
+\newtheorem{properties}[thm]{Properties}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems,skins,breakable}
+
+\tcolorboxenvironment{example}{
+enhanced jigsaw,colframe=cyan,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{thm}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{prop}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{properties}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{lem}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+\tcolorboxenvironment{cor}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+\tcolorboxenvironment{obstruction}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{proof}{
+enhanced jigsaw, frame hidden,%interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\lhead{Avi Chetlin \\ Assignment 01 \\ 02 September 2026}
+\rhead{Dr. Michael Martens \\ PHYS 313 Thermodynamics \\ Fall 2026}
+
+\begin{document}
+\begin{problem}{1}
+  Suppose you have a 1.0L container of pure water, where each molecule is distinguishable.
+  Pour the liter of distinguishable water into the ocean and allow complete mixing to occur.
+  Then, scoop up 1.0L of water from the ocean.
+
+  Recall that
+  \begin{itemize}
+    \item Volume of earths oceans = \( 1.35 \times 10^9 \text{km}^3 \),
+    \item Density of water = \( 1.0 \)g cm\(^{-3} \),
+    \item Molar mass of water = \( 18.0 \)g mol\(^{-1}\),
+          \item Avogadro's number = \( 6.022 \times 10^{23} \) molecules/mol.
+  \end{itemize}
+
+  \begin{enumerate}[label=(\alph*)]
+    \item How many molecules of water are there in a 1.0L container of pure water?
+    \item How many molecules of water are there in the Earth's oceans?
+    \item Estimate how many of the original, distinguishable water molecules you expect to find in your sample.
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{2}
+  Cars on a highway travel at different speeds, with the probability of a car traveling between speeds \( v \) and \( v + dv \) is
+  \begin{equation}
+  \label{eq:1}
+  \rho(v) dv = \alpha v \exp(-v/v_0) dv,
+  \end{equation}
+  where \( \rho(v) \) is the probability density of the speed.
+
+  \begin{enumerate}[label=(\alph*)]
+    \item Find the value of the constant \(\alpha\) in terms of \( v_0 \) such that the total probability is
+          \begin{equation}
+          \label{eq:2}
+          \int\limits_0^{\infty}\rho(v) dv = 1.
+          \end{equation}
+    \item What is the mean value of the speed of the cars?
+    \item What is the most likely speed of a car?
+    \item How many cars are traveling more than twice the mean speed?
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{3}
+  Consider a system with 6 identical marbles placed randomly into a box that has 12 spaces available, each holding at most one marble, and divides equally in half.
+  Each possible arrangement will be considered a microstate of the system.
+  The macrostate of the system will be defined as the number of marbles, \( n_L \), in the left half.
+  The marbles are initially in a state with \( n_L = 6 \).
+
+  \begin{enumerate}[label=(\alph*)]
+    \item What is the multiplicity of this system if the marbles can move around within their own half, but cannot cross between the left and ride sides?
+    \item The constraint is now removed, and the marbles may move freely between the left and right halves.
+          The multiplicity of states for the left is \( g_L(n_L) \), similarly for the right side \( g_R(n_R) \).
+          Complete the table, recalling that \( n_L+n_R = 6 \).
+          \begin{center}
+
+          \begin{tabular}{|c|c|c|c|}
+            \hline
+            \( n_{L} \) & \( g_L(n_L) \) & \( g_R(n_R) \) & \( g_Lg_R \) \\
+            \hline
+            \( 0 \) & & & \\
+            \hline
+            \( 1 \) & & & \\
+            \hline
+            \( 2 \) & & & \\
+            \hline
+            \( 3 \) & & & \\
+            \hline
+            \( 4 \) & & & \\
+            \hline
+            \( 5 \) & & & \\
+            \hline
+            \( 6 \) & & & \\
+            \hline
+          \end{tabular}
+          \end{center}
+    \item Find the total number of microstates by adding the \( g_Lg_R \) column.
+          Does this agree with the number of arrangements of \( 6 \) marbles in \( 12 \) spaces?
+    \item What is the most probable macrostate?
+          What is the probability the system is in a macrostate with \( n_L = 3 \)?
+    \item In the initial state, \( n_L = 6 \) and \( n_R = 0 \).
+          What are the entropies \( \sigma_L \) and \( \sigma_R \)?
+    \item After the marbles are allowed to move between the halves, what is the total entropy \(\sigma_S\)?
+          Note that \( \sigma_S > \sigma_L + \sigma_R \).
+  \end{enumerate}
+\end{problem}
+\end{document}
