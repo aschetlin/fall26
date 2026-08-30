@@ -95,13 +95,83 @@ If \( m^{*}(A) = m_{*}(A) \), then \( A \) is Riemann measureable and write \( A
     \item we require that the intervals \( (J_i) \) in the definition \cref{eq:1} are disjoint
           \begin{proof}
             Suppose that, with \( m^{*} \) defined as in \cref{eq:1}, a set \( A \) has outer measure \( m^{*}(A) = c \in [0, \infty] \).
-            Let \( \hat{m}^{*}\) be the measure defined to require disjoint intervals.
+            Let \( \hat{m}^{*}\) be the measure defined to require disjoint intervals.\\
 
-            We consider two cases.
-            suppose there exists a sequence of intervals \( \left\{ J_i \right\}_{i=1}^n \) disjoint such that \( \bigsqcup\limits_{i=1}^n J_i \supset A\)
+            First of all, since any finite collection of disjoint closed intervals covering \( A \) is, in particular, a finite collection of (not necessarily disjoint) closed intervals covering \( A \), \( \hat{m}^{*} \) takes the infimum over a subset of that of \( m^{*} \), hence by elementary properties of the infimum,
+            \begin{equation}
+            \label{eq:6}
+            m^{*} \leq \hat{m}^{*}.
+            \end{equation}
+
+            Conversely, let \( \left\{ K_i \right\} \) be an arbitrary finite collection of closed intervals covering \( A \).
+            We apply the following algorithm:
+            \begin{enumerate}[label=(\arabic*)]
+              \item Consider \( K_1 \) and \( K_2 \); if \( K_1 \cap K_2 \neq \emptyset \), let \( \tilde{K}_1 = K_1 \cup K_{2} = [\min\{\alpha_1, \alpha_2\}, \max\{\beta_1, \beta_2\}] \).
+              \item Consider \( \tilde{K}_1\) and \(K_3 \), proceed identically to step 1. Continue when \( \tilde{K}_1 \) and \( K_n \) are disjoint for some \( n \).
+              \item Starting with \( K_n \), repeat steps 1 and 2 until you are left with a collection of disjoint closed intervals which still cover \( A \) (in particular the unions \( \bigcup  \tilde{K}_{i}  = \bigcup  K_i  \)).
+            \end{enumerate}
+            This algorithm necessarily halts after finite steps given the finite family of intervals.
+
+            Now, since for any interval \( I = [\alpha, \beta]\), \( l(I) = \beta - \alpha \), it is clear that for two intersecting intervals \( I_1 \cap I_2 \neq \emptyset\),
+            \begin{equation}
+            l(I_1 \cup I_2) = l(\min\{\alpha_1, \alpha_2\}, \max\{\beta_1,\beta_2\}) = \max\{\beta_1,\beta_2\} - \min\{\alpha_1, \alpha_2\}.
+            \end{equation}
+
+            Without loss of generality, assume that \( \beta_1 > \beta_2 \), \( \alpha_{2} > \alpha_{1} \), so that \( l(I_1 \cup I_2) = \beta_1 - \alpha_{1} \). However,
+            \begin{equation}
+            l(I_1) + l(I_2) = \beta_1 - \alpha_1 + \beta_2 - \alpha_2 = (\beta_1 - \alpha_1) + (\beta_2 - \alpha_2).
+            \end{equation}
+
+            By definition of an interval, we must have that \( \beta_2 > \alpha_2 \), (even if the min/max were different, we always have \( \alpha_i < \beta_j \) since the intervals intersect), meaning that \( \beta_2 - \alpha_2 > 0 \), and hence
+            \begin{equation}
+            \label{eq:7}
+            l(I_1 \cup I_2) \leq l(I_1) + l(I_2).
+            \end{equation}
+
+            Applying the algorithm, summing over the finite collection, and harnessing \cref{eq:7}, then taking the infimum of both sides yields
+            \begin{equation}
+            \label{eq:8}
+            \hat{m}^{*} \leq m^{*}.
+            \end{equation}
+            Then \cref{eq:6,eq:8} show that \( \hat{m}^{*} = m^{*} \).
+
           \end{proof}
+
     \item we require that the family \( (J_i) \) is minimal (i.e., no proper subfamily of \( (J_i) \) covers \( A \)).
+          \begin{proof}
+            Define \( \hat{m}^{*} \) as \( m^{*} \) with the additional requirement of minimal families.
+            Similarly to part (i), it is clear that since \( \hat{m}^{*} \) takes an infimum over a subset, we immediately have
+            \begin{equation}
+            \label{eq:9}
+            m^{*} \leq \hat{m}^{*}.
+            \end{equation}
+
+            For the reverse inequality, note that for any arbitary, finite closed family \( \left\{ K_i \right\} \) which covers \( A \), if the family is non-minimal we can simply replace the family with the proper subfamily which still covers \( A \), \( \left\{ \tilde{K}_i \right\} \).
+
+            Since this is a proper subfamily, that is, \( \left\{ \tilde{K}_i \right\} \subset \left\{ K_i \right\} \), we clearly have that
+            \begin{equation}
+            \label{eq:10}
+            \sum\limits_i l(\tilde{K}_i) \leq \sum\limits_i l(K_i),
+          \end{equation}
+          (since the LHS has fewer summands than the RHS and \( l(I) \) is always non-negative.)
+
+          Taking the infimum of both sides shows that
+          \begin{equation}
+          \label{eq:11}
+          \hat{m}^{*} \leq m^{*},
+          \end{equation}
+          hence \( \hat{m}^{*} = m^{*} \).
+          \end{proof}
     \item we require that the intervals \( J_i \) are open (rather than closed).
+          \begin{proof}
+            With \( \hat{m}^{*} \) the modified measure, identically to parts (i) and (ii), it is immediate that
+            \begin{equation}
+            \label{eq:12}
+            m^{*} \leq \hat{m}^{*}.
+            \end{equation}
+
+
+          \end{proof}
   \end{enumerate}
 \end{problem}
 
