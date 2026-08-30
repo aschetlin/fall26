@@ -164,13 +164,61 @@ If \( m^{*}(A) = m_{*}(A) \), then \( A \) is Riemann measureable and write \( A
           \end{proof}
     \item we require that the intervals \( J_i \) are open (rather than closed).
           \begin{proof}
-            With \( \hat{m}^{*} \) the modified measure, identically to parts (i) and (ii), it is immediate that
+            On one hand, note that for any finite family of open intervals \( \left\{ (\alpha_i, \beta_i) \right\} \) covering \( A \), can be associated uniquely with a finite closed cover \( \left\{ [\alpha_i, \beta_i] \right\} \) by taking the closure of each interval.
+            Now,
             \begin{equation}
-            \label{eq:12}
-            m^{*} \leq \hat{m}^{*}.
-            \end{equation}
+            \label{eq:13}
+            l((\alpha_i, \beta_i)) = l([\alpha_i, \beta_i]),
+          \end{equation}
+          by definition.
+          Since \( m^{*}(A) \) is a lower bound, we have that
+          \begin{equation}
+          \label{eq:14}
+          m^{*} \leq \sum\limits_i \left\{ [\alpha_i, \beta_i] \right\} = \sum\limits_i \left\{ (\alpha_i, \beta_i) \right\}.
+          \end{equation}
+          That is, \( m^{*} \) is a lower bound for the sums of lengths of finite open covers.
+          However, since \( \hat{m}^{*} \) is, by definition, the greatest lower bound, we must have that
+          \begin{equation}
+          \label{eq:15}
+          m^{*} \leq \hat{m}^{*}.
+          \end{equation}
 
+          Conversely, consider a finite closed cover \( \left\{ [\alpha_i, \beta_i] \right\} \) such that, for some \(\varepsilon > 0\)
+          \begin{equation}
+          \label{eq:16}
+          \sum\limits_i [\alpha_i, \beta_i] < m^{*}(A) + \frac{\varepsilon}{2},
+          \end{equation}
+          and expand each interval in the cover to an open interval
+          \begin{equation}
+          \label{eq:17}
+          \left( \alpha_i - \delta, \beta + \delta \right)
+          \end{equation}
+          for some \(\delta > 0\).
 
+          Now, the total length of this open cover is
+          \begin{equation}
+          \label{eq:18}
+          \sum\limits_i (\alpha_i - \delta, \beta_i + \delta) = \sum\limits_i [\alpha_i, \beta_i] + 2n\delta
+          \end{equation}
+          where \(n\) is the total number of intervals in the cover.
+
+          If we set \( \delta = \frac{\varepsilon}{4n} \), then
+          \begin{equation}
+          \label{eq:19}
+          \sum\limits_i (\alpha_i - \delta, \beta_i + \delta) = \sum\limits_i [\alpha_i, \beta_i] + \frac{\varepsilon}{2} < m^{*}(A) + \varepsilon.
+          \end{equation}
+
+          Since this is true for arbitrary \(\varepsilon > 0\), we have that
+          \begin{equation}
+          \label{eq:20}
+          \sum\limits_i (\alpha_i - \delta, \beta_i + \delta) \leq m^{*}(A),
+          \end{equation}
+          and therefore
+          \begin{equation}
+          \label{eq:21}
+          \hat{m}^{*} \leq m^{*}.
+          \end{equation}
+          With \cref{eq:21,eq:15}, our claim follows.
           \end{proof}
   \end{enumerate}
 \end{problem}
