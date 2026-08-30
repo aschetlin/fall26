@@ -2,6 +2,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{latexsym, amsfonts, enumitem, graphicx, environ,enumitem, fancyhdr, color, amssymb, amsthm, amsmath, mathtools, tikz, nicematrix}
+\usepackage{physics}
 \usetikzlibrary{patterns}
 \usetikzlibrary{decorations.pathreplacing}
 \pagestyle{fancy}
@@ -83,7 +84,7 @@ breakable,%before skip=10pt,after skip=10pt
 
   Recall that
   \begin{itemize}
-    \item Volume of earths oceans = \( 1.35 \times 10^9 \text{km}^3 \),
+    \item Volume of Earth's oceans = \( 1.35 \times 10^9 \text{km}^3 \),
     \item Density of water = \( 1.0 \)g cm\(^{-3} \),
     \item Molar mass of water = \( 18.0 \)g mol\(^{-1}\),
           \item Avogadro's number = \( 6.022 \times 10^{23} \) molecules/mol.
@@ -91,8 +92,34 @@ breakable,%before skip=10pt,after skip=10pt
 
   \begin{enumerate}[label=(\alph*)]
     \item How many molecules of water are there in a 1.0L container of pure water?
+          \begin{proof}
+            \begin{align}
+            \label{eq:3}
+1.0\text{L} \times \frac{1000 \text{cm}^3}{1\text{L}} \times \frac{1.0 \text{g}}{\text{cm}^3} \times \frac{1 \text{mol}}{18 \text{g}} \times \frac{6.022 \times 10^{23} \text{molecules}}{1 \text{mol}} = \boxed{3.3 \times 10 ^{25}}.
+            \end{align}
+          \end{proof}
     \item How many molecules of water are there in the Earth's oceans?
+          \begin{proof}
+            Combining the volume of the earth's oceans with \cref{eq:3}, we have
+            \begin{equation}
+            \label{eq:4}
+            1.35 \times 10^9 \text{km}^3 \times \left(\frac{10^{3} \text{m}}{\text{km}}\right)^3 \times \frac{10^3 L}{1 m^3} \times \frac{3.3 \times 10^{25} \text{molecules}}{1 \text{L}} = \boxed{4.5 \times 10^{46}}.
+            \end{equation}
+          \end{proof}
     \item Estimate how many of the original, distinguishable water molecules you expect to find in your sample.
+          \begin{proof}
+            Since the water has been completely mixed, and assuming a random sample, we have that the proportion of distinguishable water molecules to total molecules is
+            \begin{equation}
+            \label{eq:5}
+            r \coloneq \frac{3.3 \times 10^{25}}{4.5 \times 10^{46}} = 7.3 \times 10^{-22},
+            \end{equation}
+            so we would expect
+            \begin{equation}
+            \label{eq:10}
+            1.0L \rightarrow 3.3 \times 10^{25} \text{ molecules} \times r = \boxed{2.4 \times 10^4 \text{ molecules}}.
+            \end{equation}
+            This seems surprisingly high, but the dimensional analysis works out!
+          \end{proof}
   \end{enumerate}
 \end{problem}
 
@@ -110,9 +137,54 @@ breakable,%before skip=10pt,after skip=10pt
           \label{eq:2}
           \int\limits_0^{\infty}\rho(v) dv = 1.
           \end{equation}
+          \begin{proof}
+            We want
+            \begin{equation}
+            \label{eq:6}
+            \int\limits_0^{\infty} v \exp(-v/v_0) dv = 1,
+            \end{equation}
+            which, using integration by parts, is
+            \begin{equation}
+            \label{eq:7}
+            \alpha\left[-vv_0\exp(-v/v_0) - v_0^2\exp(-v/v_0)\right]\eval_0^{\infty} = \alpha[v_0^{2}],
+            \end{equation}
+            hence \(\boxed{\alpha = v_0^{-2}}\).
+          \end{proof}
     \item What is the mean value of the speed of the cars?
+          \begin{proof}
+          Again using integration by parts,
+          \begin{align}
+            \langle v \rangle &= \int\limits_0^{\infty} v \rho(v) dv = \frac{1}{v_{0}^2}\int\limits_0^{\infty} v^2 \exp(-v/v_0) dv \\
+                  &= \frac{\exp(-v/v_0)}{v_0^2} \left[ -v^2v_0 - 2vv_0^2 - 2v_0^3 \right] \eval_0^{\infty} \\
+                  &= \exp(-v/v_0) \left[ -\frac{v^2}{v_0} - 2v - 2v_0 \right] \eval_0^{\infty} \\
+            & = \boxed{2v_0}.
+          \end{align}
+          \end{proof}
     \item What is the most likely speed of a car?
+          \begin{proof}
+            The most likely speed occurs at the peak of the distribution; that is, when \( \frac{\mathrm{d} \rho}{\mathrm{d} v} = 0 \).
+            Since \( \exp(-v/v_{0}) \neq 0\) for all \( v \),
+            \begin{align}
+            \label{eq:11}
+              \frac{\mathrm{d} \rho}{\mathrm{d} v} &= \exp(-v/v_0)\left(\alpha - \frac{\alpha v}{v_0}\right) \\
+              &= \alpha - \frac{\alpha v}{v_{0}} = 0,
+            \end{align}
+            implying that \( \alpha = \frac{\alpha v}{v_{0}} \), or
+            \begin{equation}
+            \label{eq:12}
+            \boxed{v = v_0}.
+            \end{equation}
+          \end{proof}
     \item How many cars are traveling more than twice the mean speed?
+          \begin{proof}
+            \( \mathbb{P}(v > 2\langle v \rangle) = \int\limits_{2\langle v \rangle}^{\infty} \rho(v) dv\), so
+            \begin{align}
+            \label{eq:8}
+              \mathbb{P}(v > 4v_0) &= \frac{1}{v_0^2} \int\limits_{4v_0}^{\infty} v \exp(-v/v_0) dv \\
+                          &= \frac{\exp(-v/v_{0})}{v_{0}^2} \left[ -vv_0 - v_0^2 \right] \eval_{4v_0}^{\infty} \\
+              &= \exp(-v/v_0)(-\frac{v}{v_0} - 1) \eval_{4v_0}^{\infty} = \boxed{5e^{-4}}.
+            \end{align}
+          \end{proof}
   \end{enumerate}
 \end{problem}
 
@@ -123,7 +195,17 @@ breakable,%before skip=10pt,after skip=10pt
   The marbles are initially in a state with \( n_L = 6 \).
 
   \begin{enumerate}[label=(\alph*)]
-    \item What is the multiplicity of this system if the marbles can move around within their own half, but cannot cross between the left and ride sides?
+    \item What is the multiplicity of this system if the marbles can move around within their own half, but cannot cross between the left and right sides?
+          \begin{proof}
+First, the multiplicities of the individual sides are \( g_L(n_L) = \binom{6}{n_L} = \frac{6!}{(6-n_L)! n_L!}\), \( g_R(n_R) = \binom{6}{n_{R}} = \frac{720}{(6 - n_R)! n_R!} \).
+Then, the total multiplicity of the system is
+\begin{equation}
+\label{eq:9}
+g(n) = g_Lg_R = \binom{6}{n_L}\binom{6}{n_R}.
+\end{equation}
+In particular, given the initial condition of \( n_L = 6 \), we have
+\( g_L(6) = 1, g_R(0) = 1 \), hence \( g(n_L=6) = 1 \).
+          \end{proof}
     \item The constraint is now removed, and the marbles may move freely between the left and right halves.
           The multiplicity of states for the left is \( g_L(n_L) \), similarly for the right side \( g_R(n_R) \).
           Complete the table, recalling that \( n_L+n_R = 6 \).
@@ -133,30 +215,43 @@ breakable,%before skip=10pt,after skip=10pt
             \hline
             \( n_{L} \) & \( g_L(n_L) \) & \( g_R(n_R) \) & \( g_Lg_R \) \\
             \hline
-            \( 0 \) & & & \\
+            \( 0 \) & 1 & 1 & 1 \\
             \hline
-            \( 1 \) & & & \\
+            \( 1 \) & 6 & 6 & 36 \\
             \hline
-            \( 2 \) & & & \\
+            \( 2 \) & 15& 15& 225\\
             \hline
-            \( 3 \) & & & \\
+            \( 3 \) & 20& 20& 400\\
             \hline
-            \( 4 \) & & & \\
+            \( 4 \) & 15& 15& 225\\
             \hline
-            \( 5 \) & & & \\
+            \( 5 \) & 6& 6& 36\\
             \hline
-            \( 6 \) & & & \\
+            \( 6 \) & 1& 1& 1\\
             \hline
           \end{tabular}
           \end{center}
     \item Find the total number of microstates by adding the \( g_Lg_R \) column.
           Does this agree with the number of arrangements of \( 6 \) marbles in \( 12 \) spaces?
+          \begin{proof}
+            \( g(n_{L}) = 924 \), which is precisely \( \binom{12}{6} \), as expected.
+          \end{proof}
     \item What is the most probable macrostate?
           What is the probability the system is in a macrostate with \( n_L = 3 \)?
+          \begin{proof}
+            The most probable macrostate is the one with \( 3 \) marbles on either side.
+            The probability of that state is \( \frac{400}{924} = \frac{100}{231} \), or approximately \( 0.433 \).
+          \end{proof}
     \item In the initial state, \( n_L = 6 \) and \( n_R = 0 \).
           What are the entropies \( \sigma_L \) and \( \sigma_R \)?
+          \begin{proof}
+By definition, \(\sigma_L = \log g_L = \log(1) = 0\). Similarly, \(\sigma_R = 0\).
+          \end{proof}
     \item After the marbles are allowed to move between the halves, what is the total entropy \(\sigma_S\)?
           Note that \( \sigma_S > \sigma_L + \sigma_R \).
+          \begin{proof}
+            Again by definition, \(\sigma_S = \log g = \log(924).\)
+          \end{proof}
   \end{enumerate}
 \end{problem}
 \end{document}
