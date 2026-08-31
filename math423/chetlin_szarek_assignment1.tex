@@ -230,20 +230,50 @@ If \( m^{*}(A) = m_{*}(A) \), then \( A \) is Riemann measureable and write \( A
   start by associating with a partition of \( [a,b] \) the family of intervals of that partition that intersect \( A \).
 \end{problem}
 \begin{proof}
-  Let \( P = \left\{ x_0, \dots, x_{n} \right\} \) be an arbitary partition of \( [a,b] \).
-  Define \( \mathcal{M} = \left\{ [x_0,x_1] \cap A, [x_1, x_2] \cap A, \dots, [x_{n-1}, x_n] \cap A \right\} \).
-  Denoting the elements of \( \mathcal{M} \) as \( \mathcal{M}_0, \dots, \mathcal{M}_n \), we have that
+  We proceed by showing a bijection between the set of all finite closed disjoint covers of \( A \) and the set of all partitions of \( [a,b] \).
+
+  First of all, given an arbitrary partition \( P = \{x_0, \dots, x_n\} \) of \( [a,b] \), let \( \{I_j\} \) be the set of intervals \( [x_{j-1}, x_{j}] \) from \( P \) such that \( [x_{j-1}, x_{j}] \cap A \neq \emptyset \).
+
+  By definition,
   \begin{equation}
-  \label{eq:3}
-  \bigcup\limits_{i=0}^n \mathcal{M}_i = A.
+  \label{eq:23}
+  U(\chi_A, P) = \sum\limits_{i=1}^n M_i \Delta x_i,
+  \end{equation}
+  where \( M_i = \sup_{[x_{i-1}, x_i]} \chi_A \) and \( \Delta x_i = x_i - x_{i-1} \).
+  Since \( M_i = 1 \) for all \( i \) such that \( [x_{i-1}, x_i] \cap A \neq \emptyset\), it is clear that, (with \( j \) as above),
+  \begin{equation}
+  \label{eq:24}
+  U(\chi_A, P) = \sum\limits_{j} \Delta x_i = \sum\limits_{j} l([x_{j-1}, x_j]).
   \end{equation}
 
-  The upper Riemann integral is
+  On the other hand, given an arbitrary finite closed disjoint cover \( \{ I_j \} \), define a partition \( P \) in the following manner.
+  Let \( x_0 = a \), \( x_n = b \).
+  Then, working iteratively, let \( x_1 = \alpha_1 \), the lower bound of \( I_1 \), \( x_2 = \beta_2 \), the upper bound of \( I_1 \), etc.
+  Since we chose a disjoint cover (which by problem 1 is equivalent) and since the cover is contained in \( [a,b] \), this uniquely determines a partition of \( [a,b] \).
+
+  Now, since the intervals of \( P \) with \( M_i = 1 \) are precisely those from the cover \( \{I_j\} \), it is clear that
   \begin{equation}
-  \label{eq:4}
-  U(\chi_A) = \inf_P \left\{ \sum\limits_{i=1}^{n} M_i \Delta x_i \right\},
+  \label{eq:25}
+  \sum\limits_j l(I_j) = U(\chi_A, P).
   \end{equation}
-  where \( M_i = \sup\limits_{[x_{i-1}, x_i]}\chi_{A}\) and \( \Delta x_i = x_i - x_{i-1} \).
+
+  Now that we have established the bijection, we can take the infimum of both sets.
+  For the set of partitions, that is
+  \begin{equation}
+  \label{eq:26}
+  \inf_P U(\chi_A, P) = U(\chi_{A}),
+\end{equation}
+and for the set of covers,
+\begin{equation}
+\label{eq:27}
+\inf_{\{I_j\}} \sum\limits_i l(I_j) = m^{*}(A).
+\end{equation}
+
+Since we established the bijection, the two sets are the same, and thus
+\begin{equation}
+\label{eq:28}
+U(\chi_A) = m^{*}(A).
+\end{equation}
 \end{proof}
 
 \begin{problem}{3}
@@ -278,21 +308,40 @@ If \( m^{*}(A) = m_{*}(A) \), then \( A \) is Riemann measureable and write \( A
     \item translation invariant.
   \end{enumerate}
   What is \(\mu(N)\), where \( N \subset [0,1) \) is the non-measureable set defined on p. 20 of the textbook?
-  Recall that it was shown that \(\mu: \mathcal{P}(\mathbb{R}) \rightarrow [0, \infty]\) verifying (1) and (2) can not be countably additive, but the argument did not exclude the existence of such finitely additive measure.
 \end{problem}
 \begin{proof}
   Recall that \( N \) was defined as follows:
   Consider the set \( [0, 1) \), and an arbitrary element \( x \in [0,1) \).
   Define an equivalence relation \( \sim \) such that \( x \sim y  \) iff \( x - y \in \mathbb{Q} \).
   Each element is thus associated with its equivalence class \( [x] \), i.e. \(x \rightarrow (x + \mathbb{Q}) \cap [0,1) \).
-  Then \( N \) is the set containing exactly one representative from each equivalence class of \( \sim \).
+  Then \( N \) is the set containing exactly one representative from each equivalence class.\\
 
-  To find \(\mu(N)\), note that for any \( r \in \mathbb{Q} \cap [0,1) \),
-  \begin{align}
-  \label{eq:5}
-    \mu(N) &= \mu(\left( N \cap [0, 1-r) \right) \cup \left( N \cap [1-r, 1) \right)) \\
-    &= \mu(N \cap [0, 1-r)) + \mu(N \cap [1-r, 1))
-  \end{align}
+  First of all, note that \( \mu([0,1)) = 1 \).
+  Now, for each \( i \in \mathbb{N} \), define \( r_{i} \in \mathbb{Q} \cap [0,1) \) by choosing a unique element.
+  Then write
+  \begin{equation}
+  \label{eq:29}
+  N_{r_i} = \left\{ x + r_i \mid x \in N \cap [0,1-r_i) \right\} \cup \left\{ x + r_{i} - 1 \mid x \in N \cap [1-r_{i}, 1) \right\},
+  \end{equation}
+  as on p. 20 in the book.
+  Define \( N^1 = N \), \( N^2 = N \cup N_{r_1} \), \( N^3 = N^2 \cup N_{r_{2}}\), and so on.
+  Now, \( \mu(N^2) = \mu(N) + \mu(N_{r_1}) \) which by translation invariance is \(2\mu(N)\).
+  Following the same line of argument inductively, we have that
+  \begin{equation}
+  \mu(N^n) = n\mu(N).
+  \end{equation}
+
+  Since \( N^{n} \subset [0,1) \) for all \( n \), we must have that \( \mu(N^n) \leq \mu([0,1)) = 1\).
+  That is,
+  \begin{equation}
+  \label{eq:30}
+  n\mu(N) \leq 1.
+  \end{equation}
+  For \cref{eq:30} to hold for all \( n \in \mathbb{N} \), we must have that \(\mu(N) = 0\).
+  Thus,
+  \begin{equation}
+  \label{eq:31}
+  \mu(N) = 0.
+  \end{equation}
 \end{proof}
-
 \end{document}
