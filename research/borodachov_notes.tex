@@ -1,0 +1,156 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym, amsfonts, enumitem, graphicx, environ,enumitem, fancyhdr, color, amssymb, amsthm, amsmath, mathtools, tikz, nicematrix}
+\usepackage{physics}
+\usetikzlibrary{patterns}
+\usetikzlibrary{decorations.pathreplacing}
+\pagestyle{fancy}
+\setlength{\headheight}{65pt}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+    \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\DeclareMathOperator{\Ima}{Im}
+
+\usepackage{hyperref}
+\usepackage[capitalize]{cleveref}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cl}[thm]{Claim}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{obstruction}[thm]{Obstruction}
+
+\usepackage{mdframed}
+
+\theoremstyle{definition}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{question}{Question}
+\newtheorem{example}[thm]{Example}
+\newtheorem{exercise}[thm]{Exercise}
+\newtheorem{properties}[thm]{Properties}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems,skins,breakable}
+
+\tcolorboxenvironment{example}{
+enhanced jigsaw,colframe=cyan,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{thm}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{prop}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{properties}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{lem}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+\tcolorboxenvironment{cor}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+\tcolorboxenvironment{obstruction}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{proof}{
+enhanced jigsaw, frame hidden,%interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\begin{document}
+\section{Discrete Energy}
+\begin{definition}
+  The \( K \)-energy of a discrete point set \( \omega_N \) for some kernel \( K: A \times A \rightarrow \mathbb{R} \cup \{\infty\} \) for metric space \( (A, \rho) \) is
+  \begin{equation}
+  \label{eq:1}
+  E_K(\omega_N) \coloneq \sum\limits_{i=1}^N \sum\limits_{\substack{j = 1 \\ j \neq i}}^N K(x_i, x_j) = \sum\limits_{i \neq j} K(x_i, x_{j}).
+  \end{equation}
+\end{definition}
+
+\begin{definition}
+  The minimal discrete \( N \)-point \( K \)-energy of A is
+  \begin{equation}
+  \label{eq:2}
+  \mathcal{E}_K(A,N) \coloneq \inf \left\{ E_K(\omega_N) \mid \omega_N \subset A \right\}.
+  \end{equation}
+\end{definition}
+
+Note that as \( N \rightarrow \infty \), \( \mathcal{E} \) grows at least as fast as \( N^2 \).
+
+\begin{definition}
+  The Riesz s-kernel is
+  \begin{equation}
+  \label{eq:3}
+  K_s(x,y) \coloneq \begin{cases}
+    \rho(x,y)^{-s}, & s\geq 0, \\
+    -\rho(x,y)^{-s}, & s < 0
+  \end{cases}.
+  \end{equation}
+\end{definition}
+
+A discrete minimal Riesz energy function \( \mathcal{E}_s(A,N) = g(s) \) is continuous, for \( s > 0 \).
+
+\begin{definition}
+  The logarithmic kernel is how we define the \( s=0 \) kernel, and is
+  \begin{equation}
+  \label{eq:4}
+  K_{\log}(x,y) \coloneq \log \frac{1}{\rho(x,y)},
+  \end{equation}
+  with associated \( E_{\log}(\omega_N) \) and \( \mathcal{E}_{\log}(A,N) \).
+\end{definition}
+
+Notice that minimizing the log kernel is maximizing the the product of distances.
+
+\begin{definition}
+  The Gaussian kernel is
+  \begin{equation}
+  \label{eq:5}
+  G_t(x,y) \coloneq \exp(-t\rho(x,y)^2), \quad t > 0.
+  \end{equation}
+\end{definition}
+
+Since \(\Gamma(s/2) = \int\limits_0^{\infty} e^{-t} t^{\frac{s}{2} -1} dt\) for \( s>0 \),
+\begin{equation}
+\label{eq:6}
+K_s(x,y) = \frac{1}{\Gamma(s/2)} \int\limits_0^{\infty} G_t(x,y)t^{\frac{s}{2} -1} dt.
+\end{equation}
+
+\begin{definition}
+  \( f: I \rightarrow \mathbb{R} \) is completely monotone on \( I \) if \(\forall n \geq 0\),
+  \begin{equation}
+  \label{eq:7}
+  (-1)^n f^{(n)} \geq 0.
+  \end{equation}
+\end{definition}
+
+\begin{thm}
+  \( f \) is completely monotone \( (0, \infty) \) if and only if
+  \begin{equation}
+  \label{eq:8}
+  f(x) = \int\limits_0^{\infty} e^{-xt} d\mu_f(t)
+  \end{equation}
+  for some positive Borel measure supported on \( [0,\infty] \).
+\end{thm}
+
+Hence, if \( f \) completely monotone, \( K(x,y) = f(\rho(x,y)^2) \) can be written as
+\begin{equation}
+\label{eq:9}
+K(x,y) = \int\limits_0^{\infty} G_t(x,y) d\mu_f(t).
+\end{equation}
+\end{document}

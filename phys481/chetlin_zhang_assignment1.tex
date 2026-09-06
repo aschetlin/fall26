@@ -1,0 +1,252 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym, amsfonts, enumitem, graphicx, environ,enumitem, fancyhdr, color, amssymb, amsthm, amsmath, mathtools, tikz, nicematrix}
+\usepackage{physics}
+\usetikzlibrary{patterns}
+\usetikzlibrary{decorations.pathreplacing}
+\pagestyle{fancy}
+\setlength{\headheight}{65pt}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+    \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\DeclareMathOperator{\Ima}{Im}
+
+\usepackage{hyperref}
+\usepackage[capitalize]{cleveref}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cl}[thm]{Claim}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{obstruction}[thm]{Obstruction}
+
+\usepackage{mdframed}
+
+\theoremstyle{definition}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{question}{Question}
+\newtheorem{example}[thm]{Example}
+\newtheorem{exercise}[thm]{Exercise}
+\newtheorem{properties}[thm]{Properties}
+\newtheorem*{answer}{Answer}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems,skins,breakable}
+
+\tcolorboxenvironment{example}{
+enhanced jigsaw,colframe=cyan,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{thm}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{prop}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{properties}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{lem}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+\tcolorboxenvironment{cor}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+\tcolorboxenvironment{obstruction}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{proof}{
+enhanced jigsaw, frame hidden,%interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{answer}{
+enhanced jigsaw, frame hidden,%interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\lhead{Avi Chetlin \\ Assignment 1 \\ 09 September 2026}
+\rhead{Dr. Shulei Zhang \\ PHYS 481 Quantum Mechanics I \\ Fall 2026}
+
+\begin{document}
+\begin{problem}{1}\hfill
+  \begin{enumerate}[label=(\alph*)]
+    \item Summarize the key information obtained from single and sequential Stern-Gerlach experiments.
+          \begin{answer}
+          In the single SG experiment, the particular information gained is the component of the spin angular momentum of each atom corresponding to the direction of the nonhomogenous magnetic field.
+          The general information gleaned is that spin angular momentum is quantized, such that, for spin \( \frac{1}{2} \) atoms, each carries a \( \pm \frac{\hbar}{2}\) spin.
+
+          In the sequential SG experiment it is shown that, first of all, the states representing eg. positive spin in the \( \hat{x} \) direction and negative spin in the \( \hat{y} \) direction are not orthogonal.
+          Additionally, the operators which represents the measurement of the spin angular momentum in different polarization directions are not compatible, which is to say measurement of the spin angular momentum of an atom in one direction destroys any information obtained about the spin angular momentum in another direction.
+          \end{answer}
+          \item List three postulates of quantum mechanics introduced so far.
+          \begin{answer}
+            \begin{enumerate}[label=(\arabic*)]\hfill
+              \item That a state vector contains complete information about the quantum state it represents.
+              \item The ray postulate, that \( \ket{\alpha} \) and \( c\ket{\alpha} \) for any scalar \( c \) represent the same physical state, which is to say, only the direction of the ket matters.
+              \item That every physical observable can be represented by a Hermitian operator.
+            \end{enumerate}
+          \end{answer}
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{2}
+  True or False, with reasoning.
+  \begin{enumerate}[label=(\alph*)]
+    \item In a SG\( \hat{z} \) apparatus, two Ag atoms prepared in the same \( S_x \) eigenstate will be deflected in opposite directions: one up and one down.
+          \begin{answer}
+            False. Not necessarily; on average, given a beam of Ag atoms in the same \( S_x \) eigenstate, half will be deflected in either direction. However, for two particular atoms, it is possible both are deflected in the same direction, as each has equal probability.
+          \end{answer}
+    \item In a SG\( \hat{x} \) apparatus, an unpolarized beam of Ag atoms from an oven is separated into two beams of equal intensity, deflected in the \( \pm x \) directions.
+          \begin{answer}
+            True. This is exactly how the SG experiment works, as each atom collapses into one of the two possible eigenstates of \( \hat{S}_x \).
+          \end{answer}
+    \item Consider a sequential SG experiment; Ag atoms go through a SG\( \hat{z} \), then SG\( \hat{y} \). The latter measures the \( y \)-component of the spin angular momentum, whereby each Ag atom ``jumps'' into one of the quantum states, \( \ket{S_z; +} \) or \( \ket{S_z; -} \).
+          \begin{answer}
+            False. Each Ag atom jumps into one of the states \( \ket{S_y; \pm} \), since the SG\( \hat{y} \) apparatus applies the \( \hat{S}_y \) operator.
+          \end{answer}
+    \item From the conjugate symmetry of the inner product we can deduce that \( \braket{\alpha} \) is real and nonnegative.
+          \begin{answer}
+            False. By conjugate symmetry we have that \( \ip{\alpha} = \ip{\alpha}^{\star} \) which does show that \( \ip{\alpha} \in \mathbb{R} \). However, non-negativity does not automatically follow from conjugate symmetry, hence we need the additional axiom of the non-negative metric.
+          \end{answer}
+    \item Two state vectors \( \ket{\alpha}, \ket{\beta} \) belong to the same ket space. If \( \ket{\alpha}\ket{\beta} \) represents an ordinary product, it is undefined.
+          \begin{answer}
+            True, the Hilbert space simply does not have an operation of ket-ket multiplication defined.
+          \end{answer}
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{3}
+  Write \( \ket{\pm} \coloneq \ket{S_z, \pm} \), so that
+  \begin{align*}
+  \label{eq:1}
+    &\ket{S_x; \pm} = \frac{1}{\sqrt{2}}\left( \pm \ket{+} + \ket{-} \right),\\
+    &\ket{S_y; \pm} = \frac{1}{\sqrt{2}}\left( \ket{+} \pm i\ket{-} \right).
+  \end{align*}
+
+  \begin{enumerate}[label=(\alph*)]
+    \item Verify
+          \begin{equation}
+          \label{eq:2}
+          \braket{S_x; \pm}{S_x; \pm} = 1, \quad \braket{S_x; \pm}{S_x; \mp} = 0.
+          \end{equation}
+          \begin{proof}
+            We prove this by exhaustion.
+            First, utilizing the linearity of the inner product, we have \( \ip{S_x; +} = \left(\frac{1}{\sqrt{2}}\right)^2 \left( \ip{+} + \ip{-} \right) \), which by the normality of \( \ket{\pm} \) is \( \frac{1}{2} \left( 1 + 1 \right) = 1 \).
+
+            By identical argument, noting that \( (-1)(-1)\ip{+} = 1 \), we get that \( \ip{S_x; -} = 1 \).
+
+            Now, \( \ip{S_x; +}{S_x; -} = \frac{1}{2} \left( -\ip{+} + \ip{-} \right) = \frac{1}{2}(1-1) = 0\).
+            Similarly, \( \ip{S_x; -}{S_x; +} = \frac{1}{2} \left( -\ip{+} + \ip{-} \right) = 0 \), as desired.
+          \end{proof}
+    \item The spectral decomposition of a Hermitian operator \( \hat{A} \) with a discrete, nondegenerate spectrum is
+          \begin{equation}
+          \label{eq:3}
+          \hat{A} = \sum\limits_n a_n \op{a_n}.
+          \end{equation}
+          Consequently,
+          \begin{equation}
+          \label{eq:4}
+          \hat{S}_k = \frac{\hbar}{2} \left( \op{S_k; +} - \op{S_k; -} \right), \quad k = x,y,z.
+          \end{equation}
+          Hence show that
+          \begin{equation}
+          \label{eq:5}
+          \hat{S}_x = \frac{\hbar}{2} \left( \op{+}{-} + \op{-}{+} \right).
+          \end{equation}
+          Also note (without proof) that
+          \begin{align}
+          \label{eq:13}
+            &\hat{S}_y = - \frac{i \hbar}{2} \left( \op{+}{-} - \op{-}{+} \right) \\
+            &\hat{S}_z = \frac{\hbar}{2} \left( \op{+} - \op{-} \right).
+          \end{align}
+          \begin{proof}
+            By definition, \( \ket{S_x; \pm} = \frac{1}{\sqrt{2}} \left( \pm \ket{+} + \ket{-} \right) \). Plugging this into \cref{eq:4} gives
+            \begin{equation}
+            \label{eq:12}
+            \hat{S}_x = \frac{\hbar}{2} \left( \op{} \right)
+            \end{equation}
+          \end{proof}
+    \item Show that \( \left[ \hat{S}_x, \hat{S}_y \right] = i \hbar \hat{S}_z\).
+          \begin{proof}
+            \( \comm{\hat{S}_x}{\hat{S}_y} = \hat{S}_x \hat{S}_y - \hat{S}_y \hat{S}_x \), so
+            \begin{align}
+            \label{eq:14}
+              % \comm{\hat{S}_x, \hat{S}_y} & = - \frac{i \hbar^2}{4} \left( \op{+}{-} - \op{+}{-}\op{-}{+} - \op{-}{+}\op{+}{-} + \op{-}{+} \right) \\
+              & = hi
+            \end{align}
+          \end{proof}
+          \item Show that \( \hat{S}_x^2 + \hat{S}_y^2 + \hat{S}_z^2 = \frac{3}{4}\hbar^2 \hat{I} \).
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{4}\hfill
+  \begin{enumerate}[label=(\alph*)]
+
+    \item Prove that
+          \begin{equation}
+            \label{eq:6}
+            \left( \hat{S}_k + \frac{\hbar}{2} \hat{I} \right)\left( \hat{S}_k - \frac{\hbar}{2} \hat{I} \right) = \hat{0}, \quad k=x,y,z.
+          \end{equation}
+    \item Show that
+          \begin{equation}
+          \label{eq:7}
+          \hat{\Lambda}_{k,+} = \frac{1}{\hbar} \left( \frac{\hbar}{2} \hat{I} + \hat{S}_k \right), \quad \hat{\Lambda}_{k, -} = \frac{1}{\hbar} \left( \frac{\hbar}{2} \hat{I} - \hat{S}_k \right)
+        \end{equation}
+          are the projection operators onto \( \ket{+}_k, \ket{-}_k \), respectively.
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{5}
+  Find the normalized eigenkets of the spin operator \( \mathbf{\hat{S}} \cdot \mathbf{e_n} \) and express them in terms of the two eigenkets for \( \hat{S}_{z} \).
+  Here \( \mathbf{e_n} \) is a unit vector which can be written as \( \mathbf{e_n} = (\sin\theta\cos\phi, \sin\theta\sin\phi, \cos\theta) \).
+\end{problem}
+
+\begin{problem}{6}
+  Consider the following normalized but nonorthogonal states:
+  \begin{equation}
+  \label{eq:8}
+  \ket{v_1} = \ket{+}, \quad \ket{v_2} = \frac{1}{\sqrt{2}} \left( \ket{+} + \ket{-} \right),
+  \end{equation}
+  where \( \ket{\pm} \) are the orthonormal eigenkets of \( \hat{S}_z \).
+
+  \begin{enumerate}[label=(\alph*)]
+          \item Apply the Gram-Schmidt procedure to obtain the orthonormal basis \( \left\{ \ket{+}, \ket{-} \right\} \), also called the computational basis.
+    \item Repeat the procedure in reverse order (start with \( \ket{v_2} \)), show that the resulting basis is
+          \begin{equation}
+          \label{eq:9}
+          \left\{ \ket{\pm}_H \right\}, \quad \ket{\pm}_H = \frac{1}{\sqrt{2}} \left( \ket{+} \pm \ket{-} \right),
+          \end{equation}
+          the Hadamard basis.
+    \item The Hadamard (gate) operator is represented in the computational basis as
+          \begin{equation}
+          \label{eq:10}
+          \hat{H} = \frac{1}{\sqrt{2}} \begin{pmatrix}
+1  & 1 \\
+1  & -1
+ \end{pmatrix}.
+          \end{equation}
+          Show that \( \hat{H} \) is Hermitian and that
+          \begin{equation}
+          \label{eq:11}
+          \hat{H}\ket{\pm}ket{\pm}_H.
+          \end{equation}
+
+          \item Find the eigenvalues and normalized eigenkets of \( \hat{H} \). Would the eigenvalues change if \( \hat{H} \) were represented in the Hadamard basis instead of the computational basis?
+  \end{enumerate}
+\end{problem}
+\end{document}
