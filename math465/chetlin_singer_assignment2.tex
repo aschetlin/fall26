@@ -72,6 +72,8 @@ enhanced jigsaw, frame hidden,%interior hidden,
 breakable,%before skip=10pt,after skip=10pt
 }
 
+\renewcommand\qedsymbol{\( \blacksquare \)}
+
 \lhead{Avi Chetlin \\ Assignment 02 \\ 09 September 2026}
 \rhead{Dr. David Singer \\ MATH 465 Differential Geometry \\ Fall 2026}
 
@@ -135,10 +137,59 @@ Unless explicitly stated, \(\alpha: I \rightarrow \mathbb{R}^3\) is a curve para
             \label{eq:10}
             N(s) = \frac{\alpha^{\prime\prime}(s)}{k(s)} = \left( -\cos \frac{s}{c}, -\sin \frac{s}{c}, 0 \right).
             \end{equation}
+
+            Now, the Frenet equations tell us that \( B^{\prime} = \tau N \), where \( B = T \times N \); by application of the Leibnitz rule it is clear that \( B^{\prime} = T \times N^{\prime} \).
+            We calculate
+            \begin{align}
+            \label{eq:12}
+              B^{\prime} &= T \times N^{\prime} \\
+              & = \left( \frac{b}{c^2}\cos \frac{s}{c}, \frac{b}{c^2} \sin \frac{s}{c}, 0 \right).
+            \end{align}
+            Moreover, \( B^{\prime} \cdot N = \tau \), hence
+            \begin{equation}
+            \label{eq:13}
+            \boxed{\tau = - \frac{b}{c^2}}.
+            \end{equation}
           \end{proof}
     \item Determine the osculating plane of \(\alpha\).
-    \item Show that the lines containing \( n(s) \) and passing through \(\alpha(s)\) meet the \( z \)-axis under a constant angle equal to \( \frac{\pi}{2} \).
+          \begin{proof}
+            The osculating plane is spanned by \( T \) and \( N \).
+            Let \( \mathbf{x} \in \mathbb{R}^3\) be an arbitrary point on the osculating plane of \(\alpha\).
+            Since the binormal vector is, by definition, orthogonal to the unit tangent and normal vectors, we can write
+            \begin{align}
+            \label{eq:14}
+              0 &= (\mathbf{x} - \alpha(s)) \cdot B(s) \\
+                &= (\mathbf{x}^1 - a\cos \frac{s}{c}, \mathbf{x}^2 - a \sin \frac{s}{c}, \mathbf{x}^3 - b \frac{s}{c}) \cdot (\frac{b}{c}\sin \frac{s}{c}, - \frac{b}{c}\cos \frac{s}{c}, \frac{a}{c}) \\
+                &= \frac{b}{c}\sin \frac{s}{c}\left( \mathbf{x}^1 - a \cos \frac{s}{c} \right) - \frac{b}{c}\cos \frac{s}{c}\left( \mathbf{x}^2 - a\sin \frac{s}{c} \right) + \frac{a}{c} \left( \mathbf{x}^3 - b \frac{s}{c} \right) \\
+                &= \frac{b}{c}\left(\mathbf{x}^1 \sin \frac{s}{c} - \mathbf{x}^2 \cos \frac{s}{c}\right) + \frac{a}{c}\left( \mathbf{x}^3 - b \frac{s}{c} \right).
+            \end{align}
+            Multiplying both sides by \( c \) and rearranging, we obtain the equation for the osculating plane at the point \(\alpha(s)\),
+            \begin{equation}
+            \label{eq:15}
+            \mathbf{x}^1b\sin \frac{s}{c} - \mathbf{x}^2b \cos \frac{s}{c} + \mathbf{x}^3 a = \frac{abs}{c}.
+            \end{equation}
+          \end{proof}
+    \item Show that the lines containing \( N(s) \) and passing through \(\alpha(s)\) meet the \( z \)-axis under a constant angle equal to \( \frac{\pi}{2} \).
+          \begin{proof}
+            Since \( N(s) \) is a unit vector, we know that \( \left| \langle N(s), \hat{z} \rangle \right| = |N||\hat{z}|\cos\theta = \cos\theta \), where \(\theta\) is the angle between \( N \) and \( \hat{z}\).
+            Since every line containing \( N(s) \) must meet the \( z \)-axis at the same angle, it suffices to show that \( \cos\theta \equiv 0 \).
+            From \cref{eq:10},
+            \begin{equation}
+            \label{eq:16}
+            \langle N(s), (0,0,1) \rangle = 0 = \cos\theta,
+            \end{equation}
+            hence \(\theta \equiv \frac{\pi}{2}\).
+          \end{proof}
     \item Show that the tangent lines to \(\alpha\) make a constant angle with the \( z \)-axis.
+          \begin{proof}
+            It again suffices to show that \( \left| \langle T, (0,0,1) \rangle \right| = \text{const} \).
+              With \cref{eq:4},
+            \begin{equation}
+            \label{eq:17}
+            \cos\theta = \langle T, (0,0,1) \rangle = \frac{b}{c},
+            \end{equation}
+            hence \( T \) makes a constant angle \(\theta = \arccos \frac{b}{c}\) with \( \hat{z} \).
+          \end{proof}
   \end{enumerate}
 \end{problem}
 
