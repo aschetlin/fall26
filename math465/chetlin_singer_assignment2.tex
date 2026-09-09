@@ -198,6 +198,26 @@ Unless explicitly stated, \(\alpha: I \rightarrow \mathbb{R}^3\) is a curve para
   Assume that there exists \( t_0 \), \( a < t_0 < b \), such that the distance \( \left| \alpha(t) \right| \) from the origin to the trace of \(\alpha\) will be maximum at \( t_{0} \).
   Prove that the curvature \( k \) of \(\alpha\) at \( t_0 \) satisfies \( \left| k(t_0) \right| \geq 1/\left| \alpha(t_0) \right|\).
 \end{problem}
+\begin{proof}
+  To begin with, note that since \( \left| \alpha(t) \right| \) obtains a maximum when \( t = t_0 \), it must be that \( \frac{\mathrm{d} }{\mathrm{d} t}\left| \alpha(t_0) \right| = 0 \).
+  That is
+  \begin{align}
+  \label{eq:18}
+    \frac{\mathrm{d} }{\mathrm{d} t} \sqrt{\langle\alpha, \alpha\rangle} &= \frac{\langle \alpha^{\prime}, \alpha \rangle + \langle\alpha, \alpha^{\prime} \rangle}{2 \sqrt{\langle\alpha, \alpha\rangle}} \\
+    &= \frac{\langle\alpha^{\prime}, \alpha \rangle}{\sqrt{\langle\alpha, \alpha\rangle}} = 0.
+  \end{align}
+  In other words, \( \alpha^{\prime}(t_0) \) is orthogonal to \(\alpha(t_0)\).
+
+  Now, \( \alpha \) is not necessarily parametrized by arc length, hence, with \( T \) denoting the \textbf{non-unit} tangent vector, the curvature \( k \) of \(\alpha\) satisfies
+  \begin{align}
+  \label{eq:19}
+    k(s) &= \left| \frac{\mathrm{d} }{\mathrm{d} t} \frac{\alpha^{\prime}(s)}{\left| \alpha^{\prime}(s) \right|} \right| \\
+         &= \left| \frac{|T(s)| \alpha^{\prime\prime}(s) - T(s) \frac{\mathrm{d} }{\mathrm{d} t} |T(s)|}{|T(s)|^2} \right| \\
+    &= \frac{1}{\langle\alpha^{\prime}, \alpha^{\prime}\rangle}\left| \sqrt{\langle\alpha^{\prime}, \alpha^{\prime}\rangle}\alpha^{\prime\prime} - \frac{\alpha^{\prime}\langle \alpha^{\prime\prime}, \alpha^{\prime}\rangle}{\sqrt{\langle\alpha^{\prime}, \alpha^{\prime}\rangle}} \right|.
+  \end{align}
+
+  Now, since \( \langle\alpha^{\prime}(t_0), \alpha(t_0) \rangle = 0\), differentiating both sides shows that in fact \( \langle\alpha^{\prime\prime}, \alpha \rangle = - \langle\alpha^{\prime}, \alpha^{\prime}\rangle \).
+\end{proof}
 
 \begin{problem}{1.5.17}
   In general, a curve \(\alpha\) is called a \textit{helix} if the tangent lines of \(\alpha\) make a constant angle with a fixed direction.

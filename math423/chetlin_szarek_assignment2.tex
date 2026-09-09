@@ -13,8 +13,9 @@
 
 \usepackage{hyperref}
 \usepackage[capitalize]{cleveref}
+\usepackage{thmtools}
 
-\newtheorem{thm}{Theorem}[section]
+\newtheorem{thm}{Theorem}
 \newtheorem{lem}[thm]{Lemma}
 \newtheorem{cl}[thm]{Claim}
 \newtheorem{prop}[thm]{Proposition}
@@ -101,9 +102,116 @@ All problems from \textit{Folland, Real Analysis} (2e).
 	Let \( \mathcal{M} \) be an infinite \( \sigma \)-algebra. Prove each of the following.
 	\begin{enumerate}[label=(\alph*)]
 		\item \( \mathcal{M} \) contains an infinite sequence of disjoint sets.
-		      \begin{proof}
 
+            We proceed in the manner suggested by the instruction document, first proving two lemmas.
+          \begin{lem}
+            If \( \mathcal{M} \subset \mathcal{P}(X) \) is a \( \sigma \)-algebra and \( A \in \mathcal{M} \), denote
+            \begin{equation}
+            \label{eq:37}
+            \mathcal{M}_A \coloneq \{ E \in \mathcal{M} \mid E \subset A \} = \{ F \cap A \mid F \in \mathcal{M} \}.
+            \end{equation}
+            Then \( \mathcal{M}_A \) is a \( \sigma \)-algebra on \( A \).
+          \end{lem}
+		      \begin{proof}
+            First, we establish the two containments necessary to show inequality.
+            If \( E \in \{ E \in \mathcal{M} \mid E \subset A\} \), then we can clearly write \( E = E \cap A \) by basic set theoretic properties, which immediately shows that \( E \in \{ F \cap A \mid F \in \mathcal{M} \} \).
+            Conversely, if \( F \cap A \in \{F \cap A \mid F \in \mathcal{M}\} \), then \( F \cap A \) is a finite union of elements in \( \mathcal{M} \), hence \( F \cap A \in \mathcal{M} \);
+            moreover, \( F \cap A \subset A \), showing that the equality holds.
+
+            Now, it is obvious that \( A = A \cap A \in \mathcal{M}_A \) and \( \emptyset = \emptyset \cap A \in \mathcal{M}_A \).
+            Let \( \{ B_j \}_1^{\infty} \subset \mathcal{M}_A\) be an arbitrary family, and consider \( B = \bigcup_1^{\infty} B_j \).
+            We can write
+            \begin{equation}
+            \label{eq:38}
+            B = \bigcup_{1}^{\infty} (F_j \cap A) = A \cap \bigcup_1^{\infty} F_j,
+            \end{equation}
+            where \( \{F_j\} \subset \mathcal{M} \).
+            Since \( \mathcal{M} \) is a \(\sigma\)-algebra, \( B \in \mathcal{M} \), and since \( B \subset A \), in particular \( B \in \mathcal{M}_A \), so \( \mathcal{M}_A \) is closed under countable unions.
+            An identical argument shows that \( \mathcal{M}_A \) is also closed under countable intersections.
+
+            For complements, note than an arbitrary \( G \in \mathcal{M}_A \) can be written as \( G = H \cap A \) for \( H \in \mathcal{M} \).
+            Then
+            \begin{equation}
+            \label{eq:39}
+            A \setminus G = A \setminus (H \cap A) = (A \setminus H) \cup (A \setminus A) = (A \setminus H).
+          \end{equation}
+          Now, \( A \setminus H = A \cap H^{\complement} \) where by \( H^{\complement} \) we mean \( X \setminus H \).
+          Furthermore, \( H^{\complement} \in \mathcal{M} \), showing that \( A \setminus G \in \mathcal{M}_A \), and our claim follows.
 		      \end{proof}
+          \begin{lem}
+            \label{lem:2}
+            Let \( A, B \in \mathcal{M} \) with \( A \cap B = \emptyset \).
+            If both \( \mathcal{M}_A \) and \( \mathcal{M}_B \) are finite, then \( \mathcal{M}_{A \cup B} \) is finite.
+            More precisely, \( \# \mathcal{M}_{A \cup B} = \# \mathcal{M}_A \cdot \# \mathcal{M}_B \).
+            Consequently, if \( \mathcal{M}_{A \cup B} \) is infinite, at least one of \( \mathcal{M}_A \) or \( \mathcal{M}_B \) is infinite.
+          \end{lem}
+          \begin{proof}
+            Suppose \( A, B \in \mathcal{M} \) are disjoint.
+            \( \mathcal{M}_{A \cup B} = \{ E \in \mathcal{M} \mid E \subset A \cup B \} = \{ F \cap (A \cup B) \mid F \in \mathcal{M} \}\).
+            Note that we can rewrite this as \( (F \cap A) \cup (F \cap B) \), so that every set \( G \in \mathcal{M}_{A \cup B} \) is the union of corresponding sets \( G_A \in \mathcal{M}_A, G_B \in \mathcal{M}_B \).
+            We thus claim that
+            \begin{equation}
+            \text{card}(\mathcal{M}_{A \cup B}) = \text{card}(\left( \mathcal{M}_A \times \mathcal{M}_B  \right)).
+            \end{equation}
+
+            Define \( f: \mathcal{M}_{A \cup B} \rightarrow \mathcal{M}_A \times \mathcal{M}_B \) such that
+            \begin{equation}
+            \label{eq:40}
+            G \mapsto (G_A, G_B) = (F \cap A, F \cap B),
+            \end{equation}
+            as above.
+            Suppose \( f(G_1) = f(G_2) \), so
+            \begin{equation}
+            \label{eq:41}
+            (F_1 \cap A, F_1 \cap B) = (F_2 \cap A, F_2 \cap B).
+            \end{equation}
+            This obviously implies that
+            \begin{align}
+            \label{eq:42}
+              G_1 &= G_{1,A} \cup G_{1,B} = (F_1 \cap A) \cup (F_1 \cap B)\\
+              &= (F_2 \cap A) \cup (F_2 \cap B) = G_{2, A} \cup G_{2, B} = G_2,
+            \end{align}
+            so \( f \) is injective.
+
+            Let \( (F \cap A, F \cap B) \in \mathcal{M}_A \times \mathcal{M}_B \) be arbitrary.
+            Then \( G = (F \cap A) \cup (F \cap B) \) is in \( \mathcal{M}_{A \cup B} \), and \( f(G) = (F \cap A, F \cap B) \), so \( f \) is a bijection.
+
+            Now, for any sets \( S_1, S_2 \), \( \text{card}(\left( S_1 \times S_2 \right)) = \text{card}(S_1 \cdot \#S_2) \), and our claim now follows (since for finite sets, \( \text{card}(S) \coloneq \# S \)).
+          \end{proof}
+          We may now prove the initial claim.
+          \begin{proof}[Proof of 1.2.3(a)]
+            We inductively construct such a sequence of disjoint sets, \( \{A_j\}_1^{\infty} \).
+            First of all, define \( B_n \) for \( n=0 \) as \( B_0  = X \), and let \( A_1 = \emptyset \).
+            Then, have \( B_1 = B_0 \setminus A_1 = X \).
+            The associated sub \( \sigma \)-algebra is \( \mathcal{M}_{B_1} = \mathcal{M}_X = \mathcal{M} \) which is, by assumption, infinite.
+            In particular, \( \mathcal{M} \neq \{\emptyset, B_1\} \), so there exists some \( E_1 \in \mathcal{M} \) which satisfies
+            \begin{equation}
+            \label{eq:43}
+            \emptyset \subsetneq E_{1} \subsetneq B_1.
+            \end{equation}
+            Additionally, \( B_1 = (B_1 \setminus E_1) \cup E_1 \).
+            By \cref{lem:2}, since \( \mathcal{M} = \mathcal{M}_{B_1} = \mathcal{M}_{(B_1 \setminus E_{1}) \cup E_1} \) is infinite, at least one of \( \mathcal{M}_{B_1 \setminus E_1} \) or \( \mathcal{M}_{E_1} \) are infinite.
+
+            Now, induct on \( n \): Assume we have \( \{ A_j \}_1^n \) which is pairwise disjoint and such that
+            \begin{equation}
+            \label{eq:45}
+            B_n = X \setminus \bigcup_{1}^n A_j
+            \end{equation}
+            forms an infinite subalgebra \( \mathcal{M}_{B_n} \).
+            Then there is some non-empty \( E_{n} \) as in the inductive hypothesis so that
+            \begin{equation}
+            \label{eq:46}
+            \emptyset \subsetneq E_n \subsetneq E_{n-1} \subsetneq \cdots \subsetneq E_1 \subsetneq B_1 = X,
+            \end{equation}
+            and either \( \mathcal{M}_{B_n \setminus E_{n}} \) or \( \mathcal{M}_{E_{n}} \) is infinite.
+            In the former case, put \( A_{n+1} =  E_{n} \), whence \( B_{n+1} = B_n \setminus A_{n+1} \) has an infinite associated subalgebra.
+            In the latter case, put \( A_{n+1} = B_n \setminus E_{n} \), and thus \( B_{n+1} = B_n \setminus A_{n+1} = B_n \setminus (B_n \setminus E_{n}) = E_{n} \) again as an infinite associated sub-algebra.
+
+            Since in each case we have guaranteed both \( E_{n} \) and \( B_n \setminus E_{n} \) are non-empty, so too is \( A_{n+1} \).
+            Additionally, \( A_{n+1} \subset B_n = X \setminus \bigcup_1^n A_{j} \), so each additional \( A_{n+1} \) is disjoint from the previous \( A_1, \dots, A_n \).
+
+            We have thus constructed an infinite sequence of non--empty, disjoint sets \( \{ A_j \}_1^{\infty} \), as desired.
+          \end{proof}
 		\item \( \text{card}(\mathcal{M}) \geq \mathfrak{c} \).
 		      \begin{proof}
 			      By part (a), \( \mathcal{M} \) contains an infinite sequence of disjoint, nonempty sets; call this sequence \( \{ A_n \}_{n \in \mathbb{N}} \).
