@@ -179,6 +179,13 @@ Unless explicitly stated, \(\alpha: I \rightarrow \mathbb{R}^3\) is a curve para
             \langle N(s), (0,0,1) \rangle = 0 = \cos\theta,
             \end{equation}
             hence \(\theta \equiv \frac{\pi}{2}\).
+
+            Finally, these lines have the form
+            \begin{equation}
+            \label{eq:51}
+            \alpha(s) + tN(s) = (\cos \frac{s}{c}(a-t), \sin \frac{s}{c}(a-t), b \frac{s}{c}) = (0,0, b \frac{s}{c}),
+            \end{equation}
+            which clearly intersects the \( z \)-axis when \( t = a \).
           \end{proof}
     \item Show that the tangent lines to \(\alpha\) make a constant angle with the \( z \)-axis.
           \begin{proof}
@@ -199,39 +206,164 @@ Unless explicitly stated, \(\alpha: I \rightarrow \mathbb{R}^3\) is a curve para
   Prove that the curvature \( k \) of \(\alpha\) at \( t_0 \) satisfies \( \left| k(t_0) \right| \geq 1/\left| \alpha(t_0) \right|\).
 \end{problem}
 \begin{proof}
-  To begin with, note that since \( \left| \alpha(t) \right| \) obtains a maximum when \( t = t_0 \), it must be that \( \frac{\mathrm{d} }{\mathrm{d} t}\left| \alpha(t_0) \right| = 0 \).
-  That is
-  \begin{align}
-  \label{eq:18}
-    \frac{\mathrm{d} }{\mathrm{d} t} \sqrt{\langle\alpha, \alpha\rangle} &= \frac{\langle \alpha^{\prime}, \alpha \rangle + \langle\alpha, \alpha^{\prime} \rangle}{2 \sqrt{\langle\alpha, \alpha\rangle}} \\
-    &= \frac{\langle\alpha^{\prime}, \alpha \rangle}{\sqrt{\langle\alpha, \alpha\rangle}} = 0.
-  \end{align}
-  In other words, \( \alpha^{\prime}(t_0) \) is orthogonal to \(\alpha(t_0)\).
+  Since re-parametrizing \( \alpha \) preserves the curvature and norm of \(\alpha\), we may freely assume \(\alpha\) is parametrized by arc length.
 
-  Now, \( \alpha \) is not necessarily parametrized by arc length, hence, with \( T \) denoting the \textbf{non-unit} tangent vector, the curvature \( k \) of \(\alpha\) satisfies
+  \(\left| \alpha(t) \right|\) taking a maximum at \( t=t_0 \) is equivalent to \( \left| \alpha(t) \right|^2 = \langle \alpha, \alpha \rangle \) taking a maximum, we must have
+  \begin{equation}
+  \label{eq:20}
+  \frac{\mathrm{d}^2 }{\mathrm{d} t^2} \langle \alpha(t_0), \alpha(t_{0}) \rangle \leq 0.
+  \end{equation}
+  Hence, evaluating each term at \( t=t_0 \) but supressing arguments for the time being,
   \begin{align}
-  \label{eq:19}
-    k(s) &= \left| \frac{\mathrm{d} }{\mathrm{d} t} \frac{\alpha^{\prime}(s)}{\left| \alpha^{\prime}(s) \right|} \right| \\
-         &= \left| \frac{|T(s)| \alpha^{\prime\prime}(s) - T(s) \frac{\mathrm{d} }{\mathrm{d} t} |T(s)|}{|T(s)|^2} \right| \\
-    &= \frac{1}{\langle\alpha^{\prime}, \alpha^{\prime}\rangle}\left| \sqrt{\langle\alpha^{\prime}, \alpha^{\prime}\rangle}\alpha^{\prime\prime} - \frac{\alpha^{\prime}\langle \alpha^{\prime\prime}, \alpha^{\prime}\rangle}{\sqrt{\langle\alpha^{\prime}, \alpha^{\prime}\rangle}} \right|.
+  \label{eq:21}
+    0 &\geq 2\frac{\mathrm{d} }{\mathrm{d} t} \left( \langle\alpha^{\prime}, \alpha \rangle \right) \\
+      &= 2 \left( \langle\alpha^{\prime\prime}, \alpha \rangle + \langle \alpha^{\prime}, \alpha^{\prime} \rangle \right) \\
+      &= 2 \left( \langle T^{\prime}, \alpha \rangle + | T |^2 \right) = 2\langle kN , \alpha \rangle + 2 \\
+    &= 2k \langle N , \alpha \rangle + 2,
   \end{align}
-
-  Now, since \( \langle\alpha^{\prime}(t_0), \alpha(t_0) \rangle = 0\), differentiating both sides shows that in fact \( \langle\alpha^{\prime\prime}, \alpha \rangle = - \langle\alpha^{\prime}, \alpha^{\prime}\rangle \).
+  and thus \(-1 \geq k \langle N, \alpha \rangle\), or
+  \begin{equation}
+  \label{eq:25}
+  1 \leq k \langle -N, \alpha \rangle \leq |k| |N| |\alpha|
+  \end{equation}
+  which, recalling that \( |N| = 1 \), shows that
+  \begin{equation}
+  \label{eq:26}
+  \frac{1}{|\alpha(t_0)|} \leq |k(t_0)|.
+  \end{equation}
 \end{proof}
 
+\newpage
 \begin{problem}{1.5.17}
   In general, a curve \(\alpha\) is called a \textit{helix} if the tangent lines of \(\alpha\) make a constant angle with a fixed direction.
   Assume that \(\tau(s) \neq 0\), \( s \in I \), and prove that
   \begin{enumerate}[label=(\alph*)]
     \item \(\alpha\) is a helix if and only if \( \frac{k}{\tau} \) is constant.
+          \begin{proof}
+            (\(\Rightarrow\)) Suppose \( \alpha \) is a helix, and let \( \hat{a} \) be the unit vector in the fixed direction with which the tangent lines make a constant angle \(\theta\).
+            Then \( \langle T, \hat{a} \rangle = \cos\theta \) is constant, so
+            \begin{equation}
+            \label{eq:27}
+            \langle T^{\prime}, \hat{a} \rangle + \langle T, \hat{a}^{\prime} \rangle = \langle T^{\prime}, \hat{a} \rangle = 0.
+            \end{equation}
+            Using the Frenet equations,
+            \( \langle kN, \hat{a} \rangle = 0 \), so we can express \( \hat{a} \) in the Frenet frame as
+            \begin{equation}
+            \label{eq:28}
+            \hat{a} = \cos\theta T + \beta B,
+            \end{equation}
+            where \( \beta \) is some constant; however, since \( \hat{a} \) is a unit vector, we must in particular have
+            \begin{equation}
+            \label{eq:29}
+            \hat{a} = \cos\theta T + \sin\theta B.
+            \end{equation}
+
+            Differentiating \cref{eq:29} gives
+            \begin{equation}
+            \label{eq:30}
+            0 = \cos\theta (kN) + \sin\theta (\tau N),
+            \end{equation}
+            which implies \(k = -\tau\tan\theta\), or
+            \begin{equation}
+            \label{eq:32}
+            \frac{k}{\tau} = -\tan\theta = \text{constant}.
+            \end{equation}
+
+            (\(\Leftarrow\)) Suppose \( \frac{k}{\tau} \) is constant.
+            Then \(\exists \theta\) such that \( -\tan\theta = \frac{k}{\tau}\), namely, \(\theta = \arctan -\frac{k}{\tau}\).
+            This then implies that
+            \begin{equation}
+            \label{eq:35}
+            k \cos\theta + \tau\sin\theta = 0.
+            \end{equation}
+            Multiplying both sides by \( N \) and using the Frenet equations gives
+            \begin{equation}
+            \label{eq:36}
+            T^{\prime} \cos\theta + B^{\prime} \sin\theta = \frac{\mathrm{d} }{\mathrm{d} t} (T \cos\theta + B \sin\theta) = 0,
+            \end{equation}
+            so \( T\cos\theta + B \sin\theta \eqcolon \hat{a} \) is a constant unit vector.
+            Moreover, \( \langle T, \hat{a} \rangle = \cos\theta \), which is constant since \(\theta\) is.
+          \end{proof}
     \item \(\alpha\) is a helix if and only if the lines containing \( n(s) \) and passing through \( \alpha(s) \) are parallel to a fixed plane.
+          \begin{proof}
+            (\(\Rightarrow\)) Suppose \( \alpha \) is a helix, and let \( \hat{a} \) be the fixed unit vector such that \( \langle T, \hat{a} \rangle = \cos\theta \) is constant.
+            We want to show there exists some plane \( \mathbf{P} \) with unit normal vector \( \hat{p} \) such that \( N, \hat{p} \rangle = 0 \).
+
+            Notice that by being a helix, \(\alpha\) satisfies \( \langle T^{\prime}, \hat{a} \rangle = 0 \), that is, the unit normal of \(\alpha\) is orthogonal to \( \hat{a} \).
+            Hence, \( N \) is parallel to a plane with normal vector \( \hat{a} \).
+
+            (\(\Leftarrow\)) Suppose \( N \) is parallel to some fixed plane \( \mathbf{P} \).
+            Then, letting \( \hat{a} \) be the vector normal to \( \mathbf{P} \), we have \( \langle N, \hat{a} \rangle = 0 \).
+            Since
+            \begin{equation}
+            \label{eq:39}
+            \langle N, \hat{a} \rangle = \frac{\mathrm{d} }{\mathrm{d} t} \langle T, \hat{a} \rangle = 0,
+            \end{equation}
+            we see that \( \langle T, \hat{a} \rangle = \text{constant} \), showing that \(\alpha\) is a helix.
+          \end{proof}
     \item \(\alpha\) is a helix if and only if the lines containing \( b(s) \) and passing through \(\alpha(s)\) make a constant angle with a fixed direction.
+          \begin{proof}
+            (\(\Rightarrow\)) Suppose \(\alpha\) is a helix and let \( \hat{a} \) be the unit vector in the fixed direction with which \( T \) makes a constant angle \(\theta\).
+            From part (a), we know we can write \( \hat{a} = \cos\theta T + \sin\theta B \), and therefore \( \langle B, \hat{a} \rangle = \sin \theta = \text{constant} \).
+
+            (\(\Leftarrow\)) Suppose \( \langle B, \hat{a} \rangle = \text{constant} \) for some fixed direction \( \hat{a} \).
+            Then, differentiating and applying the Frenet equations gives
+            \begin{equation}
+            \label{eq:42}
+            \langle B^{\prime}, \hat{a} \rangle = \langle \tau N, \hat{a} \rangle = \tau \langle N , \hat{a} \rangle = 0,
+            \end{equation}
+            and since \( \frac{\mathrm{d} }{\mathrm{d} t} \langle T, \hat{a} \rangle = k \langle N, \hat{a} \rangle = 0 \), and \( k \neq 0 \), we must have that
+            \begin{equation}
+            \label{eq:43}
+            \langle T , \hat{a} \rangle = \text{constant},
+            \end{equation}
+            hence \( \alpha \) is a helix.
+          \end{proof}
     \item The curve
           \begin{equation}
           \label{eq:2}
           \alpha(s) = \left( \frac{a}{c} \int\sin\theta(s) ds, \frac{a}{c} \int\cos\theta(s) ds, \frac{b}{c} s \right),
           \end{equation}
           where \( c^2 = a^2 + b^2 \), is a helix, and that \( \frac{k}{\tau} = \frac{a}{b} \).
+          \begin{proof}
+            We need to show that there is some \( \hat{a} \) such that \( \langle T, \hat{a} \rangle = \text{constant} \).
+            Additionally, we need to show that \( \frac{k}{\tau} = \frac{a}{b} \).
+
+            To begin, note that
+            \begin{equation}
+            \label{eq:45}
+            T(s) = \alpha^{\prime}(s) = (\frac{a}{c}\sin\theta(s), \frac{a}{c}\cos\theta(s), \frac{b}{c}),
+            \end{equation}
+            from which it is clear that \( \langle T, \hat{z} \rangle = \frac{b}{c} = \text{constant}\), so \(\alpha\) is a helix.
+
+            Next, we calculate \( k \) and \( \tau \).
+            \begin{align}
+            \label{eq:46}
+              k(s) &= \left| \alpha^{\prime\prime} \right| = \left| (\frac{a}{c} \theta^{\prime}(s) \cos\theta(s), -\frac{a}{c} \theta^{\prime}(s) \sin\theta(s), 0 ) \right| \\
+              &= \sqrt{\frac{a^2}{c^2}(\theta^{\prime}(s))^2} = \frac{a}{c} \theta^{\prime}(s).
+            \end{align}
+
+            Now, since \(\tau\) is defined to satisfy \( B^{\prime} = \tau N \), we first find the binormal vector.
+            \begin{align}
+            \label{eq:48}
+              B &= T \times N \\
+                &= (\frac{a}{c}\sin\theta(s), \frac{a}{c}\cos\theta(s), \frac{b}{c}) \times (\cos\theta(s), -\sin\theta(s), 0) \\
+              & = (\frac{b}{c}\sin\theta(s), \frac{b}{c}\cos\theta(s), - \frac{a}{c}).
+            \end{align}
+
+            From \cref{eq:48}, we see that
+            \begin{equation}
+            \label{eq:49}
+            B^{\prime} = (\frac{b}{c}\theta^{\prime}(s) \cos\theta(s), -\frac{b}{c}\theta^{\prime}(s) \sin \theta(s), 0),
+            \end{equation}
+            therefore \( \tau = \frac{b}{c} \theta^{\prime}(s) \).
+
+            Our claim now follows since
+            \begin{equation}
+            \label{eq:50}
+            \frac{k}{\tau} = \frac{\frac{a}{c} \theta^{\prime}(s)}{\frac{b}{c}\theta^{\prime}(s)} = \frac{a}{b}.
+            \end{equation}
+          \end{proof}
   \end{enumerate}
 \end{problem}
 \end{document}

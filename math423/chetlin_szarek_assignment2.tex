@@ -198,14 +198,14 @@ All problems from \textit{Folland, Real Analysis} (2e).
             B_n = X \setminus \bigcup_{1}^n A_j
             \end{equation}
             forms an infinite subalgebra \( \mathcal{M}_{B_n} \).
-            Then there is some non-empty \( E_{n} \) as in the inductive hypothesis so that
+            Then there is some non-empty \( E_{n} \in \mathcal{M}_{B_n} \) as in the inductive hypothesis so that
             \begin{equation}
             \label{eq:46}
             \emptyset \subsetneq E_n \subsetneq E_{n-1} \subsetneq \cdots \subsetneq E_1 \subsetneq B_1 = X,
             \end{equation}
             and either \( \mathcal{M}_{B_n \setminus E_{n}} \) or \( \mathcal{M}_{E_{n}} \) is infinite.
-            In the former case, put \( A_{n+1} =  E_{n} \), whence \( B_{n+1} = B_n \setminus A_{n+1} \) has an infinite associated subalgebra.
-            In the latter case, put \( A_{n+1} = B_n \setminus E_{n} \), and thus \( B_{n+1} = B_n \setminus A_{n+1} = B_n \setminus (B_n \setminus E_{n}) = E_{n} \) again as an infinite associated sub-algebra.
+            In the former case, put \( A_{n+1} =  E_{n} \), whence \( B_{n+1} = B_n \setminus A_{n+1} \) has an infinite associated subalgebra \( \mathcal{M}_{B_{n+1}} = \mathcal{M}_{B_n \setminus A_{n+1}} \).
+            In the latter case, put \( A_{n+1} = B_n \setminus E_{n} \), and thus \( B_{n+1} = B_n \setminus A_{n+1} = B_n \setminus (B_n \setminus E_{n}) = E_{n} \) again has an infinite associated sub-algebra \( \mathcal{M}_{B_{n+1}} = \mathcal{M}_{E_{n}} \).
 
             Since in each case we have guaranteed both \( E_{n} \) and \( B_n \setminus E_{n} \) are non-empty, so too is \( A_{n+1} \).
             Additionally, \( A_{n+1} \subset B_n = X \setminus \bigcup_1^n A_{j} \), so each additional \( A_{n+1} \) is disjoint from the previous \( A_1, \dots, A_n \).
