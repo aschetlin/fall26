@@ -1,0 +1,260 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym, amsfonts, enumitem, graphicx, environ,enumitem, fancyhdr, color, amssymb, amsthm, amsmath, mathtools, tikz, nicematrix}
+\usepackage{physics}
+\usetikzlibrary{patterns}
+\usetikzlibrary{decorations.pathreplacing}
+\pagestyle{fancy}
+\setlength{\headheight}{65pt}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+    \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\DeclareMathOperator{\Ima}{Im}
+
+\usepackage{hyperref}
+\usepackage[capitalize]{cleveref}
+\usepackage{thmtools}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cl}[thm]{Claim}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{obstruction}[thm]{Obstruction}
+
+\usepackage{mdframed}
+
+\theoremstyle{definition}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{question}{Question}
+\newtheorem{example}[thm]{Example}
+\newtheorem{exercise}[thm]{Exercise}
+\newtheorem{properties}[thm]{Properties}
+\newtheorem*{answer}{Answer}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems,skins,breakable}
+
+\tcolorboxenvironment{example}{
+enhanced jigsaw,colframe=cyan,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{thm}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{prop}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{properties}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{lem}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+\tcolorboxenvironment{cor}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+\tcolorboxenvironment{obstruction}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{proof}{
+enhanced jigsaw, frame hidden,%interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{answer}{
+enhanced jigsaw, frame hidden,%interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\renewcommand\qedsymbol{\( \blacksquare \)}
+
+\lhead{Avi Chetlin \\ Assignment 02 \\ 10 September 2026}
+\rhead{Dr. Michael Martens \\ PHYS 313 Thermodynamics \\ Fall 2026}
+
+\begin{document}
+\begin{problem}{1}
+  Multiplicity of some system as a function of energy is given as
+  \begin{equation}
+  \label{eq:1}
+  g(U) = C U^{\frac{3N}{2}},
+  \end{equation}
+  where \( C \) is a constant and \( N \) is the number of particles.
+  The system is in thermal equilibrium with a reservoir at temperature \(\tau\).
+  \begin{enumerate}[label=(\alph*)]
+    \item Show that the equilibrium energy of the system is \( \hat{U} = \frac{3}{2}N \tau\).
+          \begin{proof}
+            The equilibrium energy occurs when
+            \begin{equation}
+            \label{eq:2}
+            \frac{\partial \sigma_{S}}{\partial U} = \frac{\partial \sigma_{R}}{\partial U} = \frac{1}{\tau}.
+            \end{equation}
+
+            \(\sigma_S = \log g(U) = \log C + \log U^{\frac{3N}{2}} = \log C + \frac{3N}{2}\log U\), so
+            \begin{equation}
+            \label{eq:3}
+            \frac{\partial \sigma_{S}}{\partial U} = \frac{3N}{2U}.
+            \end{equation}
+            If \( \hat{U} \) is the equilibrium energy, then
+            \begin{equation}
+            \label{eq:4}
+            \frac{3N}{2 \hat{U}} = \frac{1}{\tau},
+          \end{equation}
+          hence \( \hat{U} = \frac{3N\tau}{2} \), as desired.
+          \end{proof}
+    \item Show that \( \frac{\partial^2 \sigma}{\partial U^2} \eval_{U = \hat{U}}\) is negative.
+          \begin{proof}
+            \begin{equation}
+            \label{eq:5}
+            \frac{\partial^2 \sigma_{S}}{\partial U^2} = \frac{\partial }{\partial U} \frac{3N}{2U} = - \frac{3N}{2 U^2}.
+            \end{equation}
+            This is always negative, since \( N \) is necessarily positive as is \( U^2 \).
+            In particular, evaluated at \( \hat{U} \), \( \frac{\partial^2 \sigma_{S}}{\partial U^2} \eval_{U = \hat{U}} < 0  \).
+          \end{proof}
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{2}
+  Based on the figure found in the problem sheet.
+  The two systems initially have the values indicated, and are then brought into thermal contact.
+  \begin{enumerate}[label=(\alph*)]
+    \item Explain what happens subsequently and why, without using the word temperature.
+          What is the result after a long time?
+          \begin{answer}
+            Initially, as the energy from the system with a shallower slope (higher temperature) flows into the system with a steeper slope (lower temperature), the slope of the graph for system \( A \) will decrease, and the slope for \( B \) will increase.
+            This is because systems always evolve with increasing entropy towards equilibrium, which occurs when \(\partial_U\sigma_A = \partial_U\sigma_B\), i.e., when the slopes are equal.
+
+            After a long time, the two slopes will be equal, and the two graphs will asymptotically approach some constants \( S_{A, \text{final}} \) and \( S_{B, \text{final}} \).
+          \end{answer}
+    \item After the systems reach equilibrium, the multiplicity function of \( A \) is multiplied by a constant \( C \),
+          \begin{equation}
+          \label{eq:6}
+          g_A(U_A) \rightarrow g^{\prime}_A(U_A) = C g_A(U_A).
+          \end{equation}
+          Write down the new entropy \(\sigma^{\prime}_A\) and show that the temperature of system \( A \) is unchanged.
+          \begin{proof}
+            We have that
+            \begin{equation}
+            \label{eq:7}
+            \sigma^{\prime}_A = \log(g^{\prime}_A(U_A)) = \log C + \log g_A(U_A) = \log C + \sigma_A.
+            \end{equation}
+
+            Then, at equilibrium, the temperature satisfies
+            \begin{align}
+            \label{eq:8}
+              \tau^{\prime} &= \left( \frac{\partial \sigma^{\prime}_A}{\partial U}  \right)^{-1} = \left( \frac{\partial }{\partial U} \log C + \frac{\partial }{\partial U} \log g_A(U_A) \right)^{-1} \\
+              &= \left( \frac{\partial }{\partial U}  \log g_A(U_A) \right) = \tau.
+            \end{align}
+          \end{proof}
+    \item What is the resulting change in the energy of system \( A \)? Of system \( B \)?
+          \begin{answer}
+            Neither change.
+            The multiplicative factor shifts the graph of entropy against entropy up/down, but doesn't impact the slope.
+          \end{answer}
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{3}
+  Suppose that the nuclei of atoms in a particular material each have spin \( \frac{3}{2} \).
+  According to quantum mechanics, each nucleus can be in one of four states, labeled
+  \begin{equation}
+  \label{eq:9}
+  m = -3/2, -1/2, 1/2, 3/2.
+  \end{equation}
+  Due to the crystal structure of the material, the states with \( m = \pm 3/2 \) have energy \( \varepsilon \), and the states with \( m = \pm 1/2 \) have energy \( 0 \).
+
+  \begin{enumerate}[label=(\alph*)]
+          \item Find the partition function \( Z \) for one atom in this system.
+          \begin{answer}
+            \( Z(\tau) = \sum\limits_s \exp( \frac{-\varepsilon_{s}}{\tau} ) \), so
+            \begin{equation}
+            \label{eq:10}
+            Z(\tau) = 2 + \exp( -\frac{\varepsilon_{3/2}}{\tau} ) + \exp( \frac{-\varepsilon_{-3/2}}{\tau} ) = \boxed{2 + 2\exp( \frac{-\varepsilon}{\tau} )}.
+            \end{equation}
+          \end{answer}
+          \item Find the average energy \( U \) of \( N \) nuclei at a temperature \(\tau\).
+          \begin{answer}
+            \begin{equation}
+            \label{eq:11}
+            \langle U \rangle = N \sum\limits_s \varepsilon_s \mathbb{P}(\varepsilon = \varepsilon_s) = N \varepsilon (\frac{\exp(\frac{-\varepsilon}{\tau})}{Z}) +N \varepsilon (\frac{\exp(\frac{-\varepsilon}{\tau})}{Z}),
+            \end{equation}
+            so
+            \begin{equation}
+            \label{eq:13}
+            \langle U \rangle = N \left( \frac{2\varepsilon\exp(\frac{-\varepsilon}{\tau})}{2 + 2\exp(\frac{-\varepsilon}{\tau})} \right) = \boxed{\frac{N\varepsilon}{\exp(\frac{\varepsilon}{\tau}) + 1}}.
+            \end{equation}
+
+          \end{answer}
+    \item Find the heat capacity \( C_V \) of \( N \) nuclei at a temperature \( \tau \).
+          \begin{answer}
+            The heat capacity is defined as \( \frac{\partial \langle U \rangle}{\partial \tau}  \).
+
+            Hence,
+            \begin{align}
+            \label{eq:14}
+              C_V &= \frac{\partial }{\partial \tau} \left( \frac{N\varepsilon}{\exp(\frac{\varepsilon}{\tau}) + 1} \right) = \frac{-N\varepsilon}{(\exp(\frac{\varepsilon}{\tau}) + 1)^2} \exp(\varepsilon/\tau) \left( \frac{-\varepsilon}{\tau^2} \right) \\
+              &= \boxed{\frac{N \varepsilon^2}{\tau^2} \frac{\exp( \frac{\varepsilon}{\tau} )}{(\exp(\frac{\varepsilon}{\tau}) + 1)^2}}.
+            \end{align}
+          \end{answer}
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{4}
+  Consider two of the states of a system \( S \), \( A \) and \( B \), with energies \( \varepsilon_A \) and \( \varepsilon_B \), \( \varepsilon_A > \varepsilon_B \).
+  System \( S \) is in thermal equilibrium with another system at temperature \(\tau\).
+  Let \( P(A) \) and \( P(B) \) be the probability that \( S \) is in state \( A  \) and \( B \) at any given moment.
+  \begin{enumerate}[label=(\alph*)]
+    \item Find the limit of \( P(A)/P(B) \) as \( \tau \rightarrow 0 \).
+          \begin{answer}
+            \begin{equation}
+            \label{eq:15}
+            \frac{P(A)}{P(B)} = \frac{\exp(-\varepsilon_A/\tau)}{\exp(-\varepsilon_B/\tau)} = \exp(\frac{-(\varepsilon_{A}-\varepsilon_B)}{\tau}).
+            \end{equation}
+            Clearly, as \(\tau \rightarrow 0\), \( \boxed{P(A)/P(B) \rightarrow 0} \).
+          \end{answer}
+    \item As \(\tau \rightarrow \infty\).
+          \begin{answer}
+            Again from \cref{eq:15}, it is clear that as \(\tau \rightarrow \infty\), the ratio \( \boxed{P(A)/P(B) \rightarrow 1} \).
+          \end{answer}
+    \item For \(\tau \gg \varepsilon_A - \varepsilon_B\), find \( P(A)/P(B) \) to first order.
+          \begin{answer}
+            If \(\tau \gg \varepsilon_A - \varepsilon_B\), then \( 1 \gg \frac{\varepsilon_A - \varepsilon_B}{\tau} \).
+            We can therefore expand the function \( f(x) = \exp(-x) \) about \( 0 \).
+
+            For \( x \ll 1 \),
+            \begin{equation}
+            \label{eq:16}
+            e^{-x} = 1 - x + \frac{x^2}{2} - \frac{x^{3}}{3!} + \dots
+            \end{equation}
+
+            Hence we have that
+            \begin{equation}
+            \label{eq:17}
+            \frac{P(A)}{P(B)} = \boxed{1 - \frac{\varepsilon_{A} - \varepsilon_B}{\tau} + \mathcal{O}\left((\frac{\varepsilon_{A}-\varepsilon_B}{\tau})^2\right)}.
+            \end{equation}
+          \end{answer}
+    \item At what temperature \(\tau\) is \( P(A)/P(B) = 1/2\)?
+          \begin{answer}
+            \begin{align}
+            \label{eq:18}
+              &\exp(\frac{-(\varepsilon_{A} - \varepsilon_B)}{\tau} = \frac{1}{2}) \\
+              &\Rightarrow \frac{-(\varepsilon_{A} - \varepsilon_{B})}{\tau} = \log \frac{1}{2} = -\log 2 \\
+              &\Rightarrow \boxed{\tau = \frac{\varepsilon_{A} - \varepsilon_B}{\log 2}}.
+            \end{align}
+          \end{answer}
+  \end{enumerate}
+\end{problem}
+\end{document}

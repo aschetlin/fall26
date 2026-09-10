@@ -32,6 +32,7 @@
 \newtheorem{example}[thm]{Example}
 \newtheorem{exercise}[thm]{Exercise}
 \newtheorem{properties}[thm]{Properties}
+\newtheorem*{answer}{Answer}
 
 \usepackage{tcolorbox}
 \tcbuselibrary{theorems,skins,breakable}
@@ -70,6 +71,11 @@ breakable,%before skip=10pt,after skip=10pt
 }
 
 \tcolorboxenvironment{proof}{
+enhanced jigsaw, frame hidden,%interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{answer}{
 enhanced jigsaw, frame hidden,%interior hidden,
 breakable,%before skip=10pt,after skip=10pt
 }
