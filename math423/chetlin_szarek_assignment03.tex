@@ -1,0 +1,116 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym, amsfonts, enumitem, graphicx, environ,enumitem, fancyhdr, color, amssymb, amsthm, amsmath, mathtools, tikz, nicematrix}
+\usepackage{physics}
+\usetikzlibrary{patterns}
+\usetikzlibrary{decorations.pathreplacing}
+\pagestyle{fancy}
+\setlength{\headheight}{65pt}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+    \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\DeclareMathOperator{\Ima}{Im}
+
+\usepackage{hyperref}
+\usepackage[capitalize]{cleveref}
+\usepackage{thmtools}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cl}[thm]{Claim}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{obstruction}[thm]{Obstruction}
+
+\usepackage{mdframed}
+
+\theoremstyle{definition}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{question}{Question}
+\newtheorem{example}[thm]{Example}
+\newtheorem{exercise}[thm]{Exercise}
+\newtheorem{properties}[thm]{Properties}
+\newtheorem*{answer}{Answer}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems,skins,breakable}
+
+\tcolorboxenvironment{example}{
+enhanced jigsaw,colframe=cyan,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{thm}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{prop}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{properties}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{lem}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+\tcolorboxenvironment{cor}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+\tcolorboxenvironment{obstruction}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{proof}{
+enhanced jigsaw, frame hidden,%interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{answer}{
+enhanced jigsaw, frame hidden,%interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\renewcommand\qedsymbol{\( \blacksquare \)}
+
+\lhead{Avi Chetlin \\ Assignment 03 \\ 14 September 2026}
+\rhead{Dr. Stanislaw Szarek \\ MATH 423 Measure Theory \\ Fall 2026}
+
+\begin{document}
+All numbered problems from Folland, \textit{Real Analysis} (2e).
+
+\begin{problem}{1.3.14}
+  If \(\mu\) is a semifinite measure and \(\mu(E) = \infty\), for any \( C > 0 \) there exists \( F \subset E \) with \( C < \mu(F) < \infty \).
+\end{problem}
+\begin{proof}
+\end{proof}
+
+\begin{problem}{1.5.29}
+  Let \( E \) be a Lebesgue measureable set.
+  \begin{enumerate}[label=(\alph*)]
+          \item If \( E \subset N \) where \( N \) is the nonmeasureable set described in \S 1.1, then \( m(E) = 0 \).
+    \item If \( m(E) > 0 \), then \( E \) contains a nonmeasureable set.
+          (It suffices to assume \( E \subset [0,1] \). In the notation of \S 1.1, \( E = \bigcup_{r \in R} E \cap N_r \).)
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{from class}
+  Complete the details of the proof of the following fact.
+  Let \( [a,b] \subset \mathbb{R} \) be a (bounded, closed) interval.
+  Then
+  \begin{equation}
+  \label{eq:1}
+  \inf \sum\limits_i l(I_i) = |b-a|,
+  \end{equation}
+  with the infimum being taken over all sequences \( (I_i)_i \) of open intervals such that \( \bigcup_i I_i \supset [a,b] \) and \( l(I) \) denoting the usual length of the interval \( I \).
+\end{problem}
+\end{document}
