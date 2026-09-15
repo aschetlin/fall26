@@ -122,9 +122,63 @@ All numbered problems from Folland, \textit{Real Analysis} (2e).
   \begin{enumerate}[label=(\alph*)]
     \item If \( E \subset N \) where \( N \) is the nonmeasureable set described in \S 1.1, then \( m(E) = 0 \).
           \begin{proof}
+            To begin with, since \( E \subset N \), for each \( r \in \mathbb{Q} \) with \( |r| < 1 \), \( E_r = r + E \subset N_{r} = r + N\).
+            This also implies that, since \( N_r \) are pairwise disjoint, so too are \( E_r \).
+            Now recall that
+            \begin{equation}
+            \label{eq:7}
+            [0,1) \subset \bigcup_{r \in \mathbb{Q}, |r| < 1} N_r  \subset (-1, 2).
+            \end{equation}
+
+            That is,
+            \begin{equation}
+            0 \leq m(\bigcup E_r) \leq m(\bigcup (N_r)) \leq m((-1,2)) = 3
+            \end{equation}
+            Moreover, since \( E_r \) are pairwise disjoint, we may appeal to countable additivity:
+            \begin{equation}
+            \label{eq:4}
+            m(\bigcup_1^{\infty} E_r) = \sum\limits_1^{\infty} \mu(E_r) \leq 3.
+            \end{equation}
+
+            Next, since \( m \) is translation invariant, we have that \cref{eq:4} can be written as
+            \begin{equation}
+            \label{eq:8}
+            0 \leq \sum\limits_1^{\infty} m(E) = \lim_{n \rightarrow \infty} nm(E) \leq 3.
+            \end{equation}
+            For this to hold, we must have that \( m(E) = 0 \).
           \end{proof}
     \item If \( m(E) > 0 \), then \( E \) contains a nonmeasureable set.
           (It suffices to assume \( E \subset [0,1] \). In the notation of \S 1.1, \( E = \bigcup_{r \in R} E \cap N_r \).)
+          \begin{proof}
+            As suggested by the hint, we restrict outselves to \( E \subset [0,1) \) such that \( m(E) > 0 \).
+            That is, for some Lebesgue measureable set \( H \), let
+            \begin{equation}
+            \label{eq:9}
+            E \coloneq \bigcup_{r \in R} H \cap N_r, \quad \mu(E) > 0.
+          \end{equation}
+
+          Let us consider one of the elements of this union, \( E_r \coloneq H \cap N_r \) for some \( r \in R \) and assume for contradiction that each such subset is Lebesgue measureable.
+
+          We may shift this set by another \( q \in R \), to get \( E_{r+q} = q + E_r \); by translation invariance, then, \( m(E_{r+q}) = m(E_r) \).
+          If we do this for every \( q \in R \),
+          \begin{equation}
+          \label{eq:12}
+          m(\bigcup_{q \in R} E_{r+q}) = \sum\limits_{q \in R} m(E_{r+q}) = \sum\limits_{q \in R} m(E_r),
+          \end{equation}
+          and since each \( E_{r+q} \subset [0,1) \), so too is the union, that is
+          \begin{equation}
+          \label{eq:13}
+          0 \leq \sum\limits_{q \in R} m(E_r) \leq 1.
+          \end{equation}
+          As in part (a), this shows that \( m(E_r) = 0 \).
+          Then, \( E \) is the disjoint union of \( E_r \) for all \( r \in R \), so again by additivity,
+          \begin{equation}
+          \label{eq:14}
+          m(E) = \sum\limits_{r \in R} m(E_r) = 0.
+          \end{equation}
+
+          This is a contradiction, which shows that at least one \( E_r = H \cap N_r \) is not Lebesgue measurable.
+          \end{proof}
   \end{enumerate}
 \end{problem}
 
