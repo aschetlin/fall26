@@ -1,0 +1,119 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym, amsfonts, enumitem, graphicx, environ,enumitem, fancyhdr, color, amssymb, amsthm, amsmath, mathtools, tikz, nicematrix}
+\usepackage{physics}
+\usepackage{tensor}
+\usetikzlibrary{patterns}
+\usetikzlibrary{decorations.pathreplacing}
+\pagestyle{fancy}
+\setlength{\headheight}{65pt}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+    \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\DeclareMathOperator{\Ima}{Im}
+
+\usepackage{hyperref}
+\usepackage[capitalize]{cleveref}
+\usepackage{thmtools}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cl}[thm]{Claim}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{obstruction}[thm]{Obstruction}
+
+\usepackage{mdframed}
+
+\theoremstyle{definition}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{question}{Question}
+\newtheorem{example}[thm]{Example}
+\newtheorem{exercise}[thm]{Exercise}
+\newtheorem{properties}[thm]{Properties}
+\newtheorem*{answer}{Answer}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems,skins,breakable}
+
+\tcolorboxenvironment{example}{
+enhanced jigsaw,colframe=cyan,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{thm}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{prop}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{properties}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{lem}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+\tcolorboxenvironment{cor}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+\tcolorboxenvironment{obstruction}{
+enhanced jigsaw,colframe=red,interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{proof}{
+enhanced jigsaw, frame hidden,%interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\tcolorboxenvironment{answer}{
+enhanced jigsaw, frame hidden,%interior hidden,
+breakable,%before skip=10pt,after skip=10pt
+}
+
+\renewcommand\qedsymbol{\( \blacksquare \)}
+
+\lhead{Avi Chetlin \\ Homework 01 \\ 17 September 2026}
+\rhead{Dr. Kurt Hinterbichler \\ PHYS 365 General Relativity \\ Fall 2026}
+
+\begin{document}
+\begin{problem}{5 (Carroll 1.7)}
+  Suppose that in Minkowski space we have contravariant rank 2 tensor with components
+  \begin{equation}
+  \label{eq:1}
+  \tensor{X}{^{\mu\nu}_{}} = \begin{pmatrix}
+2   & 0 & 1 & -1 \\
+-1  & 0 & 3 & 2 \\
+-1  & 1 & 0 & 0 \\
+-2  & 1 & 1 & -2
+  \end{pmatrix},
+  \end{equation}
+  and a vector with components
+  \begin{equation}
+  \label{eq:2}
+  \tensor{V}{^{\mu}_{}} = \begin{pmatrix}
+-1  & 2 & 0 & -2
+ \end{pmatrix}.
+  \end{equation}
+  Find the components of the following:
+  \begin{enumerate}[label=(\alph*)]
+    \item \( \tensor{X}{^{\mu}_{\nu}} \)
+    \item \( \tensor{X}{_{\mu}^{\nu}} \)
+    \item \( \tensor{X}{^{(\mu\nu)}_{}} \)
+    \item \( \tensor{X}{^{}_{[\mu\nu]}} \)
+    \item \( \tensor{X}{^{\lambda}_{\lambda}} \)
+    \item \( \tensor{V}{^{\mu}_{}}\tensor{V}{^{}_{\mu}} \)
+    \item \( \tensor{V}{^{}_{\mu}} \tensor{X}{^{\mu\nu}_{}}\)
+  \end{enumerate}
+\end{problem}
+\end{document}

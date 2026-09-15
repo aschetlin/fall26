@@ -92,12 +92,37 @@ All numbered problems from Folland, \textit{Real Analysis} (2e).
   If \(\mu\) is a semifinite measure and \(\mu(E) = \infty\), for any \( C > 0 \) there exists \( F \subset E \) with \( C < \mu(F) < \infty \).
 \end{problem}
 \begin{proof}
+  Consider the collection \( M = \{ \mu(F) \mid F \subset E, \mu(F) < \infty \} \), and define \( m \coloneq \sup M  \).
+  Assume, indirectly, that there exists some \( C > 0 \) such that \( m \leq C < \infty \).
+  By definition, \( m \) is a least upper bound.
+  That is, for all \( n \in \mathbb{N} \), there exists some \(\mu\)-finite subset \( F_n \) of \( E \) which satisfies
+  \begin{equation}
+  \label{eq:5}
+  m - \frac{1}{n} < \mu(F_n) < m.
+  \end{equation}
+
+  Define \( H_n = \bigcup_1^n F_n \), so that \( H_1 \subset H_2 \subset \dots \subset H_n \), and thus by monotonicity,
+  \begin{equation}
+  \label{eq:6}
+  m - \frac{1}{n} < \mu(F_n) \leq \mu(H_n) \leq m.
+  \end{equation}
+
+  Finally, define \( F = \bigcup_1^{\infty} H_n \) as the union of the increasing sequence.
+  By continuity from above, \( \mu(F) = \lim_{n\rightarrow \infty} \mu(H_n) \), which by \cref{eq:6} implies \(\mu(F) = m\).
+
+  Now, consider the set \( E \setminus F \), which must be \(\mu\)-infinite since \( F \) is finite.
+  Hence, it contains some \( A \subset E \setminus F \) with \(0 < \mu(A) < \infty\).
+  Moreover, it is evident that \( \mu(A \cup F) \in M \).
+  However, since \( A \) is disjoint with \( F \) by construction, \(\mu(A\cup F) = \mu(A) + \mu(F) > \mu(F) = m\), a contradiction.
+
 \end{proof}
 
 \begin{problem}{1.5.29}
   Let \( E \) be a Lebesgue measureable set.
   \begin{enumerate}[label=(\alph*)]
-          \item If \( E \subset N \) where \( N \) is the nonmeasureable set described in \S 1.1, then \( m(E) = 0 \).
+    \item If \( E \subset N \) where \( N \) is the nonmeasureable set described in \S 1.1, then \( m(E) = 0 \).
+          \begin{proof}
+          \end{proof}
     \item If \( m(E) > 0 \), then \( E \) contains a nonmeasureable set.
           (It suffices to assume \( E \subset [0,1] \). In the notation of \S 1.1, \( E = \bigcup_{r \in R} E \cap N_r \).)
   \end{enumerate}
@@ -109,8 +134,26 @@ All numbered problems from Folland, \textit{Real Analysis} (2e).
   Then
   \begin{equation}
   \label{eq:1}
-  \inf \sum\limits_i l(I_i) = |b-a|,
+  m^{*}([a,b]) \coloneq \inf \sum\limits_i l(I_i) = |b-a|,
   \end{equation}
   with the infimum being taken over all sequences \( (I_i)_i \) of open intervals such that \( \bigcup_i I_i \supset [a,b] \) and \( l(I) \) denoting the usual length of the interval \( I \).
 \end{problem}
+\begin{proof}
+  First of all note that the \( \leq \) direction is straight forward, since we may extend \( [a,b] \), for any \(\varepsilon>0\), into an open interval \( (a - \frac{\varepsilon}{2}, b + \frac{\varepsilon}{2}) \).
+  Then that cover has length \( |b-a| + \varepsilon \); \( m^{*} \) is a lower bound, so it must satisfy \( m^{*} \leq |b-a| + \varepsilon \) which, since \(\varepsilon\) was arbitrary, implies \( m^{*} \leq |b-a| \).
+
+  In the other direction, let \( \{ I_j \}_1^{\infty} \) be an arbitrary open cover of \( [a,b] \).
+  By the Heine-Borel property, \( [a,b] \) is compact; hence, there exists a finite subcover \( {I_1, \dots, I_N}\), \( N \in \mathbb{N} \).
+  We can, without loss of generality, assume this cover is minimal, since we can simply remove a finite number of superfluous intervals if necessary.
+  Then, writing \( I_j = (\alpha_j, \beta_j) \), we must have that
+  \begin{equation}
+  \label{eq:2}
+  \alpha_1 < a < \beta_1, \quad \alpha_2 < \beta_1 < \beta_2, \quad \dots, \quad \alpha_N < \beta_{N-1} < b < \beta_N.
+  \end{equation}
+  The sum of the lengths is then
+  \begin{equation}
+  \label{eq:3}
+  (\beta_1 - \alpha_1) + (\beta_2 - \alpha_2) + \dots + (\beta_N - \alpha_N) \geq \beta_N - \alpha_1 \geq b-a.
+  \end{equation}
+\end{proof}
 \end{document}
