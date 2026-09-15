@@ -87,6 +87,114 @@ breakable,%before skip=10pt,after skip=10pt
 \rhead{Dr. Kurt Hinterbichler \\ PHYS 365 General Relativity \\ Fall 2026}
 
 \begin{document}
+\begin{problem}{1 (Precession of perihelion of Mercury)}
+  Consider a planet of mass \( m \), coordinates \( x^i(t) \), subject to a central force \( V(\left| \vec{x} \right|) \).
+  The Lagrangian and equations of motion are, respectively,
+  \begin{align}
+  \label{eq:3}
+    &\mathcal{L} = \frac{1}{2}m \vec{\dot{x}}^2 - V(\left| \vec{x} \right|), \\
+    &m \vec{\ddot{x}} = -(\nabla V)(\left| \vec{x} \right|).
+  \end{align}
+  \begin{enumerate}[label=(\alph*)]
+    \item Change to spherical coordinates and look for solutions in the \( x^1, x^2 \) plane by setting \(\theta = \frac{\pi}{2}\).
+    \item Use conservation of \( L \) to eliminate \(\phi\) and write the remaining equation as
+          \begin{equation}
+          \label{eq:4}
+          m \ddot{r} = -V_{\text{eff}}^{\prime}(r), \quad V_{\text{eff}}(r) = V(r) + \frac{L^2}{2mr^2}.
+          \end{equation}
+    \item Show that the circular orbits correspond to radii \( r_c \) for which \( V_{\text{eff}}^{\prime}(r_c) = 0 \), and that the period of such an orbit \( T = 2\pi mr_c^2 / L \).
+    \item Now consider small perturbations \( r(t) = r_c + \delta r(t) \) and show that to lowest order, \(\delta r\) obeys the harmonic osscilator equation \( \ddot{\delta r} + \omega^2 \delta r = 0 \) with angular frequency
+          \begin{equation}
+          \label{eq:5}
+          \omega = \sqrt{\frac{3}{m r_{c}} V^{\prime}(r_c) + \frac{1}{m} V^{\prime\prime}(r_c)}.
+          \end{equation}
+          \begin{proof}
+
+          \end{proof}
+    \item The perihelion of the orbit corresponds to the place where \( \delta r \) is minimal.
+          Show that the change, \(\psi\), in the angular position of the perihelion per orbit is given by
+          \begin{equation}
+          \label{eq:6}
+          \psi = 2\pi \left( \frac{L}{\sqrt{m r_{c}^3} \sqrt{r_{c} V^{\prime\prime}(r_c) + 3 V^{'}(r_c)}} - 1 \right).
+          \end{equation}
+    \item Consider the case of Newtonian gravity, \( V(r) = - \frac{GMm}{r}.\)
+          Show that there is a unique circular orbit \( r_c = \frac{L^2}{Gm^2 M} \) for which \(\psi\) vanishes.
+
+          The leading correction to Newtonian gravity predicted by GR is
+          \begin{equation}
+          \label{eq:7}
+          V(r) = - \frac{GmM}{r} - \frac{3 G^2 m M^2}{c^2 r^2} + \dots
+          \end{equation}
+    \item Working to leading order, show the perihelion precession per revolution in terms of \( r_c \) is
+          \begin{equation}
+          \label{eq:8}
+          \psi = \frac{6 \pi G M }{c^2 r_{c}}.
+          \end{equation}
+          \item Mercury makes \( 415 \) revolutions per century and has orbital radius \( r_c \approx 5.53 \times 10^{10} \)m for the orbital radius of Mercury and \( M \approx 1.99 \times 10^{30} \)kg for the mass of the Sun, express \cref{eq:8} in units of arcseconds per century, and compare to the observed discrepancy.
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{2 (Bending of light in Newtonian gravity)}
+  Consider a particle with inertial and gravitational masses \( m_I, m_G \) moving in the gravitational field of the Sun.
+  The equation of motion is
+  \begin{equation}
+  \label{eq:9}
+  m_I \vec{\ddot{x}} = - m_G \nabla \phi(\vec{x}), \quad \phi(\vec{x}) = - \frac{GM}{| \vec{x} |},
+  \end{equation}
+  where \( M \) is the mass of the sun.
+
+  The particles path in the absence of \(\phi\) is \( \vec{x}_{(0)}(t) \) which obeys
+  \begin{equation}
+  \label{eq:10}
+  \vec{\ddot{x}}_{(0)} = 0.
+\end{equation}
+
+Let the unperturbed path be the one taken by a photon moving at \( c \) parallel to the \( z \) axis, at an impact parameter \( b \) as measured from the origin,
+\begin{equation}
+\label{eq:11}
+\vec{x}_{(0)}(t) = (b,0, ct).
+\end{equation}
+
+\begin{enumerate}[label=(\alph*)]
+  \item Find the equation of motion satisfied by the first order correction to the free motion by expanding
+        \begin{equation}
+        \label{eq:12}
+        \vec{x} = \vec{x}_{(0)} + \vec{\delta x},
+      \end{equation}
+        where \( \vec{\delta x} \) is of the same order as \(\phi\) and substituting into \cref{eq:9}.
+
+  \item We can integrate \cref{eq:12} to obtain
+        \begin{equation}
+        \label{eq:13}
+        \vec{\delta \dot{x}} = - \frac{m_{G}}{m_{I}} \int\limits_{-\infty}^{\infty} dt \nabla \phi(x_{(0)}(t)).
+        \end{equation}
+        Referring to the definitions in figure 2, evaluate the deflection angle \(\vec{\alpha} = - \frac{\vec{\delta \dot{x}}}{\left| \vec{\dot{x}}_{(0)} \right|}\) for the Newtonian potential and show that its magnitude is
+        \begin{equation}
+        \label{eq:14}
+        \left| \vec{\alpha} \right| = \frac{m_G}{m_I} \frac{2GM}{c^2 b}.
+        \end{equation}
+        \item Evaluate the approximate size of the deflection angle in arcseconds for stars observed near the solar disk during an eclipse.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{3}
+  \begin{enumerate}[label=(\alph*)]
+    \item Show that the galilean boosts leave invariant the time interval between two events \( (t_1, \vec{x}_1), (t_2, \vec{x}_{2}) \), and the spatial distance between two simultaneous events \( (t_1, \vec{x}_1), (t_1, \vec{x}_2) \).
+    \item Show that the Lorentz boosts (in natural units) leave the spacetime interval between two events \( x_1^{\mu} \) and \( x_2^{\mu} \) invariant.
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{4}
+  \begin{enumerate}[label=(\alph*)]
+    \item Show that a galilean boost in the \( x \) direction with velocity \( v_1 \) followed by another in the same direction with velocity \( v_2 \) is the same as a single such boost with velocity \( v_1 + v_2 \).
+    \item Show that a similar chain of two Lorentz boosts in the same direction is the same a single such boost with velocity
+          \begin{equation}
+          \label{eq:15}
+          \frac{v_{1} + v_2}{1 + v_1v_2}.
+          \end{equation}
+  \end{enumerate}
+\end{problem}
+
 \begin{problem}{5 (Carroll 1.7)}
   Suppose that in Minkowski space we have contravariant rank 2 tensor with components
   \begin{equation}
