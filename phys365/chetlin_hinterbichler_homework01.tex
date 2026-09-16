@@ -97,18 +97,115 @@ breakable,%before skip=10pt,after skip=10pt
   \end{align}
   \begin{enumerate}[label=(\alph*)]
     \item Change to spherical coordinates and look for solutions in the \( x^1, x^2 \) plane by setting \(\theta = \frac{\pi}{2}\).
+          \begin{answer}
+            The polar coordinate substitution is
+            \begin{equation}
+            \label{eq:18}
+            x = (r\cos\phi\sin\theta, r\sin\phi\sin\theta, r\cos\theta),
+            \end{equation}
+            so that the Lagrangian, \cref{eq:3}, becomes
+            \begin{equation}
+            \label{eq:19}
+            \begin{aligned}
+              \mathcal{L} = \frac{1}{2} m \biggl( &\dot{r}^2\cos^2\phi\sin^2\theta + \dot{\phi}^2 r^2\sin^2\phi\sin^2\theta + \dot{\theta}^2 r^2 \cos^2\phi\cos^2\theta  \\
+                      & - 2 \dot{\phi} \dot{r} r \cos\phi \sin \phi \sin^2\theta + 2 \dot{\theta} \dot{r} r \cos^2\phi\sin \theta \cos \theta \\
+                      &- 2 \dot{\phi} \dot{\theta} r^2 \sin\phi \cos \phi \sin \theta \cos \theta + \dot{r}^2 \sin^2\phi \sin^2\theta \\
+                      &+ \dot{\phi}^2 r^2 \cos^2\phi \sin^2 \theta + \dot{\theta}^2 r^2 \sin^2 \phi \cos^2\theta \\
+                      & + 2 \dot{\phi} \dot{r} r \sin\phi\cos\phi \sin^2\theta + 2 \dot{\theta} \dot{r} r \sin^2 \phi \sin \theta \cos \theta \\
+                      & + 2 \dot{\phi} \dot{\theta} r^2 \cos \phi \sin \phi \cos \theta \sin \theta \\
+              & + \dot{r}^2\cos^2 \theta + \dot{\theta}^2 r^2 \sin^2 \theta - 2 \dot{\theta} \dot{r} r \cos\theta \sin \theta \biggr) \\
+              & - V(\left| \vec{x} \right|).
+            \end{aligned}
+            \end{equation}
+
+            By repeated application of the Pythagorean identity \( \cos^2\theta + \sin^2\theta = 1 \), we get
+            \begin{equation}
+            \label{eq:20}
+            \mathcal{L} = \frac{1}{2}m (\dot{r}^2 + \dot{\theta}^2 r^2 + \dot{\phi}^2 r^2 \sin^2\theta) - V(\left| \vec{x} \right|).
+            \end{equation}
+
+            From the Euler-Lagrange equations, \( \frac{\mathrm{d} }{\mathrm{d} t} \frac{\partial \mathcal{L}}{\partial \dot{q}} - \frac{\partial \mathcal{L}}{\partial q} = 0 \), we achieve the equations of motion
+            \begin{align}
+            \label{eq:21}
+              &m \ddot{r} = mr(\dot{\theta}^2 + \dot{\phi}^2 \sin^2\theta) - V^{\prime}(r), \\
+                         &\frac{\mathrm{d} }{\mathrm{d} t} \left(m \dot{\phi} r^2 \sin^2\theta\right) = 0 \\
+              & \frac{\mathrm{d} }{\mathrm{d} t} \left(m \dot{\theta} r^2\right) - m \dot{\phi}^2 r^2 \sin\theta \cos\theta = 0.
+            \end{align}
+            Setting \( \theta = \frac{\pi}{2} \) makes \( \dot{\theta} = 0\) and thus yields
+            \begin{align}
+            \label{eq:22}
+              &m \ddot{r} = mr \dot{\phi}^2 - V^{\prime}(r) \\
+              \label{eq:momentum1}& \frac{\mathrm{d} }{\mathrm{d} t} \left(m r^2 \dot{\phi}\right) = 0,
+            \end{align}
+            as desired.
+          \end{answer}
     \item Use conservation of \( L \) to eliminate \(\phi\) and write the remaining equation as
           \begin{equation}
           \label{eq:4}
           m \ddot{r} = -V_{\text{eff}}^{\prime}(r), \quad V_{\text{eff}}(r) = V(r) + \frac{L^2}{2mr^2}.
           \end{equation}
-    \item Show that the circular orbits correspond to radii \( r_c \) for which \( V_{\text{eff}}^{\prime}(r_c) = 0 \), and that the period of such an orbit \( T = 2\pi mr_c^2 / L \).
+          \begin{answer}
+            \cref{eq:momentum1} says that the angular momentum, \( L = m r^2 \dot{\phi} \) is conserved.
+            Since \( L^2 = m^2 r^4 \dot{\phi}^2\), we can rewrite \cref{eq:22} in terms of L as
+            \begin{align}
+            \label{eq:23}
+              m \ddot{r} &= \frac{L^2}{m r^3} - V^{\prime}(r) \\
+              \label{eq:angmom}&= \frac{\mathrm{d} }{\mathrm{d} r} \left( \frac{L^2}{m}(- \frac{1}{2 r^2}) - V(r) \right).
+            \end{align}
+            Therefore, if we define \( V_{\text{eff}}(r) \coloneq \frac{L^2}{2m r^2} + V(r) \), \cref{eq:angmom} reads
+            \begin{equation}
+            \label{eq:24}
+            m \ddot{r} = -V_{\text{eff}}^{\prime}(r).
+            \end{equation}
+          \end{answer}
+    \item Show that the circular orbits correspond to radii \( r_c \) for which \( V_{\text{eff}}^{\prime}(r_c) = 0 \), and that the period of such an orbit is \( T = 2\pi mr_c^2 / L \).
+          \begin{proof}
+            A circular orbit occurs when the radius is constant, i.e., \( \frac{\partial r}{\partial t} = 0 \).
+            In such a case, clearly \( m \ddot{r} = 0 = -V_{\text{eff}}^{\prime}(r) \), that is, for a circular orbit at  radius \( r_c \), \( V^{\prime}_{\text{eff}}(r_c) = 0 \).
+
+            Now, the orbital period \( T \) is
+            \begin{equation}
+            \label{eq:16}
+            T = \frac{\text{change in radians}}{\text{radial speed}} = \frac{2\pi}{\dot{\phi}} = \frac{2\pi}{L/ m r_{c}^2} = \frac{2\pi m r_{c}^2}{L},
+            \end{equation}
+            where we solved the equation for \( L \) in terms of \( \dot{\phi} \) to obtain an expression for \( \dot{\phi} \) in terms of \( L \) and \( r \).
+          \end{proof}
     \item Now consider small perturbations \( r(t) = r_c + \delta r(t) \) and show that to lowest order, \(\delta r\) obeys the harmonic osscilator equation \( \ddot{\delta r} + \omega^2 \delta r = 0 \) with angular frequency
           \begin{equation}
           \label{eq:5}
           \omega = \sqrt{\frac{3}{m r_{c}} V^{\prime}(r_c) + \frac{1}{m} V^{\prime\prime}(r_c)}.
           \end{equation}
           \begin{proof}
+            For \( \delta r(t) \ll 1 \), we may expand \( V^{\prime}_{\text{eff}}(r(t)) \) as
+            \begin{align}
+            \label{eq:25}
+              V^{\prime}_{\text{eff}}(r_c + \delta r(t)) &= V_{\text{eff}}^{\prime}(r_c) + \delta r V^{\prime\prime}_{\text{eff}}(r_{c}) + \mathcal{O}(\delta r^2) \\
+              &= \delta r V_{\text{eff}}^{\prime\prime}(r_c) + \mathcal{O}(\delta r^2) \\
+              \label{eq:expandedv}&\approx \delta r \left( V^{\prime\prime}(r_c) + \frac{3L^2}{mr_{c}^{4}} \right).
+            \end{align}
+
+            Now, since \( r_c \) is a constant, \( m \ddot{r}(t) = m\ddot{\delta r}(t) = -V^{\prime}_{\text{eff}}(r_c + \delta r)\).
+            Dividing \cref{eq:expandedv} by \( -m \) gives
+            \begin{equation}
+            \label{eq:27}
+            \ddot{\delta r} \approx -\frac{\delta r}{m} \left( V^{\prime\prime}(r_c)  + \frac{3L^2}{m r_c^4}\right) = -\delta r \left( \frac{V^{\prime\prime}(r_c)}{m} + \frac{3L^2}{m^2 r_{c}^{4}} \right).
+            \end{equation}
+
+            Finally, note that since \( V^{\prime}_{\text{eff}}(r_c) = 0 \), we have that
+            \begin{equation}
+            \label{eq:17}
+            V^{\prime}(r_c) = \frac{L^2}{m r_{c}^3},
+            \end{equation}
+            and therefore, to first order,
+            \begin{equation}
+            \label{eq:26}
+            \ddot{\delta r} + \delta r \left(\frac{V^{\prime\prime}(r_c)}{m} + \frac{3}{m r_c} V^{\prime}(r_c)\right) = \ddot{\delta r} + \omega^2\delta r = 0,
+            \end{equation}
+            with
+            \begin{equation}
+            \label{eq:angfreq}
+            \omega = \sqrt{\frac{3}{m r_{c}} V^{\prime}(r_c) + \frac{1}{m} V^{\prime\prime}(r_c)}.
+            \end{equation}
 
           \end{proof}
     \item The perihelion of the orbit corresponds to the place where \( \delta r \) is minimal.
@@ -117,20 +214,113 @@ breakable,%before skip=10pt,after skip=10pt
           \label{eq:6}
           \psi = 2\pi \left( \frac{L}{\sqrt{m r_{c}^3} \sqrt{r_{c} V^{\prime\prime}(r_c) + 3 V^{'}(r_c)}} - 1 \right).
           \end{equation}
+          \begin{proof}
+            From \cref{eq:angfreq} we obtain the period of osscilation for the perturbation term \(\delta r\), \( \tau = \frac{2\pi}{\omega} \).
+            In part (c) we derived the orbital period for a circular orbit, \( T = \frac{2\pi m r_{c}^2}{L} \).
+            The perihelion is obtained at time \(\tau\), while the orbit takes time \( T \) to complete one revolution.
+            This gives us the time difference between reaching perihelion and completing an orbit, \(\Delta t = \tau - T\).
+            To obtain the difference in position, \(\psi\), we calculate \( \dot{\phi} \Delta t = \frac{2\pi}{T} \Delta t = 2\pi \frac{\tau - T}{T} \).
+
+            \begin{align}
+            \label{eq:29}
+             \psi &= 2\pi\frac{\tau - T}{T} = 2\pi \left(\frac{2 \pi}{T\omega} - 1\right) = 2\pi\left(\frac{2\pi}{T \sqrt{\frac{3}{mr_{c}} V^{\prime}(r_c) + \frac{1}{m} V^{\prime\prime}(r_c)}} -1\right) \\
+                & = 2\pi\left(\frac{2\pi L}{2\pi m r_c^2 \sqrt{\frac{3}{m r_{c}} V^{\prime}(r_c) + \frac{1}{m} V^{\prime\prime}(r_c)}} - 1\right) \\
+              \label{eq:angshift} &= 2\pi\left(\frac{L}{\sqrt{m r_{c}^3} \sqrt{3 V^{\prime}(r_c) + r_c V^{\prime\prime}(r_c)}} - 1\right).
+            \end{align}
+          \end{proof}
     \item Consider the case of Newtonian gravity, \( V(r) = - \frac{GMm}{r}.\)
           Show that there is a unique circular orbit \( r_c = \frac{L^2}{Gm^2 M} \) for which \(\psi\) vanishes.
+          \begin{proof}
+            For \(\psi\) to vanish we need, from \cref{eq:angshift}
+            \begin{equation}
+            \label{eq:31}
+            L^2 = (m r_{c}^3) (3 V^{\prime}(r_c) + r_c V^{\prime\prime}(r_c)).
+            \end{equation}
+            Substituting in the Newtonian gravitational potential, this is
+            \begin{align}
+            \label{eq:32}
+              L^2 &= (m r_c^3)(3 \frac{GMm}{r_c^2} - r_c \frac{2GMm}{r_c^3}) \\
+                  &= m r_c^3 \left( \frac{GMm}{r_c^2} \right) \\
+                    &= r_c GMm^2.
+            \end{align}
+            Therefore,
+            \begin{equation}
+            \label{eq:33}
+            r_c = \frac{L^2}{GM m^2}.
+            \end{equation}
 
-          The leading correction to Newtonian gravity predicted by GR is
+            Each step of this was a necessary implication, so we have shown both existence and uniqueness.
+          \end{proof}
+
+    \item The leading correction to Newtonian gravity predicted by GR is
           \begin{equation}
           \label{eq:7}
           V(r) = - \frac{GmM}{r} - \frac{3 G^2 m M^2}{c^2 r^2} + \dots
           \end{equation}
-    \item Working to leading order, show the perihelion precession per revolution in terms of \( r_c \) is
+          Working to leading order, show the perihelion precession per revolution in terms of \( r_c \) is
           \begin{equation}
           \label{eq:8}
-          \psi = \frac{6 \pi G M }{c^2 r_{c}}.
+              \psi = \frac{6 \pi G M }{c^2 r_{c}}.
           \end{equation}
-          \item Mercury makes \( 415 \) revolutions per century and has orbital radius \( r_c \approx 5.53 \times 10^{10} \)m for the orbital radius of Mercury and \( M \approx 1.99 \times 10^{30} \)kg for the mass of the Sun, express \cref{eq:8} in units of arcseconds per century, and compare to the observed discrepancy.
+          \begin{proof}
+            As we have shown,
+            \begin{equation}
+            \label{eq:30}
+            \psi = 2\pi \left( \frac{L}{\sqrt{m r_{c}^3} \sqrt{r_{c} V^{\prime\prime}(r_c) + 3 V^{\prime}(r_c)}} - 1 \right),
+            \end{equation}
+            which, substituting in the Newtonian potential with the first order correction, gives \( \psi = \)
+            \begin{align}
+            \label{eq:34}
+              &2\pi \left( \frac{L}{\sqrt{m r_{c}^3} \sqrt{-2GmM/r_{c}^2 - 18G^2mM^2/c^2r_{c}^2 + 3GmM/r_{c}^2 + 18G^2mM^2/c^2r_{c}^3}} - 1 \right) \\
+              &= 2\pi \left( \frac{L}{\sqrt{mr_{c}^3} \sqrt{GmM/ r_{c}^2}} - 1 \right).
+            \end{align}
+
+            Now, from \cref{eq:17} we see that \( L = \sqrt{V^{\prime}(r_c) m r_c^3} \).
+            This in turn yields
+            \begin{align}
+            \label{eq:35}
+              \psi &= 2\pi \left( \frac{\sqrt{V^{\prime}(r_c)} \sqrt{mr_{c}^3}}{\sqrt{m r_{c}^3} \sqrt{GmM/r_{c}^2}} - 1\right) \\\\
+                &= 2\pi \left( \frac{\sqrt{GmM/r_{c}^2 + 6G^2mM^2/c^2r_{c}^2}}{\sqrt{GmM/r_{c}^2}} - 1 \right) \\\\
+              &= 2\pi \left( \sqrt{1 + \frac{6GM}{c^2 r_{c}}} - 1\right).
+            \end{align}
+
+            At this point, we note that \( c^2 r_c \gg 6GM \), that is, \( 6GM/c^2r_c \ll 1 \).
+            We can hence use the binomial expansion to write that, to first order,
+            \begin{equation}
+            \label{eq:36}
+            \psi = 2\pi \left( 1 + \frac{1}{2} \frac{6GM}{c^2 r_{c}} - 1 \right) = \frac{6\pi GM}{c^2 r_c}.
+            \end{equation}
+          \end{proof}
+    \item Mercury makes \( 415 \) revolutions per century and has orbital radius \( r_c \approx 5.53 \times 10^{10} \)m and the sun has mass \( M \approx 1.99 \times 10^{30} \)kg.
+          Express \cref{eq:8} in units of arcseconds per century, and compare to the observed discrepancy of about \( 43 \) arcseconds per century.
+          \begin{answer}
+            Plugging in the given values along with \( G = 6.67408 \times 10^{-11} \text{m}^3 \text{kg}^{-1} \text{s}^{-2} \) and \( c = 2.9 \times 10^8 \text{m} \text{s}^{-1} \), gives
+            \begin{equation}
+            \label{eq:37}
+            \psi = 5.3830 \times 10^{-7} \text{radians},
+            \end{equation}
+            where the units are
+            \begin{equation}
+            \label{eq:38}
+            2\pi \frac{ [\text{m}^3 \text{kg}^{-1} \text{s}^{-2}][ \text{kg} ] }{[ \text{m}^2 \text{s}^{-2} ][ \text{m} ]} = \text{radians}.
+            \end{equation}
+            The total change over a century is
+            \begin{equation}
+            \label{eq:39}
+            415 \psi = 2.2339 \times 10^{-4} \text{radians},
+            \end{equation}
+            and finally given the conversion \( \frac{1 \text{ arcsecond}}{4.848 \times 10^{-6} \text{ radians}} \), we get the value
+            \begin{equation}
+            \label{eq:40}
+            46.0797 \text{ arcseconds per century},
+            \end{equation}
+            which is within
+            \begin{equation}
+            \label{eq:41}
+            \frac{46.0797 - 43}{43} = 0.0716
+            \end{equation}
+            of the observed discrepancy.
+          \end{answer}
   \end{enumerate}
 \end{problem}
 
@@ -162,6 +352,9 @@ Let the unperturbed path be the one taken by a photon moving at \( c \) parallel
         \vec{x} = \vec{x}_{(0)} + \vec{\delta x},
       \end{equation}
         where \( \vec{\delta x} \) is of the same order as \(\phi\) and substituting into \cref{eq:9}.
+        \begin{answer}
+
+        \end{answer}
 
   \item We can integrate \cref{eq:12} to obtain
         \begin{equation}
@@ -177,14 +370,14 @@ Let the unperturbed path be the one taken by a photon moving at \( c \) parallel
 \end{enumerate}
 \end{problem}
 
-\begin{problem}{3}
+\begin{problem}{3}\hfill
   \begin{enumerate}[label=(\alph*)]
     \item Show that the galilean boosts leave invariant the time interval between two events \( (t_1, \vec{x}_1), (t_2, \vec{x}_{2}) \), and the spatial distance between two simultaneous events \( (t_1, \vec{x}_1), (t_1, \vec{x}_2) \).
     \item Show that the Lorentz boosts (in natural units) leave the spacetime interval between two events \( x_1^{\mu} \) and \( x_2^{\mu} \) invariant.
   \end{enumerate}
 \end{problem}
 
-\begin{problem}{4}
+\begin{problem}{4}\hfill
   \begin{enumerate}[label=(\alph*)]
     \item Show that a galilean boost in the \( x \) direction with velocity \( v_1 \) followed by another in the same direction with velocity \( v_2 \) is the same as a single such boost with velocity \( v_1 + v_2 \).
     \item Show that a similar chain of two Lorentz boosts in the same direction is the same a single such boost with velocity
