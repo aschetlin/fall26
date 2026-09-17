@@ -74,7 +74,7 @@ a \cos  u \cos  v   & b \cos  u \sin  v & -c \sin  u \\
   \end{align}
   This would only vanish when \( \sin u = 0 \) which cannot happen in our domain of \( U = (0, \pi) \times (0, 2\pi) \).
 
-  Finally, we show that \( \mathbf{x}(U) \subset S \) where \( S \) is the ellipsoid.
+  Finally, we show that \( \mathbf{x}(U) \subset S \) where \( S \) is the ellipsoid, and that \( \mathbf{x} \) is a homeomorphism onto its image.
   Let \( (u,v) \in U \), so that \( \mathbf{x}(u,v) = (a\sin u \cos v, b \sin u \sin v, c \cos u) \).
   Then
   \begin{equation}
@@ -82,6 +82,8 @@ a \cos  u \cos  v   & b \cos  u \sin  v & -c \sin  u \\
    \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = \sin^2 u \cos^2 v + \sin^2 u \sin^2 v + \cos^2 u = \sin^2 u + \cos^2 u = 1
   \end{equation}
   and thus \( \mathbf{x}(U) \in S \).
+
+  \( z = c\cos u \) uniquely determines \( u \in (0, \pi)\), while, for fixed \( u \), \( x= a \sin u \cos v \) and \( y = a\cos u \cos v \) uniquely determines \( v \in (0, 2\pi) \), so \( \mathbf{x} \) is injective on its image and is therefore a homeomorphism.
 \end{proof}
 
 \begin{problem}{2.2.16}
@@ -122,12 +124,61 @@ a \cos  u \cos  v   & b \cos  u \sin  v & -c \sin  u \\
             as desired.
           \end{proof}
 		\item Show that it is possible, using stereographic projection, to cover the sphere with two coordinate neighborhoods.
+          \begin{proof}
+            Our two coordinate neighborhoods will be \( S^2 \setminus \{\text{north pole}\} \) and \( S^2 \setminus \{\text{south pole}\} \), where for the latter we define a symmetric stereographic projection from the south pole.
+            We then must check that the overlap, \( S^2 \setminus \{\text{north and south poles}\} \) has diffeomorphic transition maps.
+
+            Let the south pole be \( S = (0,0,0) \).
+            We can define a second coordinate neighborhood \( S^2 \setminus \{S\} \) using a stereographic projection \( \pi_2: S^2 \setminus \{S\} \rightarrow \mathbb{R}^2 \) that projects a point \( p = (x,y,z) \) onto the plane \( z = 2 \).
+
+            The straight line connecting \( S \) to \( p \) is parametrized by \( \beta(s) = s(x,y,z) = (sx, sy, sz) \).
+            This line intersects the plane \( z = 2 \) when \( sz = 2 \), which implies \( s = \frac{2}{z} \).
+            Substituting this back gives the projection:
+            \begin{equation}
+                \pi_2(x,y,z) = \left( \frac{2x}{z}, \frac{2y}{z} \right).
+            \end{equation}
+
+            The overlap between the two neighborhoods is the sphere minus both poles, \( W = S^2 \setminus \{(0,0,2), (0,0,0)\} \).
+            Under the first projection \( \pi_1 \), this domain corresponds to \( \mathbb{R}^2 \setminus \{(0,0)\} \).
+            To verify compatibility, we must show that the transition map \( \pi_2 \circ \pi_1^{-1}: \mathbb{R}^2 \setminus \{(0,0)\} \rightarrow \mathbb{R}^2 \setminus \{(0,0)\} \) is a diffeomorphism.
+
+            Using the formula for \( \pi_1^{-1}(u,v) \) from part (a), we substitute its \( x \), \( y \), and \( z \) coordinates into \( \pi_2 \).
+            \begin{align}
+                \pi_2 \circ \pi_1^{-1}(u,v) &= \pi_2\left( \frac{4u}{u^2 + v^2 + 4}, \frac{4v}{u^2 + v^2 + 4}, \frac{2(u^2 + v^2)}{u^2 + v^2 + 4} \right) \\
+                &= \left( \frac{2 \left( \frac{4u}{u^2 + v^2 + 4} \right)}{\frac{2(u^2 + v^2)}{u^2 + v^2 + 4}}, \frac{2 \left( \frac{4v}{u^2 + v^2 + 4} \right)}{\frac{2(u^2 + v^2)}{u^2 + v^2 + 4}} \right) \\
+                &= \left( \frac{4u}{u^2 + v^2}, \frac{4v}{u^2 + v^2} \right).
+            \end{align}
+
+            Since \( u^2 + v^2 \neq 0 \) for all \( (u,v) \in \mathbb{R}^2 \setminus \{(0,0)\} \), the components of this transition map are rational functions with non-vanishing denominators.
+            Therefore, \( \pi_2 \circ \pi_1^{-1} \) is smooth (\( C^\infty \)).
+
+            Because of the geometric symmetry of the sphere and the chosen projection planes, the inverse transition map \( \pi_1 \circ \pi_2^{-1} \) takes the exact same form, and is also smooth on \( \mathbb{R}^2 \setminus \{(0,0)\} \).
+            Since the transition map and its inverse are both smooth, they are diffeomorphisms, and our claim follows from here.
+          \end{proof}
 	\end{enumerate}
 \end{problem}
 
 \begin{problem}{2.3.3}
 	Show that the paraboloid \( z = x^2 + y^2 \) is diffeomorphic to a plane.
 \end{problem}
+\begin{proof}
+Let \( \Sigma \) be the surface of the paraboloid.
+We want to show there exists a differential map \( \varphi: \mathbb{R}^2 \rightarrow \Sigma \) with differentiable inverse \( \varphi^{-1}: \Sigma \rightarrow \mathbb{R}^2 \).
+
+Consider the natural parametrization
+\begin{equation}
+\label{eq:15}
+\varphi(x,y) = (x, y, x^2 + y^2).
+\end{equation}
+
+This is surjective, by construction.
+It is also injective, since if \( (x_1, y_1, x_1^2 + y_1^2) = (x_2, y_2, x_2^2 + y_2^2) \), it is obviously true that \( (x_1, y_1) = (x_2, y_2) \).
+Moreover, it is clearly differentiable.
+
+Let us claim that \( \varphi^{-1}(x, y, x^2 + z^2) = (x, y) \) is a differentiable inverse; bijectivity and differentiability follow immediately and identically to above.
+This is the inverse, since
+\((\varphi \circ \varphi^{-1})(x,y, x^2 + y^2) = \varphi(x,y) = (x, y, x^2 + y^2) = \text{Id}(x, y, x^2 + y^2) \), and \( (\varphi^{-1} \circ \varphi)(x,y) = \varphi^{-1}(x, y, x^2 + y^2) = (x, y) = \text{Id}(x, y) \).
+\end{proof}
 
 \begin{problem}{2.3.12}
 	Parametrized surfaces are often useful to describe sets \(\Sigma\) which are regular except for a finite number of points and a finite number of lines.
@@ -135,8 +186,41 @@ a \cos  u \cos  v   & b \cos  u \sin  v & -c \sin  u \\
 	Let \(\Sigma\) be the set generated by the displacement of a straight line \( l \) passing through a moving point \( p \in C \) and the fixed point \( 0 \) (a cone with vertex \( 0 \)).
 	\begin{enumerate}[label=(\alph*)]
 		\item Find a parametrized surface \( \mathbf{x} \) whose trace is \(\Sigma\).
+          \begin{proof}
+            Writing the parameter for the curve \(\alpha\) as \( s \in (a,b) \), points in the trace \(\Sigma\) are of the form \( t\alpha(s) + (1-t)(0,0,0) = t \alpha(s) \).
+            Hence, if we define
+            \begin{equation}
+            \label{eq:16}
+            \mathbf{x}: (a,b) \times \mathbb{R} \subset \mathbb{R}^2 \rightarrow \mathbb{R}^3, \quad (s, t) \mapsto t \alpha(s),
+            \end{equation}
+            then \( \mathbf{x} \) is clearly differentiable as a scalar multiple of a differentiable function, and \( \mathbf{x}(U) = \Sigma \) where \( U = (a,b) \times \mathbb{R} \).
+          \end{proof}
 		\item Find the points where \( \mathbf{x} \) is not regular.
+          \begin{proof}
+            The differential is the \( 3 \times 2 \) matrix whose columns are the partial derivatives \( \partial_s\mathbf{x}, \partial_t\mathbf{x} \), and thus \( \mathbf{x} \) is regular at \( p \) if and only if \(\partial_s\mathbf{x} \times \partial_t\mathbf{x} = t(\alpha^{\prime}(s) \times \alpha(s))\neq 0\).
+
+            Note that this fails when \( t=0 \), that is, for all points \( p \in \mathbf{x}^{-1}(0) \) which map to the origin.
+            The other singularities occur when
+            \begin{align}
+            \label{eq:8}
+              &\alpha(s) \times \alpha^{\prime}(s) = 0 \\
+              \Rightarrow \ &\alpha^{\prime}(s) = \lambda\alpha(s),
+            \end{align}
+            for some \( \lambda \in \mathbb{R} \).
+          \end{proof}
 		\item What should be removed from \(\Sigma\) so the remaining set is a regular surface?
+          \begin{proof}
+            We must first of all remove the singular points from part (b), that is,
+            \begin{equation}
+             \{ \mathbf{x}(s,t) \mid t = 0 \text{ or } \alpha^{\prime}(s) = \lambda\alpha(s), \lambda \in \mathbb{R} \}.
+            \end{equation}
+            However, since we are only covering the surface with a single coordinate patch, we need \( \mathbf{x} \) to be a global homeomorphism, or, in particular, injective.
+            Thus, we must also remove any points of self intersection,
+            \begin{equation}
+            \label{eq:9}
+            \{\mathbf{x}(s,t) \mid \mathbf{x}(s,t) = \mathbf{x}(s^{\prime}, t^{\prime}), (s, t) \neq (s^{\prime}, t^{\prime}) \in \mathbb{R}^2\}.
+            \end{equation}
+          \end{proof}
 	\end{enumerate}
 \end{problem}
 \end{document}
