@@ -1,0 +1,142 @@
+\documentclass[11pt]{article}
+\usepackage{../homework}
+
+\classcode{MATH 465 Differential Geometry}
+\profname{Dr. David Singer}
+\duedate{16 September 2026}
+\assignnum{Assignment 03}
+
+\begin{document}
+All problems from Do Carmo, \textit{Differential Geometry of Curves and Surfaces} 2e.
+
+We recall the statements of some propositions here for later use.
+
+\begin{prop}
+	\label{prop:1}
+	If \( f: U \rightarrow \mathbb{R} \) is a differentiable function in an open set \( U \) of \( \mathbb{R}^2 \), then the graph of \( f \), that is, the subset of \( \mathbb{R}^3 \) given by \( (x,y, f(x,y)) \) for \( (x,y) \in U \), is a regular surface.
+\end{prop}
+
+\begin{prop}
+	\label{prop:2}
+	If \( f: U \subset \mathbb{R}^3 \rightarrow \mathbb{R} \) is a differentiable function and \( a \in f(U) \) is a regular value of \( f \), then \( f^{-1}(a) \) is a regular surface in \( \mathbb{R}^3 \).
+\end{prop}
+
+\begin{problem}{2.2.6}
+	Give another proof of Proposition 1 by applying Proposition 2 to \( h(x,y,z) = f(x,y) - z \).
+\end{problem}
+\begin{proof}
+	Let \( h: U \subset \mathbb{R}^3 \rightarrow \mathbb{R} \) be given by \( h(x,y,z) = f(x,y) - z \), for some differentiable \( f: V \subset \mathbb{R}^2 \rightarrow \mathbb{R} \) defined on an open set \( V \).
+	Clearly \( h \) is differentiable, with differential
+	\begin{equation}
+		\label{eq:6}
+		dh_{p} = \begin{pmatrix}
+			\partial_xf(x,y) & \partial_yf(x,y) & -1
+		\end{pmatrix}.
+	\end{equation}
+
+	This is clearly never singular.
+	In particular, \( 0 \) is a regular value, so the preimage \( h^{-1}(0) = \{(x,y,z) \in \mathbb{R}^3 \mid f(x,y) - z = 0\}\) is a regular surface in \( \mathbb{R}^3 \) by \cref{prop:2}.
+	Now, for any \( (x,y) \in V \), the point \( (x,y, f(x,y)) \in h^{-1}(0) \) by construction, and this proves \cref{prop:1}.
+\end{proof}
+
+\begin{problem}{2.2.12}
+	Show that \( \mathbf{x}: U \subset \mathbb{R}^2 \rightarrow \mathbb{R}^3 \) given by
+	\begin{equation}
+		\label{eq:1}
+		\mathbf{x}(u,v) = (a\sin u\cos v, b \sin u \sin v, c \cos u), \quad a,b,c \neq 0,
+	\end{equation}
+	where \( 0 < u < \pi, 0 < v < 2\pi \), is a parametrization for the ellipsoid
+	\begin{equation}
+		\label{eq:2}
+		\frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1.
+	\end{equation}
+\end{problem}
+\begin{proof}
+	To begin with, \( \mathbf{x} \) is obviously differentiable (it has continuous partial derivatives of all orders), and in fact
+	\begin{equation}
+		\label{eq:7}
+		d \mathbf{x}_p = \begin{pmatrix}
+			a\cos  u \cos  v  & -a \sin  u \sin  v \\
+			b \cos  u \sin  v & b \sin  u \cos  v  \\
+			-c \sin  u        & 0
+		\end{pmatrix}.
+	\end{equation}
+
+  To show that \( d \mathbf{x}_p \) is injective it suffices to show the columns are linearly independent, that is, that they have non-zero cross product.
+  \begin{align}
+  \label{eq:10}
+  d \mathbf{x}_p(e_1) \times d \mathbf{x}_p(e_2) &= \det \begin{pmatrix}
+\hat{x}             & \hat{y} & \hat{z} \\
+a \cos  u \cos  v   & b \cos  u \sin  v & -c \sin  u \\
+-a \sin  u \sin  v  & b \sin  u \cos  v & 0
+  \end{pmatrix} \\
+  &= \left( bc \sin^2u \cos v, ac \sin^2 u \sin v, ab \cos u \sin u\right)^{T}.
+  \end{align}
+  This would only vanish when \( \sin u = 0 \) which cannot happen in our domain of \( U = (0, \pi) \times (0, 2\pi) \).
+
+  Finally, we show that \( \mathbf{x}(U) \subset S \) where \( S \) is the ellipsoid.
+  Let \( (u,v) \in U \), so that \( \mathbf{x}(u,v) = (a\sin u \cos v, b \sin u \sin v, c \cos u) \).
+  Then
+  \begin{equation}
+  \label{eq:11}
+   \frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = \sin^2 u \cos^2 v + \sin^2 u \sin^2 v + \cos^2 u = \sin^2 u + \cos^2 u = 1
+  \end{equation}
+  and thus \( \mathbf{x}(U) \in S \).
+\end{proof}
+
+\begin{problem}{2.2.16}
+	Consider the stereographic projection \(\pi: S^2 \setminus \{(0,0,2)\} \rightarrow \mathbb{R}^2\) of the unit sphere centered at \( (0,0,1) \), that is, the set given by
+	\begin{equation}
+		\label{eq:3}
+		x^2 + y^2 + (z-1)^2 = 1,
+	\end{equation}
+	which carries a point \( p = (x,y,z) \) of the sphere without the north pole onto the intersection of the \( xy \) plane with the straight line with connects the north pole to \( p \).
+	Let \( (u,v) = \pi(x,y,z) \).
+	\begin{enumerate}[label=(\alph*)]
+		\item Show that \( \pi^{-1}: \mathbb{R}^2 \rightarrow S^2 \) is given by
+		      \begin{equation}
+			      \label{eq:4}
+			      \pi^{-1}(u,v) = \left( \frac{4u}{u^2 v^2 + 4}, \frac{4v}{u^2 + v^2 + 4}, \frac{2(u^2 + v^2)}{u^2 + v^2 + 4} \right).
+		      \end{equation}
+          \begin{proof}
+            \(\pi^{-1}\) maps a point \( (u,v) \in \mathbb{R}^2 \) to a point \( (x,y,z) \in S^2 \setminus \{\text{north pole}\} \).
+            Given a point \( (u,v) \), the line from to the north pole can be parametrized as
+            \begin{equation}
+            \label{eq:12}
+            \alpha(t) = (1-t)(0,0,2) + t(u, v, 0) = (tu, tv, 2 - 2t).
+            \end{equation}
+            We then ask when \(\alpha(t)\) intersects the sphere, that is,
+            \begin{align}
+            \label{eq:13}
+              &(tu)^2 + (tv)^2 + (2 - 2t - 1)^2 = 1 \\
+              &\Leftrightarrow t^2(u^2 + v^2) + 4t^2 - 4t = 0 \\
+              &\Leftrightarrow t^2(u^2 + v^2 + 4) = 4t \\
+              &\Leftrightarrow t = \frac{4}{u^2 + v^2 + 4}.
+            \end{align}
+            Substituting this value for \( t \) into \cref{eq:12} gives the point at which the line from the north pole to the point \( (u,v) \) intersects the sphere, that is,
+            \begin{align}
+            \label{eq:14}
+              \pi^{-1}(u,v) &= \left( \frac{4u}{u^2 + v^2 + 4}, \frac{4v}{u^2 + v^2 + 4}, 2(1 - \frac{4}{u^2 + v^2 + 4} ) \right) \\
+              & = \left( \frac{4u}{u^2 + v^2 + 4}, \frac{4v}{u^2 + v^2 + 4}, \frac{2(u^2 + v^2)}{u^2 + v^2 + 4} \right),
+            \end{align}
+            as desired.
+          \end{proof}
+		\item Show that it is possible, using stereographic projection, to cover the sphere with two coordinate neighborhoods.
+	\end{enumerate}
+\end{problem}
+
+\begin{problem}{2.3.3}
+	Show that the paraboloid \( z = x^2 + y^2 \) is diffeomorphic to a plane.
+\end{problem}
+
+\begin{problem}{2.3.12}
+	Parametrized surfaces are often useful to describe sets \(\Sigma\) which are regular except for a finite number of points and a finite number of lines.
+	For instance, let \( C \) be the trace of a regular parametrized curve \(\alpha: (a,b) \rightarrow \mathbb{R}^3\) which does not pass through the origin \( O = (0,0,0) \).
+	Let \(\Sigma\) be the set generated by the displacement of a straight line \( l \) passing through a moving point \( p \in C \) and the fixed point \( 0 \) (a cone with vertex \( 0 \)).
+	\begin{enumerate}[label=(\alph*)]
+		\item Find a parametrized surface \( \mathbf{x} \) whose trace is \(\Sigma\).
+		\item Find the points where \( \mathbf{x} \) is not regular.
+		\item What should be removed from \(\Sigma\) so the remaining set is a regular surface?
+	\end{enumerate}
+\end{problem}
+\end{document}
