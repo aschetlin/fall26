@@ -1,0 +1,313 @@
+\documentclass[11pt]{article}
+\usepackage{../homework}
+
+\profname{Dr. Claire Zukowski}
+\assignnum{Homework 03}
+\classcode{PHYS 331 Quantum Mechanics I}
+\duedate{18 September 2026}
+
+\begin{document}
+\begin{problem}{1}
+  Consider the state
+  \begin{equation}
+  \label{eq:1}
+  \ket{\varphi} = \frac{1}{\sqrt{5}} \left( 2 \ket{+} - i \ket{-} \right).
+  \end{equation}
+  \begin{enumerate}[label=(\alph*)]
+    \item Construct the matrix representation of \( \bra{\varphi} \) in the \( z \)-basis.
+          \begin{answer}
+            First of all,
+            \begin{equation}
+            \label{eq:4}
+            \bra{\varphi} = \frac{1}{\sqrt{5}} \left( \bra{+}2 + \bra{-}i \right),
+          \end{equation}
+          by definition.
+          Then, we can write
+          \begin{equation}
+          \label{eq:5}
+          \bra{\varphi} \doteq \frac{1}{\sqrt{5}} \begin{pmatrix}
+2  & i
+ \end{pmatrix}.
+          \end{equation}
+          \end{answer}
+    \item Construct the matrix representation of \( \ket{\varphi} \) in the \( y \)-basis.
+          \begin{answer}
+            We compute the inner products,
+            \begin{equation}
+              \begin{aligned}
+            \label{eq:6}
+                _y\ip{+}{\varphi} &= \frac{1}{\sqrt{2}\sqrt{5}}\left( \bra{+} - \bra{-}i \right)\left( 2\ket{+} - i \ket{-} \right) \\
+                &= \frac{1}{\sqrt{10}} \left( 2 - 1 \right) = \frac{1}{\sqrt{10}},
+                \end{aligned}
+            \end{equation}
+            \begin{equation}
+            \label{eq:7}
+            \begin{aligned}
+              _y\ip{-}{\varphi} &= \frac{1}{\sqrt{10}} \left( \bra{+} + \bra{-}i \right)\left( 2 \ket{+} - i \ket{-} \right) \\
+              &= \frac{1}{\sqrt{10}} \left( 2 + 1 \right) = \frac{3}{\sqrt{10}}.
+            \end{aligned}
+            \end{equation}
+
+            Therefore,
+            \begin{equation}
+            \label{eq:8}
+            \ket{\varphi} \doteq_y \frac{1}{\sqrt{10}} \begin{pmatrix}
+1 \\
+3
+ \end{pmatrix}.
+            \end{equation}
+          \end{answer}
+    \item What are the possible results of a measurement of \( S_z \), and with what probabilities?
+          \begin{answer}
+            The operator \( S_z \) always measures one of its two eigenstates, namely \( \pm \frac{\hbar}{2} \ket{\pm} \).
+            To calculate these probabilities we simply calculate the squared norms,
+            \begin{equation}
+            \label{eq:9}
+            P_+ = \left| \ip{+}{\varphi} \right|^2 = \frac{4}{5},
+          \end{equation}
+          and
+          \begin{equation}
+          \label{eq:10}
+          P_- = \left| \ip{-}{\varphi} \right|^2 = \frac{1}{5}.
+          \end{equation}
+          \end{answer}
+    \item What are the possible results of a measurement of \( S_x \), and with what probabilities?
+          \begin{answer}
+            As in \( (c) \), the only possible results are the eigenstates of \( S_x \), which are \( \pm \frac{\hbar}{2} \ket{\pm}_x = \pm \frac{\hbar}{2} \left( \ket{+} \pm \ket{-} \right)\).
+            The probabilities are found exactly as in (c), that is,
+            \begin{equation}
+              \begin{aligned}
+            \label{eq:11}
+                P_{+_x} &= \left| \ip{+_x}{\varphi} \right|^2 = \left| \frac{1}{\sqrt{10}}(\bra{+} + \bra{-})(2\ket{+} - i\ket{-}) \right|^2 \\
+                &= \left| \frac{1}{\sqrt{10}} (2 - i) \right|^2 = \frac{1}{10} (2-i)(2+i) = \frac{5}{10} = \frac{1}{2}.
+                \end{aligned}
+            \end{equation}
+
+            \( P_{-_x} \) is calculated identically, or, equivalently, by \( 1 - P_{+_x} = \frac{1}{2} \).
+          \end{answer}
+    \item Compute the inner product \( \mel{+_x}{S_y}{\varphi} \) two ways: (i) using bra-ket notation, and (ii) using matrix notation.
+          \begin{answer}
+            \begin{enumerate}[label=(\roman*)]
+              \item
+                    \begin{equation}
+                    \label{eq:12}
+                    \begin{aligned}
+                      \mel{+_x}{S_y}{\varphi} &= \frac{1}{\sqrt{2}}(\bra{+} + \bra{-}) S_y \frac{1}{\sqrt{5}}(2\ket{+} - i\ket{-}) \\
+                                        &= \frac{1}{\sqrt{10}}(\bra{+} + \bra{-})\left( 2 \frac{i\hbar}{2} \ket{-} - i \frac{-i\hbar}{2} \ket{+} \right) \\
+                      &= \frac{\hbar}{2\sqrt{10}}(\bra{+} + \bra{-}) ( -\ket{+} + 2i\ket{-} ) \\
+                      &= \frac{\hbar}{2\sqrt{10}} (-1 + 2i).
+                    \end{aligned}
+                    \end{equation}
+              \item
+                    \begin{equation}
+                    \label{eq:13}
+                    \begin{aligned}
+                      \mel{+_x}{S_y}{\varphi} & =\frac{\hbar}{2\sqrt{10}} \begin{pmatrix}
+1  & 1
+ \end{pmatrix} \begin{pmatrix}
+0  & -i \\
+i  & 0
+ \end{pmatrix} \begin{pmatrix}
+2 \\
+-i
+ \end{pmatrix} \\
+                      &= \frac{\hbar}{2\sqrt{10}} \begin{pmatrix}
+1  & 1
+ \end{pmatrix} \begin{pmatrix}
+-1 \\
+2i
+ \end{pmatrix} \\
+                      &= \frac{\hbar}{2\sqrt{10}} (-1 + 2i),
+                    \end{aligned}
+                    \end{equation}
+                    which agree, as they must.
+            \end{enumerate}
+          \end{answer}
+  \end{enumerate}
+
+\end{problem}
+\begin{problem}{2}
+  Consider an operator \( M \) that acts on the spin-\( z \) basis elements as
+  \begin{equation}
+  \label{eq:2}
+  M\ket{+} = 3\ket{+} + i\ket{-}, \quad M\ket{-} = -i \ket{+}.
+  \end{equation}
+  \begin{enumerate}[label=(\alph*)]
+    \item Compute the eigenvalues and eigenvectors of \( M \).
+          \begin{answer}
+            Working with the matrix representation which will be derived in (b), we set
+            \begin{equation}
+            \label{eq:22}
+            \begin{aligned}
+              0 &= \det(\lambda I - M) = \det \begin{pmatrix}
+\lambda  -3  & i \\
+-i           & \lambda
+              \end{pmatrix} = \lambda(\lambda-3) - 1 = \lambda^2 - 3\lambda - 1 \\
+              &\quad \Rightarrow \lambda_{\pm} = \frac{3 \pm \sqrt{9 + 4}}{2} = \frac{3 \pm \sqrt{13}}{2}.
+            \end{aligned}
+            \end{equation}
+
+            The eigenkets are then those \( \ket{\pm \lambda} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} \) such that \( M\ket{\pm\lambda} = \lambda_{\pm} \ket{\pm\lambda} \).
+
+          \begin{equation}
+          \label{eq:23}
+          \begin{aligned}
+            \begin{pmatrix}
+3  & -i \\
+i  & 0
+ \end{pmatrix} \begin{pmatrix}
+v_1 \\
+v_2
+ \end{pmatrix} = \lambda_{\pm} \begin{pmatrix}
+v_1 \\
+v_2
+ \end{pmatrix} = \begin{pmatrix}
+3v_1 - iv_2 \\
+iv_{1}
+ \end{pmatrix} \implies i v_1 = \lambda_{\pm} v_2.
+          \end{aligned}
+          \end{equation}
+          Setting \( v_1 = \lambda_{\pm} \), we get \( v_2 = i \). Normalizing the states, the eigenvectors are
+          \begin{equation}
+          \label{eq:24}
+          \ket{\lambda_{\pm}} = \frac{1}{\sqrt{\lambda_{\pm}^2 + 1}} \begin{pmatrix}
+\lambda_{\pm} \\
+i
+ \end{pmatrix}.
+          \end{equation}
+          \end{answer}
+    \item Construct the matrix representation of \( M \) in the \( z \)-basis.
+          \begin{answer} The matrix is simply the columns of the action of \( M \) on the z-basis.
+\begin{equation}
+\label{eq:14}
+M \doteq \begin{pmatrix}
+3  & -i \\
+i  & 0
+ \end{pmatrix}
+\end{equation}
+          \end{answer}
+    \item Construct the matrix representation of \( M \) in the \( x \)-basis.
+          \begin{answer}
+            The change of basis matrix is unitary and symmetric, thus \( P = P^{-1} \),
+            \begin{equation}
+            \label{eq:20}
+            P = \frac{1}{\sqrt{2}}\begin{pmatrix}
+1  & 1 \\
+1  & -1
+ \end{pmatrix}.
+\end{equation}
+So we can write the similarity transformation as
+\begin{equation}
+\label{eq:21}
+  \begin{aligned}
+M_x &\doteq P M P^{-1} = \frac{1}{2} \begin{pmatrix}
+1  & 1 \\
+1  & -1
+ \end{pmatrix} \begin{pmatrix}
+3  & -i \\
+i  & 0
+ \end{pmatrix} \begin{pmatrix}
+1  & 1 \\
+1  & -1
+ \end{pmatrix} \\
+    &= \frac{1}{2} \begin{pmatrix}
+1  & 1 \\
+1  & -1
+ \end{pmatrix} \begin{pmatrix}
+3-i      & 3+i \\
+i        & i
+ \end{pmatrix} = \frac{1}{2} \begin{pmatrix}
+3        & 3+2i \\
+3-2i     & 3
+ \end{pmatrix}.
+ \end{aligned}
+\end{equation}
+          \end{answer}
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{3}
+  The spin operator \( S_y \) in the \( y \)-direction satisfies
+  \begin{equation}
+  \label{eq:3}
+  S_y \ket{\pm}_{y} = \pm \frac{\hbar}{2} \ket{\pm}_y, \quad \text{ where } \ket{\pm}_y = \frac{1}{\sqrt{2}} \begin{pmatrix}
+1 \\
+\pm i
+ \end{pmatrix} \text{ in the } z \text{-basis}.
+  \end{equation}
+  \begin{enumerate}[label=(\alph*)]
+    \item Derive the matrix representation of \( S_y \) in the \( z \)-basis.
+          \begin{answer}
+            The change of basis matrix whose columns are the \( y \)-basis vectors is
+            \begin{equation}
+            \label{eq:15}
+            P = \frac{1}{\sqrt{2}}\begin{pmatrix}
+1  & 1 \\
+i  & -i
+ \end{pmatrix}.
+            \end{equation}
+            We can then write, denoting the \( z \)-basis representation as \( S_y^{\prime} \), \( S_y^{\prime} = P S_y^{(y)} P^{-1} \).
+            Since \( P \) is unitary, \( P^{-1} = P^\dagger \), so
+            \begin{equation}
+              \begin{aligned}
+            \label{eq:16}
+            S_y^{\prime} &\doteq \frac{1}{2} \begin{pmatrix}
+1  & 1 \\
+i  & -i
+ \end{pmatrix} \frac{\hbar}{2} \begin{pmatrix}
+1  & 0 \\
+0  & -1
+ \end{pmatrix} \begin{pmatrix}
+1  & -i \\
+1  & i
+ \end{pmatrix} \\
+                &= \frac{\hbar}{4} \begin{pmatrix}
+1  & 1 \\
+i  & -i
+ \end{pmatrix} \begin{pmatrix}
+1  & -i \\
+-1 & -i
+ \end{pmatrix} = \frac{\hbar}{4} \begin{pmatrix}
+0  & -2i \\
+2i & 0
+ \end{pmatrix}.
+                \end{aligned}
+            \end{equation}
+            Simplifying, we thus have the expected result
+            \begin{equation}
+            \label{eq:17}
+            S_y^{\prime} \doteq \frac{\hbar}{2} \begin{pmatrix}
+0  & -i \\
+i  & 0
+ \end{pmatrix}.
+            \end{equation}
+          \end{answer}
+    \item How would you represent \( \ket{\pm}_y \) in the \( y \)-basis?
+          What about \( S_y \)?
+          Why?
+          \begin{answer}
+            Operators are always diagonalized in their own basis, hence our representations is
+            \begin{equation}
+            \label{eq:18}
+            S_y \doteq \frac{\hbar}{2} \begin{pmatrix}
+1  & 0 \\
+0  & -1
+ \end{pmatrix}
+ ,
+\end{equation}
+with associated eigenkets
+\begin{equation}
+\label{eq:19}
+\ket{+}_y \doteq \begin{pmatrix}
+1 \\
+0
+ \end{pmatrix}
+ , \quad \ket{-}_y \doteq \begin{pmatrix}
+0 \\
+1
+ \end{pmatrix}.
+\end{equation}
+          \end{answer}
+  \end{enumerate}
+\end{problem}
+\end{document}
