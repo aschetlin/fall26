@@ -1,420 +1,682 @@
-\documentclass[12pt]{article}
-\usepackage[margin=1in]{geometry}
-\usepackage[utf8]{inputenc}
-\usepackage{latexsym, amsfonts, enumitem, graphicx, environ,enumitem, fancyhdr, color, amssymb, amsthm, amsmath, mathtools, tikz, nicematrix}
-\usepackage{physics}
-\usepackage{tensor}
-\usetikzlibrary{patterns}
-\usetikzlibrary{decorations.pathreplacing}
-\pagestyle{fancy}
-\setlength{\headheight}{65pt}
-\newenvironment{problem}[2][Problem]{\begin{trivlist}
-    \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
-\DeclareMathOperator{\Ima}{Im}
+\documentclass[11pt]{article}
+\usepackage{../homework}
 
-\usepackage{hyperref}
-\usepackage[capitalize]{cleveref}
-\usepackage{thmtools}
-
-\newtheorem{thm}{Theorem}[section]
-\newtheorem{lem}[thm]{Lemma}
-\newtheorem{cl}[thm]{Claim}
-\newtheorem{prop}[thm]{Proposition}
-\newtheorem{cor}[thm]{Corollary}
-\newtheorem{conj}[thm]{Conjecture}
-\newtheorem{obstruction}[thm]{Obstruction}
-
-\usepackage{mdframed}
-
-\theoremstyle{definition}
-\newtheorem{definition}[thm]{Definition}
-\newtheorem{remark}[thm]{Remark}
-\newtheorem{question}{Question}
-\newtheorem{example}[thm]{Example}
-\newtheorem{exercise}[thm]{Exercise}
-\newtheorem{properties}[thm]{Properties}
-\newtheorem*{answer}{Answer}
-
-\usepackage{tcolorbox}
-\tcbuselibrary{theorems,skins,breakable}
-
-\tcolorboxenvironment{example}{
-enhanced jigsaw,colframe=cyan,interior hidden,
-breakable,%before skip=10pt,after skip=10pt
-}
-
-\tcolorboxenvironment{thm}{
-enhanced jigsaw,colframe=red,interior hidden,
-breakable,%before skip=10pt,after skip=10pt
-}
-
-\tcolorboxenvironment{prop}{
-enhanced jigsaw,colframe=red,interior hidden,
-breakable,%before skip=10pt,after skip=10pt
-}
-
-\tcolorboxenvironment{properties}{
-enhanced jigsaw,colframe=red,interior hidden,
-breakable,%before skip=10pt,after skip=10pt
-}
-
-\tcolorboxenvironment{lem}{
-enhanced jigsaw,colframe=red,interior hidden,
-breakable,%before skip=10pt,after skip=10pt
-}
-\tcolorboxenvironment{cor}{
-enhanced jigsaw,colframe=red,interior hidden,
-breakable,%before skip=10pt,after skip=10pt
-}
-\tcolorboxenvironment{obstruction}{
-enhanced jigsaw,colframe=red,interior hidden,
-breakable,%before skip=10pt,after skip=10pt
-}
-
-\tcolorboxenvironment{proof}{
-enhanced jigsaw, frame hidden,%interior hidden,
-breakable,%before skip=10pt,after skip=10pt
-}
-
-\tcolorboxenvironment{answer}{
-enhanced jigsaw, frame hidden,%interior hidden,
-breakable,%before skip=10pt,after skip=10pt
-}
-
-\renewcommand\qedsymbol{\( \blacksquare \)}
-
-\lhead{Avi Chetlin \\ Homework 01 \\ 17 September 2026}
-\rhead{Dr. Kurt Hinterbichler \\ PHYS 365 General Relativity \\ Fall 2026}
+\profname{Dr. Kurt Hinterbichler}
+\classcode{PHYS 365 General Relativity}
+\assignnum{Homework 01}
+\duedate{17 September 2026}
 
 \begin{document}
 \begin{problem}{1 (Precession of perihelion of Mercury)}
-  Consider a planet of mass \( m \), coordinates \( x^i(t) \), subject to a central force \( V(\left| \vec{x} \right|) \).
-  The Lagrangian and equations of motion are, respectively,
-  \begin{align}
-  \label{eq:3}
-    &\mathcal{L} = \frac{1}{2}m \vec{\dot{x}}^2 - V(\left| \vec{x} \right|), \\
-    &m \vec{\ddot{x}} = -(\nabla V)(\left| \vec{x} \right|).
-  \end{align}
-  \begin{enumerate}[label=(\alph*)]
-    \item Change to spherical coordinates and look for solutions in the \( x^1, x^2 \) plane by setting \(\theta = \frac{\pi}{2}\).
-          \begin{answer}
-            The polar coordinate substitution is
+	Consider a planet of mass \( m \), coordinates \( x^i(t) \), subject to a central force \( V(\left| \vec{x} \right|) \).
+	The Lagrangian and equations of motion are, respectively,
+	\begin{align}
+		\label{eq:3}
+		 & \mathcal{L} = \frac{1}{2}m \vec{\dot{x}}^2 - V(\left| \vec{x} \right|), \\
+		 & m \vec{\ddot{x}} = -(\nabla V)(\left| \vec{x} \right|).
+	\end{align}
+	\begin{enumerate}[label=(\alph*)]
+		\item Change to spherical coordinates and look for solutions in the \( x^1, x^2 \) plane by setting \(\theta = \frac{\pi}{2}\).
+		      \begin{answer}
+			      The polar coordinate substitution is
+			      \begin{equation}
+				      \label{eq:18}
+				      x = (r\cos\phi\sin\theta, r\sin\phi\sin\theta, r\cos\theta),
+			      \end{equation}
+			      so that the Lagrangian, \cref{eq:3}, becomes
+			      \begin{equation}
+				      \label{eq:19}
+				      \begin{aligned}
+					      \mathcal{L} = \frac{1}{2} m \biggl( & \dot{r}^2\cos^2\phi\sin^2\theta + \dot{\phi}^2 r^2\sin^2\phi\sin^2\theta + \dot{\theta}^2 r^2 \cos^2\phi\cos^2\theta  \\
+					                                          & - 2 \dot{\phi} \dot{r} r \cos\phi \sin \phi \sin^2\theta + 2 \dot{\theta} \dot{r} r \cos^2\phi\sin \theta \cos \theta \\
+					                                          & - 2 \dot{\phi} \dot{\theta} r^2 \sin\phi \cos \phi \sin \theta \cos \theta + \dot{r}^2 \sin^2\phi \sin^2\theta        \\
+					                                          & + \dot{\phi}^2 r^2 \cos^2\phi \sin^2 \theta + \dot{\theta}^2 r^2 \sin^2 \phi \cos^2\theta                             \\
+					                                          & + 2 \dot{\phi} \dot{r} r \sin\phi\cos\phi \sin^2\theta + 2 \dot{\theta} \dot{r} r \sin^2 \phi \sin \theta \cos \theta \\
+					                                          & + 2 \dot{\phi} \dot{\theta} r^2 \cos \phi \sin \phi \cos \theta \sin \theta                                           \\
+					                                          & + \dot{r}^2\cos^2 \theta + \dot{\theta}^2 r^2 \sin^2 \theta - 2 \dot{\theta} \dot{r} r \cos\theta \sin \theta \biggr) \\
+					                                          & - V(\left| \vec{x} \right|).
+				      \end{aligned}
+			      \end{equation}
+
+			      By repeated application of the Pythagorean identity \( \cos^2\theta + \sin^2\theta = 1 \), we get
+			      \begin{equation}
+				      \label{eq:20}
+				      \mathcal{L} = \frac{1}{2}m (\dot{r}^2 + \dot{\theta}^2 r^2 + \dot{\phi}^2 r^2 \sin^2\theta) - V(\left| \vec{x} \right|).
+			      \end{equation}
+
+			      From the Euler-Lagrange equations, \( \frac{\mathrm{d} }{\mathrm{d} t} \frac{\partial \mathcal{L}}{\partial \dot{q}} - \frac{\partial \mathcal{L}}{\partial q} = 0 \), we achieve the equations of motion
             \begin{equation}
-            \label{eq:18}
-            x = (r\cos\phi\sin\theta, r\sin\phi\sin\theta, r\cos\theta),
+			      \begin{aligned}
+				      \label{eq:21}
+				       & m \ddot{r} = mr(\dot{\theta}^2 + \dot{\phi}^2 \sin^2\theta) - V^{\prime}(r),                                     \\
+				       & \frac{\mathrm{d} }{\mathrm{d} t} \left(m \dot{\phi} r^2 \sin^2\theta\right) = 0                                  \\
+				       & \frac{\mathrm{d} }{\mathrm{d} t} \left(m \dot{\theta} r^2\right) - m \dot{\phi}^2 r^2 \sin\theta \cos\theta = 0.
+			      \end{aligned}
             \end{equation}
-            so that the Lagrangian, \cref{eq:3}, becomes
+			      Setting \( \theta = \frac{\pi}{2} \) makes \( \dot{\theta} = 0\) and thus yields
             \begin{equation}
-            \label{eq:19}
-            \begin{aligned}
-              \mathcal{L} = \frac{1}{2} m \biggl( &\dot{r}^2\cos^2\phi\sin^2\theta + \dot{\phi}^2 r^2\sin^2\phi\sin^2\theta + \dot{\theta}^2 r^2 \cos^2\phi\cos^2\theta  \\
-                      & - 2 \dot{\phi} \dot{r} r \cos\phi \sin \phi \sin^2\theta + 2 \dot{\theta} \dot{r} r \cos^2\phi\sin \theta \cos \theta \\
-                      &- 2 \dot{\phi} \dot{\theta} r^2 \sin\phi \cos \phi \sin \theta \cos \theta + \dot{r}^2 \sin^2\phi \sin^2\theta \\
-                      &+ \dot{\phi}^2 r^2 \cos^2\phi \sin^2 \theta + \dot{\theta}^2 r^2 \sin^2 \phi \cos^2\theta \\
-                      & + 2 \dot{\phi} \dot{r} r \sin\phi\cos\phi \sin^2\theta + 2 \dot{\theta} \dot{r} r \sin^2 \phi \sin \theta \cos \theta \\
-                      & + 2 \dot{\phi} \dot{\theta} r^2 \cos \phi \sin \phi \cos \theta \sin \theta \\
-              & + \dot{r}^2\cos^2 \theta + \dot{\theta}^2 r^2 \sin^2 \theta - 2 \dot{\theta} \dot{r} r \cos\theta \sin \theta \biggr) \\
-              & - V(\left| \vec{x} \right|).
-            \end{aligned}
+			      \begin{aligned}
+				                           & m \ddot{r} = mr \dot{\phi}^2 - V^{\prime}(r)                        \\
+				      \label{eq:momentum1} & \frac{\mathrm{d} }{\mathrm{d} t} \left(m r^2 \dot{\phi}\right) = 0,
+			      \end{aligned}
+            \end{equation}
+			      as desired.
+		      \end{answer}
+		\item Use conservation of \( L \) to eliminate \(\phi\) and write the remaining equation as
+		      \begin{equation}
+			      \label{eq:4}
+			      m \ddot{r} = -V_{\text{eff}}^{\prime}(r), \quad V_{\text{eff}}(r) = V(r) + \frac{L^2}{2mr^2}.
+		      \end{equation}
+		      \begin{answer}
+			      \cref{eq:momentum1} says that the angular momentum, \( L = m r^2 \dot{\phi} \) is conserved.
+			      Since \( L^2 = m^2 r^4 \dot{\phi}^2\), we can rewrite \cref{eq:momentum1} in terms of L as
+			      \begin{align}
+				      \nonumber m \ddot{r}        & = \frac{L^2}{m r^3} - V^{\prime}(r)                                                        \\
+				      \label{eq:angmom} & = \frac{\mathrm{d} }{\mathrm{d} r} \left( \frac{L^2}{m}(- \frac{1}{2 r^2}) - V(r) \right).
+			      \end{align}
+			      Therefore, if we define \( V_{\text{eff}}(r) \coloneq \frac{L^2}{2m r^2} + V(r) \), \cref{eq:angmom} reads
+			      \begin{equation}
+				      \label{eq:24}
+				      m \ddot{r} = -V_{\text{eff}}^{\prime}(r).
+			      \end{equation}
+		      \end{answer}
+		\item Show that the circular orbits correspond to radii \( r_c \) for which \( V_{\text{eff}}^{\prime}(r_c) = 0 \), and that the period of such an orbit is \( T = 2\pi mr_c^2 / L \).
+		      \begin{proof}
+			      A circular orbit occurs when the radius is constant, i.e., \( \frac{\partial r}{\partial t} = 0 \).
+			      In such a case, clearly \( m \ddot{r} = 0 = -V_{\text{eff}}^{\prime}(r) \), that is, for a circular orbit at  radius \( r_c \), \( V^{\prime}_{\text{eff}}(r_c) = 0 \).
+
+			      Now, the orbital period \( T \) is
+			      \begin{equation}
+				      \label{eq:16}
+				      T = \frac{\text{change in radians}}{\text{radial speed}} = \frac{2\pi}{\dot{\phi}} = \frac{2\pi}{L/ m r_{c}^2} = \frac{2\pi m r_{c}^2}{L},
+			      \end{equation}
+			      where we solved the equation for \( L \) in terms of \( \dot{\phi} \) to obtain an expression for \( \dot{\phi} \) in terms of \( L \) and \( r \).
+		      \end{proof}
+		\item Now consider small perturbations \( r(t) = r_c + \delta r(t) \) and show that to lowest order, \(\delta r\) obeys the harmonic osscilator equation \( \ddot{\delta r} + \omega^2 \delta r = 0 \) with angular frequency
+		      \begin{equation}
+			      \label{eq:5}
+			      \omega = \sqrt{\frac{3}{m r_{c}} V^{\prime}(r_c) + \frac{1}{m} V^{\prime\prime}(r_c)}.
+		      \end{equation}
+		      \begin{proof}
+			      For \( \delta r(t) \ll 1 \), we may expand \( V^{\prime}_{\text{eff}}(r(t)) \) as
+            \begin{equation}
+			      \begin{aligned}
+				      V^{\prime}_{\text{eff}}(r_c + \delta r(t)) & = V_{\text{eff}}^{\prime}(r_c) + \delta r V^{\prime\prime}_{\text{eff}}(r_{c}) + \mathcal{O}(\delta r^2) \\
+				                                                 & = \delta r V_{\text{eff}}^{\prime\prime}(r_c) + \mathcal{O}(\delta r^2)                                  \\
+				      \label{eq:expandedv}                       & \approx \delta r \left( V^{\prime\prime}(r_c) + \frac{3L^2}{mr_{c}^{4}} \right).
+			      \end{aligned}
             \end{equation}
 
-            By repeated application of the Pythagorean identity \( \cos^2\theta + \sin^2\theta = 1 \), we get
+			      Now, since \( r_c \) is a constant, \( m \ddot{r}(t) = m\ddot{\delta r}(t) = -V^{\prime}_{\text{eff}}(r_c + \delta r)\).
+			      Dividing \cref{eq:expandedv} by \( -m \) gives
+			      \begin{equation}
+				      \label{eq:27}
+				      \ddot{\delta r} \approx -\frac{\delta r}{m} \left( V^{\prime\prime}(r_c)  + \frac{3L^2}{m r_c^4}\right) = -\delta r \left( \frac{V^{\prime\prime}(r_c)}{m} + \frac{3L^2}{m^2 r_{c}^{4}} \right).
+			      \end{equation}
+
+			      Finally, note that since \( V^{\prime}_{\text{eff}}(r_c) = 0 \), we have that
+			      \begin{equation}
+				      \label{eq:17}
+				      V^{\prime}(r_c) = \frac{L^2}{m r_{c}^3},
+			      \end{equation}
+			      and therefore, to first order,
+			      \begin{equation}
+				      \label{eq:26}
+				      \ddot{\delta r} + \delta r \left(\frac{V^{\prime\prime}(r_c)}{m} + \frac{3}{m r_c} V^{\prime}(r_c)\right) = \ddot{\delta r} + \omega^2\delta r = 0,
+			      \end{equation}
+			      with
+			      \begin{equation}
+				      \label{eq:angfreq}
+				      \omega = \sqrt{\frac{3}{m r_{c}} V^{\prime}(r_c) + \frac{1}{m} V^{\prime\prime}(r_c)}.
+			      \end{equation}
+
+		      \end{proof}
+		\item The perihelion of the orbit corresponds to the place where \( \delta r \) is minimal.
+		      Show that the change, \(\psi\), in the angular position of the perihelion per orbit is given by
+		      \begin{equation}
+			      \label{eq:6}
+			      \psi = 2\pi \left( \frac{L}{\sqrt{m r_{c}^3} \sqrt{r_{c} V^{\prime\prime}(r_c) + 3 V^{'}(r_c)}} - 1 \right).
+		      \end{equation}
+		      \begin{proof}
+			      From \cref{eq:angfreq} we obtain the period of osscilation for the perturbation term \(\delta r\), \( \tau = \frac{2\pi}{\omega} \).
+			      In part (c) we derived the orbital period for a circular orbit, \( T = \frac{2\pi m r_{c}^2}{L} \).
+			      The perihelion is obtained at time \(\tau\), while the orbit takes time \( T \) to complete one revolution.
+			      This gives us the time difference between reaching perihelion and completing an orbit, \(\Delta t = \tau - T\).
+			      To obtain the difference in position, \(\psi\), we calculate \( \dot{\phi} \Delta t = \frac{2\pi}{T} \Delta t = 2\pi \frac{\tau - T}{T} \).
+
             \begin{equation}
-            \label{eq:20}
-            \mathcal{L} = \frac{1}{2}m (\dot{r}^2 + \dot{\theta}^2 r^2 + \dot{\phi}^2 r^2 \sin^2\theta) - V(\left| \vec{x} \right|).
+			      \begin{aligned}
+				      \psi                & = 2\pi\frac{\tau - T}{T} = 2\pi \left(\frac{2 \pi}{T\omega} - 1\right) = 2\pi\left(\frac{2\pi}{T \sqrt{\frac{3}{mr_{c}} V^{\prime}(r_c) + \frac{1}{m} V^{\prime\prime}(r_c)}} -1\right) \\
+				                          & = 2\pi\left(\frac{2\pi L}{2\pi m r_c^2 \sqrt{\frac{3}{m r_{c}} V^{\prime}(r_c) + \frac{1}{m} V^{\prime\prime}(r_c)}} - 1\right)                                                         \\
+				      \label{eq:angshift} & = 2\pi\left(\frac{L}{\sqrt{m r_{c}^3} \sqrt{3 V^{\prime}(r_c) + r_c V^{\prime\prime}(r_c)}} - 1\right).
+			      \end{aligned}
+            \end{equation}
+		      \end{proof}
+		\item Consider the case of Newtonian gravity, \( V(r) = - \frac{GMm}{r}.\)
+		      Show that there is a unique circular orbit \( r_c = \frac{L^2}{Gm^2 M} \) for which \(\psi\) vanishes.
+		      \begin{proof}
+			      For \(\psi\) to vanish we need, from \cref{eq:angshift}
+			      \begin{equation}
+				      \label{eq:31}
+				      L^2 = (m r_{c}^3) (3 V^{\prime}(r_c) + r_c V^{\prime\prime}(r_c)).
+			      \end{equation}
+			      Substituting in the Newtonian gravitational potential, this is
+            \begin{equation}
+			      \begin{aligned}
+				      \label{eq:32}
+				      L^2 & = (m r_c^3)(3 \frac{GMm}{r_c^2} - r_c \frac{2GMm}{r_c^3}) \\
+				          & = m r_c^3 \left( \frac{GMm}{r_c^2} \right)                \\
+				          & = r_c GMm^2.
+			      \end{aligned}
+            \end{equation}
+			      Therefore,
+			      \begin{equation}
+				      \label{eq:33}
+				      r_c = \frac{L^2}{GM m^2}.
+			      \end{equation}
+
+			      Each step of this was a necessary implication, so we have shown both existence and uniqueness.
+		      \end{proof}
+
+		\item The leading correction to Newtonian gravity predicted by GR is
+		      \begin{equation}
+			      \label{eq:7}
+			      V(r) = - \frac{GmM}{r} - \frac{3 G^2 m M^2}{c^2 r^2} + \dots
+		      \end{equation}
+		      Working to leading order, show the perihelion precession per revolution in terms of \( r_c \) is
+		      \begin{equation}
+			      \label{eq:8}
+			      \psi = \frac{6 \pi G M }{c^2 r_{c}}.
+		      \end{equation}
+		      \begin{proof}
+			      As we have shown,
+			      \begin{equation}
+				      \label{eq:30}
+				      \psi = 2\pi \left( \frac{L}{\sqrt{m r_{c}^3} \sqrt{r_{c} V^{\prime\prime}(r_c) + 3 V^{\prime}(r_c)}} - 1 \right),
+			      \end{equation}
+			      which, substituting in the Newtonian potential with the first order correction, gives \( \psi = \)
+            \begin{equation}
+			      \begin{aligned}
+				      \label{eq:34}
+				       & 2\pi \left( \frac{L}{\sqrt{m r_{c}^3} \sqrt{-2GmM/r_{c}^2 - 18G^2mM^2/c^2r_{c}^3 + 3GmM/r_{c}^2 + 18G^2mM^2/c^2r_{c}^3}} - 1 \right) \\
+				       & = 2\pi \left( \frac{L}{\sqrt{mr_{c}^3} \sqrt{GmM/ r_{c}^2}} - 1 \right).
+			      \end{aligned}
+            \end{equation}
+			      Now, from \cref{eq:17} we see that \( L = \sqrt{V^{\prime}(r_c) m r_c^3} \).
+			      This in turn yields
+            \begin{equation}
+			      \begin{aligned}
+				      \label{eq:35}
+				      \psi & = 2\pi \left( \frac{\sqrt{V^{\prime}(r_c)} \sqrt{mr_{c}^3}}{\sqrt{m r_{c}^3} \sqrt{GmM/r_{c}^2}} - 1\right) \\
+				           & = 2\pi \left( \frac{\sqrt{GmM/r_{c}^2 + 6G^2mM^2/c^2r_{c}^2}}{\sqrt{GmM/r_{c}^2}} - 1 \right)               \\
+				           & = 2\pi \left( \sqrt{1 + \frac{6GM}{c^2 r_{c}}} - 1\right).
+			      \end{aligned}
             \end{equation}
 
-            From the Euler-Lagrange equations, \( \frac{\mathrm{d} }{\mathrm{d} t} \frac{\partial \mathcal{L}}{\partial \dot{q}} - \frac{\partial \mathcal{L}}{\partial q} = 0 \), we achieve the equations of motion
-            \begin{align}
-            \label{eq:21}
-              &m \ddot{r} = mr(\dot{\theta}^2 + \dot{\phi}^2 \sin^2\theta) - V^{\prime}(r), \\
-                         &\frac{\mathrm{d} }{\mathrm{d} t} \left(m \dot{\phi} r^2 \sin^2\theta\right) = 0 \\
-              & \frac{\mathrm{d} }{\mathrm{d} t} \left(m \dot{\theta} r^2\right) - m \dot{\phi}^2 r^2 \sin\theta \cos\theta = 0.
-            \end{align}
-            Setting \( \theta = \frac{\pi}{2} \) makes \( \dot{\theta} = 0\) and thus yields
-            \begin{align}
-            \label{eq:22}
-              &m \ddot{r} = mr \dot{\phi}^2 - V^{\prime}(r) \\
-              \label{eq:momentum1}& \frac{\mathrm{d} }{\mathrm{d} t} \left(m r^2 \dot{\phi}\right) = 0,
-            \end{align}
-            as desired.
-          \end{answer}
-    \item Use conservation of \( L \) to eliminate \(\phi\) and write the remaining equation as
-          \begin{equation}
-          \label{eq:4}
-          m \ddot{r} = -V_{\text{eff}}^{\prime}(r), \quad V_{\text{eff}}(r) = V(r) + \frac{L^2}{2mr^2}.
-          \end{equation}
-          \begin{answer}
-            \cref{eq:momentum1} says that the angular momentum, \( L = m r^2 \dot{\phi} \) is conserved.
-            Since \( L^2 = m^2 r^4 \dot{\phi}^2\), we can rewrite \cref{eq:22} in terms of L as
-            \begin{align}
-            \label{eq:23}
-              m \ddot{r} &= \frac{L^2}{m r^3} - V^{\prime}(r) \\
-              \label{eq:angmom}&= \frac{\mathrm{d} }{\mathrm{d} r} \left( \frac{L^2}{m}(- \frac{1}{2 r^2}) - V(r) \right).
-            \end{align}
-            Therefore, if we define \( V_{\text{eff}}(r) \coloneq \frac{L^2}{2m r^2} + V(r) \), \cref{eq:angmom} reads
-            \begin{equation}
-            \label{eq:24}
-            m \ddot{r} = -V_{\text{eff}}^{\prime}(r).
-            \end{equation}
-          \end{answer}
-    \item Show that the circular orbits correspond to radii \( r_c \) for which \( V_{\text{eff}}^{\prime}(r_c) = 0 \), and that the period of such an orbit is \( T = 2\pi mr_c^2 / L \).
-          \begin{proof}
-            A circular orbit occurs when the radius is constant, i.e., \( \frac{\partial r}{\partial t} = 0 \).
-            In such a case, clearly \( m \ddot{r} = 0 = -V_{\text{eff}}^{\prime}(r) \), that is, for a circular orbit at  radius \( r_c \), \( V^{\prime}_{\text{eff}}(r_c) = 0 \).
-
-            Now, the orbital period \( T \) is
-            \begin{equation}
-            \label{eq:16}
-            T = \frac{\text{change in radians}}{\text{radial speed}} = \frac{2\pi}{\dot{\phi}} = \frac{2\pi}{L/ m r_{c}^2} = \frac{2\pi m r_{c}^2}{L},
-            \end{equation}
-            where we solved the equation for \( L \) in terms of \( \dot{\phi} \) to obtain an expression for \( \dot{\phi} \) in terms of \( L \) and \( r \).
-          \end{proof}
-    \item Now consider small perturbations \( r(t) = r_c + \delta r(t) \) and show that to lowest order, \(\delta r\) obeys the harmonic osscilator equation \( \ddot{\delta r} + \omega^2 \delta r = 0 \) with angular frequency
-          \begin{equation}
-          \label{eq:5}
-          \omega = \sqrt{\frac{3}{m r_{c}} V^{\prime}(r_c) + \frac{1}{m} V^{\prime\prime}(r_c)}.
-          \end{equation}
-          \begin{proof}
-            For \( \delta r(t) \ll 1 \), we may expand \( V^{\prime}_{\text{eff}}(r(t)) \) as
-            \begin{align}
-            \label{eq:25}
-              V^{\prime}_{\text{eff}}(r_c + \delta r(t)) &= V_{\text{eff}}^{\prime}(r_c) + \delta r V^{\prime\prime}_{\text{eff}}(r_{c}) + \mathcal{O}(\delta r^2) \\
-              &= \delta r V_{\text{eff}}^{\prime\prime}(r_c) + \mathcal{O}(\delta r^2) \\
-              \label{eq:expandedv}&\approx \delta r \left( V^{\prime\prime}(r_c) + \frac{3L^2}{mr_{c}^{4}} \right).
-            \end{align}
-
-            Now, since \( r_c \) is a constant, \( m \ddot{r}(t) = m\ddot{\delta r}(t) = -V^{\prime}_{\text{eff}}(r_c + \delta r)\).
-            Dividing \cref{eq:expandedv} by \( -m \) gives
-            \begin{equation}
-            \label{eq:27}
-            \ddot{\delta r} \approx -\frac{\delta r}{m} \left( V^{\prime\prime}(r_c)  + \frac{3L^2}{m r_c^4}\right) = -\delta r \left( \frac{V^{\prime\prime}(r_c)}{m} + \frac{3L^2}{m^2 r_{c}^{4}} \right).
-            \end{equation}
-
-            Finally, note that since \( V^{\prime}_{\text{eff}}(r_c) = 0 \), we have that
-            \begin{equation}
-            \label{eq:17}
-            V^{\prime}(r_c) = \frac{L^2}{m r_{c}^3},
-            \end{equation}
-            and therefore, to first order,
-            \begin{equation}
-            \label{eq:26}
-            \ddot{\delta r} + \delta r \left(\frac{V^{\prime\prime}(r_c)}{m} + \frac{3}{m r_c} V^{\prime}(r_c)\right) = \ddot{\delta r} + \omega^2\delta r = 0,
-            \end{equation}
-            with
-            \begin{equation}
-            \label{eq:angfreq}
-            \omega = \sqrt{\frac{3}{m r_{c}} V^{\prime}(r_c) + \frac{1}{m} V^{\prime\prime}(r_c)}.
-            \end{equation}
-
-          \end{proof}
-    \item The perihelion of the orbit corresponds to the place where \( \delta r \) is minimal.
-          Show that the change, \(\psi\), in the angular position of the perihelion per orbit is given by
-          \begin{equation}
-          \label{eq:6}
-          \psi = 2\pi \left( \frac{L}{\sqrt{m r_{c}^3} \sqrt{r_{c} V^{\prime\prime}(r_c) + 3 V^{'}(r_c)}} - 1 \right).
-          \end{equation}
-          \begin{proof}
-            From \cref{eq:angfreq} we obtain the period of osscilation for the perturbation term \(\delta r\), \( \tau = \frac{2\pi}{\omega} \).
-            In part (c) we derived the orbital period for a circular orbit, \( T = \frac{2\pi m r_{c}^2}{L} \).
-            The perihelion is obtained at time \(\tau\), while the orbit takes time \( T \) to complete one revolution.
-            This gives us the time difference between reaching perihelion and completing an orbit, \(\Delta t = \tau - T\).
-            To obtain the difference in position, \(\psi\), we calculate \( \dot{\phi} \Delta t = \frac{2\pi}{T} \Delta t = 2\pi \frac{\tau - T}{T} \).
-
-            \begin{align}
-            \label{eq:29}
-             \psi &= 2\pi\frac{\tau - T}{T} = 2\pi \left(\frac{2 \pi}{T\omega} - 1\right) = 2\pi\left(\frac{2\pi}{T \sqrt{\frac{3}{mr_{c}} V^{\prime}(r_c) + \frac{1}{m} V^{\prime\prime}(r_c)}} -1\right) \\
-                & = 2\pi\left(\frac{2\pi L}{2\pi m r_c^2 \sqrt{\frac{3}{m r_{c}} V^{\prime}(r_c) + \frac{1}{m} V^{\prime\prime}(r_c)}} - 1\right) \\
-              \label{eq:angshift} &= 2\pi\left(\frac{L}{\sqrt{m r_{c}^3} \sqrt{3 V^{\prime}(r_c) + r_c V^{\prime\prime}(r_c)}} - 1\right).
-            \end{align}
-          \end{proof}
-    \item Consider the case of Newtonian gravity, \( V(r) = - \frac{GMm}{r}.\)
-          Show that there is a unique circular orbit \( r_c = \frac{L^2}{Gm^2 M} \) for which \(\psi\) vanishes.
-          \begin{proof}
-            For \(\psi\) to vanish we need, from \cref{eq:angshift}
-            \begin{equation}
-            \label{eq:31}
-            L^2 = (m r_{c}^3) (3 V^{\prime}(r_c) + r_c V^{\prime\prime}(r_c)).
-            \end{equation}
-            Substituting in the Newtonian gravitational potential, this is
-            \begin{align}
-            \label{eq:32}
-              L^2 &= (m r_c^3)(3 \frac{GMm}{r_c^2} - r_c \frac{2GMm}{r_c^3}) \\
-                  &= m r_c^3 \left( \frac{GMm}{r_c^2} \right) \\
-                    &= r_c GMm^2.
-            \end{align}
-            Therefore,
-            \begin{equation}
-            \label{eq:33}
-            r_c = \frac{L^2}{GM m^2}.
-            \end{equation}
-
-            Each step of this was a necessary implication, so we have shown both existence and uniqueness.
-          \end{proof}
-
-    \item The leading correction to Newtonian gravity predicted by GR is
-          \begin{equation}
-          \label{eq:7}
-          V(r) = - \frac{GmM}{r} - \frac{3 G^2 m M^2}{c^2 r^2} + \dots
-          \end{equation}
-          Working to leading order, show the perihelion precession per revolution in terms of \( r_c \) is
-          \begin{equation}
-          \label{eq:8}
-              \psi = \frac{6 \pi G M }{c^2 r_{c}}.
-          \end{equation}
-          \begin{proof}
-            As we have shown,
-            \begin{equation}
-            \label{eq:30}
-            \psi = 2\pi \left( \frac{L}{\sqrt{m r_{c}^3} \sqrt{r_{c} V^{\prime\prime}(r_c) + 3 V^{\prime}(r_c)}} - 1 \right),
-            \end{equation}
-            which, substituting in the Newtonian potential with the first order correction, gives \( \psi = \)
-            \begin{align}
-            \label{eq:34}
-              &2\pi \left( \frac{L}{\sqrt{m r_{c}^3} \sqrt{-2GmM/r_{c}^2 - 18G^2mM^2/c^2r_{c}^2 + 3GmM/r_{c}^2 + 18G^2mM^2/c^2r_{c}^3}} - 1 \right) \\
-              &= 2\pi \left( \frac{L}{\sqrt{mr_{c}^3} \sqrt{GmM/ r_{c}^2}} - 1 \right).
-            \end{align}
-
-            Now, from \cref{eq:17} we see that \( L = \sqrt{V^{\prime}(r_c) m r_c^3} \).
-            This in turn yields
-            \begin{align}
-            \label{eq:35}
-              \psi &= 2\pi \left( \frac{\sqrt{V^{\prime}(r_c)} \sqrt{mr_{c}^3}}{\sqrt{m r_{c}^3} \sqrt{GmM/r_{c}^2}} - 1\right) \\\\
-                &= 2\pi \left( \frac{\sqrt{GmM/r_{c}^2 + 6G^2mM^2/c^2r_{c}^2}}{\sqrt{GmM/r_{c}^2}} - 1 \right) \\\\
-              &= 2\pi \left( \sqrt{1 + \frac{6GM}{c^2 r_{c}}} - 1\right).
-            \end{align}
-
-            At this point, we note that \( c^2 r_c \gg 6GM \), that is, \( 6GM/c^2r_c \ll 1 \).
-            We can hence use the binomial expansion to write that, to first order,
-            \begin{equation}
-            \label{eq:36}
-            \psi = 2\pi \left( 1 + \frac{1}{2} \frac{6GM}{c^2 r_{c}} - 1 \right) = \frac{6\pi GM}{c^2 r_c}.
-            \end{equation}
-          \end{proof}
-    \item Mercury makes \( 415 \) revolutions per century and has orbital radius \( r_c \approx 5.53 \times 10^{10} \)m and the sun has mass \( M \approx 1.99 \times 10^{30} \)kg.
-          Express \cref{eq:8} in units of arcseconds per century, and compare to the observed discrepancy of about \( 43 \) arcseconds per century.
-          \begin{answer}
-            Plugging in the given values along with \( G = 6.67408 \times 10^{-11} \text{m}^3 \text{kg}^{-1} \text{s}^{-2} \) and \( c = 2.9 \times 10^8 \text{m} \text{s}^{-1} \), gives
-            \begin{equation}
-            \label{eq:37}
-            \psi = 5.3830 \times 10^{-7} \text{radians},
-            \end{equation}
-            where the units are
-            \begin{equation}
-            \label{eq:38}
-            2\pi \frac{ [\text{m}^3 \text{kg}^{-1} \text{s}^{-2}][ \text{kg} ] }{[ \text{m}^2 \text{s}^{-2} ][ \text{m} ]} = \text{radians}.
-            \end{equation}
-            The total change over a century is
-            \begin{equation}
-            \label{eq:39}
-            415 \psi = 2.2339 \times 10^{-4} \text{radians},
-            \end{equation}
-            and finally given the conversion \( \frac{1 \text{ arcsecond}}{4.848 \times 10^{-6} \text{ radians}} \), we get the value
-            \begin{equation}
-            \label{eq:40}
-            46.0797 \text{ arcseconds per century},
-            \end{equation}
-            which is within
-            \begin{equation}
-            \label{eq:41}
-            \frac{46.0797 - 43}{43} = 0.0716
-            \end{equation}
-            of the observed discrepancy.
-          \end{answer}
-  \end{enumerate}
+			      At this point, we note that \( c^2 r_c \gg 6GM \), that is, \( 6GM/c^2r_c \ll 1 \).
+			      We can hence use the binomial expansion to write that, to first order,
+			      \begin{equation}
+				      \label{eq:36}
+				      \psi = 2\pi \left( 1 + \frac{1}{2} \frac{6GM}{c^2 r_{c}} - 1 \right) = \frac{6\pi GM}{c^2 r_c}.
+			      \end{equation}
+		      \end{proof}
+		\item Mercury makes \( 415 \) revolutions per century and has orbital radius \( r_c \approx 5.53 \times 10^{10} \)m and the sun has mass \( M \approx 1.99 \times 10^{30} \)kg.
+		      Express \cref{eq:8} in units of arcseconds per century, and compare to the observed discrepancy of about \( 43 \) arcseconds per century.
+		      \begin{answer}
+			      Plugging in the given values along with \( G = 6.67408 \times 10^{-11} \text{m}^3 \text{kg}^{-1} \text{s}^{-2} \) and \( c = 2.9 \times 10^8 \text{m} \text{s}^{-1} \), gives
+			      \begin{equation}
+				      \label{eq:37}
+				      \psi = 5.3830 \times 10^{-7} \text{radians},
+			      \end{equation}
+			      where the units are
+			      \begin{equation}
+				      \label{eq:38}
+				      2\pi \frac{ [\text{m}^3 \text{kg}^{-1} \text{s}^{-2}][ \text{kg} ] }{[ \text{m}^2 \text{s}^{-2} ][ \text{m} ]} = \text{radians}.
+			      \end{equation}
+			      The total change over a century is
+			      \begin{equation}
+				      \label{eq:39}
+				      415 \psi = 2.2339 \times 10^{-4} \text{radians},
+			      \end{equation}
+			      and finally given the conversion \( \frac{1 \text{ arcsecond}}{4.848 \times 10^{-6} \text{ radians}} \), we get the value
+			      \begin{equation}
+				      \label{eq:40}
+				      46.0797 \text{ arcseconds per century},
+			      \end{equation}
+			      which is within
+			      \begin{equation}
+				      \label{eq:41}
+				      \frac{46.0797 - 43}{43} = 0.0716
+			      \end{equation}
+			      of the observed discrepancy.
+		      \end{answer}
+	\end{enumerate}
 \end{problem}
 
 \begin{problem}{2 (Bending of light in Newtonian gravity)}
-  Consider a particle with inertial and gravitational masses \( m_I, m_G \) moving in the gravitational field of the Sun.
-  The equation of motion is
-  \begin{equation}
-  \label{eq:9}
-  m_I \vec{\ddot{x}} = - m_G \nabla \phi(\vec{x}), \quad \phi(\vec{x}) = - \frac{GM}{| \vec{x} |},
-  \end{equation}
-  where \( M \) is the mass of the sun.
+	Consider a particle with inertial and gravitational masses \( m_I, m_G \) moving in the gravitational field of the Sun.
+	The equation of motion is
+	\begin{equation}
+		\label{eq:2eqmom}
+		m_I \vec{\ddot{x}} = - m_G \nabla \phi(\vec{x}), \quad \phi(\vec{x}) = - \frac{GM}{| \vec{x} |},
+	\end{equation}
+	where \( M \) is the mass of the sun.
 
-  The particles path in the absence of \(\phi\) is \( \vec{x}_{(0)}(t) \) which obeys
-  \begin{equation}
-  \label{eq:10}
-  \vec{\ddot{x}}_{(0)} = 0.
-\end{equation}
+	The particles path in the absence of \(\phi\) is \( \vec{x}_{(0)}(t) \) which obeys
+	\begin{equation}
+		\label{eq:10}
+		\vec{\ddot{x}}_{(0)} = 0.
+	\end{equation}
 
-Let the unperturbed path be the one taken by a photon moving at \( c \) parallel to the \( z \) axis, at an impact parameter \( b \) as measured from the origin,
-\begin{equation}
-\label{eq:11}
-\vec{x}_{(0)}(t) = (b,0, ct).
-\end{equation}
+	Let the unperturbed path be the one taken by a photon moving at \( c \) parallel to the \( z \) axis, at an impact parameter \( b \) as measured from the origin,
+	\begin{equation}
+		\label{eq:11}
+		\vec{x}_{(0)}(t) = (b,0, ct).
+	\end{equation}
 
-\begin{enumerate}[label=(\alph*)]
-  \item Find the equation of motion satisfied by the first order correction to the free motion by expanding
-        \begin{equation}
-        \label{eq:12}
-        \vec{x} = \vec{x}_{(0)} + \vec{\delta x},
-      \end{equation}
-        where \( \vec{\delta x} \) is of the same order as \(\phi\) and substituting into \cref{eq:9}.
-        \begin{answer}
+	\begin{enumerate}[label=(\alph*)]
+		\item Find the equation of motion satisfied by the first order correction to the free motion by expanding,
+		      \begin{equation}
+			      \label{eq:12}
+			      \vec{x} = \vec{x}_{(0)} + \vec{\delta x},
+		      \end{equation}
+		      where \( \vec{\delta x} \) is of the same order as \(\phi\) and substituting into \cref{eq:2eqmom}.
+		      The equation you should find is
+		      \begin{equation}
+			      \label{eq:2aeq}
+			      m_I \ddot{\vec{\delta x}} = -m_G \nabla \phi(\vec{x}_{(0)}).
+		      \end{equation}
+		      \begin{answer}
+			      We have from \cref{eq:2eqmom},
+			      \begin{equation}
+				      \label{eq:28}
+				      m_I \frac{\mathrm{d}^2}{\mathrm{d} t^2}(\vec{x}_{(0)} + \vec{\delta x}) = -m_G \nabla \phi(\vec{x}_{(0)} + \vec{\delta x}).
+			      \end{equation}
 
-        \end{answer}
+			      Expanding about \( \vec{x}_{(0)} \) for small \( \vec{\delta x} \), we have, noting that by \cref{eq:11} \( \ddot{\vec{x}}_{(0)} = 0\),
+			      \begin{equation}
+				      \label{eq:9}
+				      m_I \ddot{\vec{\delta x}} = -m_G \nabla \left( \phi(\vec{x}_{(0)}) + \vec{\delta x} \phi^{\prime}(\vec{x}_{(0)}) + \mathcal{O}(\vec{\delta x}^2)) \right).
+			      \end{equation}
 
-  \item We can integrate \cref{eq:12} to obtain
-        \begin{equation}
-        \label{eq:13}
-        \vec{\delta \dot{x}} = - \frac{m_{G}}{m_{I}} \int\limits_{-\infty}^{\infty} dt \nabla \phi(x_{(0)}(t)).
-        \end{equation}
-        Referring to the definitions in figure 2, evaluate the deflection angle \(\vec{\alpha} = - \frac{\vec{\delta \dot{x}}}{\left| \vec{\dot{x}}_{(0)} \right|}\) for the Newtonian potential and show that its magnitude is
-        \begin{equation}
-        \label{eq:14}
-        \left| \vec{\alpha} \right| = \frac{m_G}{m_I} \frac{2GM}{c^2 b}.
-        \end{equation}
-        \item Evaluate the approximate size of the deflection angle in arcseconds for stars observed near the solar disk during an eclipse.
-\end{enumerate}
+			      Moreover, since \( \vec{\delta x} \sim \phi \), we have that \( \vec{\delta x}\phi^{\prime} \sim \mathcal{O}(\vec{\delta x}^2) \), and therefore we have, to first order,
+			      \begin{equation}
+				      \label{eq:42}
+				      m_I \ddot{\vec{\delta x}} = -m_G \nabla \phi(\vec{x}_{(0)}).
+			      \end{equation}
+		      \end{answer}
+
+		\item We can integrate \cref{eq:2aeq} to obtain
+		      \begin{equation}
+			      \label{eq:13}
+			      \vec{\delta \dot{x}} = - \frac{m_{G}}{m_{I}} \int\limits_{-\infty}^{\infty} dt \nabla \phi(\vec{x}_{(0)}(t)).
+		      \end{equation}
+		      Referring to the definitions in figure 2, evaluate the deflection angle \(\vec{\alpha} = - \frac{\vec{\delta \dot{x}}}{\left| \vec{\dot{x}}_{(0)} \right|}\) for the Newtonian potential and show that its magnitude is
+		      \begin{equation}
+			      \label{eq:14}
+			      \left| \vec{\alpha} \right| = \frac{m_G}{m_I} \frac{2GM}{c^2 b}.
+		      \end{equation}
+		      \begin{answer}
+			      We first obtain an expression for the gradient.
+			      \begin{align}
+				      \label{eq:45}
+				      \nabla \phi(\vec{x}) & = \begin{pmatrix}
+					                               -\frac{\partial }{\partial  x^{1}} \frac{GM}{\sqrt{(x^{1})^2 + (x^2)^2 + (x^3)^2}} \\ -\frac{\partial }{\partial  x^{2}} \frac{GM}{\sqrt{(x^{1})^2 + (x^2)^2 + (x^3)^2}} \\ - \frac{\partial }{\partial x^3} \frac{GM}{\sqrt{(x^{1})^2 + (x^2)^2 + (x^3)^2}}
+				                               \end{pmatrix},
+			      \end{align}
+			      which, evaluated for \( \vec{x}_{(0)}(t) \), gives
+			      \begin{equation}
+				      \label{eq:46}
+				      \nabla \phi(\vec{x}_{(0)}) = -GM \begin{pmatrix}
+					      \frac{b}{|\vec{x}_{(0)}|^3} \\
+					      0                           \\
+					      \frac{ct}{|\vec{x}_{(0)}|^3}
+				      \end{pmatrix}.
+			      \end{equation}
+            We now integrate over all time, working component-wise.
+            For the \( x^1 \) component, the relevant integral is
+            \begin{equation}
+            \label{eq:47}
+            \int\limits_{-\infty}^{\infty} dt \frac{b}{(b^2 + c^2t^2)^{3/2}} = b \int\limits_{-\infty}^{\infty} \frac{dt}{c^3 (b^2/c^2 + t^2)^{3/2}},
+            \end{equation}
+            whence we make the substitution \( t = \frac{b}{c}\tan\theta \), \( dt = \frac{b}{c} \sec^2\theta \) which gives
+            \begin{align}
+            \label{eq:48}
+              &\frac{b^2}{c^4} \int\limits_{- \pi/2}^{\pi/2} \frac{\sec^2\theta d\theta}{(b/c\sec \theta)^3} = \frac{b^2}{c^{4}} \int\limits_{-\pi/2}^{\pi/2} d\theta \frac{c^3}{b^3} \cos \theta \\
+              &= \frac{1}{cb} \sin\theta \eval_{-\pi/2}^{\pi/2} = \frac{2}{cb}.
+            \end{align}
+
+            That is, the \( x^1 \) component of \( \dot{\vec{\delta x}} \) is \( \frac{m_G}{m_I} \frac{2GM}{cb} \).
+
+            Clearly the \( x^2 \) component is \( 0 \), so all that remains is the \( x^3 \) component.
+            The relevant integral is
+            \begin{equation}
+            \label{eq:49}
+            \int\limits_{-\infty}^{\infty} dt \frac{ct}{(b^2 + c^2t^2)^{3/2}},
+            \end{equation}
+
+            which is an odd function integrated over a symmetric domain and hence vanishes.
+
+            We have
+            \begin{equation}
+            \label{eq:51}
+            \dot{\vec{\delta x}} = \begin{pmatrix}
+\frac{m_{G}}{m_{I}} \frac{2GM}{cb} \\
+0 \\
+0
+ \end{pmatrix}
+            \end{equation}
+            so that the deflection angle magnitude is
+            \begin{equation}
+            \label{eq:52}
+            | \vec{\alpha} | = \left | -\frac{\dot{\vec{\delta x}}}{ | \dot{\vec{x}}_{(0)} | } \right | = \left| \frac{\dot{\vec{\delta x}}}{c} \right| = \frac{m_{G}}{m_I} \frac{2GM}{c^2 b},
+            \end{equation}
+            as desired.
+		      \end{answer}
+          Observations of the position of stars during solar eclipses are consistent with the angle predicted by general relativity,
+          \begin{equation}
+          \label{eq:25}
+          | \vec{\alpha} | = \frac{4GM}{c^2 b}.
+          \end{equation}
+		\item Evaluate the approximate size of the deflection angle in arcseconds for stars observed near the solar disk during an eclipse.
+\begin{answer}
+  For a star observed just at the edge of the solar disk, the impact parameter \( b \) is approximately the radius of the sun, \( R \approx 6.96 \times 10^8 \text{ m} \).
+  Using the mass of the Sun \( M \approx 1.99 \times 10^{30} \text{ kg} \),
+  the gravitational constant \( G \approx 6.67408 \times 10^{-11} \text{ m}^3 \text{ kg}^{-1} \text{ s}^{-2} \), and the speed of light \( c \approx 2.9 \times 10^8 \text{ m s}^{-1} \), we can evaluate the predicted deflection angle as
+		      \begin{equation}
+            \begin{aligned}
+		      \label{eq:deflection_eval}
+		      |\vec{\alpha}| &= \frac{4GM}{c^2 b} = \frac{4 (6.67408 \times 10^{-11}) (1.99 \times 10^{30})}{(2.9 \times 10^8)^2 (6.96 \times 10^8)} \\ &\approx
+		      		      8.48 \times 10^{-6} \text{ radians}.
+              \end{aligned}
+		      \end{equation}
+          Converting to arcseconds, we have
+		      \begin{equation}
+		      \label{eq:deflection_arcsec}
+		      |\vec{\alpha}| \approx 1.75 \text{ arcseconds}.
+		      \end{equation}
+		      \end{answer}
+	\end{enumerate}
 \end{problem}
 
 \begin{problem}{3}\hfill
-  \begin{enumerate}[label=(\alph*)]
-    \item Show that the galilean boosts leave invariant the time interval between two events \( (t_1, \vec{x}_1), (t_2, \vec{x}_{2}) \), and the spatial distance between two simultaneous events \( (t_1, \vec{x}_1), (t_1, \vec{x}_2) \).
-    \item Show that the Lorentz boosts (in natural units) leave the spacetime interval between two events \( x_1^{\mu} \) and \( x_2^{\mu} \) invariant.
-  \end{enumerate}
+	\begin{enumerate}[label=(\alph*)]
+		\item Show that the galilean boosts leave invariant the time interval between two events \( (t_1, \vec{x}_1), (t_2, \vec{x}_{2}) \), and the spatial distance between two simultaneous events \( (t_1, \vec{x}_1), (t_1, \vec{x}_2) \).
+          \begin{proof}
+            For the time interval, let \( (t_1, \vec{x}_1), (t_2, \vec{x_2}) \) be two events, and boost both by some velocity \( \vec{v} \).
+            Then, by definition, \( t_1^{\prime} = t_1, t_2^{\prime} = t_2 \), and therefore \( t_2^{\prime} - t_1^{\prime} = t_2 - t_1 \).
+
+            For spatial invariance, let \( t_1 = t_2 = t \).
+            We then have that
+            \begin{equation}
+            \label{eq:53}
+            |\vec{x_2}^{\prime} - \vec{x_1}^{\prime}| = |(\vec{x_2} + vt) - (\vec{x_1} + vt)| = |(\vec{x_2} - \vec{x_1}) + v(t-t)| = |\vec{x_2} - \vec{x_1}|.
+            \end{equation}
+          \end{proof}
+		\item Show that the Lorentz boosts (in natural units) leave the spacetime interval between two events \( x_1^{\mu} \) and \( x_2^{\mu} \) invariant.
+          \begin{proof}
+            For ease of notation, define \(\Delta t = t_2 - t_1\), \(\Delta \vec{x} = \vec{x_2} - \vec{x_1} \).
+            Appling a Lorentz boost of \( \vec{v} \) to both gives
+            \begin{equation}
+            \label{eq:54}
+            \Delta t^{\prime} = \gamma(\Delta t + \vec{v} \cdot \Delta x), \quad \Delta \vec{x^{\prime}} = \Delta \vec{x} + (\gamma - 1) \frac{\vec{v} \cdot \Delta \vec{x}}{v^2} \vec{v} + \gamma \vec{v} \Delta t.
+            \end{equation}
+
+            The invariant interval is \( \Delta s^2 = -(\Delta t)^2 + | \Delta \vec{x} |^2 \).
+            We have that
+            \begin{equation}
+            \label{eq:55}
+            (\Delta t^{\prime})^2 = \gamma^2 \left( (\Delta t)^2 + 2 \Delta t(\vec{v} \cdot \Delta \vec{x}) + (\vec{v} \cdot \Delta \vec{x})^2 \right),
+            \end{equation}
+            and
+            \begin{equation}
+            \begin{aligned}
+            \label{eq:56}
+            | \Delta \vec{x^{\prime}} | ^2 &= | \Delta \vec{x} | ^2 + 2\Delta \vec{x} \cdot \vec{v} \left( (\gamma-1) \frac{\vec{v} \cdot \Delta \vec{x}}{v^2} + \gamma \Delta t \right) + | \vec{v} |^2 \left( (\gamma-1) \frac{v \cdot \Delta \vec{x}}{v^2} + \gamma \Delta t \right)^2 \\
+                                           &= |\Delta \vec{x} |^2 + (\vec{v} \cdot \Delta \vec{x})^2 \left( \frac{2(\gamma - 1)}{v^2} + \frac{(\gamma-1)^2}{v^2} \right) \\ &\quad + \Delta t(\vec{v} \cdot \Delta \vec{x}) \left( 2\gamma + 2\gamma(\gamma-1) \right) + \gamma^2 v^2 (\Delta t)^2 \\\\
+              &= | \Delta x |^2 + \gamma^2(\vec{v} \cdot \Delta \vec{x})^2 + 2 \gamma^2 \Delta t(\vec{v} \cdot \Delta \vec{x}) + \gamma^2v^2(\Delta t)^2,
+            \end{aligned}
+            \end{equation}
+            where we have used the fact that \( \frac{\gamma^2 -1}{v^2} = \gamma^2 \).
+
+            The full invariant interval is now
+            \begin{equation}
+            \begin{aligned}
+            \label{eq:57}
+              -(\Delta t^{\prime})^2 + |\Delta \vec{x^{\prime}} |^2 &= -\gamma^2(\Delta t)^2 - 2\gamma^2 \Delta t (\vec{v} \cdot \Delta \vec{x}) - \gamma^2( \vec{v} \cdot \Delta x )^2 + |\Delta x |^2 \\ & \quad + \gamma^2 (\vec{v} \cdot \Delta \vec{x})^2 + 2 \gamma^2 \Delta t (\vec{v} \cdot \Delta \vec{x}) + \gamma^2 v^2 (\Delta t)^2 \\\\
+              &= | \Delta \vec{x} |^2 - \gamma^2 (\Delta t)^2 + \gamma^2 v^2 (\Delta t)^2 \\
+              &= |\Delta \vec{x} |^2 - \gamma^2 (1-v^2)(\Delta t)^2 \\
+              &= -(\Delta t)^2 + | \Delta \vec{x} |^2.
+            \end{aligned}
+            \end{equation}
+          \end{proof}
+	\end{enumerate}
 \end{problem}
 
 \begin{problem}{4}\hfill
-  \begin{enumerate}[label=(\alph*)]
-    \item Show that a galilean boost in the \( x \) direction with velocity \( v_1 \) followed by another in the same direction with velocity \( v_2 \) is the same as a single such boost with velocity \( v_1 + v_2 \).
-    \item Show that a similar chain of two Lorentz boosts in the same direction is the same a single such boost with velocity
-          \begin{equation}
-          \label{eq:15}
-          \frac{v_{1} + v_2}{1 + v_1v_2}.
+	\begin{enumerate}[label=(\alph*)]
+		\item Show that a Galilean boost in the \( x \) direction with velocity \( v_1 \) followed by another in the same direction with velocity \( v_2 \) is the same as a single such boost with velocity \( v_1 + v_2 \).
+          \begin{proof}
+            The first boost is
+            \begin{equation}
+            \label{eq:63}
+            \begin{cases}
+              t \mapsto t \\
+              x^1 \mapsto x^1 - v_1t \\
+              x^{2,3} \mapsto x^{2,3}
+            \end{cases},
           \end{equation}
-  \end{enumerate}
+          and our second boost is
+          \begin{equation}
+          \label{eq:22}
+            \begin{cases}
+              t \mapsto t \\
+              x^{1} - v_1t \mapsto x^{1} - v_1t - v_2t \\
+              x^{2,3} \mapsto x^{2,3}
+            \end{cases}.
+          \end{equation}
+          Tracking the composition and factoring out \( t \), the total boost is
+          \begin{equation}
+          \label{eq:23}
+          \begin{cases}
+            t \mapsto t \\
+            x^{1} \mapsto x^{1} - (v_1 + v_2)t \\
+            x^{2,3} \mapsto x^{2,3}
+          \end{cases},
+        \end{equation}
+        which is, by definition, the Galilean boost in the \( x \)-direction of velocity \( v_1 + v_2 \).
+          \end{proof}
+		\item Show that a similar chain of two Lorentz boosts in the same direction is the same a single such boost with velocity
+		      \begin{equation}
+			      \label{eq:15}
+			      \frac{v_{1} + v_2}{1 + v_1v_2}.
+		      \end{equation}
+          \begin{proof}
+            Let our frames \( F, F^{\prime}, F^{\prime\prime} \) be related by sequential Lorentz boosts along the \( x \)-axis with velocities \( v_{1} \) and \( v_2 \), respectively.
+            Let us supress \( x^{2,3} \) and call \( x^1 = x \) for convenience, as both are invariant under the Lorentz boost in the \( x \)-direction.
+            The first boost is
+            \begin{equation}
+            \label{eq:58}
+            t^{\prime} = \gamma_1(t- v_1x), \quad x^{\prime} = \gamma_1(x- v_1t),
+            \end{equation}
+            and the second is
+            \begin{equation}
+            \label{eq:59}
+            t^{\prime\prime} = \gamma_2(t^{\prime} - v_2x^{\prime}), \quad x^{\prime\prime} = \gamma_2(x^{\prime} - v_2 t^{\prime}).
+            \end{equation}
+
+            If we plug \cref{eq:58} into \cref{eq:59} we get, for \( x^{\prime\prime} \),
+            \begin{equation}
+            \begin{aligned}
+            \label{eq:60}
+              x^{\prime\prime} &= \gamma_2 \left( \gamma_1(x - v_1t) - v_2\gamma_1(t - v_1x) \right) \\
+                     &= \gamma_{1}\gamma_2\left(x - v_1t - v_2t + v_1v_2x\right) \\
+                     &= \gamma_1\gamma_2 \left( (1+v_1v_2)x - (v_1+v_2)t \right) \\
+              &= \gamma_1\gamma_2(1+v_1v_2) \left( x - \frac{v_{1} + v_2}{1 + v_1v_2}t \right),
+            \end{aligned}
+            \end{equation}
+            and for \( t^{\prime\prime} \),
+            \begin{equation}
+            \begin{aligned}
+            \label{eq:61}
+              t^{\prime\prime} &= \gamma_1\gamma_2 \left( t - v_1x - v_2x + v_1v_2t \right) \\
+                     &= \gamma_1\gamma_2 \left( (1+v_1v_2)t - (v_1 + v_2)x \right) \\
+              &= \gamma_1\gamma_2(1+v_1v_2) \left( t - \frac{v_1+v_2}{1 + v_1v_2}x \right).
+            \end{aligned}
+            \end{equation}
+
+            Now, defining the combined velocity \( v \) as in the claim, it remains to show that \( \gamma_1\gamma_2(1+v_1v_2) = \gamma_v \).
+
+            \begin{equation}
+            \begin{aligned}
+            \label{eq:62}
+              \gamma_v^2 &= \frac{1}{1 - (\frac{v_{1} + v_2}{1 + v_1v_2})^2} \\
+                    &= \frac{(1+v_{1}v_2)^2}{(1+v_1v_2)^2 - (v_1 + v_2)^2} \\
+                    &= \frac{(1+v_{1}v_2)^2}{1 + 2v_1v_2 + v_1^2v_2^2 - v_1^2 - 2v_1v_2 - v_2^2} \\
+                    &= \frac{(1 + v_{1}v_2)^2}{1 - v_1^2 - v_2^2 + v_1^2v_2^2} \\
+                    &= \frac{(1+v_{1}v_2)^2}{(1-v_1^2)(1-v_2^2)} \\
+              &= \gamma_1^2\gamma_2^2(1+ v_1v_2)^2,
+            \end{aligned}
+            \end{equation}
+
+            and hence \(\gamma_v\) = \(\gamma_1\gamma_2(1+v_1v_2)\), as desired.
+            Our claim follows from here.
+          \end{proof}
+	\end{enumerate}
 \end{problem}
 
 \begin{problem}{5 (Carroll 1.7)}
-  Suppose that in Minkowski space we have contravariant rank 2 tensor with components
-  \begin{equation}
-  \label{eq:1}
-  \tensor{X}{^{\mu\nu}_{}} = \begin{pmatrix}
-2   & 0 & 1 & -1 \\
--1  & 0 & 3 & 2 \\
--1  & 1 & 0 & 0 \\
--2  & 1 & 1 & -2
-  \end{pmatrix},
-  \end{equation}
-  and a vector with components
-  \begin{equation}
-  \label{eq:2}
-  \tensor{V}{^{\mu}_{}} = \begin{pmatrix}
--1  & 2 & 0 & -2
- \end{pmatrix}.
-  \end{equation}
-  Find the components of the following:
-  \begin{enumerate}[label=(\alph*)]
-    \item \( \tensor{X}{^{\mu}_{\nu}} \)
-    \item \( \tensor{X}{_{\mu}^{\nu}} \)
-    \item \( \tensor{X}{^{(\mu\nu)}_{}} \)
-    \item \( \tensor{X}{^{}_{[\mu\nu]}} \)
-    \item \( \tensor{X}{^{\lambda}_{\lambda}} \)
-    \item \( \tensor{V}{^{\mu}_{}}\tensor{V}{^{}_{\mu}} \)
-    \item \( \tensor{V}{^{}_{\mu}} \tensor{X}{^{\mu\nu}_{}}\)
-  \end{enumerate}
+	Suppose that in Minkowski space we have contravariant rank 2 tensor with components
+	\begin{equation}
+		\label{eq:1}
+		\tensor{X}{^{\mu\nu}_{}} = \begin{pmatrix}
+			2  & 0 & 1 & -1 \\
+			-1 & 0 & 3 & 2  \\
+			-1 & 1 & 0 & 0  \\
+			-2 & 1 & 1 & -2
+		\end{pmatrix},
+	\end{equation}
+	and a vector with components
+	\begin{equation}
+		\label{eq:2}
+		\tensor{V}{^{\mu}_{}} = \begin{pmatrix}
+			-1 & 2 & 0 & -2
+		\end{pmatrix}.
+	\end{equation}
+	Find the components of the following:
+	\begin{enumerate}[label=(\alph*)]
+		\item \( \tensor{X}{^{\mu}_{\nu}} \)
+\begin{answer}
+		      We lower the second index, \( \tensor{X}{^{\mu}_{\nu}} = \eta_{\rho\nu} \tensor{X}{^{\mu\rho}}  \), which flips the sign of the first column of \( X \),
+		      \begin{equation}
+		      \tensor{X}{^{\mu}_{\nu}} = \begin{pmatrix}
+		          -2 & 0 & 1 & -1 \\
+		          1 & 0 & 3 & 2 \\
+		          1 & 1 & 0 & 0 \\
+		          2 & 1 & 1 & -2
+		      \end{pmatrix}.
+		      \end{equation}
+		      \end{answer}
+		\item \( \tensor{X}{_{\mu}^{\nu}} \)
+\begin{answer}
+  We lower the first index as \( \eta_{\mu\rho} \tensor{X}{^{\rho\nu}} \).
+  This flips the sign of the first row,
+		      \begin{equation}
+		      \tensor{X}{_{\mu}^{\nu}} = \begin{pmatrix}
+		          -2 & 0 & -1 & 1 \\
+		          -1 & 0 & 3 & 2 \\
+		          -1 & 1 & 0 & 0 \\
+		          -2 & 1 & 1 & -2
+		      \end{pmatrix}.
+		      \end{equation}
+		      \end{answer}
+		\item \( \tensor{X}{^{(\mu\nu)}_{}} \)
+\begin{answer}
+		      Symmetrization of the indices is \( \frac{1}{2}(\tensor{X}{^{\mu\nu}} + \tensor{X}{^{\nu\mu}}) \).
+		      \begin{equation}
+            \begin{aligned}
+		      \tensor{X}{^{(\mu\nu)}} &= \frac{1}{2} \left[ \begin{pmatrix}
+			2  & 0 & 1 & -1 \\
+			-1 & 0 & 3 & 2  \\
+			-1 & 1 & 0 & 0  \\
+			-2 & 1 & 1 & -2
+		      \end{pmatrix} +
+		      \begin{pmatrix}
+			2  & -1 & -1 & -2 \\
+			0 & 0 & 1 & 1  \\
+			1 & 3 & 0 & 1  \\
+			-1 & 2 & 0 & -2
+		      \end{pmatrix} \right] \\ &=
+		      \begin{pmatrix}
+		          2 & -1/2 & 0 & -3/2 \\
+		          -1/2 & 0 & 2 & 3/2 \\
+		          0 & 2 & 0 & 1/2 \\
+		          -3/2 & 3/2 & 1/2 & -2
+		      \end{pmatrix}.
+              \end{aligned}
+		      \end{equation}
+		      \end{answer}
+		\item \( \tensor{X}{^{}_{[\mu\nu]}} \)
+\begin{answer}
+		      First, we must lower both indices, \( \tensor{X}{_{\mu\nu}} = \eta_{\mu\rho}\eta_{\nu\sigma}\tensor{X}{^{\rho\sigma}} \). This flips the signs of both the first row and first column besides the \( (\mu,\nu) = (0,0) \) entry,
+		      \begin{equation}
+		      \tensor{X}{_{\mu\nu}} = \begin{pmatrix}
+		          2 & 0 & -1 & 1 \\
+		          1 & 0 & 3 & 2 \\
+		          1 & 1 & 0 & 0 \\
+		          2 & 1 & 1 & -2
+		      \end{pmatrix}.
+		      \end{equation}
+		      Now we antisymmetrize, \( \frac{1}{2}(\tensor{X}{_{\mu\nu}} - \tensor{X}{_{\nu\mu}}) \),
+		      \begin{equation}
+            \begin{aligned}
+		      \tensor{X}{_{[\mu\nu]}} &= \frac{1}{2} \left[ \begin{pmatrix}
+		          2 & 0 & -1 & 1 \\
+		          1 & 0 & 3 & 2 \\
+		          1 & 1 & 0 & 0 \\
+		          2 & 1 & 1 & -2
+		      \end{pmatrix} -
+		      \begin{pmatrix}
+		          2 & 1 & 1 & 2 \\
+		          0 & 0 & 1 & 1 \\
+		          -1 & 3 & 0 & 1 \\
+		          1 & 2 & 0 & -2
+		      \end{pmatrix} \right] \\ &=
+		      \begin{pmatrix}
+		          0 & -1/2 & -1 & -1/2 \\
+		          1/2 & 0 & 1 & 1/2 \\
+		          1 & -1 & 0 & -1/2 \\
+		          1/2 & -1/2 & 1/2 & 0
+		      \end{pmatrix}.
+              \end{aligned}
+		      \end{equation}
+		      \end{answer}
+		\item \( \tensor{X}{^{\lambda}_{\lambda}} \)
+\begin{answer}
+  This is the trace of the mixed tensor we found in part (a).
+  Summing the diagonal elements of \( \tensor{X}{^{\mu}_{\nu}} \) gives
+		      \begin{equation}
+		      \tensor{X}{^{\lambda}_{\lambda}} = -2 + 0 + 0 - 2 = -4.
+		      \end{equation}
+		      \end{answer}
+		\item \( \tensor{V}{^{\mu}_{}}\tensor{V}{^{}_{\mu}} \)
+\begin{answer}
+  First, lower the index of \( V^\mu \) to get the dual vector \( V_\mu = \eta_{\mu\nu} V^\nu = (1, 2, 0, -2)\).
+		      \begin{equation}
+		      \tensor{V}{^{\mu}}\tensor{V}{_{\mu}} = (-1)(1) + (2)(2) + (0)(0) + (-2)(-2) = -1 + 4 + 0 + 4 = 7.
+		      \end{equation}
+		      \end{answer}
+		\item \( \tensor{V}{^{}_{\mu}} \tensor{X}{^{\mu\nu}_{}}\)
+\begin{answer}
+		      \begin{equation}
+		      \begin{aligned}
+		      V_\mu X^{\mu\nu} &= 1 \begin{pmatrix} 2 & 0 & 1 & -1 \end{pmatrix} + 2 \begin{pmatrix} -1 & 0 & 3 & 2 \end{pmatrix} + 0 \begin{pmatrix} -1 & 1 & 0 & 0 \end{pmatrix} - 2 \begin{pmatrix} -2 & 1 & 1 & -2 \end{pmatrix} \\
+		      &= \begin{pmatrix} 2 & 0 & 1 & -1 \end{pmatrix} + \begin{pmatrix} -2 & 0 & 6 & 4 \end{pmatrix} + \begin{pmatrix} 0 & 0 & 0 & 0 \end{pmatrix} + \begin{pmatrix} 4 & -2 & -2 & 4 \end{pmatrix} \\
+		      &= \begin{pmatrix} 4 & -2 & 5 & 7 \end{pmatrix}.
+		      \end{aligned}
+		      \end{equation}
+		      So the resulting dual vector has components \( (4, -2, 5, 7) \).
+		      \end{answer}
+	\end{enumerate}
 \end{problem}
 \end{document}
