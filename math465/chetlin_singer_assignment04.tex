@@ -14,13 +14,15 @@ All problems from Do Carmo, \textit{Differential Geometry of Curves and Surfaces
 	Show that \( d f_p(w) = 2w \cdot (p-p_0) \), \( w \in T_pS \).
 \end{problem}
 \begin{proof}
-  \( w \in T_pS \), so we can write, for some parametrization \( \mathbf{x} \), \( w = \frac{\mathrm{d} x^{i}}{\mathrm{d} t} \partial_i \) for some \( x^i(t) \).
-  Let \(\alpha\) be the curve determined by these \( x^i \), so that \(\alpha(0)=p\), \(\alpha^{\prime}(0) = w\).
-  Then by definition of the differential,
-  \begin{equation}
-  \label{eq:8}
-  df_p(w) = (f \circ \alpha)^{\prime}(0) = \frac{\partial f}{\partial x^i} \frac{\mathrm{d} \alpha^i}{\mathrm{d} t} \eval_{t = 0}.
-  \end{equation}
+	Let \(\alpha: I \rightarrow S\) be a curve on the surface such that \(\alpha(0)=p\) and \(\alpha^{\prime}(0)=w\).
+	Then by definition of the differential,
+	\begin{equation}
+		\label{eq:5}
+		\begin{aligned}
+			df_p(w) & = (f \circ \alpha)^{\prime}(0) = \frac{\mathrm{d} }{\mathrm{d} t}\left( \left| \alpha(t) - p_0 \right|^2 \right) \eval_{t=0} = 2 \left| \alpha(t) - p_0 \right| \frac{\mathrm{d} }{\mathrm{d} t}|\alpha(t)-p_0| \eval_{t=0} \\
+			        & = 2 \left| p-p_0 \right| \frac{2 \langle \alpha^{\prime}(t), \alpha(t) - p_{0} \rangle}{2 |\alpha(t) - p_{0}|} \eval_{t=0} = 2 \langle w, p - p_{0} \rangle.
+		\end{aligned}
+	\end{equation}
 \end{proof}
 
 \begin{problem}{2.4.8}
@@ -30,6 +32,9 @@ All problems from Do Carmo, \textit{Differential Geometry of Curves and Surfaces
 		dL_p(w) = L(w), \quad p \in S, w \in T_pS.
 	\end{equation}
 \end{problem}
+\begin{proof}
+
+\end{proof}
 
 \begin{problem}{2.4.10 (Tubular Surfaces)}
 	Let \(\alpha: I \rightarrow \mathbb{R}^3\) be a regular parametrized curve with nonzero curvature everywhere and arc length as parameter.
@@ -45,14 +50,99 @@ All problems from Do Carmo, \textit{Differential Geometry of Curves and Surfaces
 		\nu(s,v) = -(N(s)\cos v + B(s) \sin v).
 	\end{equation}
 \end{problem}
+\begin{proof}
+
+\end{proof}
 
 \begin{problem}{2.5.1}
 	Compute the first fundamental forms of the following parametrized surfaces where they are regular:
 	\begin{enumerate}[label=(\alph*)]
 		\item \( \mathbf{x}(u,v) = (a \sin u \cos v, b \sin u \sin v, c \cos u) \); ellipsoid.
+		      \begin{answer}
+			      \( I_{ij} = \langle \mathbf{x}_i, \mathbf{x}_j  \rangle \).
+			      Hence,
+			      \begin{equation}
+				      \label{eq:6}
+				      \begin{aligned}
+					      I_{11} & = \langle (a\cos u \cos v, b \cos u \sin v, -c\sin u), (a\cos u \cos v, b \cos u \sin v, -c\sin u) \rangle \\
+					             & = a^2 \cos^2 u \cos^2 v + b^2 \cos^2 u \sin^2 v + c^2 \sin^2 u.
+				      \end{aligned}
+			      \end{equation}
+
+			      \begin{equation}
+				      \label{eq:7}
+				      \begin{aligned}
+					      I_{22} & = a^2 \sin^2 u \sin^2 v + b^2 \sin^2 u \cos^2 v.
+				      \end{aligned}
+			      \end{equation}
+
+			      \begin{equation}
+				      \label{eq:8}
+				      \begin{aligned}
+					      I_{12} & = I_{21} = a^2(-\cos u \sin u \cos v \sin v) + b^2(\cos u \sin v \sin u \cos v) \\
+					             & = (b^2 - a^2)(\cos u \cos v \sin u \sin v).
+				      \end{aligned}
+			      \end{equation}
+		      \end{answer}
 		\item \( \mathbf{x}(u,v) = (au \cos v, bu\sin v, u^2) \); elliptic paraboloid.
+		      \begin{answer}
+			      \begin{equation}
+				      \label{eq:9}
+				      \begin{aligned}
+					      I_{11} = a^2 \cos^2 v + b^2 \sin^2 v + 4 u^2.
+				      \end{aligned}
+			      \end{equation}
+			      \begin{equation}
+				      \label{eq:10}
+				      \begin{aligned}
+					      I_{22} = a^2 u^2 \sin^2 v + b^2 u^2 \cos^2 v.
+				      \end{aligned}
+			      \end{equation}
+
+			      \begin{equation}
+				      \label{eq:11}
+				      \begin{aligned}
+					      I_{12} & = I_{21} = a^2(-u\cos v\sin v) + b^2(u\sin v \cos v) \\
+					             & = (b^2 - a^2)(u \cos v \sin v).
+				      \end{aligned}
+			      \end{equation}
+		      \end{answer}
 		\item \( \mathbf{x}(u,v) = (au \cosh v, bu \sinh v, u^2) \); hyperbolic paraboloid.
+		      \begin{answer}
+			      \begin{equation}
+				      \label{eq:12}
+				      \begin{aligned}
+					      I_{11} & = a^2 \cosh^2 v + b^2 \sinh^2 v + 4 u^2. \\
+					      I_{22} & = a^2 u^2\sinh^2 v + b^2 u^2 \cosh^2 v.
+				      \end{aligned}
+			      \end{equation}
+
+            \begin{equation}
+            \label{eq:13}
+            \begin{aligned}
+              I_{12} &= I_{21} = a^2(u \cosh v \sinh v) + b^2(u \sinh v \cosh v) \\
+              &= (a^2 + b^2)(u \cosh v \sinh v).
+            \end{aligned}
+            \end{equation}
+		      \end{answer}
 		\item \( \mathbf{x}(u,v) = (a \sinh u \cos v, b \sinh u \sin v, c \cosh u) \); hyperboloid of two sheets.
+          \begin{answer}
+            \begin{equation}
+            \label{eq:15}
+            \begin{aligned}
+              I_{11} &= a^2 \cosh^2u \cos^2 v + b^2 \cosh^2 u \sin^2 v + c^2 \sinh^2 u. \\
+              I_{22} &= a^2 \sinh^2 u \sin^2 v + b^2 \sinh^2 u \cos^2 v.
+            \end{aligned}
+            \end{equation}
+
+            \begin{equation}
+            \label{eq:16}
+            \begin{aligned}
+              I_{12} &= I_{21} = a^2(-\cosh u \sinh u \cos v \sin v) + b^2(\cosh u \sinh u \cos v \sin v) \\
+              &= (b^2 - a^2)(\cosh u \sinh u \cos v \sin v).
+            \end{aligned}
+            \end{equation}
+          \end{answer}
 	\end{enumerate}
 \end{problem}
 
