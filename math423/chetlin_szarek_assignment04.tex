@@ -1,0 +1,200 @@
+\documentclass[11pt]{article}
+
+\usepackage{../homework}
+
+\profname{Dr. Stanislaw Szarek}
+\assignnum{Assignment 04}
+\duedate{21 September 2026}
+\classcode{MATH 423 Measure Theory}
+
+\begin{document}
+All problems from Folland, \textit{Real Analysis} (2e).
+\begin{problem}{1.4.17}
+	If \(\mu^{*}\) is an outer measure on \( X \) and \( \{A_j\}_1^{\infty} \) is a sequence of disjoint \( \mu^{*} \)-measureable sets, then \( \mu^{*}\left( E \cap (\bigcup_1^{\infty} A_j) \right) = \sum\limits_1^{\infty}\mu^{*}(E \cap A_j) \) for any \( E \in X \).
+\end{problem}
+\begin{proof}
+	The \( \leq \) direction is immediate from subadditivity of \(\mu^{*}\), so it will suffice to show that \(\mu^{*}(E \cap (\bigcup_{1}^{\infty}A_j)) \geq \sum\limits_1^{\infty}\mu^{*}(E \cap A_j)\).
+	We begin with the finite case, that for any \( n \in \mathbb{N} \), \(\mu^{*}(E \cap (\bigcup_1^n A_j)) = \sum\limits_1^n \mu^{*}(E \cap A_j)\).
+	The base case, \( n=1 \), is
+	\begin{equation}
+		\label{eq:1}
+		\mu^{*}(E \cap A_1) = \mu^{*}(E \cap A_1).
+	\end{equation}
+	Now, suppose \(\mu^{*}(E \cap (\bigcup_1^{n-1} A_j)) = \sum\limits_1^{n-1} \mu^{*}(E \cap A_j)\).
+	Define \( B_n = \bigcup_1^{n} A_j \), and \( B = \bigcup_1^{\infty} A_j \).
+	By \(\mu^{*}\)-measurability of \( A_n \) and the pairwise disjointness of \( \{A_j\} \),
+	\begin{equation}
+		\label{eq:3}
+		\begin{aligned}
+			\mu^{*}(E \cap B_n) & = \mu^{*}(E \cap B_n \cap A_n) + \mu^{*}(E \cap B_n \cap A_n^C) \\
+			                    & = \mu^{*}(E \cap A_n) + \mu^{*}(E \cap B_{n-1})                 \\
+			                    & = \mu^{*}(E \cap A_n) + \mu^{*}(E \cap (\bigcup_1^{n-1}A_j)).
+		\end{aligned}
+	\end{equation}
+	Now, by our inductive hypothesis, we can write the second term on the right hand side as \( \sum\limits_1^{n-1} \mu^{*}(E \cap A_j) \), which reduces \cref{eq:3} to the desired identity
+	\begin{equation}
+		\label{eq:4}
+		\mu^{*}(E \cap (\bigcup_1^n A_j)) = \sum\limits_1^n \mu^{*}(E \cap A_j).
+	\end{equation}
+
+	Now, \( E \cap B_{n} \subset E \cap B \), so by monotonicity, for all \( n \),
+	\begin{equation}
+		\label{eq:5}
+		\mu^{*}(E \cap (\bigcup_1^{\infty} A_j)) \geq \mu^{*}(E \cap (\bigcup_1^{n} A_j)) = \sum\limits_1^n \mu^{*}(E \cap A_j).
+	\end{equation}
+	Passing to the limit \( n \rightarrow \infty \) then gives
+	\begin{equation}
+		\label{eq:6}
+		\mu^{*}(E \cap (\bigcup_1^{\infty} A_j)) \geq \sum\limits_1^{\infty} \mu^{*}(E \cap A_j).
+	\end{equation}
+\end{proof}
+
+\begin{problem}{1.4.18(a,b)}
+	Let \( \mathcal{A} \subset \mathcal{P}(X) \) be an algebra, \( \mathcal{A}_{\sigma} \) the collection of countable unions of sets in \( \mathcal{A} \), and \( \mathcal{A}_{\sigma\delta} \) the collection of countable intersections of sets in \( A_{\sigma} \).
+	Let \( \mu_0 \) be a premeasure on \( \mathcal{A} \) and \( \mu^{*} \) the induced outer measure.  \begin{enumerate}[label=(\alph*)]
+		\item For any \( E \subset X \) and \(\epsilon > 0\) there exists \( A \in \mathcal{A}_{\sigma} \) with \( E \subset A\) and \( \mu^{*}(A) \leq \mu^{*}(E) + \epsilon \).
+		      \begin{proof}
+			      The induced outer measure \(\mu^{*}\) is defined as \(\mu^{*}(E) = \inf \sum\limits_1^{\infty} \mu_0(I_j)\) where the infimum is taken over covers \( \{I_j\} \subset \mathcal{A} \) of \( E \).
+			      Since \( \mu^{*}(E) \) is the greatest lower bound, for all \(\epsilon > 0\) there is some cover \( \{I_j\} \subset \mathcal{A} \) such that \( \mu^{*}(E) \leq \sum\limits_1^{\infty} \mu_0(I_j)  \leq \mu^{*}(E) + \epsilon\).
+			      If we then take \( A \coloneq \bigcup_1^{\infty} I_j \), we have, by subadditivity,
+			      \begin{equation}
+				      \label{eq:7}
+				      \mu^{*}(A) \leq \sum\limits_1^{\infty} \mu^{*}(I_{j}) \leq \sum\limits_1^{\infty} \mu_0(I_j) \leq \mu^{*}(E) + \epsilon.
+			      \end{equation}
+		      \end{proof}
+		\item If \(\mu^{*}(E) < \infty\), then \( E \) is \( \mu^{*} \)-measurable only if there exists \( B \in A_{\sigma\delta} \) with \( E \subset B \) and \( \mu^{*}(B \setminus E) = 0 \).
+		      \begin{proof}
+			      Suppose \( \mu^{*}(E) < \infty \) and \( E \) is \(\mu^{*}\)-measurable, that is, for all \( B \in \mathcal{A} \), \( \mu^{*}(E) = \mu^{*}(E \cap B) + \mu^{*}(E \cap B^C) \).
+
+			      By part (a), for all \( n \in \mathbb{N} \) there exists \( A_n \in \mathcal{A}_{\sigma} \) such that \( E \subset A_n \) and
+			      \begin{equation}
+				      \label{eq:8}
+				      \mu^{*}(A_n) \leq \mu^{*}(E) + \frac{1}{n}.
+			      \end{equation}
+			      Lets define \( A_{\sigma\delta} \ni B = \bigcap_1^{\infty} A_n \), so that, by the \(\mu^{*}\)-measurability of \( E \subset A_n \),
+			      \begin{equation}
+				      \label{eq:9}
+				      \mu^{*}(A_n) = \mu^{*}(A_{n} \cap E) + \mu^{*}(A_{n} \cap E^C) = \mu^{*}(E) + \mu^{*}(A_{n} \setminus E).
+			      \end{equation}
+			      This in turn implies that
+			      \begin{equation}
+				      \label{eq:10}
+				      \mu^{*}(A_{n} \setminus E) = \mu^{*}(A_n) - \mu^{*}(E) \leq \frac{1}{n},
+			      \end{equation}
+			      and since for all \( n \), \( B \setminus E \subset A_n \setminus E\), we apply monotonicity to yield
+			      \begin{equation}
+				      \label{eq:11}
+				      0 \leq \mu^{*}(B \setminus E) \leq \mu^{*}(A_n \setminus E) \leq \frac{1}{n} \setminus).
+			      \end{equation}
+			      Taking the limit \( n \rightarrow \infty \) gives the desired result
+			      \begin{equation}
+				      \label{eq:12}
+				      \mu^{*}(B \setminus E) = \frac{1}{n}.
+			      \end{equation}
+		      \end{proof}
+	\end{enumerate}
+\end{problem}
+
+\begin{problem}{1.4.19}
+	Let \( \mu^{*} \) be an outer measure on \( X \) induced from a finite premeasure \(\mu_0\).
+	If \( E \subset X \), define the inner measure of \( E \) to be \(\mu_{*}(E)= \mu_0(X) - \mu^{*}(E^C)\).
+	Then \( E \) is \( \mu^{*} \)-measurable iff \(\mu^{*}(E)= \mu_{*}(E)\).
+\end{problem}
+\begin{proof}
+	(\(\Rightarrow\)) Suppose \( E \subset X \) is \( \mu^{*} \)-measurable.
+	Caratheodory's condition then says that
+	\begin{equation}
+		\label{eq:13}
+		\mu^{*}(X) = \mu^{*}(X \cap E) + \mu^{*}(X \cap E^C) = \mu^{*}(E) + \mu^{*}(E^C).
+	\end{equation}
+	This immediately gives \( \mu^{*}(E) = \mu^{*}(X) - \mu^{*}(E^C) = \mu_0(X) - \mu^{*}(E^C)\) which is, by definition, \(\mu_{*}(E)\).
+
+	(\(\Leftarrow\)) Suppose conversely \( \mu^{*}(E) = \mu_{*}(E) = \mu_0(X) - \mu^{*}(E^C) = \mu^{*}(X) - \mu^{*}(E^C)\) which is equivalent to \( \mu^{*}(E) + \mu^{*}(E^C) = \mu^{*}(X) \).
+  Let \( B \subset X \) be an arbitary \(\mu^{*}\)-measurable set.
+  Then
+  \begin{equation}
+  \label{eq:19}
+  \mu^{*}(X) = \mu^{*}(X \cap B) + \mu^{*}(X \setminus B) = \mu^{*}(E) + \mu^{*}(E^C),
+\end{equation}
+\begin{equation}
+\label{eq:20}
+\mu^{*}(E) = \mu^{*}(E \cap B) + \mu^{*}(E \cap B^C),
+\end{equation}
+and
+\begin{equation}
+\label{eq:21}
+\mu^{*}(E^C) = \mu^{*}(E^C \cap B) + \mu^{*}(E^C \cap B^C).
+\end{equation}
+
+We add \cref{eq:20,eq:21} to get
+\begin{equation}
+\label{eq:22}
+\begin{aligned}
+  \mu^{*}(E) + \mu^{*}(E^C) &= \mu^{*}(E \cap B) + \mu^{*}(E \cap B^C) + \mu^{*}(E^C \cap B) + \mu^{*}(E^C \cap B^C) \\
+  &= \mu^{*}(X).
+\end{aligned}
+\end{equation}
+
+Subadditivity gives that
+\begin{equation}
+\label{eq:23}
+\begin{aligned}
+  \mu^{*}(B) + \mu^{*}(B^C) &\leq \mu^{*}(B \cap E) + \mu^{*}(B \cap E^C) + \mu^{*}(B^C \cap E) + \mu^{*}(B^C \cap E^{C}) \\
+  &= \mu^{*}(X).
+\end{aligned}
+\end{equation}
+However, \cref{eq:19} means that in fact, \(\mu^{*}(B) = \mu^{*}(B \cap E) + \mu^{*}(B \cap E^C)\).
+
+To extend this to the Caratheodory condition, let \( A \subset X \) be arbitrary, \(\epsilon > 0\).
+From 1.4.18(a), we have \( B \in \mathcal{A}_{\sigma} \), \( A \subset B \), \( \mu^{*}(B) \leq \mu^{*}(A) + \epsilon \).
+Applying what we just derived to this \( B \) and appealing to monotonicity,
+\begin{equation}
+\label{eq:24}
+\mu^{*}(A \cap E) + \mu^{*}(A \cap E^C) \leq \mu^{*}(B \cap E) + \mu^{*}(B \cap E^C) = \mu^{*}(B) \leq \mu^{*}(A) + \epsilon.
+\end{equation}
+
+This holds for all \(\epsilon > 0\), so that in fact we have
+\begin{equation}
+\label{eq:25}
+\mu^{*}(A) \geq \mu^{*}(A \cap E) + \mu^{*}(A \cap E^C),
+\end{equation}
+showing \( E \) is \( \mu^{*} \)-measurable, as desired.
+\end{proof}
+
+\begin{problem}{1.5.28}
+	Let \( F \) be increasing and right continuous, and let \(\mu_F\) be the associated measure.
+	Then \(\mu_F(\{a\})=F(a)-F(a-), \mu_F([a,b))= F(b-)-F(a-), \mu_F([a,b])=F(b)-F(a-)\), and \( \mu_F((a,b)) = F(b-) - F(a) \).
+\end{problem}
+\begin{proof}
+	We can write \( \{a\} = \bigcap_1^{\infty} (a-1/n, a] \).
+	Continuity from above gives that
+	\begin{equation}
+		\label{eq:14}
+		\mu_F(\{a\}) = \lim_{n\rightarrow\infty} \mu_F\left( (a-1/n,a] \right) = \lim_{n\rightarrow\infty} \left( F(a) - F(a-1/n) \right),
+	\end{equation}
+	and by right continuity, we have \( \mu_F(\{a\}) = F(a) - F(a-) \).
+
+	Next, write \( [a,b] = (a,b] \cup \{a\} \), so that, using the previous result,
+	\begin{equation}
+		\label{eq:15}
+		\mu_F([a,b]) = \mu_F((a,b]) + \mu_F(\{a\}) = F(b) - F(a) + F(a) - F(a-) = F(b) - F(a-).
+	\end{equation}
+
+	Note that we could have written \( [a,b] = [a,b) \cup \{b\} \), so that
+	\begin{equation}
+		\label{eq:16}
+		\mu_F([a,b]) = \mu_F([a,b)) + \mu_F(\{b\}).
+	\end{equation}
+	Then,
+	\begin{equation}
+		\label{eq:17}
+		\mu_F([a,b)) = \mu_F([a,b]) - \mu_F(\{b\}) = F(b) - F(a-) - F(b) + F(b-) = F(b-) - F(a-).
+	\end{equation}
+
+	Finally, we can use a similar strategy to write \( \mu_F((a,b)) = \mu_F((a,b]) - \mu_F(\{b\}) \), so that
+	\begin{equation}
+		\label{eq:18}
+		\mu_F((a,b)) = F(b) - F(a) - F(b) + F(b-) = F(b-) - F(a).
+	\end{equation}
+\end{proof}
+\end{document}

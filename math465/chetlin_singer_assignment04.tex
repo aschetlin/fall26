@@ -1,0 +1,66 @@
+\documentclass[11pt]{article}
+\usepackage{../homework}
+
+\profname{Dr. David Singer}
+\assignnum{Assignment 04}
+\duedate{28 September 2026}
+\classcode{MATH 465 Differential Geometry}
+
+\begin{document}
+All problems from Do Carmo, \textit{Differential Geometry of Curves and Surfaces} (2e).
+
+\begin{problem}{2.4.7}
+	Let \( f: S \rightarrow \mathbb{R} \) be given by \( f(p)= |p-p_0|^2 \), where \( p \in S \) and \( p_0 \) is a fixed point of \( \mathbb{R}^3 \) (see example 1 of 2-3).
+	Show that \( d f_p(w) = 2w \cdot (p-p_0) \), \( w \in T_pS \).
+\end{problem}
+\begin{proof}
+  \( w \in T_pS \), so we can write, for some parametrization \( \mathbf{x} \), \( w = \frac{\mathrm{d} x^{i}}{\mathrm{d} t} \partial_i \) for some \( x^i(t) \).
+  Let \(\alpha\) be the curve determined by these \( x^i \), so that \(\alpha(0)=p\), \(\alpha^{\prime}(0) = w\).
+  Then by definition of the differential,
+  \begin{equation}
+  \label{eq:8}
+  df_p(w) = (f \circ \alpha)^{\prime}(0) = \frac{\partial f}{\partial x^i} \frac{\mathrm{d} \alpha^i}{\mathrm{d} t} \eval_{t = 0}.
+  \end{equation}
+\end{proof}
+
+\begin{problem}{2.4.8}
+	Prove that if \( L: \mathbb{R}^3 \rightarrow \mathbb{R}^3 \) is a linear map and \( S \subset \mathbb{R}^3 \) is a regular surface invariant under \( L \), i.e., \( L(S) \subset S \), then the restriction \( L|_S \) is a differentiable map and
+	\begin{equation}
+		\label{eq:1}
+		dL_p(w) = L(w), \quad p \in S, w \in T_pS.
+	\end{equation}
+\end{problem}
+
+\begin{problem}{2.4.10 (Tubular Surfaces)}
+	Let \(\alpha: I \rightarrow \mathbb{R}^3\) be a regular parametrized curve with nonzero curvature everywhere and arc length as parameter.
+	Let
+	\begin{equation}
+		\label{eq:2}
+		\mathbf{x}(s,v) = \alpha(s) + r(N(s)\cos v, B(s)\sin v), \quad r = \text{const.} \neq 0, s \in I,
+	\end{equation}
+	be a parametrized surface (the \textit{tube} of radius \( r \) around \(\alpha\)), where \( N \) is the normal vector and \( B \) is the binormal vector of \(\alpha\).
+	Show that, when \( \mathbf{x} \) is regular, its unit normal vector is
+	\begin{equation}
+		\label{eq:3}
+		\nu(s,v) = -(N(s)\cos v + B(s) \sin v).
+	\end{equation}
+\end{problem}
+
+\begin{problem}{2.5.1}
+	Compute the first fundamental forms of the following parametrized surfaces where they are regular:
+	\begin{enumerate}[label=(\alph*)]
+		\item \( \mathbf{x}(u,v) = (a \sin u \cos v, b \sin u \sin v, c \cos u) \); ellipsoid.
+		\item \( \mathbf{x}(u,v) = (au \cos v, bu\sin v, u^2) \); elliptic paraboloid.
+		\item \( \mathbf{x}(u,v) = (au \cosh v, bu \sinh v, u^2) \); hyperbolic paraboloid.
+		\item \( \mathbf{x}(u,v) = (a \sinh u \cos v, b \sinh u \sin v, c \cosh u) \); hyperboloid of two sheets.
+	\end{enumerate}
+\end{problem}
+
+\begin{problem}{2.5.9}
+	Show that a surface of revolution can always be parametrized so that
+	\begin{equation}
+		\label{eq:4}
+		E = E(v), \quad F = 0, \quad G = 1.
+	\end{equation}
+\end{problem}
+\end{document}
