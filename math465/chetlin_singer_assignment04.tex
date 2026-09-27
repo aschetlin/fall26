@@ -33,7 +33,18 @@ All problems from Do Carmo, \textit{Differential Geometry of Curves and Surfaces
 	\end{equation}
 \end{problem}
 \begin{proof}
-
+  For differentiability, we know that all linear maps are differentiable in \( \mathbb{R}^3 \).
+  Moreover, since \( L(S) \subset S \), the restriction \( L|_S : S \rightarrow S \) is a differentiable map restricted to a regular surface and is hence differentiable.
+  Let \( \alpha(s): I \rightarrow S \) be some curve on the surface for which \( \alpha(0) = p \), \(\alpha^{\prime}(0)= w\).
+  Then, by definition,
+  \begin{equation}
+  \label{eq:19}
+  \begin{aligned}
+    dL_p(w) &= \frac{\mathrm{d} }{\mathrm{d} t}(L \circ \alpha)(0) = \lim_{h \rightarrow 0}\frac{L(\alpha(t + h)) - L(\alpha(t))}{h} = \lim_{h\rightarrow0} \frac{L(\alpha(t+h) - \alpha(t))}{h} \\
+    &= L(\lim_{h\rightarrow0} \frac{\alpha(t+h) - \alpha(t)}{h}) = L(\alpha^{\prime}(t))\eval_{t=0} = L(w),
+  \end{aligned}
+\end{equation}
+where we have used linearity in the first line, and the continuity of \( L \) to bring the limit inside in the second line.
 \end{proof}
 
 \begin{problem}{2.4.10 (Tubular Surfaces)}
@@ -41,7 +52,7 @@ All problems from Do Carmo, \textit{Differential Geometry of Curves and Surfaces
 	Let
 	\begin{equation}
 		\label{eq:2}
-		\mathbf{x}(s,v) = \alpha(s) + r(N(s)\cos v, B(s)\sin v), \quad r = \text{const.} \neq 0, s \in I,
+		\mathbf{x}(s,v) = \alpha(s) + r(N(s)\cos v + B(s)\sin v), \quad r = \text{const.} \neq 0, s \in I,
 	\end{equation}
 	be a parametrized surface (the \textit{tube} of radius \( r \) around \(\alpha\)), where \( N \) is the normal vector and \( B \) is the binormal vector of \(\alpha\).
 	Show that, when \( \mathbf{x} \) is regular, its unit normal vector is
@@ -51,7 +62,12 @@ All problems from Do Carmo, \textit{Differential Geometry of Curves and Surfaces
 	\end{equation}
 \end{problem}
 \begin{proof}
-
+  By definition, \(\nu = \frac{\mathbf{x}_{s} \times \mathbf{x}_v}{|\mathbf{x}_s \times \mathbf{x}_v |}\).
+  Therefore we have
+  \begin{equation}
+  \label{eq:17}
+  \nu =
+  \end{equation}
 \end{proof}
 
 \begin{problem}{2.5.1}
