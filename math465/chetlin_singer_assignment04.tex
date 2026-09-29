@@ -62,11 +62,46 @@ where we have used linearity in the first line, and the continuity of \( L \) to
 	\end{equation}
 \end{problem}
 \begin{proof}
-  By definition, \(\nu = \frac{\mathbf{x}_{s} \times \mathbf{x}_v}{|\mathbf{x}_s \times \mathbf{x}_v |}\).
-  Therefore we have
+  By definition, \(\nu = \frac{\mathbf{x}_{s} \wedge \mathbf{x}_v}{|\mathbf{x}_s \wedge \mathbf{x}_v |}\).
+  We first calculuate \( \mathbf{x}_{s} \) and \( \mathbf{x}_{v} \).
   \begin{equation}
-  \label{eq:17}
-  \nu =
+  \label{eq:20}
+  \begin{aligned}
+    &\mathbf{x}_s = \alpha^{\prime}(s) + r \left( N^{\prime}(s)\cos v + B^{\prime}(s) \sin v \right), \\
+    & \mathbf{x}_v = r \left( -N(s)\sin v + B(s)\cos v \right).
+  \end{aligned}
+  \end{equation}
+
+  Now, the outer product is linear, so that
+  \begin{equation}
+  \label{eq:21}
+  \begin{aligned}
+    \mathbf{x}_s \wedge \mathbf{x}_v &= -r (\alpha^{\prime}(s) \wedge N(s)\sin v) + r( \alpha^{\prime}(s) \wedge B(s)\cos v ) \\
+                                &\quad+ r^2 (-N^{\prime}(s)\cos v \wedge N(s) \sin v + N^{\prime}(s)\cos v \wedge B(s) \cos v \\
+                                &\quad- B^{\prime}(s) \sin v \wedge N(s)\sin v + B^{\prime}(s) \sin v \wedge B(s) \cos v).
+  \end{aligned}
+  \end{equation}
+
+  Recalling the Frenet equations,
+  \begin{equation}
+  \label{eq:22}
+  \begin{aligned}
+    T^{\prime} &= \kappa N \\
+    N^{\prime} &= -\kappa T - \tau B \\
+    B^{\prime} &= \tau N,
+  \end{aligned}
+  \end{equation}
+
+  we see that \( B^{\prime} \) and \( N \) are colinear, so any terms involving the outer product of both vanish.
+  Moreover, since \( \alpha \) is arc-length parametrized, \(\alpha^{\prime} = T\).
+  \cref{eq:21} becomes
+  \begin{equation}
+  \label{eq:23}
+  \begin{aligned}
+    \mathbf{x}_s \wedge \mathbf{x}_v &= r(T \wedge B \cos v) -r (T \wedge N \sin v) + r^2(N^{\prime} \cos v \wedge N \sin v \\
+                                &\quad+  N^{\prime}\cos v \wedge B(s) \cos v + B^{\prime}(s) \sin v \wedge B(s) \cos v) \\
+    &= r(-N\cosv) - rB\sin v + r^2\cos v \sin v(-B-T) + r^2
+  \end{aligned}
   \end{equation}
 \end{proof}
 
