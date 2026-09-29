@@ -1,0 +1,244 @@
+\documentclass[11pt]{article}
+\usepackage{../homework}
+
+\profname{Dr. Claire Zukowski}
+\classcode{PHYS 331 Quantum Mechanics I}
+\assignnum{Homework 04}
+\duedate{30 September 2026}
+
+\begin{document}
+\begin{problem}{1}\hfill
+\begin{enumerate}[label=(\alph*)]
+  \item Given \( \ket{\psi} = \ket{-} \), find \( \langle S_z \rangle, \Delta S_z, \langle S_x \rangle, \Delta S_x \).
+        Sketch a histogram.
+        Comment on whether or not the results make sense.
+        \begin{answer}
+          \(\langle S_{z} \rangle = \ev{S_z}{-} = \ev{- \frac{\hbar}{2}}{-} = - \frac{\hbar}{2}\).
+          Next,
+          \begin{equation}
+          \label{eq:2}
+          \begin{aligned}
+          \Delta S_z &= \sqrt{\langle S_{z}^2 \rangle - \langle S_z \rangle^2} = \sqrt{\frac{\hbar^2}{4} - (\frac{\hbar}{2})^2} = 0.
+          \end{aligned}
+        \end{equation}
+
+        For \( \langle S_x \rangle \), \( \ev{S_x}{-} \), so
+        \begin{equation}
+        \label{eq:3}
+        \begin{aligned}
+          \langle S_x \rangle &= \begin{pmatrix}
+0  & 1
+ \end{pmatrix} \frac{\hbar}{2} \begin{pmatrix}
+0  & 1 \\
+1  & 0
+ \end{pmatrix} \begin{pmatrix}
+0 \\
+1
+ \end{pmatrix} = 0.
+        \end{aligned}
+      \end{equation}
+      \begin{equation}
+      \label{eq:4}
+      \begin{aligned}
+        \Delta S_x &= \sqrt{\ev{S_{x}^2}{-} - \ev{S_x}{-}^2} = \sqrt{\frac{\hbar^2}{4}} = \frac{\hbar}{2}.
+      \end{aligned}
+    \end{equation}
+    The results make sense, since \( \ket{\psi} \) is prepared in an eigenstate of \( S_z \), so that the measurement is guaranteed to be spin-down.
+    On the other hand, \( \ket{-} \) in the \( x \)-basis is a superposition of \( \ket{\pm}_{x} \) so that there is an even chance of measuring either up or down \( x \).
+        \end{answer}
+  \item Given \( \ket{\psi} = \ket{-}_y \), find \( \langle S_z \rangle \) and \( \Delta S_z \), sketch a histogram, comment on whether the results make sense.
+        \begin{answer}
+          \begin{equation}
+          \label{eq:5}
+          \begin{aligned}
+            \langle S_z \rangle &= \ev{S_z}{-_y} = \frac{1}{\sqrt{2}} \begin{pmatrix}
+1  & i
+ \end{pmatrix}
+ \frac{\hbar}{2} \begin{pmatrix}
+1  & 0 \\
+0  & -1
+ \end{pmatrix} \frac{1}{\sqrt{2}} \begin{pmatrix}
+1 \\
+-i
+ \end{pmatrix} \\
+            &= \frac{\hbar}{4} \begin{pmatrix}
+1  & i
+ \end{pmatrix} \begin{pmatrix}
+1 \\
+i
+ \end{pmatrix} = 0.
+          \end{aligned}
+        \end{equation}
+        Exactly as in part (a), \(\Delta S_z = \frac{\hbar}{2}\), which makes sense just as the uncertainty in \(S_x\) did above.
+        \end{answer}
+  \item Given \( \ket{\psi} = \frac{1}{\sqrt{5}}(2\ket{+} - i\ket{-}) \), find \( \langle S_z \rangle \) and \( \Delta S_{z} \), sketch a histogram, comment on whether the results make sense.
+        \begin{answer}
+          \begin{equation}
+          \label{eq:6}
+          \begin{aligned}
+            \langle S_z \rangle &=
+            \frac{1}{\sqrt{5}} \begin{pmatrix}
+              2 & i
+ \end{pmatrix}
+          \frac{\hbar}{2}  \begin{pmatrix}
+1  & 0 \\
+0  & -1
+ \end{pmatrix} \frac{1}{\sqrt{5}} \begin{pmatrix}
+2 \\
+-i
+ \end{pmatrix} = \frac{\hbar}{10} \begin{pmatrix}
+2  & i
+ \end{pmatrix} \begin{pmatrix}
+2 \\
+i
+ \end{pmatrix} \\
+            &= \frac{3}{5} \frac{\hbar}{2}.
+          \end{aligned}
+          \end{equation}
+
+          Then,
+          \begin{equation}
+          \label{eq:7}
+          \begin{aligned}
+            \Delta S_z &= \sqrt{\ev{S_{z}^2}{\psi} - \left( \frac{3}{5} \frac{\hbar}{2} \right)^2} = \frac{\hbar}{2}\sqrt{1 - \frac{9}{25}} \\
+            &= \frac{\hbar}{2} \sqrt{\frac{16}{25}} = \frac{4}{5} \frac{\hbar}{2}.
+          \end{aligned}
+          \end{equation}
+        \end{answer}
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{2}
+  Consider a general state \( \ket{\psi} = a \ket{+} + b \ket{-} \), where \( a, b \in \mathbb{C} \).
+  \begin{enumerate}[label=(\alph*)]
+    \item Calculate the expectation value and uncertainty of \( S_z \) in terms of \( a \) and \( b \).
+          \begin{answer}
+            \begin{equation}
+            \label{eq:9}
+            \begin{aligned}
+            \langle S_z \rangle &= \ev{S_z}{\psi} = \begin{pmatrix}
+a^{*}  & b^{*}
+ \end{pmatrix} \frac{\hbar}{2} \begin{pmatrix}
+1  & 0 \\
+0  & -1
+ \end{pmatrix} \begin{pmatrix}
+a \\
+b
+ \end{pmatrix} \\
+              &= \frac{\hbar}{2} \begin{pmatrix}
+a^{*}  & b^{*}
+ \end{pmatrix} \begin{pmatrix}
+a \\
+-b
+ \end{pmatrix} = \frac{\hbar}{2}(a ^{*} a - b^{*} b).
+            \end{aligned}
+          \end{equation}
+          Therefore,
+          \begin{equation}
+          \label{eq:10}
+          \begin{aligned}
+            \Delta S_z &= \sqrt{\frac{\hbar^2}{4} \left( a^{*}a + b^{*}b \right) - \left( \frac{\hbar}{2}(a ^{*} a - b ^{*} b) \right)^2} \\
+            &= \frac{\hbar}{2} \sqrt{|a|^2 + |b|^2 - (|a|^2 - |b|^2)^2}.
+          \end{aligned}
+          \end{equation}
+          \end{answer}
+    \item Verify that answers to Problem 1 match.
+          \begin{proof}
+            In Problem 1(c), \( a = \frac{2}{\sqrt{5}} \), \( b = - \frac{i}{\sqrt{5}} \).
+            We calculated that \(\langle S_z \rangle = \frac{3}{5} \frac{\hbar}{2}\) and \(\Delta S_z = \frac{4}{5} \frac{\hbar}{2}\).
+            Plugging \( a \) and \( b \) into \cref{eq:9,eq:10} gives
+            \begin{equation}
+            \label{eq:11}
+            \begin{aligned}
+              \langle S_z \rangle &= \frac{\hbar}{2}(\frac{4}{5} - \frac{1}{\sqrt{5}}) = \frac{3}{5} \frac{\hbar}{2}, \\
+              \Delta S_z &= \frac{\hbar}{2} \sqrt{1 - (3/5)^2} = \frac{\hbar}{2} \sqrt{\frac{16}{25}} = \frac{4}{5} \frac{\hbar}{2},
+            \end{aligned}
+          \end{equation}
+          which agree, as they must.
+          \end{proof}
+          \item When is \(\Delta S_z\) maximized? Minimized?
+          \begin{answer}
+            \(\Delta S_z\) is minimized when either \( a = 0 \) or \( b = 0 \).
+            Since \( \ket{\psi} \) is normalized, that implies \( b = 1 \) or \( a = 1 \), respectively.
+            Without loss of generality, suppose \( a = 0 \); in such a case,
+            \begin{equation}
+            \label{eq:12}
+            \Delta S_z = \frac{\hbar}{2} \sqrt{|b|^2 - (-|b|^2)^2} = \frac{\hbar}{2} \sqrt{1 - 1} = 0.
+          \end{equation}
+          On the other hand, \(\Delta S_z\) is maximized when \( |a| = |b| = \frac{1}{\sqrt{2}} \).
+          In this case,
+          \begin{equation}
+          \label{eq:13}
+          \Delta S_z = \frac{\hbar}{2} \sqrt{1/2 + 1/2 - (1/2 - 1/2)^2} = \frac{\hbar}{2}.
+          \end{equation}
+          \end{answer}
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{3}
+  Using the matrix representations of \( S_x, S_y \), and \( S_z \), show that \( \comm{S_z}{S_y} = -i\hbar S_x \).
+\end{problem}
+\begin{proof}
+  By definition, \( \comm{S_z}{S_y} = S_zS_y - S_yS_z \).
+  Therefore,
+  \begin{equation}
+  \label{eq:8}
+  \begin{aligned}
+    \comm{S_z}{S_y} &= \frac{\hbar^2}{4} \begin{pmatrix}
+1  & 0 \\
+0  & -1
+ \end{pmatrix} \begin{pmatrix}
+0  & -i \\
+i  & 0
+ \end{pmatrix} - \frac{\hbar^2}{4} \begin{pmatrix}
+0  & -i \\
+i  & 0
+ \end{pmatrix} \begin{pmatrix}
+1  & 0 \\
+0  & -1
+ \end{pmatrix} \\
+    &= \frac{\hbar^2}{4} \left( \begin{pmatrix}
+0   & -i \\
+-i  & 0
+ \end{pmatrix} - \begin{pmatrix}
+0  & i \\
+i  & 0
+ \end{pmatrix} \right) = \frac{\hbar^2}{4} \begin{pmatrix}
+0    & -2i \\
+-2i  & 0
+ \end{pmatrix} \\
+    &= -i \hbar \frac{\hbar}{2} \begin{pmatrix}
+0  & 1 \\
+1  & 0
+ \end{pmatrix} = -i \hbar S_x.
+  \end{aligned}
+  \end{equation}
+\end{proof}
+
+\begin{problem}{4}
+  An electron is in an initial state
+  \begin{equation}
+  \label{eq:1}
+  \ket{\Psi(0)} = \ket{-}_n = \sin \frac{\theta}{2}\ket{+} - \cos \frac{\theta}{2}e^{i\phi}\ket{-}.
+\end{equation}
+Set \( \hat{n} = \frac{1}{\sqrt{2}}(\hat{x} - \hat{y})\).
+The electron is in a uniform magnetic field \( \vec{B} = B_0 \hat{z} \).
+\begin{enumerate}[label=(\alph*)]
+  \item Write the initial state as a linear superposition of \( S_z \) eigenkets.
+  \item Write the time evolved state \( \ket{\Psi(t)} \).
+  \item Find the probability of measuring spin-up in the \( y \)-direction after time \( t \), sketch the probability as a function of time.
+        Explain why this answer makes sense.
+  \item Does the system return to its initial state?
+        If so, when?
+        If not, why not?
+  \item What are \( \langle S_x \rangle, \langle S_y \rangle, \) and \( \langle S_z \rangle \)?
+        Do they evolve in time?
+        If so, sketch a plot of each as a function of time.
+        What can you say about an average total spin vector, \( \langle \vec{S} \rangle \)?
+  \item What is \(\langle H \rangle\)?
+        Does it evolve in time?
+        If so, sketch a plot.
+        If not, explain why not.
+\end{enumerate}
+\end{problem}
+\end{document}
