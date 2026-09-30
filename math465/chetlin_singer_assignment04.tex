@@ -98,11 +98,23 @@ where we have used linearity in the first line, and the continuity of \( L \) to
   \begin{equation}
   \label{eq:23}
   \begin{aligned}
-    \mathbf{x}_s \wedge \mathbf{x}_v &= r(T \wedge B \cos v) -r (T \wedge N \sin v) + r^2(N^{\prime} \cos v \wedge N \sin v \\
+    \mathbf{x}_s \wedge \mathbf{x}_v &= r(T \wedge B \cos v) -r (T \wedge N \sin v)  +r^2(N^{\prime} \cos v \wedge N \sin v \\
                                 &\quad+  N^{\prime}\cos v \wedge B(s) \cos v + B^{\prime}(s) \sin v \wedge B(s) \cos v) \\
-    &= r(-N\cos v) - rB\sin v + r^2\cos v \sin v(-B-T) + r^2
+                                &= r(-N\cos v) - rB\sin v - r^2\cos v \sin v(-\kappa B+ \tau T) + r^2(\kappa N\cos^2 v +\tau T \sin v \cos v) \\
+                                &= r \left( -N\cos v - B \sin v + r(\kappa B \cos v \sin v + \kappa N \cos^2 v) \right) \\
+    &= -r \left( 1- r\kappa \cos v \right)(N \cos v + B \sin v).
   \end{aligned}
-  \end{equation}
+\end{equation}
+The magnitude is thus \( |r(1-r\kappa \cos v)| \), so that the unit normal is
+\begin{equation}
+\label{eq:27}
+\nu = \pm (N\cos v + B \sin v).
+\end{equation}
+Choosing the negative unit normal gives the desired result of
+\begin{equation}
+\label{eq:28}
+\nu = -(N \cos v + B \sin v).
+\end{equation}
 \end{proof}
 
 \begin{problem}{2.5.1}
