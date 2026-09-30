@@ -225,20 +225,139 @@ Set \( \hat{n} = \frac{1}{\sqrt{2}}(\hat{x} - \hat{y})\).
 The electron is in a uniform magnetic field \( \vec{B} = B_0 \hat{z} \).
 \begin{enumerate}[label=(\alph*)]
   \item Write the initial state as a linear superposition of \( S_z \) eigenkets.
+        \begin{answer}
+          Since \( \hat{n} = \frac{1}{\sqrt{2}}(\hat{x} - \hat{y}) \), we have that \( \theta = \frac{\pi}{2} \) and \( \phi = \frac{7\pi}{4} \).
+          Hence, from \cref{eq:1},
+          \begin{equation}
+          \label{eq:14}
+          \ket{\Psi(0)} = \sin \frac{\pi}{4}\ket{+} - \cos \frac{\pi}{4}e^{i 7\pi/4}\ket{-} = \frac{\sqrt{2}}{2}\ket{+} - \frac{\sqrt{2}}{2}e^{i 7\pi/4}\ket{-}.
+          \end{equation}
+        \end{answer}
   \item Write the time evolved state \( \ket{\Psi(t)} \).
+        \begin{answer}
+          The time evolved state for a general \( \ket{\Psi(0)} = \sum\limits_i c_i(0)\ket{E_{i}} \) in terms of the energy eigenbasis is \( \ket{\Psi(t)} = \sum\limits_i c_i(0)e^{-iE_{i} t/\hbar}\ket{E_{i}}\).
+          The Hamiltonian is \(-\mathbf{\mu} \cdot \mathbf{B} = \frac{e}{m_e}B_0 S_z = \omega_0 S_z \), where we have defined \(\omega_0 = \frac{eB_0}{m_{e}}\).
+          Since the Hamiltonian is proportional to the \( S_z \) operator, the energy eigenstates are
+          \begin{equation}
+          \label{eq:16}
+          H\ket{\pm} = \pm \frac{\hbar\omega_{0}}{2}\ket{\pm}.
+          \end{equation}
+          Here, then, we have
+          \begin{equation}
+          \label{eq:15}
+          \begin{aligned}
+            \ket{\Psi(t)} &= \frac{1}{\sqrt{2}}e^{-i\omega_0 t/2}\ket{+} - \frac{1}{\sqrt{2}}e^{i7\pi/4}e^{i\omega_0 t/2}\ket{-} \\
+            &= \frac{1}{\sqrt{2}} \left( e^{-i\omega_0 t/2}\ket{+} - e^{i7\pi/4}e^{i\omega_{0} t/2} \ket{-} \right).
+          \end{aligned}
+          \end{equation}
+        \end{answer}
   \item Find the probability of measuring spin-up in the \( y \)-direction after time \( t \), sketch the probability as a function of time.
         Explain why this answer makes sense.
+        \begin{answer}
+          The probability is \( \ev{\op{+_y}}{\Psi(t)} = |\ip{+_y}{\Psi(t)}|^2 \).
+          Hence,
+          \begin{equation}
+          \label{eq:17}
+          \begin{aligned}
+            \mathcal{P}_{+} &= \left| \frac{1}{\sqrt{2}}(\bra{+} - \bra{-}i)(\frac{1}{\sqrt{2}}e^{-i\omega_0 t /2}\ket{+} - \frac{1}{\sqrt{2}}e^{i7\pi/4}e^{i\omega_0 t/2}\ket{-}) \right|^2 \\
+                  &= \left| \frac{1}{2}e^{-i \omega_0 t/2} + \frac{i}{2}e^{i7\pi/4}e^{i\omega_0 t /2} \right|^2 = \left| \frac{1}{2} \left( e^{-i\omega_0 t /2} + ie^{i(\omega_0 t/2 + 7\pi /4)} \right) \right|^2 \\
+                  &= \frac{1}{4} \left| e^{-i\omega_0 t /2} + e^{i(\omega_0 t /2 + 7\pi/4 + \pi /2)} \right|^2 = \frac{1}{4} \left| e^{-i\omega_0 t /2} + e^{i(\omega_0 t/2 + \pi/4)} \right|^2 \\
+                  &= \frac{1}{4} (e^{i\omega_0 t /2} + e^{-i(\omega_0 t /2 + \pi/4)})(e^{-i\omega_0 t /2} + e^{i(\omega_0 t /2 + \pi/4)}) \\
+                  &= \frac{1}{2} + \frac{1}{4} \left[ e^{i\omega_0 t /2}e^{i(\omega_0 t /2 + \pi/4)} + e^{-i(\omega_0 t /2 + \pi/4)}e^{-i\omega_0 t /2} \right] \\
+                  &= \frac{1}{2}(1 + \frac{1}{2} \left[ e^{i(\omega_0 t + \pi/4)} + e^{-i(\omega_0 t + \pi/4)} \right]) \\
+                  &= \frac{1}{2}(1 + \frac{1}{2} \left[ 2\cos(\omega_0 t + \pi/4) \right]) = \boxed{\frac{1}{2}(1 + \cos(\omega_0t + \frac{\pi}{4})),}
+          \end{aligned}
+        \end{equation}
+        where we have used the identities \( ie^{i\phi} = e^{i(\phi + \pi/2)} \), \( e^{i\phi} = -e^{i(\phi + \pi)} \), and \( e^{i\phi} + e^{-i\phi} = 2\cos\phi \).
+        \end{answer}
   \item Does the system return to its initial state?
         If so, when?
         If not, why not?
+        \begin{answer}
+          Yes, the system returns to its initial state.
+          From \cref{eq:15}, we see that \( \ket{\Psi(t)} = \ket{\Psi(0)} \) when \( e^{-i \omega_0 t /2} = e^{i \omega_0 t /2} = 1 \).
+          This occurs when \( \omega_0 t /2 = n2\pi \) for \( n \in \mathbb{Z} \).
+          That is, when \( t = 4\pi n / \omega_0\).
+          Moreover, two quantum systems are in the same state if they only differ by an overral phase, hence when \( \ket{\Psi(t)} = -\ket{\Psi(0)} \).
+          Therefore, overall, when \( t = 2\pi n / \omega_0 \), the system is in the initial state.
+        \end{answer}
   \item What are \( \langle S_x \rangle, \langle S_y \rangle, \) and \( \langle S_z \rangle \)?
         Do they evolve in time?
         If so, sketch a plot of each as a function of time.
         What can you say about an average total spin vector, \( \langle \vec{S} \rangle \)?
+        \begin{answer}
+          For \( S_z \),
+          \begin{equation}
+          \label{eq:18}
+          \begin{aligned}
+            \langle S_z \rangle &= \ev{S_z}{\Psi(t)} = \frac{\hbar}{4} \begin{pmatrix}
+e^{i\omega_0 t /2}  & -e^{-i(\omega_0 t /2 + 7\pi/4)}
+ \end{pmatrix} \begin{pmatrix}
+1  & 0 \\
+0  & -1
+ \end{pmatrix} \begin{pmatrix}
+e^{-i\omega_0 t/2} \\
+-e^{i(\omega_0 t/2 + 7\pi/4)}
+ \end{pmatrix} \\
+            &= \frac{\hbar}{4} \begin{pmatrix}
+e^{i\omega_0 t /2}  & -e^{-i(\omega_0 t /2 + 7\pi/4)}
+ \end{pmatrix} \begin{pmatrix}
+e^{-i\omega_0 t/2} \\
+e^{i(\omega_0 t /2 + 7\pi/4)}
+ \end{pmatrix} = 0.
+          \end{aligned}
+        \end{equation}
+        Clearly \( \langle S_z \rangle \) is time independent.
+        For \( \langle S_x \rangle \),
+        \begin{equation}
+        \label{eq:19}
+        \begin{aligned}
+          \langle S_x \rangle &= \ev{S_x}{\Psi(t)} = \frac{\hbar}{4} \begin{pmatrix}
+e^{i\omega_0 t /2}  & -e^{-i(\omega_0 t/2 + 7\pi/4)}
+ \end{pmatrix} \begin{pmatrix}
+0  & 1 \\
+1  & 0
+ \end{pmatrix} \begin{pmatrix}
+e^{-i\omega_0 t /2} \\
+-e^{i(\omega_0 t /2 + 7\pi/4)}
+ \end{pmatrix} \\
+                  &= \frac{\hbar}{4} \left( -e^{i(\omega_0 t + 7\pi/4)} - e^{-i(\omega_0 t + 7\pi/4)} \right) = - \frac{\hbar}{2} \cos(\omega_0t + 7\pi/4) \\
+                  &= \frac{\hbar}{2}\cos(\omega_0 t + \frac{3\pi}{4}).
+        \end{aligned}
+      \end{equation}
+      Finally, for \(\langle S_y \rangle\),
+      \begin{equation}
+      \label{eq:20}
+      \begin{aligned}
+        \langle S_y \rangle &= \frac{\hbar}{4} \begin{pmatrix}
+e^{i \omega_0 t /2}  & -e^{-i(\omega_0 t /2 + 7\pi/4)}
+ \end{pmatrix} \begin{pmatrix}
+0  & -i \\
+i  & 0
+ \end{pmatrix} \begin{pmatrix}
+e^{-i\omega_{0} t /2} \\ -e^{i(\omega_0 t /2 + 7\pi/4)}
+ \end{pmatrix} \\
+                &= \frac{\hbar}{4} \left( ie^{i(\omega_0 t + 7\pi/4)} - ie^{-i(\omega_0 t + 7\pi/4)} \right) \\
+        &= \frac{\hbar}{4} \left( -2\sin(\omega_{0}t + \frac{7\pi}{4}) \right) = \frac{\hbar}{2}\sin(\omega_0t + \frac{3\pi}{4}).
+      \end{aligned}
+    \end{equation}
+    Then, to calculate the total average spin vector,
+    \begin{equation}
+    \label{eq:21}
+    \begin{aligned}
+    \langle \vec{S} \rangle &= \langle S_x \rangle \hat{x} + \langle S_y \rangle \hat{y} + \langle S_z \rangle \hat{z} = \frac{\hbar}{2}\left[ \cos(\omega_0t + \frac{3\pi}{4})\hat{x} + \sin(\omega_0t + \frac{3\pi}{4}) \hat{y} \right],
+    \end{aligned}
+  \end{equation}
+  which has magnitude \( |\langle \vec{S} \rangle | = \frac{\hbar}{2}\).
+        \end{answer}
   \item What is \(\langle H \rangle\)?
         Does it evolve in time?
         If so, sketch a plot.
         If not, explain why not.
+        \begin{answer}
+          As we saw in part (b), the Hamiltonian is proportional to \( S_z \); therefore, \(\langle H \rangle = \omega_0 \langle S_z \rangle = 0\).
+          This clearly does not involve in time, which matches with the time independence of \( S_z \).
+        \end{answer}
 \end{enumerate}
 \end{problem}
 \end{document}
