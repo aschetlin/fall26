@@ -11,10 +11,31 @@
   For each equation, explain what is wrong with the indices and why it is not a valid tensor equation:
   \begin{enumerate}[label=(\alph*)]
     \item \( \tensor{R}{ _{\mu\nu} }^{\prime} = \pm \frac{mc^2}{\hbar c}\).
-    \item \( \tensor{F}{ _{m\nu} } = -\frac{e}{l^{\prime}_p} \cdot \varepsilon_{\mu\nu}x_{\mu}D_{\nu} \).
-    \item \( \frac{\varepsilon_{\mu\nu}}{\hbar c} = \tensor{R}{ _{\mu\nu} }^{0} \pm \frac{m c^2}{\hbar c} \mp \varepsilon_{\mu\nu} \Gamma^{\prime}_{\mu} D^{\prime}_{\nu} \).
+          \begin{answer}
+            The left hand side has two free lower indices, \(\mu\) and \(\nu\).
+            The right hand side has no indices, hence this is not a valid tensor equation.
+            (Additionally, the right hand side could be written as \( \pm mc/\hbar \)).
+          \end{answer}
+    \item \( \tensor{F}{ _{\mu\nu} } = -\frac{e}{l^{\prime}_p} \cdot \varepsilon_{\mu\nu}x_{\mu}D_{\nu} \).
+          \begin{answer}
+            The LHS has two free lower indices, \(\mu\) and \(\nu\). The right hand side not only has three, \(\mu, \nu\), and \( p \), but appears to be dividing a scalar \( e \) by a (0,1) tensor \( l^{\prime}_p \).
+            Furthermore, the product \(\varepsilon_{\mu\nu}x_{\mu}D_{\nu}\) is not a well defined operation.
+            Finally, there is a dot product being taken between a ``(0,1) tensor'' and a ``(0,2) tensor'', which is also not defined.
+          \end{answer}
+    \item \( \frac{\varepsilon_{\mu\nu}}{\hbar c} = \tensor{R}{ ^{0}_{\mu\nu} } \pm \frac{m c^2}{\hbar c} \mp \varepsilon_{\mu\nu} \Gamma^{\prime}_{\mu} D^{\prime}_{\nu} \).
+          \begin{answer}
+            Again the RHS has the undefined operation \( \varepsilon_{\mu\nu}\Gamma^{\prime}_{\mu}D^{\prime}_{\nu} \).
+            Moreover, the RHS as a whole contains the ``sum'' of two tensors with a scalar, which is not a well-defined operation.
+          \end{answer}
     \item \(\varepsilon^0_{\mu\nu} = i\hbar c \gamma^{\mu}D^{\prime}_{\nu} - mc^2\).
+          \begin{answer}
+            LHS has two free lower indices, while the RHS has one upper index and one lower index.
+            Again, the RHS also has the sum of a tensor with a scalar.
+          \end{answer}
     \item \(i\gamma^{\mu}D_{\mu} - \frac{e}{c}A_{\mu} + \frac{mc^2}{\hbar c} = 0\).
+          \begin{answer}
+            The LHS has a scalar + (0,1) tensor + scalar, which is not well defined.
+          \end{answer}
   \end{enumerate}
 \end{problem}
 
@@ -35,8 +56,44 @@ Define a map \( \mathbf{C}: V \times V \times V^{*} \times V^{*} \rightarrow \ma
   \item Is \( \mathbf{C} \) a tensor?
         If so, what kind?
         Explain.
+        \begin{answer}
+          The definition of a tensor is a multilinear map
+          \begin{equation}
+            T: \underbrace{V \times \cdots \times V}_{n \text{ copies}} \times \underbrace{V^{*} \times \cdots \times V^{*}}_{m \text{ copies}} \rightarrow \mathbb{R}.
+          \end{equation}
+          Hence, to show \( \mathbf{C} \) is a tensor, it suffices to show it is linear in all of its arguments.
+          The definition of \( \mathbf{C} \) is as a composition of linear maps \( \mathbf{B} \) and \( \mathbf{A} \); that is, since \( \mathbf{B} \) is linear,
+          \begin{equation}
+          \label{eq:10}
+          \mathbf{B}(\cdot, \omega + \lambda_1\gamma, \sigma + \lambda_2\tau) = \mathbf{B}(\cdot, \omega, \sigma) + \lambda_2\mathbf{B}(\cdot, \omega, \tau) + \lambda_1\mathbf{B}(\cdot, \gamma, \sigma) + \lambda_1\lambda_2\mathbf{B}(\cdot, \gamma, \tau),
+        \end{equation}
+
+        the same for \( A \).
+        Thus, \( \mathbf{C} \) is linear in all arguments and therefore a tensor.
+        In particular, \( \mathbf{C} \) is a (2,2) tensor, since it takes as inputs two vectors and two dual vectors, and returns a scalar.
+        \end{answer}
   \item Find the components of \( \mathbf{C} \) in terms of the components of \( \mathbf{A} \) and \( \mathbf{B} \).
         Of the operations that we defined componentwise in class, which is this?
+        \begin{answer}
+          By definition,
+          \begin{equation}
+          \label{eq:11}
+          \begin{aligned}
+            \tensor{C}{ _{\mu\nu}^{\rho\sigma}} &= \mathbf{C}(\mathbf{e}_{\mu}, \mathbf{e}_{\nu}, \mathbf{e}^{*\rho}, \mathbf{e}^{*\sigma}) = \mathbf{A}(\mathbf{e}_{\mu}, \mathbf{e}_{\nu}, \mathbf{B}(\cdot, \mathbf{e}^{*\rho}, \mathbf{e}^{*\sigma})) \\
+                                    &= \mathbf{A}(\mathbf{e}_{\mu}, \mathbf{e}_{\nu}, \tensor{B}{ ^{\lambda\rho\sigma}}\mathbf{e}_{\lambda}) = \tensor{B}{^{\lambda\rho\sigma} }\mathbf{A}(\mathbf{e}_{\mu}, \mathbf{e}_{\nu}, \mathbf{e}_{\lambda}) \\
+            &= \tensor{B}{^{\lambda\rho\sigma} }\tensor{A}{ _{\mu\nu\lambda} },
+          \end{aligned}
+        \end{equation}
+        where we have used the fact that for fixed \(\rho, \sigma\), \( \mathbf{B}(\cdot, \mathbf{e}^{*\rho}, \mathbf{e}^{*\sigma}) \) is a map from \( V^{*} \rightarrow \mathbb{R} \), that is, an element of \( V^{**} \cong V \).
+        We can write \( \mathbf{V} = \mathbf{B}(\cdot, \mathbf{e}^{*\rho}, \mathbf{e}^{*\sigma}) = V^{\lambda} \mathbf{e}_{\lambda}\), and then \( V^{\lambda} = \mathbf{e}^{*\lambda}(\mathbf{V}) \), so that
+        \begin{equation}
+        \label{eq:12}
+        V^{\lambda} = \mathbf{e}^{*\lambda}(\mathbf{B}(\cdot, \mathbf{e}^{*\rho}, \mathbf{e}^{*\sigma})) = \mathbf{B}(\mathbf{e}^{*\lambda}, \mathbf{e}^{*\rho}, \mathbf{e}^{*\sigma}) = \tensor{B}{^{\lambda\rho\sigma} }.
+        \end{equation}
+        \cref{eq:12} is a valid tensor equation since we fixed \(\rho\) and \(\sigma\).
+
+        \( \mathbf{C} \) is contraction on the first index of \( \mathbf{B} \) with the third index of \( \mathbf{A} \).
+        \end{answer}
 \end{enumerate}
 \end{problem}
 
