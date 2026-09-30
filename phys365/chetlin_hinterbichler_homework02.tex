@@ -1,0 +1,142 @@
+\documentclass[11pt]{article}
+\usepackage{../homework}
+
+\profname{Dr. Kurt Hinterbichler}
+\classcode{PHYS 365 General Relativity}
+\assignnum{Homework 02}
+\duedate{8 October 2026}
+
+\begin{document}
+\begin{problem}{1}
+  For each equation, explain what is wrong with the indices and why it is not a valid tensor equation:
+  \begin{enumerate}[label=(\alph*)]
+    \item \( \tensor{R}{ _{\mu\nu} }^{\prime} = \pm \frac{mc^2}{\hbar c}\).
+    \item \( \tensor{F}{ _{m\nu} } = -\frac{e}{l^{\prime}_p} \cdot \varepsilon_{\mu\nu}x_{\mu}D_{\nu} \).
+    \item \( \frac{\varepsilon_{\mu\nu}}{\hbar c} = \tensor{R}{ _{\mu\nu} }^{0} \pm \frac{m c^2}{\hbar c} \mp \varepsilon_{\mu\nu} \Gamma^{\prime}_{\mu} D^{\prime}_{\nu} \).
+    \item \(\varepsilon^0_{\mu\nu} = i\hbar c \gamma^{\mu}D^{\prime}_{\nu} - mc^2\).
+    \item \(i\gamma^{\mu}D_{\mu} - \frac{e}{c}A_{\mu} + \frac{mc^2}{\hbar c} = 0\).
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{2}
+  Let \( \mathbf{A} \) be a \( (0,3) \) tensor, \( \mathbf{B} \) a (3,0) tensor, over some \( n \)-dimensional vector space \( V \).
+  Recall the components in a basis \( \{\mathbf{e}_{\mu}\}_1^n \) of \( V \) are written as
+  \begin{equation}
+  \label{eq:1}
+  \begin{aligned}
+    A_{\mu\nu\rho} &= \mathbf{A}(\mathbf{e}_{\mu}, \mathbf{e}_{\nu}, \mathbf{e}_{\rho}), \\
+    B^{\mu\nu\rho} &= \mathbf{B}(\mathbf{e}^{*\mu}, \mathbf{e}^{*\nu}, \mathbf{e}^{*\rho}),
+  \end{aligned}
+\end{equation}
+where \( \{\mathbf{e}^{*\mu}\}_1^n \) is the corresponding basis for \( V^{*} \).
+Define a map \( \mathbf{C}: V \times V \times V^{*} \times V^{*} \rightarrow \mathbb{R} \) by \( \mathbf{C}(\mathbf{u}, \mathbf{v}, \omega, \sigma) = \mathbf{A}(\mathbf{u}, \mathbf{v}, \mathbf{B}(\cdot, \omega, \sigma)) \).
+
+\begin{enumerate}[label=(\alph*)]
+  \item Is \( \mathbf{C} \) a tensor?
+        If so, what kind?
+        Explain.
+  \item Find the components of \( \mathbf{C} \) in terms of the components of \( \mathbf{A} \) and \( \mathbf{B} \).
+        Of the operations that we defined componentwise in class, which is this?
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{3}
+  In class we saw that the circle, \( S^1 \), can be covered with two patches constructed via \textit{stereographic projection}.
+  Here \textsl{we}l do the same for the sphere \( S^2 \).
+
+  Define the first patch \( U_N \) as all the points besides the north pole.
+  Assign coordinates to \( p \in U_N \) by drawing a line from the north pole, through \( p \), and determining where it intersects a plane passing through the equator of the sphere.
+
+  \begin{enumerate}[label=(\alph*)]
+    \item Defining the sphere of radius \( R \) and the subset of \( \mathbb{R}^3 \) consititng of points \( (X^1, X^2, X^3) \) where \( (X^1)^2 + (X^2)^2 + (X^3)^2 = R^2 \), show that the stereographic projected coordinates \( (x^1, x^2) \) are
+          \begin{equation}
+          \label{eq:2}
+          \varphi_N(X^1, X^2, X^3) = \left( \frac{X^{1}}{1 - X^3/R}, \frac{X^2}{1 - X^3/R} \right).
+        \end{equation}
+    \item Write an expression for \(\varphi^{-1}_N(x^{1}, x^2)\) for arbitrary \( x^1, x^2 \).
+    \item Define a second patch \( U_S \) to contain all points besides the south pole.
+          Show that the corresponding stereographic projected coordinates \( (y^1, y^2) \) are
+          \begin{equation}
+          \label{eq:3}
+          \varphi_S(X^1, X^2, X^3) = \left( \frac{X^{1}}{1 + X^3/R}, \frac{X^2}{1 + X^3/R} \right).
+        \end{equation}
+    \item Write an expression for \(\varphi^{-1}_S(y^1, y^2)\).
+    \item Show that the transition function \(\varphi_S \circ \varphi_N^{-1}\) can be written as
+          \begin{equation}
+          \label{eq:4}
+          ( y^1(x^1, x^2), y^2(x^1, x^2) ) = \frac{R^2}{(x^{1})^2 + (x^2)^2}(x^1, x^2).
+        \end{equation}
+          Is this \( C^{\infty} \) on the overlap?
+  \end{enumerate}
+  \item Find also \(\varphi_N \circ \varphi_S^{-1}\) and verify that it is \( C^{\infty} \) and that it is the inverse of \cref{eq:4}.
+\end{problem}
+
+\begin{problem}{4}
+  The metric in spherical coordinates is
+  \begin{equation}
+  \label{eq:5}
+  ds^2 = R^2(d\theta^2 + \sin^2\theta d\phi^2).
+\end{equation}
+
+\begin{enumerate}[label=(\alph*)]
+  \item Find the transition functions between these spherical coordinates and the stereographic projection coordinates \( U_N \) from the previous problem.
+  \item Using the transformation rule, transform the metric from spherical to \( U_N \) stereographic coordinates.
+        Show that it is
+        \begin{equation}
+        \label{eq:6}
+        ds^2 = \frac{4R^2}{((x^1)^2 + (x^2)^2 + R^2)^2}((dx^1)^2 + (dx^2)^2).
+      \end{equation}
+  \item Consider the curve given in \( U_N \) coordinates by \( x^1(\lambda) = \lambda, x^2(\lambda) = 0, \lambda \in (-\infty, \infty) \).
+        This is a curve traversing the circumference of the sphere.
+        Using the arc-length formula
+        \begin{equation}
+        \label{eq:7}
+        \int d\lambda \sqrt{g_{\mu\nu}(x(\lambda)) \frac{\mathrm{d} x^{\mu}}{\mathrm{d} \lambda} \frac{\mathrm{d} x^{\nu}}{\mathrm{d} \lambda}},
+      \end{equation}
+        and the expression \cref{eq:6}, compute the length of the curve and see that it reproduces the circumference of the sphere.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{5. Warp drive spacetime}
+  Suppose the Earth is at \( x = 0 \) and a star is at \( x = L \) lightyears away.
+  If spacetime is flat Minkowski with \( ds^2 = -dt^2 + dx^2 \), then a spaceship traveling from Earth to the star at nearly the speed of light would take just over \( L \) years, as measured by the clocks on the Earth, or the star, to arrive.
+  Now imagine a warp drive engine which sets up the following metric in the spacetime between the Earth and the star,
+  \begin{equation}
+  \label{eq:8}
+  ds^2 = -dt^2 + (dx - \dot{x}_s(t)V(|x - x_s(t)|)dt)^2,
+  \end{equation}
+  where \( x_s(t) \) is some arbitrary path from the Earth to the star (not necessarily Minkowski timelike) which the spaceship with take and \( \dot{x}_s(t) \) is the velocity as measured in the Minkowski metric.
+  \( V(r) \) is some smooth function satisfying \( V(0) = 1 \) and falls to zero as \( r \rightarrow \infty \).
+  \begin{enumerate}[label=(\alph*)]
+    \item Consider the case \( x_s(t) = vt \), \( v > 1 \).
+          This is a worldline which would be faster than light in the Minkowski metric.
+          Take \( V(r) \) to be a Gaussian of some width \( R \), that is, \( V(r) = \exp(-r^2/2R^2) \).
+          Make a plot of the lightcones in this spacetime.
+          The warp drive is distorting the spacetime in the region within \( \sim R \) of the spaceship's trajectory, in such a way that locally the path is always within the lightcone and hence time-like.
+          Thus the trajectory can be achieved without ever locally exceeding the speed of light.
+          In this sense, the warp drive allows the spaceship to travel ``faster than light,'' arriving at the star in a time \( \approx L/v < L \) as measured by clocks on Earth or the star.
+    \item Show that, regardless of \( x_s(t) \) and \( V(r) \), the path is always timelike with respect to \cref{eq:8}.
+          THus the spaceship never has to move faster than the local speed of light.
+    \item Find, for any \( x_s(t) \) and \( V(r) \), the time elapsed on the spaceship's clock.
+          Will there be time dilation problems where the space travelers are younger/older than their Earth-bound twins after a round trip?
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{6}
+  Generally, the derivative of a tensor is not a tensor.
+  \begin{enumerate}[label=(\alph*)]
+    \item Show that given a one-form field \( W_{\mu}(x) \), the partial derivative \(\partial_{\mu}W_{\nu}\) does not transform as a (0,2) tensor.
+
+          However, there are a few exceptions.
+    \item Show that given a one-form field \( W_{\mu}(x) \), the anti-symmetric combination \(\partial_{[\mu}W_{\nu]}\) \textit{does} transform as a \( (0,2) \) tensor.
+          This is an example of the \textit{exterior derivative}.
+    \item Show that given two vector fields \( V_1^{\mu}, V_2^{\mu} \), the combination
+          \begin{equation}
+          \label{eq:9}
+          \comm{V_1}{V_2}^{\mu} \coloneq V_1^{\nu}\partial_{\nu} V_2^{\mu} - V_2^{\nu} \partial_{\nu} V_1^{\mu}
+        \end{equation}
+          transforms as a vector.
+          This is called the \textit{Lie bracket}, and example of the \textit{Lie derivative}.
+  \end{enumerate}
+\end{problem}
+\end{document}
