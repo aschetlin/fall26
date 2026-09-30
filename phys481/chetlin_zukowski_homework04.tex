@@ -45,6 +45,7 @@
     \end{equation}
     The results make sense, since \( \ket{\psi} \) is prepared in an eigenstate of \( S_z \), so that the measurement is guaranteed to be spin-down.
     On the other hand, \( \ket{-} \) in the \( x \)-basis is a superposition of \( \ket{\pm}_{x} \) so that there is an even chance of measuring either up or down \( x \).
+    The histograms are pictured in \cref{fig:1}(a,b).
         \end{answer}
   \item Given \( \ket{\psi} = \ket{-}_y \), find \( \langle S_z \rangle \) and \( \Delta S_z \), sketch a histogram, comment on whether the results make sense.
         \begin{answer}
@@ -70,6 +71,7 @@ i
           \end{aligned}
         \end{equation}
         Exactly as in part (a), \(\Delta S_z = \frac{\hbar}{2}\), which makes sense just as the uncertainty in \(S_x\) did above.
+        The histogram is pictured in \cref{fig:1}(c).
         \end{answer}
   \item Given \( \ket{\psi} = \frac{1}{\sqrt{5}}(2\ket{+} - i\ket{-}) \), find \( \langle S_z \rangle \) and \( \Delta S_{z} \), sketch a histogram, comment on whether the results make sense.
         \begin{answer}
@@ -104,9 +106,18 @@ i
             &= \frac{\hbar}{2} \sqrt{\frac{16}{25}} = \frac{4}{5} \frac{\hbar}{2}.
           \end{aligned}
           \end{equation}
+          The histogram is pictured in \cref{fig:1}(d).
+          The results make sense here since the expected value is closer to up in \( z \) which the superposition is more heavily weighted towards; the uncertainty is also slightly less than \( \frac{\hbar}{2} \), which is the maximum, for a 50/50 superposition.
         \end{answer}
 \end{enumerate}
 \end{problem}
+\begin{center}
+\begin{figure}
+\includegraphics[angle=90, width=\textwidth]{homework04_fig1.pdf}
+\caption{Histograms of Probability Measurements}
+  \label{fig:1}
+\end{figure}
+\end{center}
 
 \begin{problem}{2}
   Consider a general state \( \ket{\psi} = a \ket{+} + b \ket{-} \), where \( a, b \in \mathbb{C} \).
@@ -269,6 +280,9 @@ The electron is in a uniform magnetic field \( \vec{B} = B_0 \hat{z} \).
           \end{aligned}
         \end{equation}
         where we have used the identities \( ie^{i\phi} = e^{i(\phi + \pi/2)} \), \( e^{i\phi} = -e^{i(\phi + \pi)} \), and \( e^{i\phi} + e^{-i\phi} = 2\cos\phi \).
+
+        This makes sense, since the spin vector lies in a superposition of \( \hat{x} \) and \( \hat{y} \), and as seen on page 58, Figure 2.10(a) in McIntyre, this superposition has an element of ``quantum fuzziness'' which accounts for the oscillation in the expected values.
+        The graph of \( \mathcal{P}_{+} \) as a function of time is shown in \cref{fig:2}(a).
         \end{answer}
   \item Does the system return to its initial state?
         If so, when?
@@ -349,6 +363,8 @@ e^{-i\omega_{0} t /2} \\ -e^{i(\omega_0 t /2 + 7\pi/4)}
     \end{aligned}
   \end{equation}
   which has magnitude \( |\langle \vec{S} \rangle | = \frac{\hbar}{2}\).
+
+  The graphs of \(\langle S_y \rangle\) and \( \langle S_z \rangle \) are shown as functions of time in \cref{fig:2}(b,c).
         \end{answer}
   \item What is \(\langle H \rangle\)?
         Does it evolve in time?
@@ -360,4 +376,9 @@ e^{-i\omega_{0} t /2} \\ -e^{i(\omega_0 t /2 + 7\pi/4)}
         \end{answer}
 \end{enumerate}
 \end{problem}
+\begin{figure}
+  \includegraphics[angle=90, width=\textwidth]{homework04_fig2.pdf}
+  \caption{Expected Values as Functions of Time}
+  \label{fig:2}
+\end{figure}
 \end{document}
