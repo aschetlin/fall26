@@ -100,7 +100,7 @@ where we have used linearity in the first line, and the continuity of \( L \) to
   \begin{aligned}
     \mathbf{x}_s \wedge \mathbf{x}_v &= r(T \wedge B \cos v) -r (T \wedge N \sin v) + r^2(N^{\prime} \cos v \wedge N \sin v \\
                                 &\quad+  N^{\prime}\cos v \wedge B(s) \cos v + B^{\prime}(s) \sin v \wedge B(s) \cos v) \\
-    &= r(-N\cosv) - rB\sin v + r^2\cos v \sin v(-B-T) + r^2
+    &= r(-N\cos v) - rB\sin v + r^2\cos v \sin v(-B-T) + r^2
   \end{aligned}
   \end{equation}
 \end{proof}
@@ -204,4 +204,27 @@ where we have used linearity in the first line, and the continuity of \( L \) to
 		E = E(v), \quad F = 0, \quad G = 1.
 	\end{equation}
 \end{problem}
+\begin{proof}
+  We can parametrize a surface of revolution as
+  \begin{equation}
+  \label{eq:24}
+  \mathbf{x}(u,v) = \left( f(v)\cos u, f(v)\sin u, g(v) \right),
+\end{equation}
+for differentiable functions \( f, g \), \( f > 0 \).
+If we let \( v \) be the arc-length, we then have \( f^{\prime}(v)^2 + g^{\prime}(v)^2 = 1 \).
+Hence,
+\begin{equation}
+\label{eq:25}
+\mathbf{x}_{u} = (-f(v)\sin u, f(v) \cos u, 0), \quad |\mathbf{x}_{\theta}| = f^{\prime}(v),
+\end{equation}
+and
+\begin{equation}
+\label{eq:26}
+\mathbf{x}_{v} = (f^{\prime}(v)\cos u, f^{\prime}(v)\sin u, g^{\prime}(v)), \quad |\mathbf{x}_v| = \sqrt{f^{\prime}(v)^2 + g^{\prime}(v)} = 1.
+\end{equation}
+
+Then, \( E = g_{11} = \langle \mathbf{x}_u, \mathbf{x}_u \rangle = f^{\prime}(v) \).
+\( F = g_{12} = g_{21} = \langle \mathbf{x}_u, \mathbf{x}_v \rangle = 0 \).
+Finally, \( G = g_{22} = \langle \mathbf{x}_v, \mathbf{x}_v \rangle = 1\).
+\end{proof}
 \end{document}
