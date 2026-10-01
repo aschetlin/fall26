@@ -99,24 +99,97 @@ Define a map \( \mathbf{C}: V \times V \times V^{*} \times V^{*} \rightarrow \ma
 
 \begin{problem}{3}
   In class we saw that the circle, \( S^1 \), can be covered with two patches constructed via \textit{stereographic projection}.
-  Here \textsl{we}l do the same for the sphere \( S^2 \).
+  Here we'll do the same for the sphere \( S^2 \).
 
   Define the first patch \( U_N \) as all the points besides the north pole.
   Assign coordinates to \( p \in U_N \) by drawing a line from the north pole, through \( p \), and determining where it intersects a plane passing through the equator of the sphere.
 
   \begin{enumerate}[label=(\alph*)]
-    \item Defining the sphere of radius \( R \) and the subset of \( \mathbb{R}^3 \) consititng of points \( (X^1, X^2, X^3) \) where \( (X^1)^2 + (X^2)^2 + (X^3)^2 = R^2 \), show that the stereographic projected coordinates \( (x^1, x^2) \) are
+    \item Defining the sphere of radius \( R \) as the subset of \( \mathbb{R}^3 \) consititng of points \( (X^1, X^2, X^3) \) where \( (X^1)^2 + (X^2)^2 + (X^3)^2 = R^2 \), show that the stereographic projected coordinates \( (x^1, x^2) \) are
           \begin{equation}
           \label{eq:2}
           \varphi_N(X^1, X^2, X^3) = \left( \frac{X^{1}}{1 - X^3/R}, \frac{X^2}{1 - X^3/R} \right).
         \end{equation}
+          \begin{proof}
+            Let \( X \in S^2 \) have coordinates \( X = (X^1, X^2, X^3) \); \( x \in \mathbb{R}^2 \) with coordinates \( x = (x^1, x^2) \).
+            The line from the north pole---which has coordinates \( (0,0,R) \)---through \( X \) can be parametrized as
+            \begin{equation}
+            \label{eq:13}
+            l(t) = (1-t)(0,0,R) + t(X^1, X^2, X^3) = (tX^1, tX^2, (1-t)R + t X^3).
+          \end{equation}
+          The point \( x \) is a point in \( \mathbb{R}^3 \) with \( x^3 = 0 \).
+          That is, this line intersects the plane at the equator of the sphere exactly when \( (1-t)R + t X^3 = 0 \).
+          \begin{equation}
+          \label{eq:14}
+          \begin{aligned}
+            0 =  (1-t)R + t X^3 = t(X^3 - R) + R \Rightarrow t = -\frac{R}{X^3 - R} = \frac{1}{1 - X^3/R }.
+          \end{aligned}
+        \end{equation}
+        Substituting \cref{eq:14} into \cref{eq:13} gives the point in \( \mathbb{R}^3 \) at which \( l(t) \) intersects the \( xy \)-plane,
+        \begin{equation}
+        \label{eq:15}
+        \left(\frac{X^{1}}{1 - X^3/R}, \frac{X^2}{1- X^3/R}, 0\right),
+        \end{equation}
+        so that
+        \begin{equation}
+        \label{eq:16}
+        \varphi_N(X^1, X^2, X^3) = \left( \frac{X^1}{1 - X^3/R}, \frac{X^2}{1 - X^3/R} \right),
+      \end{equation}
+      as desired.
+          \end{proof}
     \item Write an expression for \(\varphi^{-1}_N(x^{1}, x^2)\) for arbitrary \( x^1, x^2 \).
+          \begin{answer}
+            We proceed opposite to part (a).
+            Let \( x = (x^1, x^2) \) be an arbitary point in \( \mathbb{R}^2 \), which has corresponding point in \( R^3 \), \( (x^1, x^2, 0) \), via the natural inclusion.
+            The line from \( (x^1, x^2, 0) \) to the north pole \( (0,0,R) \) will intersect the sphere at the desired point \( X \in S^2 \).
+            We can write the line as
+            \begin{equation}
+            \label{eq:17}
+            l(t) = (1-t)(0,0,R) + t(x^1, x^2, 0) = (tx^1, tx^2, (1-t)R),
+          \end{equation}
+          and we seek the time \( t \neq 0 \) at which \( (tx^1)^2 + (tx^2)^2 + ((1-t)R)^2 = R^2 \).
+          \begin{equation}
+          \label{eq:18}
+          \begin{aligned}
+            &t^2 ((x^1)^2 + (x^2)^2 + R^2) - 2tR^2= 0 \\
+            \Rightarrow &t((x^1)^2 + (x^2)^2 + R^2) = 2R^2 \\
+            \Rightarrow &t = \frac{2R^2}{(x^1)^2 + (x^2)^2 + R^2}.
+          \end{aligned}
+        \end{equation}
+        Then we substitute \cref{eq:18} into \cref{eq:17}, which gives us the point of intersection as
+        \begin{equation}
+        \label{eq:19}
+        \begin{aligned}
+          &\left( \frac{2R^2 x^1}{(x^1)^2 + (x^2)^2 + R^2}, \frac{2 R^2 x^2}{(x^1)^2 + (x^2)^2 + R^2}, R(1 - \frac{2R^2}{(x^1)^2 + (x^2)^2 + R^2}) \right) \\
+          &= \frac{1}{(x^1)^2 + (x^2)^2 + R^2}\left( 2R^2x^1, 2R^2x^2, R((x^1)^2 + (x^2)^2 - R^2) \right).
+        \end{aligned}
+      \end{equation}
+      Defining \( r^2 = (x^1)^2 + (x^2)^2 \), we can then write the inverse map as
+      \begin{equation}
+      \label{eq:20}
+      \varphi_N^{-1}(x^1, x^2) = \frac{R}{r^2 + R^2} \left( 2Rx^1, 2Rx^2,  r^2 - R^2 \right).
+      \end{equation}
+      \end{answer}
     \item Define a second patch \( U_S \) to contain all points besides the south pole.
           Show that the corresponding stereographic projected coordinates \( (y^1, y^2) \) are
           \begin{equation}
           \label{eq:3}
           \varphi_S(X^1, X^2, X^3) = \left( \frac{X^{1}}{1 + X^3/R}, \frac{X^2}{1 + X^3/R} \right).
         \end{equation}
+          \begin{proof}
+            Almost identically to part (a), parametrize the line from the south pole \( (0,0, -R) \) to the point \( (y^1, y^2, 0) \) as
+            \begin{equation}
+            \label{eq:21}
+            l(t) = (1-t)(0,0,-R) + t(X^1, X^2, X^3) = (t X^1, tX^2, -R(1-t) + tX^3),
+          \end{equation}
+          and solve for \( t \neq 0 \), \( t X^3 -R(1-t) = 0 \).
+          We have \( t(X^3 + R) = R \) so that \( t = \frac{R}{X^3 + R} = \frac{1}{1 + X^3/R}\).
+          Plugging this time into \cref{eq:21} gives the desired result,
+          \begin{equation}
+          \label{eq:22}
+          \varphi_S(X^1, X^2, X^3) = \left( \frac{X^1}{1 + X^3/R}, \frac{X^2}{1 + X^3/R} \right).
+          \end{equation}
+          \end{proof}
     \item Write an expression for \(\varphi^{-1}_S(y^1, y^2)\).
     \item Show that the transition function \(\varphi_S \circ \varphi_N^{-1}\) can be written as
           \begin{equation}
@@ -124,8 +197,8 @@ Define a map \( \mathbf{C}: V \times V \times V^{*} \times V^{*} \rightarrow \ma
           ( y^1(x^1, x^2), y^2(x^1, x^2) ) = \frac{R^2}{(x^{1})^2 + (x^2)^2}(x^1, x^2).
         \end{equation}
           Is this \( C^{\infty} \) on the overlap?
-  \end{enumerate}
   \item Find also \(\varphi_N \circ \varphi_S^{-1}\) and verify that it is \( C^{\infty} \) and that it is the inverse of \cref{eq:4}.
+  \end{enumerate}
 \end{problem}
 
 \begin{problem}{4}
@@ -183,9 +256,59 @@ Define a map \( \mathbf{C}: V \times V \times V^{*} \times V^{*} \rightarrow \ma
   Generally, the derivative of a tensor is not a tensor.
   \begin{enumerate}[label=(\alph*)]
     \item Show that given a one-form field \( W_{\mu}(x) \), the partial derivative \(\partial_{\mu}W_{\nu}\) does not transform as a (0,2) tensor.
-
+          \begin{proof}
+            Let \( W_{\mu}(x) \) be an arbitrary one-form field.
+            The \( (0,2) \) tensor transformation law for an arbitrary \( T_{\mu\nu} \) is
+            \begin{equation}
+            \label{eq:24}
+              T = T^{\prime}_{\mu\nu}dx^{\prime\mu}\otimes dx^{\prime\nu} = \tensor{T}{ _{\rho\sigma} }dx^{\rho}\otimes dx^{\sigma}, \qquad \text{where }T^{\prime}_{\mu\nu} = \frac{\partial x^{\rho}}{\partial x^{\prime\mu}} \frac{\partial x^{\sigma}}{\partial x^{\prime \nu}} T_{\rho\sigma}.
+          \end{equation}
+          We first of all calculate the transformation of \(\partial_{\mu}W_{\nu}\) in two steps: \( W_{\nu}(x) \) is a (0,1) tensor field, and hence transforms as
+          \begin{equation}
+          \label{eq:25}
+          W_{\nu}^{\prime}(x) = \frac{\partial x^{\alpha}}{\partial x^{\prime\nu}} W_{\alpha},
+          \end{equation}
+          so that we should, on one hand, have
+          \begin{equation}
+          \label{eq:26}
+          \begin{aligned}
+          \partial_{\mu}^{\prime}W_{\nu}^{\prime} &= \frac{\partial }{\partial x^{\prime\mu}} \left( \frac{\partial x^{\alpha}}{\partial x^{\prime\nu}} W_{\alpha} \right) = \frac{\partial^2 x^{\alpha}}{\partial x^{\prime\mu} \partial x^{\prime\nu}} W_{\alpha} + \frac{\partial x^{\alpha}}{\partial x^{\prime\nu}} \partial_{\rho}W_{\alpha} \frac{\partial x^{\rho}}{\partial x^{\prime\mu}}.
+          \end{aligned}
+        \end{equation}
+        However, the transformation law \cref{eq:24} implies we should also have
+        \begin{equation}
+        \label{eq:27}
+        (\partial_{\mu}W_{\nu})^{\prime} = \frac{\partial x^{\rho}}{\partial x^{\prime\mu}} \frac{\partial x^{\sigma}}{\partial x^{\prime\nu}} \partial_{\rho}W_{\sigma},
+      \end{equation}
+      which is clearly not equal to \cref{eq:26} as it is missing the crossed term.
+          \end{proof}
           However, there are a few exceptions.
     \item Show that given a one-form field \( W_{\mu}(x) \), the anti-symmetric combination \(\partial_{[\mu}W_{\nu]}\) \textit{does} transform as a \( (0,2) \) tensor.
+          \begin{proof}
+            By definition,
+            \begin{equation}
+            \label{eq:28}
+            \partial_{[\mu}W_{\nu]} = \frac{1}{2} \left( \partial_{\mu}W_{\nu} - \partial_{\nu}W_{\mu} \right).
+            \end{equation}
+            Again applying the \( (0,1) \) transformation law to \( W_{\nu} \) gives
+            \begin{equation}
+            \label{eq:29}
+            \begin{aligned}
+              \partial^{\prime}_{[\mu}W^{\prime}_{\nu]} &= \frac{1}{2} \left( \frac{\partial }{\partial x^{\prime\mu}} (\frac{\partial x^{\alpha}}{\partial x^{\prime\nu}} W_{\alpha} ) - \frac{\partial }{\partial x^{\prime\nu}} (\frac{\partial x^{\beta}}{\partial x^{\prime\mu}} W_{\beta}) \right) \\
+                                   &= \frac{1}{2} \left( \frac{\partial^2 x^{\alpha}}{\partial x^{\prime\mu} \partial^{\prime\nu}} W_{\alpha} + \frac{\partial x^{\alpha}}{\partial x^{\prime\nu}} \partial_{\rho}W_{\alpha} \frac{\partial x^{\beta}}{\partial x^{\prime\mu}} - \frac{\partial^2 x^{\beta}}{\partial x^{\prime\nu} \partial x^{\prime\mu}} W_{\beta} - \frac{\partial x^{\beta}}{\partial x^{\prime\mu}} \partial_{\sigma}W_{\beta} \frac{\partial x^{\sigma}}{\partial x^{\prime\nu}} \right) \\
+              &= \frac{1}{2} \left( \frac{\partial x^{\alpha}}{\partial x^{\prime\nu}} \frac{\partial x^{\beta}}{\partial x^{\prime\mu}} \partial_{\rho}W_{\alpha} - \frac{\partial x^{\beta}}{\partial x^{\prime\mu}} \frac{\partial x^{\sigma}}{\partial x^{\prime\nu}} \partial_{\sigma}W_{\beta} \right),
+            \end{aligned}
+            \end{equation}
+            where we have appealed to Clairaut's theorem to eliminate the crossed terms; then, by changing indices we get
+            \begin{equation}
+            \label{eq:30}
+            \begin{aligned}
+              \partial^{\prime}_{[\mu}W^{\prime}_{\nu]} &= \frac{1}{2} \left( \frac{\partial x^{\gamma}}{\partial x^{\prime\nu}} \frac{\partial x^{\lambda}}{\partial x^{\prime\mu}} \partial_{\lambda}W_{\gamma} - \frac{\partial x^{\lambda}}{\partial x^{\prime\mu}} \frac{\partial x^{\gamma}}{\partial x^{\prime\nu}} \partial_{\gamma}W_{\lambda}  \right) \\
+              &= \frac{\partial x^{\gamma}}{\partial x^{\prime\nu}} \frac{\partial x^{\lambda}}{\partial x^{\prime\mu}} \partial_{[\lambda}W_{\gamma]},
+            \end{aligned}
+          \end{equation}
+          and our claim follows.
+          \end{proof}
           This is an example of the \textit{exterior derivative}.
     \item Show that given two vector fields \( V_1^{\mu}, V_2^{\mu} \), the combination
           \begin{equation}
