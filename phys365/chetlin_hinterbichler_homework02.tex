@@ -294,16 +294,16 @@ Define a map \( \mathbf{C}: V \times V \times V^{*} \times V^{*} \rightarrow \ma
             \begin{equation}
             \label{eq:29}
             \begin{aligned}
-              \partial^{\prime}_{[\mu}W^{\prime}_{\nu]} &= \frac{1}{2} \left( \frac{\partial }{\partial x^{\prime\mu}} (\frac{\partial x^{\alpha}}{\partial x^{\prime\nu}} W_{\alpha} ) - \frac{\partial }{\partial x^{\prime\nu}} (\frac{\partial x^{\beta}}{\partial x^{\prime\mu}} W_{\beta}) \right) \\
-                                   &= \frac{1}{2} \left( \frac{\partial^2 x^{\alpha}}{\partial x^{\prime\mu} \partial^{\prime\nu}} W_{\alpha} + \frac{\partial x^{\alpha}}{\partial x^{\prime\nu}} \partial_{\rho}W_{\alpha} \frac{\partial x^{\beta}}{\partial x^{\prime\mu}} - \frac{\partial^2 x^{\beta}}{\partial x^{\prime\nu} \partial x^{\prime\mu}} W_{\beta} - \frac{\partial x^{\beta}}{\partial x^{\prime\mu}} \partial_{\sigma}W_{\beta} \frac{\partial x^{\sigma}}{\partial x^{\prime\nu}} \right) \\
+              \partial^{\prime}_{[\mu}W^{\prime}_{\nu]} &= \frac{1}{2} \left( \frac{\partial }{\partial x^{\prime\mu}} (\frac{\partial x^{\alpha}}{\partial x^{\prime\nu}} W_{\alpha} ) - \frac{\partial }{\partial x^{\prime\nu}} (\frac{\partial x^{\beta}}{\partial x^{\prime\mu}} W_{\beta}) \right) \\[.5em]
+                                   &= \frac{1}{2} \left( \frac{\partial^2 x^{\alpha}}{\partial x^{\prime\mu} \partial x^{\prime\nu}} W_{\alpha} + \frac{\partial x^{\alpha}}{\partial x^{\prime\nu}} \partial_{\rho}W_{\alpha} \frac{\partial x^{\rho}}{\partial x^{\prime\mu}} - \frac{\partial^2 x^{\beta}}{\partial x^{\prime\nu} \partial x^{\prime\mu}} W_{\beta} - \frac{\partial x^{\beta}}{\partial x^{\prime\mu}} \partial_{\sigma}W_{\beta} \frac{\partial x^{\sigma}}{\partial x^{\prime\nu}} \right) \\[.5em]
               &= \frac{1}{2} \left( \frac{\partial x^{\alpha}}{\partial x^{\prime\nu}} \frac{\partial x^{\beta}}{\partial x^{\prime\mu}} \partial_{\rho}W_{\alpha} - \frac{\partial x^{\beta}}{\partial x^{\prime\mu}} \frac{\partial x^{\sigma}}{\partial x^{\prime\nu}} \partial_{\sigma}W_{\beta} \right),
             \end{aligned}
             \end{equation}
-            where we have appealed to Clairaut's theorem to eliminate the crossed terms; then, by changing indices we get
+            where we have appealed to Clairaut's theorem (with an implicit change of indices) to eliminate the crossed terms; then, by changing indices we get
             \begin{equation}
             \label{eq:30}
             \begin{aligned}
-              \partial^{\prime}_{[\mu}W^{\prime}_{\nu]} &= \frac{1}{2} \left( \frac{\partial x^{\gamma}}{\partial x^{\prime\nu}} \frac{\partial x^{\lambda}}{\partial x^{\prime\mu}} \partial_{\lambda}W_{\gamma} - \frac{\partial x^{\lambda}}{\partial x^{\prime\mu}} \frac{\partial x^{\gamma}}{\partial x^{\prime\nu}} \partial_{\gamma}W_{\lambda}  \right) \\
+              \partial^{\prime}_{[\mu}W^{\prime}_{\nu]} &= \frac{1}{2} \left( \frac{\partial x^{\gamma}}{\partial x^{\prime\nu}} \frac{\partial x^{\lambda}}{\partial x^{\prime\mu}} \partial_{\lambda}W_{\gamma} - \frac{\partial x^{\lambda}}{\partial x^{\prime\mu}} \frac{\partial x^{\gamma}}{\partial x^{\prime\nu}} \partial_{\gamma}W_{\lambda}  \right) \\[.5em]
               &= \frac{\partial x^{\gamma}}{\partial x^{\prime\nu}} \frac{\partial x^{\lambda}}{\partial x^{\prime\mu}} \partial_{[\lambda}W_{\gamma]},
             \end{aligned}
           \end{equation}
@@ -317,6 +317,40 @@ Define a map \( \mathbf{C}: V \times V \times V^{*} \times V^{*} \rightarrow \ma
         \end{equation}
           transforms as a vector.
           This is called the \textit{Lie bracket}, and example of the \textit{Lie derivative}.
+  \begin{proof}
+    For ease of notation, write \( V_1^{\mu} = V^{\mu}, V_2^{\mu} = W^{\mu} \).
+    Then, substituting in the respective transformation laws gives
+    \begin{equation}
+    \label{eq:31}
+    \begin{aligned}
+      \comm{V}{W}^{\prime\mu} &= \frac{\partial x^{\prime\nu}}{\partial x^{\alpha}} V^{\alpha} \left( \frac{\partial }{\partial x^{\prime\nu}} \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} W^{\beta} \right) - \frac{\partial x^{\prime\nu}}{\partial x^{\alpha}} W^{\alpha} \left( \frac{\partial }{\partial x^{\prime\nu}} \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} V^{\beta} \right) \\
+                       &= \frac{\partial x^{\prime\nu}}{\partial x^{\alpha}} V^{\alpha} \left( \frac{\partial^2 x^{\prime\mu}}{\partial x^{\prime\nu} \partial x^{\beta}} W^{\beta} + \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} \partial_{\rho}W^{\beta} \frac{\partial x^{\rho}}{\partial x^{\prime\nu}}   \right) \\
+                       &\quad - \frac{\partial x^{\prime\nu}}{\partial x^{\alpha}} W^{\alpha} \left( \frac{\partial^2 x^{\prime\mu}}{\partial x^{\prime\nu} \partial x^{\beta}} V^{\beta} + \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} \partial_{\rho}V^{\beta} \frac{\partial x^{\rho}}{\partial x^{\prime\nu}}   \right).
+    \end{aligned}
+  \end{equation}
+  Considering first the crossed partial terms, we have
+  \begin{equation}
+  \label{eq:32}
+  \begin{aligned}
+    &\frac{\partial x^{\prime\nu}}{\partial x^{\alpha}} \frac{\partial^2 x^{\prime\mu}}{\partial x^{\prime\nu} \partial x^{\beta}} V^{\alpha} W^{\beta} - \frac{\partial x^{\prime\nu}}{\partial x^{\alpha}} \frac{\partial^2 x^{\prime\mu}}{\partial x^{\prime\nu} \partial x^{\beta}} W^{\alpha} V^{\beta} \\[.5em]
+    &= \frac{\partial x^{\prime\nu}}{\partial x^{\gamma}} \frac{\partial^2 x^{\prime\mu}}{\partial x^{\prime\nu} \partial x^{\lambda}} V^{\gamma}W^{\lambda} - \frac{\partial x^{\prime\nu}}{\partial x^{\lambda}} \frac{\partial^2 x^{\prime\mu}}{\partial x^{\prime\nu} \partial x^{\gamma}} W^{\lambda}V^{\gamma} \\[.5em]
+    &= V^{\gamma}W^{\lambda} \left( \frac{\partial^2 x^{\prime\mu}}{\partial x^{\gamma} \partial x^{\lambda}} - \frac{\partial^2 x^{\prime\mu}}{\partial x^{\lambda} \partial x^{\gamma}}  \right) = 0.
+  \end{aligned}
+\end{equation}
+
+Returning, then, to \cref{eq:31},
+\begin{equation}
+\label{eq:33}
+\begin{aligned}
+  \comm{V}{W}^{\prime\mu} &= \frac{\partial x^{\prime\nu}}{\partial x^{\alpha}} V^{\alpha} \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} \partial_{\rho}W^{\beta} \frac{\partial x^{\rho}}{\partial x^{\prime\nu}} - \frac{\partial x^{\prime\nu}}{\partial x^{\alpha}} W^{\alpha} \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} \partial_{\rho}V^{\beta} \frac{\partial x^{\rho}}{\partial x^{\prime\nu}} \\[.5em]
+                   &= \frac{\partial x^{\prime\nu}}{\partial x^{\alpha}}  \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} \frac{\partial x^{\rho}}{\partial x^{\prime\nu}} \left( V^{\alpha}\partial_{\rho}W^{\beta} - W^{\alpha}\partial_{\rho} V^{\beta} \right) \\[.5em]
+                   &= \frac{\partial x^{\rho}}{\partial x^{\alpha}} \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} \left( V^{\alpha}\partial_{\rho}W^{\beta} - W^{\alpha}\partial_{\rho}V^{\beta} \right) \\[.5em]
+                   &= \tensor{\delta}{^{\rho}_{\alpha} } \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} \left( V^{\alpha}\partial_{\rho} W^{\beta} - W^{\alpha}\partial_{\rho} V^{\beta} \right) \\[.5em]
+                   &= \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} \left( V^{\lambda}\partial_{\lambda}W^{\beta} - W^{\lambda}\partial_{\lambda} V^{\beta} \right) = \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} \comm{V}{W}^{\beta},
+\end{aligned}
+\end{equation}
+and we are done.
+  \end{proof}
   \end{enumerate}
 \end{problem}
 \end{document}
