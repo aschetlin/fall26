@@ -1,0 +1,94 @@
+\documentclass[11pt]{article}
+
+\usepackage{../homework}
+
+\profname{Dr. Stanislaw Szarek}
+\classcode{MATH 423 Measure Theory}
+\assignnum{Assignment 06}
+\duedate{05 October 2026}
+
+\begin{document}
+All problems from Folland, \textit{Real Analysis} (2e).
+\begin{problem}{1.3.7}
+  If \(\mu_1, \dots, \mu_n\) are measures on \( (X, \mathcal{M}) \) and \( a_1, \dots, a_n \in [0,\infty) \), then \( \sum\limits_1^n a_j\mu_j \) is a measure on \( (X, \mathcal{M}) \).
+\end{problem}
+\begin{proof}
+  Define \( \nu = \sum\limits_1^n a_j \mu_j \).
+  Clearly, since \( \{\mu_n\} \) are all measures, \(\nu(\emptyset) = \sum\limits_1^n a_j \mu_j(\emptyset) = \sum\limits_1^n a_j(0) = 0\).
+  Moreover, for a sequence of disjoint sets \( \{ E_{j} \}_1^{\infty} \), we have
+  \begin{equation}
+  \label{eq:1}
+  \begin{aligned}
+    \nu(\bigcup_{k=1}^{\infty} E_k) = \sum\limits_{j=1}^n a_j \mu_j(\bigcup_{k=1}^{\infty} E_k) = \sum\limits_{j=1}^n a_j \sum\limits_{k=1}^{\infty} \mu_n(E_k) = \sum\limits_{k=1}^{\infty} \sum\limits_{j=1}^n a_j \mu_j(E_k) = \sum\limits_{k=1}^{\infty} \nu(E_k),
+  \end{aligned}
+  \end{equation}
+  where we can re-arrange sums since all sums involved are convergent.
+\end{proof}
+
+\begin{problem}{2.1.3}
+  If \( \{f_n\} \) is a sequence of measurable, real valued functions on \( X \), then\\
+  \( \{ x \mid \lim f_n(x) \text{ exists}\} \) is a measurable set.
+\end{problem}
+\begin{proof}
+  Since \( \mathbb{R} \) is a metric space, for every \( x \), the sequence \( \{ f_n(x) \} \) converging as a sequence of real numbers is equivalent to the Cauchy condition, that for all \(\epsilon > 0\) there is some \( N \in \mathbb{N} \) such that for any \( n, m \geq \mathbb{N} \), \( \left| f_n(x) - f_m(x) \right| < \epsilon\).
+  Let us define the set
+  \begin{equation}
+  \label{eq:2}
+  E_{n,m,k} = \{ x \in X : \left| f_n(x) - f_m(x) \right| < 1/k \},
+\end{equation}
+which is the pre-image \( g^{-1}((-\infty, 1/k)) \) of the function \( g = | f_n(x) - f_m(x) | \).
+We then need to show that the set of \( x \in X \) for which, for any \( k \) there is some \( N \) for which all \( n,m \geq N \) satisfy \( | f_n(x) - f_m(x) | < 1/k \), is measurable.
+Note first of all that since each of \( f_n, f_m \) are measurable, so too is the difference \( f_n- f_m \), by Proposition 2.6.
+Moreover, since \( | \cdot | \) is continuous, it is \( (\mathcal{B}_{\mathbb{R}}, \mathcal{B}_{\mathbb{R}}) \) measurable, and hence the composition \( | f_n(x) - f_m(x) | \) is \( (\mathcal{M}, \mathcal{B}_{\mathbb{R}}) \) measurable, and therefore the preimage \( g^{-1}((-\infty, 1/k)) = E_{n,m,k} \) is in \( \mathcal{M} \).
+
+Now, for some \( N \in \mathbb{N} \), the set
+\begin{equation}
+\label{eq:3}
+\bigcap_{m,n \ge N} E_{n,m,k} = \{ x \in X : \forall n,m \geq N, \left| f_n(x) - f_m(x) \right| < 1/k \}
+\end{equation}
+is a (countable) intersection of measurable sets and is hence measurable.
+Next,
+\begin{equation}
+\label{eq:4}
+\bigcup_{N \in \mathbb{N}} \bigcap_{m,n \geq N} E_{n,m,k} = \{ x \in X : \exists N \in \mathbb{N} \ \forall n,m \geq N, \left| f_n(x) - f_m(x) \right| < 1/k \}
+\end{equation}
+is again a countable union of measurable sets and is again measurable.
+Finally,
+\begin{equation}
+\label{eq:5}
+\begin{aligned}
+  \bigcap_{k \in \mathbb{N}} \bigcup_{n \in \mathbb{N}} \bigcap_{n,m \geq N} E_{n,m,k} = \{ x \in X : \forall k \ \exists N \ \forall n,m \geq N, |f_n(x) - f_m(x) | < 1/k\},
+\end{aligned}
+\end{equation}
+is measurable by the same reason.
+It remains to show that this set is in fact \( \{ x : \lim f_n(x) \text{ exists}\} \), but this is essentially by construction.
+Note that if \( x \in \bigcap_{k \in \mathbb{N}} \bigcup_{n \in \mathbb{N}} \bigcap_{n,m \geq N} E_{n,m,k} \), the sequence \( \{f_n(x)\} \) exactly satisfies the Cauchy criterion and therefore, since \( \mathbb{R} \) is complete, \( \lim f_{n}(x) \) exists; conversely, if \( \lim f_n(x) \) exists then the Cauchy criteron is satisfied and hence \( x \in \bigcap_k \bigcup_N \bigcap_{n,m \geq N} E_{n,m,k} \).
+\end{proof}
+
+\begin{prop}[2.11]
+  The following implications are valid iff the measure \(\mu\) is complete:
+  \begin{enumerate}[label=\alph*]
+    \item If \( f \) is measurable and \( f = g \) \(\mu\)-a.e., then \( g \) is measurable.
+          \item If \( f_n \) is measurable for \( n \in \mathbb{N} \) and \( f_n \rightarrow f \) \(\mu\)-a.e., then \( f \) is measurable.
+  \end{enumerate}
+\end{prop}
+
+\begin{problem}{2.1.10}
+  Prove Proposition 2.11.
+\end{problem}
+\begin{proof}
+  (\(\Rightarrow\)) Suppose \( \mu \) is an arbitrary complete measure on \( X \), \( f: X \rightarrow \mathbb{R} \) is measurable, and \( f = g \) \(\mu\)-a.e.
+  That is,
+\end{proof}
+
+\begin{prop}[2.20]
+  If \( f \in L^+ \) and \( \int f < \infty \), then \( \{ x \mid f(x) = \infty\} \) is a null set and \( \{ x \mid f(x) > 0 \} \) is \(\sigma\)-finite.
+\end{prop}
+
+\begin{problem}{2.2.12}
+  Prove Proposition 2.20.
+\end{problem}
+\begin{proof}
+
+\end{proof}
+\end{document}
