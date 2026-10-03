@@ -9,6 +9,8 @@
 
 \begin{document}
 All problems from Folland, \textit{Real Analysis} (2e).
+
+For this assignment, I briefly dicussed with Tim and Felix, the latter of whom gave me the idea to translate the existence of a limit in \( \mathbb{R} \) to a set-theoretic claim (for problem 2.1.3).
 \begin{problem}{1.3.7}
   If \(\mu_1, \dots, \mu_n\) are measures on \( (X, \mathcal{M}) \) and \( a_1, \dots, a_n \in [0,\infty) \), then \( \sum\limits_1^n a_j\mu_j \) is a measure on \( (X, \mathcal{M}) \).
 \end{problem}
@@ -94,6 +96,23 @@ Note that if \( x \in \bigcap_{k \in \mathbb{N}} \bigcup_{n \in \mathbb{N}} \big
   Prove Proposition 2.20.
 \end{problem}
 \begin{proof}
+  Suppose that \( f \in L^+ \) is such that \( \int f < \infty \), define \( I \coloneq \int f \).
+  Then, for every \(\epsilon > 0\), there is a simple function \(\varphi = \sum\limits_i a_i \chi_{E_i} \) so that \( \int \varphi = \sum\limits_1^n a_im(E_i) > I - \epsilon \).
+  Define \( H = \{ x \mid f(x) = \infty\} \), and note that \(\psi = \infty\cdot\chi_H + 0 \chi_{H^{C}}\) is a simple function which satisfies \( 0 \leq \psi \leq f \), and therefore
+  \begin{equation}
+  \label{eq:6}
+  \int \psi = \infty \cdot m(H) \leq \int f < \infty,
+\end{equation}
+so we must have \( m(H) = 0. \)
 
+Now, define \( A = \{ x \mid f(x) > 0 \} \), and note that if we have \( A_n = \{ x \mid f(x) \geq 1/n \} \), then \( A = \bigcup_1^{\infty} A_n \) and \( A_1 \subset A_2 \subset \dots \subset A_n \).
+Now, for fixed \( n \), \( A_n = f^{-1}([1/n, \infty)) \), and since \( f \) is measurable by hypothesis, \( A_n \) is measurable, so all that remains to show that \( A_n \) has finite measure.
+Suppose the contrary, so that there is some \( N \) for which \( m(A_N) = \infty \).
+Then, since \( f(x) \geq 1/N \) for \( x \in A_N \), the simple function \(\varphi = 1/N \chi_{A_N} + 0 \chi_{A_N^C}\) satisfies \( 0 \leq \varphi \leq f \), and
+\begin{equation}
+\label{eq:7}
+\int \varphi = \frac{1}{N}m(A_N) = \infty \leq \int f < \infty,
+\end{equation}
+a contradiction.
 \end{proof}
 \end{document}

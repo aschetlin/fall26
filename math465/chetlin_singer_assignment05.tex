@@ -46,15 +46,52 @@ Therefore, we can write \cref{eq:1} as
   \begin{enumerate}[label=(\alph*)]
     \item Paraboloid of revolution \( z = x^2 + y^2 \),
           \begin{answer}
-            The normal vector at the origin is mapped to \( (0,0,-1) \subset S^2 \).
-            Traversing upwards in \( z \), we see that the range of the Gauss map is exactly the open subset making up the lower hemisphere of \( S^2 \), that is,
+            The paraboloid can be parametrized as
             \begin{equation}
-            \label{eq:11}
-            N(S) = \left\{ (x,y,z) \subset S^2 \mid z < 0 \right\}.
-            \end{equation}
+            \label{eq:12}
+            \mathbf{x}(u,v) = (u, v, u^2 + v^2),
+          \end{equation}
+          for which the unit normal vector is
+          \begin{equation}
+          \label{eq:13}
+          \nu = \frac{\mathbf{x}_u \wedge \mathbf{x}_v}{|\mathbf{x}_u \wedge \mathbf{x}_v |} = \frac{(-2u, -2v, 1)}{\sqrt{4 u^2 + 4 v^2 + 1}}.
+        \end{equation}
+        Clearly, \(\nu^1\) and \(\nu^2\) can range over all possible values on \( S^2 \), so that our only limitation is that of \( \nu^3 \); in particular, \(\nu^3 > 0\), so that the Gauss map covers the open upper hemisphere (or lower, depending on choice of orientation).
           \end{answer}
     \item Hyperboloid of revolution \( x^2 + y^2 - z^2 = 1 \),
-          \item Catenoid \( x^2 + y^2 = \cosh^2 z \).
+          \begin{answer}
+            Parametrize the upper half of the hyperboloid as \( \mathbf{x}(u,v) = (u, v, \sqrt{x^2 + y^2 - 1}) \),
+            so that
+            \begin{equation}
+            \label{eq:14}
+            N = \left(\frac{-u}{\sqrt{u^2 + v^2 -1}}, \frac{-v}{\sqrt{u^2 + v^2 - 1}}, 1\right),
+          \end{equation}
+          and the unit normal is then
+          \begin{equation}
+          \label{eq:15}
+          \nu = \frac{(-u, -v, \sqrt{u^2 + v^2  - 1})}{\sqrt{2(u^2 + v^2) - 1}}.
+        \end{equation}
+        The \(\nu^3\) component satisfies
+        \begin{equation}
+        \label{eq:16}
+        (\nu^3)^2 = \frac{u^2 + v^2 - 1}{2(u^2 + v^2) - 1},
+      \end{equation}
+      where \( u^2 + v^2 > 1 \), this ranges as \( 0 < (\nu^3)^2 < \frac{1}{2} \), and hence \( 0 < \nu^3 < \frac{1}{\sqrt{2}} \).
+      The lower open hemisphere similarly ranges over \( - \frac{1}{\sqrt{2}} < \nu^3 < 0 \).
+      Therefore, the image of the Gauss map is the open band on the \( S^3 \) with polar angle \( \frac{\pi}{4} < \theta < \frac{3\pi}{4} \).
+          \end{answer}
+    \item Catenoid \( x^2 + y^2 = \cosh^2 z \).
+          \begin{answer}
+            We may parametrize the Catenoid as in \cref{eq:3}, \( \mathbf{x}(u,v) = (\cosh v\cos u, \cosh v \sin u, v) \), whence the unit normal is
+            \begin{equation}
+            \label{eq:17}
+            \begin{aligned}
+              \nu &= \frac{1}{\cosh^2 v} \left( \cosh v \cos u, \cosh v \sin u, -\cosh v \sinh v \right) \\
+              &= \left( \frac{\cos u}{\cosh u}, \frac{\sin u}{\cosh u}, -\tanh v \right).
+            \end{aligned}
+          \end{equation}
+          Therefore the \(\nu^3\) component ranges over \( -1 < \nu^3 < 1 \), so that the image of the Gauss map is \( S^3 \setminus \{(0,0,1), (0,0,-1)\} \).
+          \end{answer}
   \end{enumerate}
 \end{problem}
 
@@ -66,6 +103,10 @@ Therefore, we can write \cref{eq:1} as
 \end{equation}
 where \( K \) is the Gaussian curvature of the surface at a given point.
 \end{problem}
+\begin{proof}
+  An asymptotic curve \(\alpha \subset S\) is one for which, for all \( p \in \alpha \), \( \langle L(T), T \rangle = 0 \), where \( T \) is the unit tangent vector of \(\alpha\) at \( p \).
+  Said differently, \( \langle D_{T}T, \nu \rangle = \langle \kappa N, \nu \rangle = 0 \).
+\end{proof}
 
 \begin{problem}{3.3.3}
   Determine the asymptotic curves of the catenoid
