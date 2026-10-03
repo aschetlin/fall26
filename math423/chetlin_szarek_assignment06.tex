@@ -38,6 +38,7 @@ All problems from Folland, \textit{Real Analysis} (2e).
 \end{equation}
 which is the pre-image \( g^{-1}((-\infty, 1/k)) \) of the function \( g = | f_n(x) - f_m(x) | \).
 We then need to show that the set of \( x \in X \) for which, for any \( k \) there is some \( N \) for which all \( n,m \geq N \) satisfy \( | f_n(x) - f_m(x) | < 1/k \), is measurable.
+
 Note first of all that since each of \( f_n, f_m \) are measurable, so too is the difference \( f_n- f_m \), by Proposition 2.6.
 Moreover, since \( | \cdot | \) is continuous, it is \( (\mathcal{B}_{\mathbb{R}}, \mathcal{B}_{\mathbb{R}}) \) measurable, and hence the composition \( | f_n(x) - f_m(x) | \) is \( (\mathcal{M}, \mathcal{B}_{\mathbb{R}}) \) measurable, and therefore the preimage \( g^{-1}((-\infty, 1/k)) = E_{n,m,k} \) is in \( \mathcal{M} \).
 
@@ -78,7 +79,11 @@ Note that if \( x \in \bigcap_{k \in \mathbb{N}} \bigcup_{n \in \mathbb{N}} \big
 \end{problem}
 \begin{proof}
   (\(\Rightarrow\)) Suppose \( \mu \) is an arbitrary complete measure on \( X \), \( f: X \rightarrow \mathbb{R} \) is measurable, and \( f = g \) \(\mu\)-a.e.
-  That is,
+  That is, the set \( E = \{ x \in X \mid f(x) \neq g(x) \} \) has \( \mu(E) = 0 \).
+  Since, by Proposition 2.1, it suffices to show that the inverse images of elements of a generating family for a \(\sigma\)-algebra are measurable, let \( U = (a,b) \in \mathbb{R} \).
+  Then, \( f^{-1}(U) \in \mathcal{M} \).
+  In the case where \( f^{-1}(U) \cap E = \emptyset \), it is immediate that \( g^{-1}(U) = f^{-1}(U) \) so that \( g^{-1}(U) \in \mathcal{M} \).
+  In the case where \( f^{-1}(U) \cap E \neq \emptyset \), we then have that \( g^{-1}(U) = f^{-1}(U) \setminus E \)
 \end{proof}
 
 \begin{prop}[2.20]
