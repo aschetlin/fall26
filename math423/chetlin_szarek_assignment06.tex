@@ -10,109 +10,144 @@
 \begin{document}
 All problems from Folland, \textit{Real Analysis} (2e).
 
-For this assignment, I briefly dicussed with Tim and Felix, the latter of whom gave me the idea to translate the existence of a limit in \( \mathbb{R} \) to a set-theoretic claim (for problem 2.1.3).
+For this assignment, I briefly discussed problems 1.3.7 and 2.1.3 with Tim and Felix. For problem 2.1.3, Felix suggested translating the existence of a limit into a set-theoretic claim by way of the equivalence of Cauchy sequences and convergent sequences in \( \mathbb{R}^n \).
 \begin{problem}{1.3.7}
-  If \(\mu_1, \dots, \mu_n\) are measures on \( (X, \mathcal{M}) \) and \( a_1, \dots, a_n \in [0,\infty) \), then \( \sum\limits_1^n a_j\mu_j \) is a measure on \( (X, \mathcal{M}) \).
+	If \(\mu_1, \dots, \mu_n\) are measures on \( (X, \mathcal{M}) \) and \( a_1, \dots, a_n \in [0,\infty) \), then \( \sum\limits_1^n a_j\mu_j \) is a measure on \( (X, \mathcal{M}) \).
 \end{problem}
 \begin{proof}
-  Define \( \nu = \sum\limits_1^n a_j \mu_j \).
-  Clearly, since \( \{\mu_n\} \) are all measures, \(\nu(\emptyset) = \sum\limits_1^n a_j \mu_j(\emptyset) = \sum\limits_1^n a_j(0) = 0\).
-  Moreover, for a sequence of disjoint sets \( \{ E_{j} \}_1^{\infty} \), we have
-  \begin{equation}
-  \label{eq:1}
-  \begin{aligned}
-    \nu(\bigcup_{k=1}^{\infty} E_k) = \sum\limits_{j=1}^n a_j \mu_j(\bigcup_{k=1}^{\infty} E_k) = \sum\limits_{j=1}^n a_j \sum\limits_{k=1}^{\infty} \mu_n(E_k) = \sum\limits_{k=1}^{\infty} \sum\limits_{j=1}^n a_j \mu_j(E_k) = \sum\limits_{k=1}^{\infty} \nu(E_k),
-  \end{aligned}
-  \end{equation}
-  where we can re-arrange sums since all sums involved are convergent.
+	Define \( \nu = \sum\limits_1^n a_j \mu_j \).
+	Clearly, since \( \{\mu_n\} \) are all measures, \(\nu(\emptyset) = \sum\limits_1^n a_j \mu_j(\emptyset) = \sum\limits_1^n a_j(0) = 0\).
+	Moreover, for a sequence of disjoint sets \( \{ E_{j} \}_1^{\infty} \), we have
+	\begin{equation}
+		\label{eq:1}
+		\begin{aligned}
+			\nu(\bigcup_{k=1}^{\infty} E_k) = \sum\limits_{j=1}^n a_j \mu_j(\bigcup_{k=1}^{\infty} E_k) = \sum\limits_{j=1}^n a_j \sum\limits_{k=1}^{\infty} \mu_j(E_k) = \sum\limits_{k=1}^{\infty} \sum\limits_{j=1}^n a_j \mu_j(E_k) = \sum\limits_{k=1}^{\infty} \nu(E_k),
+		\end{aligned}
+	\end{equation}
+	where we can re-arrange sums since all terms are non-negative.
 \end{proof}
 
 \begin{problem}{2.1.3}
-  If \( \{f_n\} \) is a sequence of measurable, real valued functions on \( X \), then\\
-  \( \{ x \mid \lim f_n(x) \text{ exists}\} \) is a measurable set.
+	If \( \{f_n\} \) is a sequence of measurable, real valued functions on \( X \), then\\
+	\( \{ x \mid \lim f_n(x) \text{ exists}\} \) is a measurable set.
 \end{problem}
 \begin{proof}
-  Since \( \mathbb{R} \) is a metric space, for every \( x \), the sequence \( \{ f_n(x) \} \) converging as a sequence of real numbers is equivalent to the Cauchy condition, that for all \(\epsilon > 0\) there is some \( N \in \mathbb{N} \) such that for any \( n, m \geq \mathbb{N} \), \( \left| f_n(x) - f_m(x) \right| < \epsilon\).
-  Let us define the set
-  \begin{equation}
-  \label{eq:2}
-  E_{n,m,k} = \{ x \in X : \left| f_n(x) - f_m(x) \right| < 1/k \},
-\end{equation}
-which is the pre-image \( g^{-1}((-\infty, 1/k)) \) of the function \( g = | f_n(x) - f_m(x) | \).
-We then need to show that the set of \( x \in X \) for which, for any \( k \) there is some \( N \) for which all \( n,m \geq N \) satisfy \( | f_n(x) - f_m(x) | < 1/k \), is measurable.
+	Since \( \mathbb{R} \) is a metric space, for every \( x \), the sequence \( \{ f_n(x) \} \) converging as a sequence of real numbers is equivalent to the Cauchy condition, that for all \(\epsilon > 0\) there is some \( N \in \mathbb{N} \) such that for any \( n, m \geq N \), \( \left| f_n(x) - f_m(x) \right| < \epsilon\).
+	Let us define the set
+	\begin{equation}
+		\label{eq:2}
+		E_{n,m,k} = \{ x \in X : \left| f_n(x) - f_m(x) \right| < 1/k \},
+	\end{equation}
+	which is the pre-image \( g^{-1}((-\infty, 1/k)) \) of the function \( g(x) = | f_n(x) - f_m(x) | \).
+	We then need to show that the set of \( x \in X \) for which, for any \( k \) there is some \( N \) for which all \( n,m \geq N \) satisfy \( | f_n(x) - f_m(x) | < 1/k \), is measurable.
 
-Note first of all that since each of \( f_n, f_m \) are measurable, so too is the difference \( f_n- f_m \), by Proposition 2.6.
-Moreover, since \( | \cdot | \) is continuous, it is \( (\mathcal{B}_{\mathbb{R}}, \mathcal{B}_{\mathbb{R}}) \) measurable, and hence the composition \( | f_n(x) - f_m(x) | \) is \( (\mathcal{M}, \mathcal{B}_{\mathbb{R}}) \) measurable, and therefore the preimage \( g^{-1}((-\infty, 1/k)) = E_{n,m,k} \) is in \( \mathcal{M} \).
+	Note first of all that since each of \( f_n, f_m \) are measurable, so too is the difference \( f_n- f_m \), by Proposition 2.6.
+	Moreover, since \( | \cdot | \) is continuous, it is \( (\mathcal{B}_{\mathbb{R}}, \mathcal{B}_{\mathbb{R}}) \) measurable, and hence the composition \( | f_n(x) - f_m(x) | \) is \( (\mathcal{M}, \mathcal{B}_{\mathbb{R}}) \) measurable, and therefore the preimage \( g^{-1}((-\infty, 1/k)) = E_{n,m,k} \) is in \( \mathcal{M} \).
 
-Now, for some \( N \in \mathbb{N} \), the set
-\begin{equation}
-\label{eq:3}
-\bigcap_{m,n \ge N} E_{n,m,k} = \{ x \in X : \forall n,m \geq N, \left| f_n(x) - f_m(x) \right| < 1/k \}
-\end{equation}
-is a (countable) intersection of measurable sets and is hence measurable.
-Next,
-\begin{equation}
-\label{eq:4}
-\bigcup_{N \in \mathbb{N}} \bigcap_{m,n \geq N} E_{n,m,k} = \{ x \in X : \exists N \in \mathbb{N} \ \forall n,m \geq N, \left| f_n(x) - f_m(x) \right| < 1/k \}
-\end{equation}
-is again a countable union of measurable sets and is again measurable.
-Finally,
-\begin{equation}
-\label{eq:5}
-\begin{aligned}
-  \bigcap_{k \in \mathbb{N}} \bigcup_{n \in \mathbb{N}} \bigcap_{n,m \geq N} E_{n,m,k} = \{ x \in X : \forall k \ \exists N \ \forall n,m \geq N, |f_n(x) - f_m(x) | < 1/k\},
-\end{aligned}
-\end{equation}
-is measurable by the same reason.
-It remains to show that this set is in fact \( \{ x : \lim f_n(x) \text{ exists}\} \), but this is essentially by construction.
-Note that if \( x \in \bigcap_{k \in \mathbb{N}} \bigcup_{n \in \mathbb{N}} \bigcap_{n,m \geq N} E_{n,m,k} \), the sequence \( \{f_n(x)\} \) exactly satisfies the Cauchy criterion and therefore, since \( \mathbb{R} \) is complete, \( \lim f_{n}(x) \) exists; conversely, if \( \lim f_n(x) \) exists then the Cauchy criteron is satisfied and hence \( x \in \bigcap_k \bigcup_N \bigcap_{n,m \geq N} E_{n,m,k} \).
+	Now, for some \( N \in \mathbb{N} \), the set
+	\begin{equation}
+		\label{eq:3}
+		\bigcap_{m,n \ge N} E_{n,m,k} = \{ x \in X : \forall n,m \geq N, \left| f_n(x) - f_m(x) \right| < 1/k \}
+	\end{equation}
+	is a (countable) intersection of measurable sets and is hence measurable.
+	Next,
+	\begin{equation}
+		\label{eq:4}
+		\bigcup_{N \in \mathbb{N}} \bigcap_{m,n \geq N} E_{n,m,k} = \{ x \in X : \exists N \in \mathbb{N} \ \forall n,m \geq N, \left| f_n(x) - f_m(x) \right| < 1/k \}
+	\end{equation}
+	is again a countable union of measurable sets and is again measurable.
+	Finally,
+	\begin{equation}
+		\label{eq:5}
+		\begin{aligned}
+			\bigcap_{k \in \mathbb{N}} \bigcup_{N \in \mathbb{N}} \bigcap_{n,m \geq N} E_{n,m,k} = \{ x \in X : \forall k \ \exists N \ \forall n,m \geq N, |f_n(x) - f_m(x) | < 1/k\},
+		\end{aligned}
+	\end{equation}
+	is measurable by the same reason.
+	It remains to show that this set is in fact \( \{ x : \lim f_n(x) \text{ exists}\} \), but this is essentially by construction.
+	Note that if \( x \in \bigcap_{k \in \mathbb{N}} \bigcup_{n \in \mathbb{N}} \bigcap_{n,m \geq N} E_{n,m,k} \), the sequence \( \{f_n(x)\} \) exactly satisfies the Cauchy criterion and therefore, since \( \mathbb{R} \) is complete, \( \lim f_{n}(x) \) exists; conversely, if \( \lim f_n(x) \) exists then the Cauchy criteron is satisfied and hence \( x \in \bigcap_k \bigcup_N \bigcap_{n,m \geq N} E_{n,m,k} \).
 \end{proof}
 
 \begin{prop}[2.11]
-  The following implications are valid iff the measure \(\mu\) is complete:
-  \begin{enumerate}[label=\alph*]
-    \item If \( f \) is measurable and \( f = g \) \(\mu\)-a.e., then \( g \) is measurable.
-          \item If \( f_n \) is measurable for \( n \in \mathbb{N} \) and \( f_n \rightarrow f \) \(\mu\)-a.e., then \( f \) is measurable.
-  \end{enumerate}
+	The following implications are valid iff the measure \(\mu\) is complete:
+	\begin{enumerate}[label=(\alph*)]
+		\item If \( f \) is measurable and \( f = g \) \(\mu\)-a.e., then \( g \) is measurable.
+		\item If \( f_n \) is measurable for \( n \in \mathbb{N} \) and \( f_n \rightarrow f \) \(\mu\)-a.e., then \( f \) is measurable.
+	\end{enumerate}
 \end{prop}
 
 \begin{problem}{2.1.10}
-  Prove Proposition 2.11.
+	Prove Proposition 2.11.
 \end{problem}
 \begin{proof}
-  (\(\Rightarrow\)) Suppose \( \mu \) is an arbitrary complete measure on \( X \), \( f: X \rightarrow \mathbb{R} \) is measurable, and \( f = g \) \(\mu\)-a.e.
-  That is, the set \( E = \{ x \in X \mid f(x) \neq g(x) \} \) has \( \mu(E) = 0 \).
-  Since, by Proposition 2.1, it suffices to show that the inverse images of elements of a generating family for a \(\sigma\)-algebra are measurable, let \( U = (a,b) \in \mathbb{R} \).
-  Then, \( f^{-1}(U) \in \mathcal{M} \).
-  In the case where \( f^{-1}(U) \cap E = \emptyset \), it is immediate that \( g^{-1}(U) = f^{-1}(U) \) so that \( g^{-1}(U) \in \mathcal{M} \).
-  In the case where \( f^{-1}(U) \cap E \neq \emptyset \), we then have that \( g^{-1}(U) = f^{-1}(U) \setminus E \)
+	(\(\Rightarrow\)) First of all, if \( f,g : X \rightarrow \mathbb{R} \) are equal \( \mu \)-a.e., there is some \( E \in \mathcal{M} \) such that \( \mu(E) = 0 \) and for all \( x \in E^C  \), \( f(x) = g(x) \).
+	Notice that we can partition the domain \( X \) as \( E \cup E^C  \).
+	Since \( f \) is measurable, for any Borel set \( U \in \mathcal{B}_{\mathbb{R}} \), the inverse image \( f^{-1}(U) \in \mathcal{M}  \).
+	We can write
+	\begin{equation}
+		\label{eq:8}
+		\begin{aligned}
+			g^{-1}(U) & = (g^{-1}(U) \cap E^{C} )  \cup (g^{-1}(U) \cap E) \\
+			          & = (f^{-1}(U) \cap E^C)  \cup (g^{-1}(U) \cap E).
+		\end{aligned}
+	\end{equation}
+	Now, \( f^{-1}(U) \cap E^C \) is clearly measurable as the intersection of two measurable sets.
+	And, since \( E \) is a null set and \( \mu \) is a complete measure, \( g^{-1}(U) \cap E \subset E \) is measurable (and in particular has zero measure).
+	Therefore, \( g^{-1}(U) \) is measurable, proving part (a).
+
+	For (b), suppose \( \{f_n\} \) is a sequence of measurable functions \( f_n: X \rightarrow \mathbb{R} \), and there exists a null set \( E \in \mathcal{M} \) such that for all \( x \in E^C \), \( f_n(x) \rightarrow f(x) \).
+  Define, for each \( n \), \( h_{n}: X \rightarrow \mathbb{R} \) as
+  \begin{equation}
+  \label{eq:9}
+  h_n(x) = \begin{cases}
+    f_n(x), & x \in E^C \\
+    0, & x \in E
+  \end{cases},
+\end{equation}
+and note that \( h_n(x) \) is measurable since \( h_n(x) = f_n(x)\chi_{E^C} \) which is a product of measurable functions.
+Moreover, for every \( x \in X \), \( h_n \rightarrow h \), where
+\begin{equation}
+\label{eq:10}
+h(x) = \begin{cases}
+  f(x), & x \in E^C \\
+  0, & x \in E
+\end{cases}.
+\end{equation}
+Since \( h \) is the everywhere pointwise limit of \( h_n \), it is measurable.
+And, \( h(x) = f(x) \) \(\mu\)-a.e., which by (a) gives that \( f \) is measurable.
+
+(\(\Leftarrow\)) Conversely, suppose the implication (a) holds.
+Consider \( f = 0 \), let \( E \in \mathcal{M} \) be such that \( \mu(E) = 0 \), and let \( A \subset E \) be arbitrary.
+By construction these satisfy \( f = g \) \(\mu\)-a.e., so that we know \( g \) is measurable.
+In particular, \( g^{-1}(\{1\}) = A \), \( \{1\} \) is a Borel set, meaning \( A \in \mathcal{M} \), showing \(\mu\) is complete.
+
+On the other hand, suppose the implication (b) holds; define \( f_n = 0 \), and note that by similar reasoning, if \( A \subset E \) is arbitary for a null set \( E \), \( f_n \rightarrow \chi_A \) \(\mu\)-a.e., meaning that \(\chi_A\) is measurable, so that \( \chi_A^{-1}(\{1\}) = A \in \mathcal{M}\), and our claim now follows.
 \end{proof}
 
 \begin{prop}[2.20]
-  If \( f \in L^+ \) and \( \int f < \infty \), then \( \{ x \mid f(x) = \infty\} \) is a null set and \( \{ x \mid f(x) > 0 \} \) is \(\sigma\)-finite.
+	If \( f \in L^+ \) and \( \int f < \infty \), then \( \{ x \mid f(x) = \infty\} \) is a null set and \( \{ x \mid f(x) > 0 \} \) is \(\sigma\)-finite.
 \end{prop}
 
 \begin{problem}{2.2.12}
-  Prove Proposition 2.20.
+	Prove Proposition 2.20.
 \end{problem}
 \begin{proof}
-  Suppose that \( f \in L^+ \) is such that \( \int f < \infty \), define \( I \coloneq \int f \).
-  Then, for every \(\epsilon > 0\), there is a simple function \(\varphi = \sum\limits_i a_i \chi_{E_i} \) so that \( \int \varphi = \sum\limits_1^n a_im(E_i) > I - \epsilon \).
-  Define \( H = \{ x \mid f(x) = \infty\} \), and note that \(\psi = \infty\cdot\chi_H + 0 \chi_{H^{C}}\) is a simple function which satisfies \( 0 \leq \psi \leq f \), and therefore
-  \begin{equation}
-  \label{eq:6}
-  \int \psi = \infty \cdot m(H) \leq \int f < \infty,
-\end{equation}
-so we must have \( m(H) = 0. \)
+	Suppose that \( f \in L^+ \) is such that \( \int f < \infty \), define \( I \coloneq \int f \).
+	Define \( H = \{ x \mid f(x) = \infty\} = \bigcap_{n=1}^{\infty} \{ x \mid f(x) > n \} \in \mathcal{M}\), and note that, for all \( k > 0 \), \(\psi_{k} = k\cdot\chi_H + 0 \chi_{H^{C}}\) is a simple function which satisfies \( 0 \leq \psi \leq f \), and therefore
+	\begin{equation}
+		\label{eq:6}
+		\int \psi = k m(H) \leq \int f = I.
+	\end{equation}
+  Then \( m(H) \leq \frac{I}{k} \) for all \( k \), and thus \( m(H) = 0 \).
 
-Now, define \( A = \{ x \mid f(x) > 0 \} \), and note that if we have \( A_n = \{ x \mid f(x) \geq 1/n \} \), then \( A = \bigcup_1^{\infty} A_n \) and \( A_1 \subset A_2 \subset \dots \subset A_n \).
-Now, for fixed \( n \), \( A_n = f^{-1}([1/n, \infty)) \), and since \( f \) is measurable by hypothesis, \( A_n \) is measurable, so all that remains to show that \( A_n \) has finite measure.
-Suppose the contrary, so that there is some \( N \) for which \( m(A_N) = \infty \).
-Then, since \( f(x) \geq 1/N \) for \( x \in A_N \), the simple function \(\varphi = 1/N \chi_{A_N} + 0 \chi_{A_N^C}\) satisfies \( 0 \leq \varphi \leq f \), and
-\begin{equation}
-\label{eq:7}
-\int \varphi = \frac{1}{N}m(A_N) = \infty \leq \int f < \infty,
-\end{equation}
-a contradiction.
+	Now, define \( A = \{ x \mid f(x) > 0 \} \), and note that if we have \( A_n = \{ x \mid f(x) \geq 1/n \} \), then \( A = \bigcup_1^{\infty} A_n \) and \( A_1 \subset A_2 \subset \dots \subset A_n \).
+	Now, for fixed \( n \), \( A_n = f^{-1}([1/n, \infty)) \), and since \( f \) is measurable by hypothesis, \( A_n \) is measurable, so all that remains to show that \( A_n \) has finite measure.
+	Suppose the contrary, so that there is some \( N \) for which \( m(A_N) = \infty \).
+	Then, since \( f(x) \geq 1/N \) for \( x \in A_N \), the simple function \(\varphi = 1/N \chi_{A_N} + 0 \chi_{A_N^C}\) satisfies \( 0 \leq \varphi \leq f \), and
+	\begin{equation}
+		\label{eq:7}
+		\int \varphi = \frac{1}{N}m(A_N) = \infty \leq \int f < \infty,
+	\end{equation}
+	a contradiction.
 \end{proof}
 \end{document}
