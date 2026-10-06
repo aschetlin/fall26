@@ -23,6 +23,21 @@ The probability of finding the system in state \( s \) is
   [Hint: Start with the expression for \( \log P(\varepsilon_s) \).]
 
   This expression for the entropy is useful when the probabilities of the system being in each of its states are known but the partition function is not.
+        \begin{proof}
+          As suggested in the hint, we first calculate
+          \begin{equation}
+          \label{eq:1}
+          \begin{aligned}
+            \log P(\varepsilon_s) &= \log( \frac{e^{-\varepsilon_s/\tau}}{Z} ) = \log(\exp(-\varepsilon_s/\tau)) - \log Z \\
+            &= -\varepsilon_s/\tau - \sigma,
+          \end{aligned}
+        \end{equation}
+        which implies
+        \begin{equation}
+        \label{eq:2}
+        \sigma = -\varepsilon_s/\tau - \log(P(\varepsilon_{s})) = -\log(e^{\varepsilon_s/\tau} P(\varepsilon_{s}) )
+        \end{equation}
+        \end{proof}
 \end{enumerate}
 \end{problem}
 

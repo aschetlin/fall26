@@ -192,13 +192,82 @@
 			      \end{equation}
 		      \end{proof}
 		\item Write an expression for \(\varphi^{-1}_S(y^1, y^2)\).
+          \begin{answer}
+            Let \( (y^1, y^2) \) be an arbitrary point in \( \mathbb{R}^2 \).
+            Then line from this point to the south pole is
+            \begin{equation}
+            \label{eq:p3d-line}
+            l(t) = (1-t)(0,0,-R) + t(y^1, y^2, 0) = (ty^1, ty^2, -R(1-t)),
+            \end{equation}
+            with which we solve for
+            \begin{equation}
+              \label{eq:38}
+              \begin{aligned}
+                R^2 &= (t y^1)^2 + (ty^2)^2 + (-R(1-t))^2 \\
+                    &= t^2\left( (y^1)^2 + (y^2)^2 + R^2 \right) + R^2 - 2tR^2 \\
+                \Rightarrow t &= \frac{2R^2}{(y^1)^2 + (y^2)^2 + R^2}.
+              \end{aligned}
+            \end{equation}
+            Again defining \( r^2 = (y^1)^2 + (y^2)^2 \), we have
+            \begin{equation}
+            \label{eq:p3d-inverse-south}
+            \varphi_S^{-1}( y^1, y^2 ) = \frac{R}{r^2 + R^2} \left( 2Ry^1, 2R y^2, R^2 - r^2 \right).
+          \end{equation}
+          Note that this is the same as \( \varphi_N^{-1} \), with a negative third component.
+        \end{answer}
 		\item Show that the transition function \(\varphi_S \circ \varphi_N^{-1}\) can be written as
 		      \begin{equation}
 			      \label{eq:4}
 			      ( y^1(x^1, x^2), y^2(x^1, x^2) ) = \frac{R^2}{(x^{1})^2 + (x^2)^2}(x^1, x^2).
 		      \end{equation}
 		      Is this \( C^{\infty} \) on the overlap?
+          \begin{proof}
+            We substitute \cref{eq:22} into \cref{eq:20}, giving
+            \begin{equation}
+            \label{eq:39}
+            \begin{aligned}
+              (\varphi_S \circ \varphi_N^{-1})(x^1, x^2) &= \frac{1}{r^2 + R^2} \left( \frac{2R^2 x^{1}}{1 + (r^2 - R^2)/r^2 + R^2}, \frac{2 R^2 x^2}{1 + (r^2 - R^2)/(r^2 + R^2)} \right) \\
+                                         &= \left( \frac{2R^2 x^{1}}{r^2 + R^2 + r^2 - R^2}, \frac{2R^2 x^2}{r^2 + R^2 + r^2 - R^2} \right) \\
+                                         &= \left( \frac{2R^2 x^{1}}{2r^2}, \frac{2R^2 x^2}{2r^2} \right) = \frac{R^2}{r^2}(x^1, x^2),
+            \end{aligned}
+          \end{equation}
+          which, expanding our definition of \( r^2 \), is precisely \cref{eq:4}.
+
+          Now, \cref{eq:39} is \( C^{\infty} \) if and only if \( r^2 \neq 0 \), that is, \( (x^1)^2 + (x^2)^2 \neq 0 \).
+          Since \( r^2 \) only vanishes when \( x^1 = x^2 = 0 \), and the overlap is \( \mathbb{R}^2 \setminus {(0,0)} \), the transition function is \( C^{\infty} \) on its domain.
+          \end{proof}
 		\item Find also \(\varphi_N \circ \varphi_S^{-1}\) and verify that it is \( C^{\infty} \) and that it is the inverse of \cref{eq:4}.
+          \begin{proof}
+            Plugging \cref{eq:p3d-inverse-south} into \cref{eq:16} gives
+            \begin{equation}
+            \label{eq:40}
+            \begin{aligned}
+              (\varphi_N \circ \varphi_S^{-1})(y^1, y^2) &= \frac{1}{r^2 + R^2} \left( \frac{2R^2 y^{1}}{1 - (R^2 - r^2)/(R^2 + r^2)}, \frac{2R^2 y^2}{1 - (R^2 - r^2)/(R^2 + r^2)} \right) \\
+                                         &= \left( \frac{2R^2 y^{1}}{r^2 + R^2 - R^2 + r^2}, \frac{2R^2 y^2}{r^2 + R^2 - R^2 + r^2} \right) = \frac{R^2}{r^2}(y^1, y^2).
+            \end{aligned}
+            \end{equation}
+            Once again, this is \( C^{\infty} \) iff \( r^2 \neq 0 \), which holds on the overlap \( \mathbb{R}^2\setminus\{(0,0)\} \).
+
+            Finally, we evaluate the two compositions \( \psi \coloneq (\varphi_N \circ \varphi_S^{-1}) \circ (\varphi_S \circ \varphi_N^{-1})\) and \( \psi^{-1} \coloneq (\varphi_S \circ \varphi_N^{-1}) \circ (\varphi_N \circ \varphi_S^{-1}) \).
+            Write \( r_x^2 = (x^1)^2 + (x^2)^2 \), \( r_y^2 = (y^1)^2 + (y^2)^2 \).
+            \begin{equation}
+            \label{eq:41}
+            \begin{aligned}
+              \psi(x^1, x^2) &= \frac{R^2}{(R^2 x^1/r_x^2)^2 + (R^2 x^2/r_{x}^2)^2 }\left( \frac{R^2 x^{1}}{r_{x}^2}, \frac{R^2 x^2}{r_x^2} \right) \\
+                          &= \frac{R^{4}}{R^4((x^1)^2 + (x^2)^2)/r_x^4} \left( \frac{x^{1}}{r_{x}^2}, \frac{x^2}{r_{x}^2} \right) \\
+              &= \frac{r_{x}^4}{r_x^2} \left( \frac{x^1}{r_{x}^2}, \frac{x^2}{r_x^2} \right) = (x^1, x^2).
+            \end{aligned}
+          \end{equation}
+          On the other hand,
+          \begin{equation}
+          \label{eq:42}
+          \begin{aligned}
+            \psi^{-1}(y^1, y^2) &= \frac{R^2}{(R^2y^{1}/r_y^2)^2 + (R^2y^2/r_y^2)^2} \left( \frac{R^2 y^{1}}{r_{y}^2}, \frac{R^2 y^2}{r_{y}^2} \right) \\
+            &= \frac{R^{4}}{R^{4}(r_y^2/r_y^4)} \left( \frac{y^1}{r_y^2}, \frac{y^2}{r_{y}^2} \right) = (y^1, y^2),
+          \end{aligned}
+        \end{equation}
+        and we are done.
+          \end{proof}
 	\end{enumerate}
 \end{problem}
 
@@ -284,7 +353,7 @@
 		      Thus the trajectory can be achieved without ever locally exceeding the speed of light.
 		      In this sense, the warp drive allows the spaceship to travel ``faster than light,'' arriving at the star in a time \( \approx L/v < L \) as measured by clocks on Earth or the star.
 		\item Show that, regardless of \( x_s(t) \) and \( V(r) \), the path is always timelike with respect to \cref{eq:8}.
-		      THus the spaceship never has to move faster than the local speed of light.
+		      Thus the spaceship never has to move faster than the local speed of light.
 		\item Find, for any \( x_s(t) \) and \( V(r) \), the time elapsed on the spaceship's clock.
 		      Will there be time dilation problems where the space travelers are younger/older than their Earth-bound twins after a round trip?
 	\end{enumerate}

@@ -1,0 +1,37 @@
+\documentclass[11pt]{article}
+\usepackage{../homework}
+
+\profname{Dr. Stanislaw Szarek}
+\classcode{MATH 423 Measure Theory}
+\assignnum{Assignment 07}
+\duedate{12 October 2026}
+
+\begin{document}
+All problems from Folland, \textit{Real Analysis} (2e).
+\begin{problem}{2.2.15}
+  If \( \{f_n\} \subset L^+ \), \( f_n \searrow f \) pointwise, and \( \int f_1 < \infty \), then \( \int f = \lim \int f_n \).
+\end{problem}
+
+\begin{problem}{2.2.16}
+If \( f \in L^{+} \) and \( \int f < \infty \), for every \(\epsilon > 0\) there exists \( E \in \mathcal{M} \) such that \(\mu(E) < \infty\) and \( \int_E f > (\int f) - \epsilon \).
+\end{problem}
+
+\begin{problem}{2.3.19}
+  Suppose \( \{f_n\} \subset L^1(\mu) \) and \( f_n \rightarrow f \) uniformly.
+  \begin{enumerate}[label=(\alph*)]
+    \item If \(\mu(X) < \infty\), then \( f \in L^1(\mu) \) and \( \int f_n \rightarrow \int f \).
+    \item If \(\mu(X) = \infty\), the conclusions of (a) can fail.
+          (Find examples on \( \mathbb{R} \)) with Lebesgue measure.
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{2.3.25}
+  Let \( f(x) = x^{-1/2} \) if \( 0 < x < 1 \), \( f(x) = 0 \) otherwise.
+  Let \( \{r_n\}_1^{\infty} \) be an enumeration of the rationals, and set \( g(x) = \sum\limits_1^{\infty} 2^{-n}f(x-r_n) \).
+  \begin{enumerate}[label=(\alph*)]
+    \item \( g \in L^1(m) \), and in particular \( g < \infty \) a.e.
+    \item g is discontinuous at every point and unbounded on every interval, and it remains so after any modification on a Lebesgue null set.
+    \item \( g^2 < \infty \) a.e., but \( g^2 \) is not integrable on any interval.
+  \end{enumerate}
+\end{problem}
+\end{document}

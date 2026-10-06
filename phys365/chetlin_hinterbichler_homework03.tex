@@ -1,0 +1,208 @@
+\documentclass[11pt]{article}
+\usepackage{../homework}
+\profname{Dr. Kurt Hinterbichler}
+\classcode{PHYS 365 General Relativity}
+\assignnum{Assignment 03}
+\duedate{03 November 2026}
+
+\begin{document}
+\begin{problem}{1}
+Show that
+\begin{equation}
+  \label{eq:p1-covariant-commutator}
+  [\nabla_\mu,\nabla_\nu]V^\alpha
+  = R^\alpha{}_{\lambda\mu\nu}V^\lambda - T^\lambda{}_{\mu\nu}\nabla_\lambda V^\alpha,
+\end{equation}
+where the Riemann curvature and torsion are the following tensors defined in terms of the connection:
+\begin{equation}
+  \label{eq:p1-torsion}
+  T^\lambda{}_{\mu\nu} = \Gamma^\lambda{}_{\mu\nu}-\Gamma^\lambda{}_{\nu\mu},
+\end{equation}
+\begin{equation}
+  \label{eq:p1-riemann}
+  R^\alpha{}_{\beta\mu\nu}
+  = \partial_\mu\Gamma^\alpha{}_{\nu\beta}-\partial_\nu\Gamma^\alpha{}_{\mu\beta}
+    +\Gamma^\alpha{}_{\mu\lambda}\Gamma^\lambda{}_{\nu\beta}
+    -\Gamma^\alpha{}_{\nu\lambda}\Gamma^\lambda{}_{\mu\beta}.
+\end{equation}
+(Recall the expression for the covariant derivative of a general tensor
+\begin{equation}
+  \label{eq:p1-general-covariant-derivative}
+  \begin{aligned}
+    \nabla_\alpha T^{\mu\nu\cdots}{}_{\beta\gamma\cdots}
+    = {}& \partial_\alpha T^{\mu\nu\cdots}{}_{\beta\gamma\cdots}
+      + \Gamma^\mu{}_{\alpha\lambda}T^{\lambda\nu\cdots}{}_{\beta\gamma\cdots}
+      + \Gamma^\nu{}_{\alpha\lambda}T^{\mu\lambda\cdots}{}_{\beta\gamma\cdots}+\cdots \\
+    &-\Gamma^\lambda{}_{\alpha\beta}T^{\mu\nu\cdots}{}_{\lambda\gamma\cdots}
+      -\Gamma^\lambda{}_{\alpha\gamma}T^{\mu\nu\cdots}{}_{\beta\lambda\cdots}-\cdots.)
+  \end{aligned}
+\end{equation}
+\end{problem}
+
+\begin{problem}{2}
+From now on we stick to the Levi-Civita connection.
+Show that the differential Bianchi identity \(\nabla_{[\rho}R_{\sigma\lambda]\mu\nu}=0\) implies the contracted Bianchi identity
+\begin{equation}
+  \label{eq:p2-contracted-bianchi}
+  \nabla^\nu G_{\mu\nu}=0,
+\end{equation}
+where \(G_{\mu\nu}=R_{\mu\nu}-\frac12 Rg_{\mu\nu}\) is the Einstein tensor.
+\end{problem}
+
+\begin{problem}{3}
+Consider Euclidean \(\mathbb{R}^2\) with the standard cartesian coordinates \(x^1,x^2\) and metric \(ds^2=(dx^1)^2+(dx^2)^2\).
+Since the metric is constant in these coordinates, the connection vanishes \(\Gamma^\rho{}_{\mu\nu}=0\), and the curvature vanishes, \(R^\rho{}_{\sigma\mu\nu}=0\).
+Now change to polar coordinates \(r,\theta\)
+\begin{equation}
+  \label{eq:p3-polar-coordinates}
+  x^1=r\cos\theta,\qquad x^2=r\sin\theta.
+\end{equation}
+\begin{enumerate}[label=(\alph*)]
+  \item Using the transformation rule we derived in class for the connection,
+  \begin{equation}
+    \label{eq:p3-connection-transformation}
+    \Gamma'{}^{\lambda'}{}_{\mu'\nu'}(y)
+    =\frac{\partial x^\mu}{\partial y^{\mu'}}
+      \frac{\partial x^\nu}{\partial y^{\nu'}}
+      \left.\frac{\partial y^{\lambda'}}{\partial x^\lambda}\right|_{x(y)}
+      \Gamma^\lambda{}_{\mu\nu}(x(y))
+      +\frac{\partial^2 x^\alpha}{\partial y^{\mu'}\partial y^{\nu'}}
+      \left.\frac{\partial y^{\lambda'}}{\partial x^\alpha}\right|_{x(y)},
+  \end{equation}
+  convert the cartesian connection into polar coordinates.
+  \item Check your answer to part a. by computing the connection directly from the metric in polar coordinates,
+  \begin{equation}
+    \label{eq:p3-polar-metric}
+    ds^2=dr^2+r^2d\theta^2,
+  \end{equation}
+  using the formula for the connection in terms of the metric:
+  \begin{equation}
+    \label{eq:p3-levi-civita-connection}
+    \Gamma^\rho{}_{\mu\nu}
+    =\frac12 g^{\rho\lambda}(\partial_\mu g_{\nu\lambda}+\partial_\nu g_{\mu\lambda}-\partial_\lambda g_{\mu\nu}).
+  \end{equation}
+  \item Compute the Riemann curvature in polar coordinates directly from the connection using the expression \cref{eq:p1-riemann} and verify that it vanishes (as it must since this is just flat space).
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{4}
+Recall the parallel transport equation which tells you how to parallel transport a vector \(V^\mu\) along a curve \(x^\mu(\lambda)\),
+\begin{equation}
+  \label{eq:p4-parallel-transport}
+  \frac{d}{d\lambda}V^\mu+\Gamma^\mu{}_{\nu\rho}\frac{dx^\nu}{d\lambda}V^\rho=0.
+\end{equation}
+Consider a curve in Euclidean \(\mathbb{R}^2\) given in cartesian coordinates by \(x^1(\lambda)=\cos\lambda\), \(x^2(\lambda)=\sin\lambda\), \(\lambda\in[0,\frac\pi2]\).
+This curve traces out a quarter of the unit circle.
+Consider a vector which starts out as a unit vector pointing in the \(x^2\) direction: \(\left.V^\mu\right|_{\lambda=0}=(0,1)\).
+\begin{enumerate}[label=(\alph*)]
+  \item Parallel transport on flat space conforms to our intuition that a vector remains constant as it is transported along the curve, so we expect \(V^\mu(\lambda)=(0,1)\) for all \(\lambda\) along the curve.
+  Verify that this indeed satisfies the parallel transport equation \cref{eq:p4-parallel-transport}.
+  \item Consider now the same setup in polar coordinates.
+  The equation for the curve is now
+  \begin{equation}
+    \label{eq:p4-polar-curve}
+    r(\lambda)=1,\qquad\theta(\lambda)=\lambda,
+  \end{equation}
+  and the initial vector is pointed in the \(\theta\) direction: \(\left.V^\mu\right|_{\lambda=0}=(0,1)\).
+  Solve the parallel transport equation \cref{eq:p4-parallel-transport} directly in polar coordinates with these initial conditions, using the connection coefficients you found in problem 1.
+  Show that the resulting vector points in the \(r\) direction at the end of the curve, \(\left.V^\mu\right|_{\lambda=\pi/2}=(1,0)\), and is in fact the same vector you get by parallel transporting in cartesian coordinates.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{5}
+Consider the covariant laplacian of a scalar function \(\phi\),
+\begin{equation}
+  \label{eq:p5-covariant-laplacian}
+  \nabla^2\phi\equiv\nabla_\mu\nabla^\mu\phi=g^{\mu\nu}\nabla_\mu\nabla_\nu\phi.
+\end{equation}
+In cartesian coordinates on \(\mathbb{R}^2\), this reduces to the ordinary Laplacian \(\frac{\partial^2\phi}{\partial(x^1)^2}+\frac{\partial^2\phi}{\partial(x^2)^2}\).
+Using the connection coefficients you computed in problem 3b from the metric \cref{eq:p3-polar-metric}, find the Laplacian in polar coordinates and compare with the well-known expression
+\begin{equation}
+  \label{eq:p5-polar-laplacian}
+  \frac1r\frac{d}{dr}\left(r\frac{d\phi}{dr}\right)+\frac1{r^2}\frac{d^2\phi}{d\theta^2}.
+\end{equation}
+\end{problem}
+
+\begin{problem}{6. Derivation of the Schwarzschild solution}
+The Schwarzschild solution was the first non-trivial exact solution to the Einstein field equations, derived by Karl Schwarzschild while he was in the German army fighting on the Russian front during World War I.
+Here you will go through his derivation.
+
+The most general static time-independent metric can be written in the form
+\begin{equation}
+  \label{eq:p6-static-metric}
+  ds^2=-A(r)dt^2+B(r)dr^2+r^2d\Omega^2,
+\end{equation}
+where \(d\Omega^2=d\theta^2+\sin^2\theta\,d\phi^2\) is the metric on a 2-sphere.
+When \(B(r)=A(r)=1\), this is flat Minkowski space in spherical coordinates.
+We would like our solution to approach flat space at infinity, so we demand the boundary conditions
+\begin{equation}
+  \label{eq:p6-boundary-conditions}
+  A(r)\xrightarrow{r\to\infty}1,\qquad B(r)\xrightarrow{r\to\infty}1.
+\end{equation}
+We are interested in vacuum solutions, i.e. solutions that exists outside any matter, so we set \(T_{\mu\nu}=0\) and look for solutions to the vacuum Einstein equations
+\begin{equation}
+  \label{eq:p6-vacuum-einstein}
+  G_{\mu\nu}=0.
+\end{equation}
+\begin{enumerate}[label=(\alph*)]
+  \item Show that the vacuum Einstein equations \cref{eq:p6-vacuum-einstein} are equivalent to the vanishing of the Ricci tensor:
+  \begin{equation}
+    \label{eq:p6-vacuum-ricci}
+    R_{\mu\nu}=0.
+  \end{equation}
+  \item Compute the non-vanishing components of the Ricci tensor.
+  You should find
+  \begin{equation}
+    \label{eq:p6-ricci-components}
+    \begin{aligned}
+      R_{tt}&=\frac{A''}{2B}-\frac{A'B'}{4B^2}-\frac{A'^2}{4AB}+\frac{A'}{rB},\\
+      R_{rr}&=-\frac{A''}{2A}+\frac{A'B'}{4AB}+\frac{A'^2}{4A^2}+\frac{B'}{rB},\\
+      R_{\theta\theta}&=-\frac{rA'}{2AB}+\frac{rB'}{2B^2}-\frac1B+1,\\
+      R_{\phi\phi}&=\sin^2\theta\,R_{\theta\theta}.
+    \end{aligned}
+  \end{equation}
+  \item Form the combination \(\frac BA R_{tt}+R_{rr}=0\) and show that it reduces to the equation
+  \begin{equation}
+    \label{eq:p6-log-derivative-relation}
+    \frac{A'}A+\frac{B'}B=0.
+  \end{equation}
+  Show that this implies \(B=c/A\) for some constant \(c\).
+  Based on the boundary conditions \cref{eq:p6-boundary-conditions}, argue that we must have \(c=1\) so that
+  \begin{equation}
+    \label{eq:p6-reciprocal-relation}
+    B=\frac1A.
+  \end{equation}
+  \item Plug \cref{eq:p6-reciprocal-relation} into \(R_{\theta\theta}\) and show that this gives the equation
+  \begin{equation}
+    \label{eq:p6-radial-equation}
+    -rA'-A+1=0.
+  \end{equation}
+  Solve this to obtain
+  \begin{equation}
+    \label{eq:p6-radial-solution}
+    A(r)=1-\frac{R_S}r,
+  \end{equation}
+  with \(R_S\) an integration constant.
+  \item Show that \cref{eq:p6-radial-solution} and \cref{eq:p6-reciprocal-relation} together solve \(R_{tt}=0\) and \(R_{rr}=0\) and thus give a solution to the full Einstein equations.
+  \item We now have the metric
+  \begin{equation}
+    \label{eq:p6-schwarzschild-parameter-metric}
+    ds^2=-\left(1-\frac{R_S}r\right)dt^2+\frac{1}{1-\frac{R_S}r}dr^2+r^2d\Omega^2,
+  \end{equation}
+  which is a solution for any \(R_S\).
+  To fix the meaning of \(R_S\), expand the metric around flat space \(g_{\mu\nu}=\eta_{\mu\nu}+h_{\mu\nu}\).
+  For small \(h_{\mu\nu}\), we saw in class that we can identify the Newtonian potential as \(h_{00}=-2\Phi\).
+  Given that the Newtonian potential for a spherical mass is \(\Phi=-\frac{GM}r\), expand \cref{eq:p6-schwarzschild-parameter-metric} near \(r\to\infty\) where \(h_{\mu\nu}\) is small and the Newtonian approximation is good, and use this to identify
+  \begin{equation}
+    \label{eq:p6-schwarzschild-radius}
+    R_S=2GM.
+  \end{equation}
+  This is the Schwarzschild radius.
+\end{enumerate}
+The final metric for the Schwarzschild solution thus reads
+\begin{equation}
+  \label{eq:p6-schwarzschild-metric}
+  ds^2=-\left(1-\frac{2GM}r\right)dt^2+\frac{1}{1-\frac{2GM}r}dr^2+r^2d\Omega^2.
+\end{equation}
+\end{problem}
+\end{document}
