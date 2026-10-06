@@ -8,350 +8,387 @@
 
 \begin{document}
 \begin{problem}{1}
-  For each equation, explain what is wrong with the indices and why it is not a valid tensor equation:
-  \begin{enumerate}[label=(\alph*)]
-    \item \( \tensor{R}{ _{\mu\nu} }^{\prime} = \pm \frac{mc^2}{\hbar c}\).
-          \begin{answer}
-            The left hand side has two free lower indices, \(\mu\) and \(\nu\).
-            The right hand side has no indices, hence this is not a valid tensor equation.
-            (Additionally, the right hand side could be written as \( \pm mc/\hbar \)).
-          \end{answer}
-    \item \( \tensor{F}{ _{\mu\nu} } = -\frac{e}{l^{\prime}_p} \cdot \varepsilon_{\mu\nu}x_{\mu}D_{\nu} \).
-          \begin{answer}
-            The LHS has two free lower indices, \(\mu\) and \(\nu\). The right hand side not only has three, \(\mu, \nu\), and \( p \), but appears to be dividing a scalar \( e \) by a (0,1) tensor \( l^{\prime}_p \).
-            Furthermore, the product \(\varepsilon_{\mu\nu}x_{\mu}D_{\nu}\) is not a well defined operation.
-            Finally, there is a dot product being taken between a ``(0,1) tensor'' and a ``(0,2) tensor'', which is also not defined.
-          \end{answer}
-    \item \( \frac{\varepsilon_{\mu\nu}}{\hbar c} = \tensor{R}{ ^{0}_{\mu\nu} } \pm \frac{m c^2}{\hbar c} \mp \varepsilon_{\mu\nu} \Gamma^{\prime}_{\mu} D^{\prime}_{\nu} \).
-          \begin{answer}
-            Again the RHS has the undefined operation \( \varepsilon_{\mu\nu}\Gamma^{\prime}_{\mu}D^{\prime}_{\nu} \).
-            Moreover, the RHS as a whole contains the ``sum'' of two tensors with a scalar, which is not a well-defined operation.
-          \end{answer}
-    \item \(\varepsilon^0_{\mu\nu} = i\hbar c \gamma^{\mu}D^{\prime}_{\nu} - mc^2\).
-          \begin{answer}
-            LHS has two free lower indices, while the RHS has one upper index and one lower index.
-            Again, the RHS also has the sum of a tensor with a scalar.
-          \end{answer}
-    \item \(i\gamma^{\mu}D_{\mu} - \frac{e}{c}A_{\mu} + \frac{mc^2}{\hbar c} = 0\).
-          \begin{answer}
-            The LHS has a scalar + (0,1) tensor + scalar, which is not well defined.
-            Index wise, we have a naming overlap between a dummy index and a free index.
-          \end{answer}
-  \end{enumerate}
+	For each equation, explain what is wrong with the indices and why it is not a valid tensor equation:
+	\begin{enumerate}[label=(\alph*)]
+		\item \( \tensor{R}{ _{\mu\nu} }^{\prime} = \pm \frac{mc^2}{\hbar c}\).
+		      \begin{answer}
+			      The left hand side has two free lower indices, \(\mu\) and \(\nu\).
+			      The right hand side has no indices, hence this is not a valid tensor equation.
+			      (Additionally, the right hand side could be written as \( \pm mc/\hbar \)).
+		      \end{answer}
+		\item \( \tensor{F}{ _{\mu\nu} } = -\frac{e}{l^{\prime}_p} \cdot \varepsilon_{\mu\nu}x_{\mu}D_{\nu} \).
+		      \begin{answer}
+			      The LHS has two free lower indices, \(\mu\) and \(\nu\). The right hand side not only has three, \(\mu, \nu\), and \( p \), but appears to be dividing a scalar \( e \) by a (0,1) tensor \( l^{\prime}_p \).
+			      Furthermore, the product \(\varepsilon_{\mu\nu}x_{\mu}D_{\nu}\) is not a well defined operation.
+			      Finally, there is a dot product being taken between a ``(0,1) tensor'' and a ``(0,2) tensor'', which is also not defined.
+		      \end{answer}
+		\item \( \frac{\varepsilon_{\mu\nu}}{\hbar c} = \tensor{R}{ ^{0}_{\mu\nu} } \pm \frac{m c^2}{\hbar c} \mp \varepsilon_{\mu\nu} \Gamma^{\prime}_{\mu} D^{\prime}_{\nu} \).
+		      \begin{answer}
+			      Again the RHS has the undefined operation \( \varepsilon_{\mu\nu}\Gamma^{\prime}_{\mu}D^{\prime}_{\nu} \).
+			      Moreover, the RHS as a whole contains the ``sum'' of two tensors with a scalar, which is not a well-defined operation.
+		      \end{answer}
+		\item \(\varepsilon^0_{\mu\nu} = i\hbar c \gamma^{\mu}D^{\prime}_{\nu} - mc^2\).
+		      \begin{answer}
+			      LHS has two free lower indices, while the RHS has one upper index and one lower index.
+			      Again, the RHS also has the sum of a tensor with a scalar.
+		      \end{answer}
+		\item \(i\gamma^{\mu}D_{\mu} - \frac{e}{c}A_{\mu} + \frac{mc^2}{\hbar c} = 0\).
+		      \begin{answer}
+			      The LHS has a scalar + (0,1) tensor + scalar, which is not well defined.
+			      Index wise, we have a naming overlap between a dummy index and a free index.
+		      \end{answer}
+	\end{enumerate}
 \end{problem}
 
 \begin{problem}{2}
-  Let \( \mathbf{A} \) be a \( (0,3) \) tensor, \( \mathbf{B} \) a (3,0) tensor, over some \( n \)-dimensional vector space \( V \).
-  Recall the components in a basis \( \{\mathbf{e}_{\mu}\}_1^n \) of \( V \) are written as
-  \begin{equation}
-  \label{eq:1}
-  \begin{aligned}
-    A_{\mu\nu\rho} &= \mathbf{A}(\mathbf{e}_{\mu}, \mathbf{e}_{\nu}, \mathbf{e}_{\rho}), \\[.5em]
-    B^{\mu\nu\rho} &= \mathbf{B}(\mathbf{e}^{*\mu}, \mathbf{e}^{*\nu}, \mathbf{e}^{*\rho}),
-  \end{aligned}
-\end{equation}
-where \( \{\mathbf{e}^{*\mu}\}_1^n \) is the corresponding basis for \( V^{*} \).
-Define a map \( \mathbf{C}: V \times V \times V^{*} \times V^{*} \rightarrow \mathbb{R} \) by \( \mathbf{C}(\mathbf{u}, \mathbf{v}, \omega, \sigma) = \mathbf{A}(\mathbf{u}, \mathbf{v}, \mathbf{B}(\cdot, \omega, \sigma)) \).
+	Let \( \mathbf{A} \) be a \( (0,3) \) tensor, \( \mathbf{B} \) a (3,0) tensor, over some \( n \)-dimensional vector space \( V \).
+	Recall the components in a basis \( \{\mathbf{e}_{\mu}\}_1^n \) of \( V \) are written as
+	\begin{equation}
+		\label{eq:1}
+		\begin{aligned}
+			A_{\mu\nu\rho} & = \mathbf{A}(\mathbf{e}_{\mu}, \mathbf{e}_{\nu}, \mathbf{e}_{\rho}),    \\[.5em]
+			B^{\mu\nu\rho} & = \mathbf{B}(\mathbf{e}^{*\mu}, \mathbf{e}^{*\nu}, \mathbf{e}^{*\rho}),
+		\end{aligned}
+	\end{equation}
+	where \( \{\mathbf{e}^{*\mu}\}_1^n \) is the corresponding basis for \( V^{*} \).
+	Define a map \( \mathbf{C}: V \times V \times V^{*} \times V^{*} \rightarrow \mathbb{R} \) by \( \mathbf{C}(\mathbf{u}, \mathbf{v}, \omega, \sigma) = \mathbf{A}(\mathbf{u}, \mathbf{v}, \mathbf{B}(\cdot, \omega, \sigma)) \).
 
-\begin{enumerate}[label=(\alph*)]
-  \item Is \( \mathbf{C} \) a tensor?
-        If so, what kind?
-        Explain.
-        \begin{answer}
-          The definition of a tensor is a multilinear map
-          \begin{equation}
-            T: \underbrace{V \times \cdots \times V}_{n \text{ copies}} \times \underbrace{V^{*} \times \cdots \times V^{*}}_{m \text{ copies}} \rightarrow \mathbb{R}.
-          \end{equation}
-          Hence, to show \( \mathbf{C} \) is a tensor, it suffices to show it is linear in all of its arguments.
-          The definition of \( \mathbf{C} \) is as a composition of linear maps \( \mathbf{B} \) and \( \mathbf{A} \); that is, since \( \mathbf{B} \) is linear,
-          \begin{equation}
-          \label{eq:10}
-          \mathbf{B}(\cdot, \omega + \lambda_1\gamma, \sigma + \lambda_2\tau) = \mathbf{B}(\cdot, \omega, \sigma) + \lambda_2\mathbf{B}(\cdot, \omega, \tau) + \lambda_1\mathbf{B}(\cdot, \gamma, \sigma) + \lambda_1\lambda_2\mathbf{B}(\cdot, \gamma, \tau),
-        \end{equation}
+	\begin{enumerate}[label=(\alph*)]
+		\item Is \( \mathbf{C} \) a tensor?
+		      If so, what kind?
+		      Explain.
+		      \begin{answer}
+			      The definition of a tensor is a multilinear map
+			      \begin{equation}
+				      T: \underbrace{V \times \cdots \times V}_{n \text{ copies}} \times \underbrace{V^{*} \times \cdots \times V^{*}}_{m \text{ copies}} \rightarrow \mathbb{R}.
+			      \end{equation}
+			      Hence, to show \( \mathbf{C} \) is a tensor, it suffices to show it is linear in all of its arguments.
+			      The definition of \( \mathbf{C} \) is as a composition of linear maps \( \mathbf{B} \) and \( \mathbf{A} \); that is, since \( \mathbf{B} \) is linear,
+			      \begin{equation}
+				      \label{eq:10}
+				      \mathbf{B}(\cdot, \omega + \lambda_1\gamma, \sigma + \lambda_2\tau) = \mathbf{B}(\cdot, \omega, \sigma) + \lambda_2\mathbf{B}(\cdot, \omega, \tau) + \lambda_1\mathbf{B}(\cdot, \gamma, \sigma) + \lambda_1\lambda_2\mathbf{B}(\cdot, \gamma, \tau),
+			      \end{equation}
 
-        the same for \( A \).
-        Thus, \( \mathbf{C} \) is linear in all arguments and therefore a tensor.
-        In particular, \( \mathbf{C} \) is a (2,2) tensor, since it takes as inputs two vectors and two dual vectors, and returns a scalar.
-        \end{answer}
-  \item Find the components of \( \mathbf{C} \) in terms of the components of \( \mathbf{A} \) and \( \mathbf{B} \).
-        Of the operations that we defined componentwise in class, which is this?
-        \begin{answer}
-          By definition,
-          \begin{equation}
-          \label{eq:11}
-          \begin{aligned}
-            \tensor{C}{ _{\mu\nu}^{\rho\sigma}} &= \mathbf{C}(\mathbf{e}_{\mu}, \mathbf{e}_{\nu}, \mathbf{e}^{*\rho}, \mathbf{e}^{*\sigma}) = \mathbf{A}(\mathbf{e}_{\mu}, \mathbf{e}_{\nu}, \mathbf{B}(\cdot, \mathbf{e}^{*\rho}, \mathbf{e}^{*\sigma})) \\
-                                    &= \mathbf{A}(\mathbf{e}_{\mu}, \mathbf{e}_{\nu}, \tensor{B}{ ^{\lambda\rho\sigma}}\mathbf{e}_{\lambda}) = \tensor{B}{^{\lambda\rho\sigma} }\mathbf{A}(\mathbf{e}_{\mu}, \mathbf{e}_{\nu}, \mathbf{e}_{\lambda}) \\
-            &= \tensor{B}{^{\lambda\rho\sigma} }\tensor{A}{ _{\mu\nu\lambda} },
-          \end{aligned}
-        \end{equation}
-        where we have used the fact that for fixed \(\rho, \sigma\), \( \mathbf{B}(\cdot, \mathbf{e}^{*\rho}, \mathbf{e}^{*\sigma}) \) is a map from \( V^{*} \rightarrow \mathbb{R} \), that is, an element of \( V^{**} \cong V \).
-        We can write \( \mathbf{V} = \mathbf{B}(\cdot, \mathbf{e}^{*\rho}, \mathbf{e}^{*\sigma}) = V^{\lambda} \mathbf{e}_{\lambda}\), and then \( V^{\lambda} = \mathbf{e}^{*\lambda}(\mathbf{V}) \), so that
-        \begin{equation}
-        \label{eq:12}
-        V^{\lambda} = \mathbf{e}^{*\lambda}(\mathbf{B}(\cdot, \mathbf{e}^{*\rho}, \mathbf{e}^{*\sigma})) = \mathbf{B}(\mathbf{e}^{*\lambda}, \mathbf{e}^{*\rho}, \mathbf{e}^{*\sigma}) = \tensor{B}{^{\lambda\rho\sigma} }.
-        \end{equation}
-        \cref{eq:12} is a valid tensor equation since we fixed \(\rho\) and \(\sigma\).
+			      the same for \( A \).
+			      Thus, \( \mathbf{C} \) is linear in all arguments and therefore a tensor.
+			      In particular, \( \mathbf{C} \) is a (2,2) tensor, since it takes as inputs two vectors and two dual vectors, and returns a scalar.
+		      \end{answer}
+		\item Find the components of \( \mathbf{C} \) in terms of the components of \( \mathbf{A} \) and \( \mathbf{B} \).
+		      Of the operations that we defined componentwise in class, which is this?
+		      \begin{answer}
+			      By definition,
+			      \begin{equation}
+				      \label{eq:11}
+				      \begin{aligned}
+					      \tensor{C}{ _{\mu\nu}^{\rho\sigma}} & = \mathbf{C}(\mathbf{e}_{\mu}, \mathbf{e}_{\nu}, \mathbf{e}^{*\rho}, \mathbf{e}^{*\sigma}) = \mathbf{A}(\mathbf{e}_{\mu}, \mathbf{e}_{\nu}, \mathbf{B}(\cdot, \mathbf{e}^{*\rho}, \mathbf{e}^{*\sigma}))        \\
+					                                          & = \mathbf{A}(\mathbf{e}_{\mu}, \mathbf{e}_{\nu}, \tensor{B}{ ^{\lambda\rho\sigma}}\mathbf{e}_{\lambda}) = \tensor{B}{^{\lambda\rho\sigma} }\mathbf{A}(\mathbf{e}_{\mu}, \mathbf{e}_{\nu}, \mathbf{e}_{\lambda}) \\
+					                                          & = \tensor{B}{^{\lambda\rho\sigma} }\tensor{A}{ _{\mu\nu\lambda} },
+				      \end{aligned}
+			      \end{equation}
+			      where we have used the fact that for fixed \(\rho, \sigma\), \( \mathbf{B}(\cdot, \mathbf{e}^{*\rho}, \mathbf{e}^{*\sigma}) \) is a map from \( V^{*} \rightarrow \mathbb{R} \), that is, an element of \( V^{**} \cong V \).
+			      We can write \( \mathbf{V} = \mathbf{B}(\cdot, \mathbf{e}^{*\rho}, \mathbf{e}^{*\sigma}) = V^{\lambda} \mathbf{e}_{\lambda}\), and then \( V^{\lambda} = \mathbf{e}^{*\lambda}(\mathbf{V}) \), so that
+			      \begin{equation}
+				      \label{eq:12}
+				      V^{\lambda} = \mathbf{e}^{*\lambda}(\mathbf{B}(\cdot, \mathbf{e}^{*\rho}, \mathbf{e}^{*\sigma})) = \mathbf{B}(\mathbf{e}^{*\lambda}, \mathbf{e}^{*\rho}, \mathbf{e}^{*\sigma}) = \tensor{B}{^{\lambda\rho\sigma} }.
+			      \end{equation}
+			      \cref{eq:12} is a valid tensor equation since we fixed \(\rho\) and \(\sigma\).
 
-        \( \mathbf{C} \) is contraction on the first index of \( \mathbf{B} \) with the third index of \( \mathbf{A} \).
-        \end{answer}
-\end{enumerate}
+			      \( \mathbf{C} \) is contraction on the first index of \( \mathbf{B} \) with the third index of \( \mathbf{A} \).
+		      \end{answer}
+	\end{enumerate}
 \end{problem}
 
 \begin{problem}{3}
-  In class we saw that the circle, \( S^1 \), can be covered with two patches constructed via \textit{stereographic projection}.
-  Here we'll do the same for the sphere \( S^2 \).
+	In class we saw that the circle, \( S^1 \), can be covered with two patches constructed via \textit{stereographic projection}.
+	Here we'll do the same for the sphere \( S^2 \).
 
-  Define the first patch \( U_N \) as all the points besides the north pole.
-  Assign coordinates to \( p \in U_N \) by drawing a line from the north pole, through \( p \), and determining where it intersects a plane passing through the equator of the sphere.
+	Define the first patch \( U_N \) as all the points besides the north pole.
+	Assign coordinates to \( p \in U_N \) by drawing a line from the north pole, through \( p \), and determining where it intersects a plane passing through the equator of the sphere.
 
-  \begin{enumerate}[label=(\alph*)]
-    \item Defining the sphere of radius \( R \) as the subset of \( \mathbb{R}^3 \) consititng of points \( (X^1, X^2, X^3) \) where \( (X^1)^2 + (X^2)^2 + (X^3)^2 = R^2 \), show that the stereographic projected coordinates \( (x^1, x^2) \) are
-          \begin{equation}
-          \label{eq:2}
-          \varphi_N(X^1, X^2, X^3) = \left( \frac{X^{1}}{1 - X^3/R}, \frac{X^2}{1 - X^3/R} \right).
-        \end{equation}
-          \begin{proof}
-            Let \( X \in S^2 \) have coordinates \( X = (X^1, X^2, X^3) \); \( x \in \mathbb{R}^2 \) with coordinates \( x = (x^1, x^2) \).
-            The line from the north pole---which has coordinates \( (0,0,R) \)---through \( X \) can be parametrized as
-            \begin{equation}
-            \label{eq:13}
-            l(t) = (1-t)(0,0,R) + t(X^1, X^2, X^3) = (tX^1, tX^2, (1-t)R + t X^3).
-          \end{equation}
-          The point \( x \) is a point in \( \mathbb{R}^3 \) with \( x^3 = 0 \).
-          That is, this line intersects the plane at the equator of the sphere exactly when \( (1-t)R + t X^3 = 0 \).
-          \begin{equation}
-          \label{eq:14}
-          \begin{aligned}
-            0 =  (1-t)R + t X^3 = t(X^3 - R) + R \Rightarrow t = -\frac{R}{X^3 - R} = \frac{1}{1 - X^3/R }.
-          \end{aligned}
-        \end{equation}
-        Substituting \cref{eq:14} into \cref{eq:13} gives the point in \( \mathbb{R}^3 \) at which \( l(t) \) intersects the \( xy \)-plane,
-        \begin{equation}
-        \label{eq:15}
-        \left(\frac{X^{1}}{1 - X^3/R}, \frac{X^2}{1- X^3/R}, 0\right),
-        \end{equation}
-        so that
-        \begin{equation}
-        \label{eq:16}
-        \varphi_N(X^1, X^2, X^3) = \left( \frac{X^1}{1 - X^3/R}, \frac{X^2}{1 - X^3/R} \right),
-      \end{equation}
-      as desired.
-          \end{proof}
-    \item Write an expression for \(\varphi^{-1}_N(x^{1}, x^2)\) for arbitrary \( x^1, x^2 \).
-          \begin{answer}
-            We proceed opposite to part (a).
-            Let \( x = (x^1, x^2) \) be an arbitary point in \( \mathbb{R}^2 \), which has corresponding point in \( R^3 \), \( (x^1, x^2, 0) \), via the natural inclusion.
-            The line from \( (x^1, x^2, 0) \) to the north pole \( (0,0,R) \) will intersect the sphere at the desired point \( X \in S^2 \).
-            We can write the line as
-            \begin{equation}
-            \label{eq:17}
-            l(t) = (1-t)(0,0,R) + t(x^1, x^2, 0) = (tx^1, tx^2, (1-t)R),
-          \end{equation}
-          and we seek the time \( t \neq 0 \) at which \( (tx^1)^2 + (tx^2)^2 + ((1-t)R)^2 = R^2 \).
-          \begin{equation}
-          \label{eq:18}
-          \begin{aligned}
-            &t^2 ((x^1)^2 + (x^2)^2 + R^2) - 2tR^2= 0 \\
-            \Rightarrow &t((x^1)^2 + (x^2)^2 + R^2) = 2R^2 \\
-            \Rightarrow &t = \frac{2R^2}{(x^1)^2 + (x^2)^2 + R^2}.
-          \end{aligned}
-        \end{equation}
-        Then we substitute \cref{eq:18} into \cref{eq:17}, which gives us the point of intersection as
-        \begin{equation}
-        \label{eq:19}
-        \begin{aligned}
-          &\left( \frac{2R^2 x^1}{(x^1)^2 + (x^2)^2 + R^2}, \frac{2 R^2 x^2}{(x^1)^2 + (x^2)^2 + R^2}, R(1 - \frac{2R^2}{(x^1)^2 + (x^2)^2 + R^2}) \right) \\
-          &= \frac{1}{(x^1)^2 + (x^2)^2 + R^2}\left( 2R^2x^1, 2R^2x^2, R((x^1)^2 + (x^2)^2 - R^2) \right).
-        \end{aligned}
-      \end{equation}
-      Defining \( r^2 = (x^1)^2 + (x^2)^2 \), we can then write the inverse map as
-      \begin{equation}
-      \label{eq:20}
-      \varphi_N^{-1}(x^1, x^2) = \frac{R}{r^2 + R^2} \left( 2Rx^1, 2Rx^2,  r^2 - R^2 \right).
-      \end{equation}
-      \end{answer}
-    \item Define a second patch \( U_S \) to contain all points besides the south pole.
-          Show that the corresponding stereographic projected coordinates \( (y^1, y^2) \) are
-          \begin{equation}
-          \label{eq:3}
-          \varphi_S(X^1, X^2, X^3) = \left( \frac{X^{1}}{1 + X^3/R}, \frac{X^2}{1 + X^3/R} \right).
-        \end{equation}
-          \begin{proof}
-            Almost identically to part (a), parametrize the line from the south pole \( (0,0, -R) \) to the point \( (y^1, y^2, 0) \) as
-            \begin{equation}
-            \label{eq:21}
-            l(t) = (1-t)(0,0,-R) + t(X^1, X^2, X^3) = (t X^1, tX^2, -R(1-t) + tX^3),
-          \end{equation}
-          and solve for \( t \neq 0 \), \( t X^3 -R(1-t) = 0 \).
-          We have \( t(X^3 + R) = R \) so that \( t = \frac{R}{X^3 + R} = \frac{1}{1 + X^3/R}\).
-          Plugging this time into \cref{eq:21} gives the desired result,
-          \begin{equation}
-          \label{eq:22}
-          \varphi_S(X^1, X^2, X^3) = \left( \frac{X^1}{1 + X^3/R}, \frac{X^2}{1 + X^3/R} \right).
-          \end{equation}
-          \end{proof}
-    \item Write an expression for \(\varphi^{-1}_S(y^1, y^2)\).
-    \item Show that the transition function \(\varphi_S \circ \varphi_N^{-1}\) can be written as
-          \begin{equation}
-          \label{eq:4}
-          ( y^1(x^1, x^2), y^2(x^1, x^2) ) = \frac{R^2}{(x^{1})^2 + (x^2)^2}(x^1, x^2).
-        \end{equation}
-          Is this \( C^{\infty} \) on the overlap?
-  \item Find also \(\varphi_N \circ \varphi_S^{-1}\) and verify that it is \( C^{\infty} \) and that it is the inverse of \cref{eq:4}.
-  \end{enumerate}
+	\begin{enumerate}[label=(\alph*)]
+		\item Defining the sphere of radius \( R \) as the subset of \( \mathbb{R}^3 \) consisting of points \( (X^1, X^2, X^3) \) where \( (X^1)^2 + (X^2)^2 + (X^3)^2 = R^2 \), show that the stereographic projected coordinates \( (x^1, x^2) \) are
+		      \begin{equation}
+			      \label{eq:2}
+			      \varphi_N(X^1, X^2, X^3) = \left( \frac{X^{1}}{1 - X^3/R}, \frac{X^2}{1 - X^3/R} \right).
+		      \end{equation}
+		      \begin{proof}
+			      Let \( X \in S^2 \) have coordinates \( X = (X^1, X^2, X^3) \); \( x \in \mathbb{R}^2 \) with coordinates \( x = (x^1, x^2) \).
+			      The line from the north pole---which has coordinates \( (0,0,R) \)---through \( X \) can be parametrized as
+			      \begin{equation}
+				      \label{eq:13}
+				      l(t) = (1-t)(0,0,R) + t(X^1, X^2, X^3) = (tX^1, tX^2, (1-t)R + t X^3).
+			      \end{equation}
+			      The point \( x \) is a point in \( \mathbb{R}^3 \) with \( x^3 = 0 \).
+			      That is, this line intersects the plane at the equator of the sphere exactly when \( (1-t)R + t X^3 = 0 \).
+			      \begin{equation}
+				      \label{eq:14}
+				      \begin{aligned}
+					      0 =  (1-t)R + t X^3 = t(X^3 - R) + R \Rightarrow t = -\frac{R}{X^3 - R} = \frac{1}{1 - X^3/R }.
+				      \end{aligned}
+			      \end{equation}
+			      Substituting \cref{eq:14} into \cref{eq:13} gives the point in \( \mathbb{R}^3 \) at which \( l(t) \) intersects the \( xy \)-plane,
+			      \begin{equation}
+				      \label{eq:15}
+				      \left(\frac{X^{1}}{1 - X^3/R}, \frac{X^2}{1- X^3/R}, 0\right),
+			      \end{equation}
+			      so that
+			      \begin{equation}
+				      \label{eq:16}
+				      \varphi_N(X^1, X^2, X^3) = \left( \frac{X^1}{1 - X^3/R}, \frac{X^2}{1 - X^3/R} \right),
+			      \end{equation}
+			      as desired.
+		      \end{proof}
+		\item Write an expression for \(\varphi^{-1}_N(x^{1}, x^2)\) for arbitrary \( x^1, x^2 \).
+		      \begin{answer}
+			      We proceed opposite to part (a).
+			      Let \( x = (x^1, x^2) \) be an arbitrary point in \( \mathbb{R}^2 \), which has corresponding point in \( \mathbb{R}^3 \), \( (x^1, x^2, 0) \), via the natural inclusion.
+			      The line from \( (x^1, x^2, 0) \) to the north pole \( (0,0,R) \) will intersect the sphere at the desired point \( X \in S^2 \).
+			      We can write the line as
+			      \begin{equation}
+				      \label{eq:17}
+				      l(t) = (1-t)(0,0,R) + t(x^1, x^2, 0) = (tx^1, tx^2, (1-t)R),
+			      \end{equation}
+			      and we seek the time \( t \neq 0 \) at which \( (tx^1)^2 + (tx^2)^2 + ((1-t)R)^2 = R^2 \).
+			      \begin{equation}
+				      \label{eq:18}
+				      \begin{aligned}
+					                  & t^2 ((x^1)^2 + (x^2)^2 + R^2) - 2tR^2= 0  \\
+					      \Rightarrow & t((x^1)^2 + (x^2)^2 + R^2) = 2R^2         \\
+					      \Rightarrow & t = \frac{2R^2}{(x^1)^2 + (x^2)^2 + R^2}.
+				      \end{aligned}
+			      \end{equation}
+			      Then we substitute \cref{eq:18} into \cref{eq:17}, which gives us the point of intersection as
+			      \begin{equation}
+				      \label{eq:19}
+				      \begin{aligned}
+					       & \left( \frac{2R^2 x^1}{(x^1)^2 + (x^2)^2 + R^2}, \frac{2 R^2 x^2}{(x^1)^2 + (x^2)^2 + R^2}, R(1 - \frac{2R^2}{(x^1)^2 + (x^2)^2 + R^2}) \right) \\
+					       & = \frac{1}{(x^1)^2 + (x^2)^2 + R^2}\left( 2R^2x^1, 2R^2x^2, R((x^1)^2 + (x^2)^2 - R^2) \right).
+				      \end{aligned}
+			      \end{equation}
+			      Defining \( r^2 = (x^1)^2 + (x^2)^2 \), we can then write the inverse map as
+			      \begin{equation}
+				      \label{eq:20}
+				      \varphi_N^{-1}(x^1, x^2) = \frac{R}{r^2 + R^2} \left( 2Rx^1, 2Rx^2,  r^2 - R^2 \right).
+			      \end{equation}
+		      \end{answer}
+		\item Define a second patch \( U_S \) to contain all points besides the south pole.
+		      Show that the corresponding stereographic projected coordinates \( (y^1, y^2) \) are
+		      \begin{equation}
+			      \label{eq:3}
+			      \varphi_S(X^1, X^2, X^3) = \left( \frac{X^{1}}{1 + X^3/R}, \frac{X^2}{1 + X^3/R} \right).
+		      \end{equation}
+		      \begin{proof}
+			      Almost identically to part (a), parametrize the line from the south pole \( (0,0, -R) \) to the point \( (y^1, y^2, 0) \) as
+			      \begin{equation}
+				      \label{eq:21}
+				      l(t) = (1-t)(0,0,-R) + t(X^1, X^2, X^3) = (t X^1, tX^2, -R(1-t) + tX^3),
+			      \end{equation}
+			      and solve for \( t \neq 0 \), \( t X^3 -R(1-t) = 0 \).
+			      We have \( t(X^3 + R) = R \) so that \( t = \frac{R}{X^3 + R} = \frac{1}{1 + X^3/R}\).
+			      Plugging this time into \cref{eq:21} gives the desired result,
+			      \begin{equation}
+				      \label{eq:22}
+				      \varphi_S(X^1, X^2, X^3) = \left( \frac{X^1}{1 + X^3/R}, \frac{X^2}{1 + X^3/R} \right).
+			      \end{equation}
+		      \end{proof}
+		\item Write an expression for \(\varphi^{-1}_S(y^1, y^2)\).
+		\item Show that the transition function \(\varphi_S \circ \varphi_N^{-1}\) can be written as
+		      \begin{equation}
+			      \label{eq:4}
+			      ( y^1(x^1, x^2), y^2(x^1, x^2) ) = \frac{R^2}{(x^{1})^2 + (x^2)^2}(x^1, x^2).
+		      \end{equation}
+		      Is this \( C^{\infty} \) on the overlap?
+		\item Find also \(\varphi_N \circ \varphi_S^{-1}\) and verify that it is \( C^{\infty} \) and that it is the inverse of \cref{eq:4}.
+	\end{enumerate}
 \end{problem}
 
 \begin{problem}{4}
-  The metric in spherical coordinates is
-  \begin{equation}
-  \label{eq:5}
-  ds^2 = R^2(d\theta^2 + \sin^2\theta d\phi^2).
-\end{equation}
+	The metric in spherical coordinates is
+	\begin{equation}
+		\label{eq:5}
+		ds^2 = R^2(d\theta^2 + \sin^2\theta d\phi^2).
+	\end{equation}
 
-\begin{enumerate}[label=(\alph*)]
-  \item Find the transition functions between these spherical coordinates and the stereographic projection coordinates \( U_N \) from the previous problem.
-  \item Using the transformation rule, transform the metric from spherical to \( U_N \) stereographic coordinates.
-        Show that it is
+	\begin{enumerate}[label=(\alph*)]
+		\item Find the transition functions between these spherical coordinates and the stereographic projection coordinates \( U_N \) from the previous problem.
+		      \begin{answer}
+			      Writing the spherical coordinates as
+			      \begin{equation}
+				      \psi(Y^1, Y^2, Y^3) = \left( \acos(Y^3 / R), \atan(Y^2 / Y^1) \right),
+			      \end{equation}
+            and then the first transition function is
+            \begin{equation}
+            \label{eq:23}
+            \begin{aligned}
+              \psi \circ \varphi_N^{-1} &= \psi \left( \frac{R}{r^2 + R^2}(2R x^1, 2R x^2, r^2 - R^2) \right) \\
+              &= \left( \acos(\frac{r^2 - R^2}{r^2 + R^2}), \atan(\frac{x^2}{x^{1}}) \right).
+            \end{aligned}
+          \end{equation}
+
+          The inverse spherical coordinate chart is
+          \begin{equation}
+          \label{eq:34}
+          \psi^{-1}(y^1, y^2) = \left( R\sin y^1 \cos y^2, R \sin y^1 \sin y^2, R \cos y^1 \right),
+        \end{equation}
+        so that the second transition function is
         \begin{equation}
-        \label{eq:6}
-        ds^2 = \frac{4R^2}{((x^1)^2 + (x^2)^2 + R^2)^2}((dx^1)^2 + (dx^2)^2).
-      \end{equation}
-  \item Consider the curve given in \( U_N \) coordinates by \( x^1(\lambda) = \lambda, x^2(\lambda) = 0, \lambda \in (-\infty, \infty) \).
-        This is a curve traversing the circumference of the sphere.
-        Using the arc-length formula
-        \begin{equation}
-        \label{eq:7}
-        \int d\lambda \sqrt{g_{\mu\nu}(x(\lambda)) \frac{\mathrm{d} x^{\mu}}{\mathrm{d} \lambda} \frac{\mathrm{d} x^{\nu}}{\mathrm{d} \lambda}},
-      \end{equation}
-        and the expression \cref{eq:6}, compute the length of the curve and see that it reproduces the circumference of the sphere.
-\end{enumerate}
+        \label{eq:35}
+        \varphi_N \circ \psi^{-1} = \left( \frac{R\sin y^{1} \cos y^2}{1 - \cos y^{1}}, \frac{R\sin y^1 \sin y^2}{1 - \cos y^{1}} \right).
+        \end{equation}
+		      \end{answer}
+		\item Using the transformation rule, transform the metric from spherical to \( U_N \) stereographic coordinates.
+		      Show that it is
+		      \begin{equation}
+			      \label{eq:6}
+			      ds^2 = \frac{4R^2}{((x^1)^2 + (x^2)^2 + R^2)^2}((dx^1)^2 + (dx^2)^2).
+		      \end{equation}
+		\item Consider the curve given in \( U_N \) coordinates by \( x^1(\lambda) = \lambda, x^2(\lambda) = 0, \lambda \in (-\infty, \infty) \).
+		      This is a curve traversing the circumference of the sphere.
+		      Using the arc-length formula
+		      \begin{equation}
+			      \label{eq:7}
+			      \int d\lambda \sqrt{g_{\mu\nu}(x(\lambda)) \frac{\mathrm{d} x^{\mu}}{\mathrm{d} \lambda} \frac{\mathrm{d} x^{\nu}}{\mathrm{d} \lambda}},
+		      \end{equation}
+		      and the expression \cref{eq:6}, compute the length of the curve and see that it reproduces the circumference of the sphere.
+          \begin{answer}
+            With \( x^{\mu}(\lambda) = (\lambda, 0) \), we have \( \frac{\mathrm{d} x^1}{\mathrm{d} \lambda} = 1, \frac{\mathrm{d} x^{2}}{\mathrm{d} \lambda} = 0 \).
+            Hence the line element is \( ds^2 = \frac{4R^2}{(\lambda^2 + R^2)^2} \), and the arc-length integral is
+            \begin{equation}
+            \label{eq:36}
+            \begin{aligned}
+              L &= \int\limits_{-\infty}^{\infty} d\lambda \sqrt{ds^2} = 2R^2 \int\limits_{-\infty}^{\infty} \frac{d\lambda}{(\lambda^2 + R^2)} = \frac{2R}{R} \left( \atan( \frac{\lambda}{R} ) \right)\eval_{-\infty}^{\infty} \\
+              &= 2R \left( \frac{\pi}{2} - (- \frac{\pi}{2}) \right) = 2\pi R,
+            \end{aligned}
+          \end{equation}
+          as it must be.
+          \end{answer}
+	\end{enumerate}
 \end{problem}
 
 \begin{problem}{5. Warp drive spacetime}
-  Suppose the Earth is at \( x = 0 \) and a star is at \( x = L \) lightyears away.
-  If spacetime is flat Minkowski with \( ds^2 = -dt^2 + dx^2 \), then a spaceship traveling from Earth to the star at nearly the speed of light would take just over \( L \) years, as measured by the clocks on the Earth, or the star, to arrive.
-  Now imagine a warp drive engine which sets up the following metric in the spacetime between the Earth and the star,
-  \begin{equation}
-  \label{eq:8}
-  ds^2 = -dt^2 + (dx - \dot{x}_s(t)V(|x - x_s(t)|)dt)^2,
-  \end{equation}
-  where \( x_s(t) \) is some arbitrary path from the Earth to the star (not necessarily Minkowski timelike) which the spaceship with take and \( \dot{x}_s(t) \) is the velocity as measured in the Minkowski metric.
-  \( V(r) \) is some smooth function satisfying \( V(0) = 1 \) and falls to zero as \( r \rightarrow \infty \).
-  \begin{enumerate}[label=(\alph*)]
-    \item Consider the case \( x_s(t) = vt \), \( v > 1 \).
-          This is a worldline which would be faster than light in the Minkowski metric.
-          Take \( V(r) \) to be a Gaussian of some width \( R \), that is, \( V(r) = \exp(-r^2/2R^2) \).
-          Make a plot of the lightcones in this spacetime.
-          The warp drive is distorting the spacetime in the region within \( \sim R \) of the spaceship's trajectory, in such a way that locally the path is always within the lightcone and hence time-like.
-          Thus the trajectory can be achieved without ever locally exceeding the speed of light.
-          In this sense, the warp drive allows the spaceship to travel ``faster than light,'' arriving at the star in a time \( \approx L/v < L \) as measured by clocks on Earth or the star.
-    \item Show that, regardless of \( x_s(t) \) and \( V(r) \), the path is always timelike with respect to \cref{eq:8}.
-          THus the spaceship never has to move faster than the local speed of light.
-    \item Find, for any \( x_s(t) \) and \( V(r) \), the time elapsed on the spaceship's clock.
-          Will there be time dilation problems where the space travelers are younger/older than their Earth-bound twins after a round trip?
-  \end{enumerate}
+	Suppose the Earth is at \( x = 0 \) and a star is at \( x = L \) lightyears away.
+	If spacetime is flat Minkowski with \( ds^2 = -dt^2 + dx^2 \), then a spaceship traveling from Earth to the star at nearly the speed of light would take just over \( L \) years, as measured by the clocks on the Earth, or the star, to arrive.
+	Now imagine a warp drive engine which sets up the following metric in the spacetime between the Earth and the star,
+	\begin{equation}
+		\label{eq:8}
+		ds^2 = -dt^2 + (dx - \dot{x}_s(t)V(|x - x_s(t)|)dt)^2,
+	\end{equation}
+	where \( x_s(t) \) is some arbitrary path from the Earth to the star (not necessarily Minkowski timelike) which the spaceship with take and \( \dot{x}_s(t) \) is the velocity as measured in the Minkowski metric.
+	\( V(r) \) is some smooth function satisfying \( V(0) = 1 \) and falls to zero as \( r \rightarrow \infty \).
+	\begin{enumerate}[label=(\alph*)]
+		\item Consider the case \( x_s(t) = vt \), \( v > 1 \).
+		      This is a worldline which would be faster than light in the Minkowski metric.
+		      Take \( V(r) \) to be a Gaussian of some width \( R \), that is, \( V(r) = \exp(-r^2/2R^2) \).
+		      Make a plot of the lightcones in this spacetime.
+		      The warp drive is distorting the spacetime in the region within \( \sim R \) of the spaceship's trajectory, in such a way that locally the path is always within the lightcone and hence time-like.
+		      Thus the trajectory can be achieved without ever locally exceeding the speed of light.
+		      In this sense, the warp drive allows the spaceship to travel ``faster than light,'' arriving at the star in a time \( \approx L/v < L \) as measured by clocks on Earth or the star.
+		\item Show that, regardless of \( x_s(t) \) and \( V(r) \), the path is always timelike with respect to \cref{eq:8}.
+		      THus the spaceship never has to move faster than the local speed of light.
+		\item Find, for any \( x_s(t) \) and \( V(r) \), the time elapsed on the spaceship's clock.
+		      Will there be time dilation problems where the space travelers are younger/older than their Earth-bound twins after a round trip?
+	\end{enumerate}
 \end{problem}
 
 \begin{problem}{6}
-  Generally, the derivative of a tensor is not a tensor.
-  \begin{enumerate}[label=(\alph*)]
-    \item Show that given a one-form field \( W_{\mu}(x) \), the partial derivative \(\partial_{\mu}W_{\nu}\) does not transform as a (0,2) tensor.
-          \begin{proof}
-            Let \( W_{\mu}(x) \) be an arbitrary one-form field.
-            The \( (0,2) \) tensor transformation law for an arbitrary \( T_{\mu\nu} \) is
-            \begin{equation}
-            \label{eq:24}
-              T = T^{\prime}_{\mu\nu}dx^{\prime\mu}\otimes dx^{\prime\nu} = \tensor{T}{ _{\rho\sigma} }dx^{\rho}\otimes dx^{\sigma}, \qquad \text{where }T^{\prime}_{\mu\nu} = \frac{\partial x^{\rho}}{\partial x^{\prime\mu}} \frac{\partial x^{\sigma}}{\partial x^{\prime \nu}} T_{\rho\sigma}.
-          \end{equation}
-          We first of all calculate the transformation of \(\partial_{\mu}W_{\nu}\) in two steps: \( W_{\nu}(x) \) is a (0,1) tensor field, and hence transforms as
-          \begin{equation}
-          \label{eq:25}
-          W_{\nu}^{\prime}(x) = \frac{\partial x^{\alpha}}{\partial x^{\prime\nu}} W_{\alpha},
-          \end{equation}
-          so that we should, on one hand, have
-          \begin{equation}
-          \label{eq:26}
-          \begin{aligned}
-          \partial_{\mu}^{\prime}W_{\nu}^{\prime} &= \frac{\partial }{\partial x^{\prime\mu}} \left( \frac{\partial x^{\alpha}}{\partial x^{\prime\nu}} W_{\alpha} \right) = \frac{\partial^2 x^{\alpha}}{\partial x^{\prime\mu} \partial x^{\prime\nu}} W_{\alpha} + \frac{\partial x^{\alpha}}{\partial x^{\prime\nu}} \partial_{\rho}W_{\alpha} \frac{\partial x^{\rho}}{\partial x^{\prime\mu}}.
-          \end{aligned}
-        \end{equation}
-        However, the transformation law \cref{eq:24} implies we should also have
-        \begin{equation}
-        \label{eq:27}
-        (\partial_{\mu}W_{\nu})^{\prime} = \frac{\partial x^{\rho}}{\partial x^{\prime\mu}} \frac{\partial x^{\sigma}}{\partial x^{\prime\nu}} \partial_{\rho}W_{\sigma},
-      \end{equation}
-      which is clearly not equal to \cref{eq:26} as it is missing the crossed term.
-          \end{proof}
-          However, there are a few exceptions.
-    \item Show that given a one-form field \( W_{\mu}(x) \), the anti-symmetric combination \(\partial_{[\mu}W_{\nu]}\) \textit{does} transform as a \( (0,2) \) tensor.
-          \begin{proof}
-            By definition,
-            \begin{equation}
-            \label{eq:28}
-            \partial_{[\mu}W_{\nu]} = \frac{1}{2} \left( \partial_{\mu}W_{\nu} - \partial_{\nu}W_{\mu} \right).
-            \end{equation}
-            Again applying the \( (0,1) \) transformation law to \( W_{\nu} \) gives
-            \begin{equation}
-            \label{eq:29}
-            \begin{aligned}
-              \partial^{\prime}_{[\mu}W^{\prime}_{\nu]} &= \frac{1}{2} \left( \frac{\partial }{\partial x^{\prime\mu}} (\frac{\partial x^{\alpha}}{\partial x^{\prime\nu}} W_{\alpha} ) - \frac{\partial }{\partial x^{\prime\nu}} (\frac{\partial x^{\beta}}{\partial x^{\prime\mu}} W_{\beta}) \right) \\[.5em]
-                                   &= \frac{1}{2} \left( \frac{\partial^2 x^{\alpha}}{\partial x^{\prime\mu} \partial x^{\prime\nu}} W_{\alpha} + \frac{\partial x^{\alpha}}{\partial x^{\prime\nu}} \partial_{\rho}W_{\alpha} \frac{\partial x^{\rho}}{\partial x^{\prime\mu}} - \frac{\partial^2 x^{\beta}}{\partial x^{\prime\nu} \partial x^{\prime\mu}} W_{\beta} - \frac{\partial x^{\beta}}{\partial x^{\prime\mu}} \partial_{\sigma}W_{\beta} \frac{\partial x^{\sigma}}{\partial x^{\prime\nu}} \right) \\[.5em]
-              &= \frac{1}{2} \left( \frac{\partial x^{\alpha}}{\partial x^{\prime\nu}} \frac{\partial x^{\beta}}{\partial x^{\prime\mu}} \partial_{\rho}W_{\alpha} - \frac{\partial x^{\beta}}{\partial x^{\prime\mu}} \frac{\partial x^{\sigma}}{\partial x^{\prime\nu}} \partial_{\sigma}W_{\beta} \right),
-            \end{aligned}
-            \end{equation}
-            where we have appealed to Clairaut's theorem (with an implicit change of indices) to eliminate the crossed terms; then, by changing indices we get
-            \begin{equation}
-            \label{eq:30}
-            \begin{aligned}
-              \partial^{\prime}_{[\mu}W^{\prime}_{\nu]} &= \frac{1}{2} \left( \frac{\partial x^{\gamma}}{\partial x^{\prime\nu}} \frac{\partial x^{\lambda}}{\partial x^{\prime\mu}} \partial_{\lambda}W_{\gamma} - \frac{\partial x^{\lambda}}{\partial x^{\prime\mu}} \frac{\partial x^{\gamma}}{\partial x^{\prime\nu}} \partial_{\gamma}W_{\lambda}  \right) \\[.5em]
-              &= \frac{\partial x^{\gamma}}{\partial x^{\prime\nu}} \frac{\partial x^{\lambda}}{\partial x^{\prime\mu}} \partial_{[\lambda}W_{\gamma]},
-            \end{aligned}
-          \end{equation}
-          and our claim follows.
-          \end{proof}
-          This is an example of the \textit{exterior derivative}.
-    \item Show that given two vector fields \( V_1^{\mu}, V_2^{\mu} \), the combination
-          \begin{equation}
-          \label{eq:9}
-          \comm{V_1}{V_2}^{\mu} \coloneq V_1^{\nu}\partial_{\nu} V_2^{\mu} - V_2^{\nu} \partial_{\nu} V_1^{\mu}
-        \end{equation}
-          transforms as a vector.
-          This is called the \textit{Lie bracket}, and example of the \textit{Lie derivative}.
-  \begin{proof}
-    For ease of notation, write \( V_1^{\mu} = V^{\mu}, V_2^{\mu} = W^{\mu} \).
-    Then, substituting in the respective transformation laws gives
-    \begin{equation}
-    \label{eq:31}
-    \begin{aligned}
-      \comm{V}{W}^{\prime\mu} &= \frac{\partial x^{\prime\nu}}{\partial x^{\alpha}} V^{\alpha} \left( \frac{\partial }{\partial x^{\prime\nu}} \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} W^{\beta} \right) - \frac{\partial x^{\prime\nu}}{\partial x^{\alpha}} W^{\alpha} \left( \frac{\partial }{\partial x^{\prime\nu}} \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} V^{\beta} \right) \\
-                       &= \frac{\partial x^{\prime\nu}}{\partial x^{\alpha}} V^{\alpha} \left( \frac{\partial^2 x^{\prime\mu}}{\partial x^{\prime\nu} \partial x^{\beta}} W^{\beta} + \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} \partial_{\rho}W^{\beta} \frac{\partial x^{\rho}}{\partial x^{\prime\nu}}   \right) \\
-                       &\quad - \frac{\partial x^{\prime\nu}}{\partial x^{\alpha}} W^{\alpha} \left( \frac{\partial^2 x^{\prime\mu}}{\partial x^{\prime\nu} \partial x^{\beta}} V^{\beta} + \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} \partial_{\rho}V^{\beta} \frac{\partial x^{\rho}}{\partial x^{\prime\nu}}   \right).
-    \end{aligned}
-  \end{equation}
-  Considering first the crossed partial terms, we have
-  \begin{equation}
-  \label{eq:32}
-  \begin{aligned}
-    &\frac{\partial x^{\prime\nu}}{\partial x^{\alpha}} \frac{\partial^2 x^{\prime\mu}}{\partial x^{\prime\nu} \partial x^{\beta}} V^{\alpha} W^{\beta} - \frac{\partial x^{\prime\nu}}{\partial x^{\alpha}} \frac{\partial^2 x^{\prime\mu}}{\partial x^{\prime\nu} \partial x^{\beta}} W^{\alpha} V^{\beta} \\[.5em]
-    &= \frac{\partial x^{\prime\nu}}{\partial x^{\gamma}} \frac{\partial^2 x^{\prime\mu}}{\partial x^{\prime\nu} \partial x^{\lambda}} V^{\gamma}W^{\lambda} - \frac{\partial x^{\prime\nu}}{\partial x^{\lambda}} \frac{\partial^2 x^{\prime\mu}}{\partial x^{\prime\nu} \partial x^{\gamma}} W^{\lambda}V^{\gamma} \\[.5em]
-    &= V^{\gamma}W^{\lambda} \left( \frac{\partial^2 x^{\prime\mu}}{\partial x^{\gamma} \partial x^{\lambda}} - \frac{\partial^2 x^{\prime\mu}}{\partial x^{\lambda} \partial x^{\gamma}}  \right) = 0.
-  \end{aligned}
-\end{equation}
+	Generally, the derivative of a tensor is not a tensor.
+	\begin{enumerate}[label=(\alph*)]
+		\item Show that given a one-form field \( W_{\mu}(x) \), the partial derivative \(\partial_{\mu}W_{\nu}\) does not transform as a (0,2) tensor.
+		      \begin{proof}
+			      Let \( W_{\mu}(x) \) be an arbitrary one-form field.
+			      The \( (0,2) \) tensor transformation law for an arbitrary \( T_{\mu\nu} \) is
+			      \begin{equation}
+				      \label{eq:24}
+				      T = T^{\prime}_{\mu\nu}dx^{\prime\mu}\otimes dx^{\prime\nu} = \tensor{T}{ _{\rho\sigma} }dx^{\rho}\otimes dx^{\sigma}, \qquad \text{where }T^{\prime}_{\mu\nu} = \frac{\partial x^{\rho}}{\partial x^{\prime\mu}} \frac{\partial x^{\sigma}}{\partial x^{\prime \nu}} T_{\rho\sigma}.
+			      \end{equation}
+			      We first of all calculate the transformation of \(\partial_{\mu}W_{\nu}\) in two steps: \( W_{\nu}(x) \) is a (0,1) tensor field, and hence transforms as
+			      \begin{equation}
+				      \label{eq:25}
+				      W_{\nu}^{\prime}(x) = \frac{\partial x^{\alpha}}{\partial x^{\prime\nu}} W_{\alpha},
+			      \end{equation}
+			      so that we should, on one hand, have
+			      \begin{equation}
+				      \label{eq:26}
+				      \begin{aligned}
+					      \partial_{\mu}^{\prime}W_{\nu}^{\prime} & = \frac{\partial }{\partial x^{\prime\mu}} \left( \frac{\partial x^{\alpha}}{\partial x^{\prime\nu}} W_{\alpha} \right) = \frac{\partial^2 x^{\alpha}}{\partial x^{\prime\mu} \partial x^{\prime\nu}} W_{\alpha} + \frac{\partial x^{\alpha}}{\partial x^{\prime\nu}} \partial_{\rho}W_{\alpha} \frac{\partial x^{\rho}}{\partial x^{\prime\mu}}.
+				      \end{aligned}
+			      \end{equation}
+			      However, the transformation law \cref{eq:24} implies we should also have
+			      \begin{equation}
+				      \label{eq:27}
+				      (\partial_{\mu}W_{\nu})^{\prime} = \frac{\partial x^{\rho}}{\partial x^{\prime\mu}} \frac{\partial x^{\sigma}}{\partial x^{\prime\nu}} \partial_{\rho}W_{\sigma},
+			      \end{equation}
+			      which is clearly not equal to \cref{eq:26} as it is missing the crossed term.
+		      \end{proof}
+		      However, there are a few exceptions.
+		\item Show that given a one-form field \( W_{\mu}(x) \), the anti-symmetric combination \(\partial_{[\mu}W_{\nu]}\) \textit{does} transform as a \( (0,2) \) tensor.
+		      \begin{proof}
+			      By definition,
+			      \begin{equation}
+				      \label{eq:28}
+				      \partial_{[\mu}W_{\nu]} = \frac{1}{2} \left( \partial_{\mu}W_{\nu} - \partial_{\nu}W_{\mu} \right).
+			      \end{equation}
+			      Again applying the \( (0,1) \) transformation law to \( W_{\nu} \) gives
+			      \begin{equation}
+				      \label{eq:29}
+				      \begin{aligned}
+					      \partial^{\prime}_{[\mu}W^{\prime}_{\nu]} & = \frac{1}{2} \left( \frac{\partial }{\partial x^{\prime\mu}} (\frac{\partial x^{\alpha}}{\partial x^{\prime\nu}} W_{\alpha} ) - \frac{\partial }{\partial x^{\prime\nu}} (\frac{\partial x^{\beta}}{\partial x^{\prime\mu}} W_{\beta}) \right)                                                                                                                                                                                                                              \\[.5em]
+					                                                & = \frac{1}{2} \left( \frac{\partial^2 x^{\alpha}}{\partial x^{\prime\mu} \partial x^{\prime\nu}} W_{\alpha} + \frac{\partial x^{\alpha}}{\partial x^{\prime\nu}} \partial_{\rho}W_{\alpha} \frac{\partial x^{\rho}}{\partial x^{\prime\mu}} - \frac{\partial^2 x^{\beta}}{\partial x^{\prime\nu} \partial x^{\prime\mu}} W_{\beta} - \frac{\partial x^{\beta}}{\partial x^{\prime\mu}} \partial_{\sigma}W_{\beta} \frac{\partial x^{\sigma}}{\partial x^{\prime\nu}} \right) \\[.5em]
+					                                                & = \frac{1}{2} \left( \frac{\partial x^{\alpha}}{\partial x^{\prime\nu}} \frac{\partial x^{\beta}}{\partial x^{\prime\mu}} \partial_{\rho}W_{\alpha} - \frac{\partial x^{\beta}}{\partial x^{\prime\mu}} \frac{\partial x^{\sigma}}{\partial x^{\prime\nu}} \partial_{\sigma}W_{\beta} \right),
+				      \end{aligned}
+			      \end{equation}
+			      where we have appealed to Clairaut's theorem (with an implicit change of indices) to eliminate the crossed terms; then, by changing indices we get
+			      \begin{equation}
+				      \label{eq:30}
+				      \begin{aligned}
+					      \partial^{\prime}_{[\mu}W^{\prime}_{\nu]} & = \frac{1}{2} \left( \frac{\partial x^{\gamma}}{\partial x^{\prime\nu}} \frac{\partial x^{\lambda}}{\partial x^{\prime\mu}} \partial_{\lambda}W_{\gamma} - \frac{\partial x^{\lambda}}{\partial x^{\prime\mu}} \frac{\partial x^{\gamma}}{\partial x^{\prime\nu}} \partial_{\gamma}W_{\lambda}  \right) \\[.5em]
+					                                                & = \frac{\partial x^{\gamma}}{\partial x^{\prime\nu}} \frac{\partial x^{\lambda}}{\partial x^{\prime\mu}} \partial_{[\lambda}W_{\gamma]},
+				      \end{aligned}
+			      \end{equation}
+			      and our claim follows.
+		      \end{proof}
+		      This is an example of the \textit{exterior derivative}.
+		\item Show that given two vector fields \( V_1^{\mu}, V_2^{\mu} \), the combination
+		      \begin{equation}
+			      \label{eq:9}
+			      \comm{V_1}{V_2}^{\mu} \coloneq V_1^{\nu}\partial_{\nu} V_2^{\mu} - V_2^{\nu} \partial_{\nu} V_1^{\mu}
+		      \end{equation}
+		      transforms as a vector.
+		      This is called the \textit{Lie bracket}, and example of the \textit{Lie derivative}.
+		      \begin{proof}
+			      For ease of notation, write \( V_1^{\mu} = V^{\mu}, V_2^{\mu} = W^{\mu} \).
+			      Then, substituting in the respective transformation laws gives
+			      \begin{equation}
+				      \label{eq:31}
+				      \begin{aligned}
+					      \comm{V}{W}^{\prime\mu} & = \frac{\partial x^{\prime\nu}}{\partial x^{\alpha}} V^{\alpha} \left( \frac{\partial }{\partial x^{\prime\nu}} \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} W^{\beta} \right) - \frac{\partial x^{\prime\nu}}{\partial x^{\alpha}} W^{\alpha} \left( \frac{\partial }{\partial x^{\prime\nu}} \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} V^{\beta} \right) \\
+					                              & = \frac{\partial x^{\prime\nu}}{\partial x^{\alpha}} V^{\alpha} \left( \frac{\partial^2 x^{\prime\mu}}{\partial x^{\prime\nu} \partial x^{\beta}} W^{\beta} + \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} \partial_{\rho}W^{\beta} \frac{\partial x^{\rho}}{\partial x^{\prime\nu}}   \right)                                                                     \\
+					                              & \quad - \frac{\partial x^{\prime\nu}}{\partial x^{\alpha}} W^{\alpha} \left( \frac{\partial^2 x^{\prime\mu}}{\partial x^{\prime\nu} \partial x^{\beta}} V^{\beta} + \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} \partial_{\rho}V^{\beta} \frac{\partial x^{\rho}}{\partial x^{\prime\nu}}   \right).
+				      \end{aligned}
+			      \end{equation}
+			      Considering first the crossed partial terms, we have
+			      \begin{equation}
+				      \label{eq:32}
+				      \begin{aligned}
+					       & \frac{\partial x^{\prime\nu}}{\partial x^{\alpha}} \frac{\partial^2 x^{\prime\mu}}{\partial x^{\prime\nu} \partial x^{\beta}} V^{\alpha} W^{\beta} - \frac{\partial x^{\prime\nu}}{\partial x^{\alpha}} \frac{\partial^2 x^{\prime\mu}}{\partial x^{\prime\nu} \partial x^{\beta}} W^{\alpha} V^{\beta}         \\[.5em]
+					       & = \frac{\partial x^{\prime\nu}}{\partial x^{\gamma}} \frac{\partial^2 x^{\prime\mu}}{\partial x^{\prime\nu} \partial x^{\lambda}} V^{\gamma}W^{\lambda} - \frac{\partial x^{\prime\nu}}{\partial x^{\lambda}} \frac{\partial^2 x^{\prime\mu}}{\partial x^{\prime\nu} \partial x^{\gamma}} W^{\lambda}V^{\gamma} \\[.5em]
+					       & = V^{\gamma}W^{\lambda} \left( \frac{\partial^2 x^{\prime\mu}}{\partial x^{\gamma} \partial x^{\lambda}} - \frac{\partial^2 x^{\prime\mu}}{\partial x^{\lambda} \partial x^{\gamma}}  \right) = 0.
+				      \end{aligned}
+			      \end{equation}
 
-Returning, then, to \cref{eq:31},
-\begin{equation}
-\label{eq:33}
-\begin{aligned}
-  \comm{V}{W}^{\prime\mu} &= \frac{\partial x^{\prime\nu}}{\partial x^{\alpha}} V^{\alpha} \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} \partial_{\rho}W^{\beta} \frac{\partial x^{\rho}}{\partial x^{\prime\nu}} - \frac{\partial x^{\prime\nu}}{\partial x^{\alpha}} W^{\alpha} \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} \partial_{\rho}V^{\beta} \frac{\partial x^{\rho}}{\partial x^{\prime\nu}} \\[.5em]
-                   &= \frac{\partial x^{\prime\nu}}{\partial x^{\alpha}}  \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} \frac{\partial x^{\rho}}{\partial x^{\prime\nu}} \left( V^{\alpha}\partial_{\rho}W^{\beta} - W^{\alpha}\partial_{\rho} V^{\beta} \right) \\[.5em]
-                   &= \frac{\partial x^{\rho}}{\partial x^{\alpha}} \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} \left( V^{\alpha}\partial_{\rho}W^{\beta} - W^{\alpha}\partial_{\rho}V^{\beta} \right) \\[.5em]
-                   &= \tensor{\delta}{^{\rho}_{\alpha} } \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} \left( V^{\alpha}\partial_{\rho} W^{\beta} - W^{\alpha}\partial_{\rho} V^{\beta} \right) \\[.5em]
-                   &= \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} \left( V^{\lambda}\partial_{\lambda}W^{\beta} - W^{\lambda}\partial_{\lambda} V^{\beta} \right) = \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} \comm{V}{W}^{\beta},
-\end{aligned}
-\end{equation}
-and we are done.
-  \end{proof}
-  \end{enumerate}
+			      Returning, then, to \cref{eq:31},
+			      \begin{equation}
+				      \label{eq:33}
+				      \begin{aligned}
+					      \comm{V}{W}^{\prime\mu} & = \frac{\partial x^{\prime\nu}}{\partial x^{\alpha}} V^{\alpha} \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} \partial_{\rho}W^{\beta} \frac{\partial x^{\rho}}{\partial x^{\prime\nu}} - \frac{\partial x^{\prime\nu}}{\partial x^{\alpha}} W^{\alpha} \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} \partial_{\rho}V^{\beta} \frac{\partial x^{\rho}}{\partial x^{\prime\nu}} \\[.5em]
+					                              & = \frac{\partial x^{\prime\nu}}{\partial x^{\alpha}}  \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} \frac{\partial x^{\rho}}{\partial x^{\prime\nu}} \left( V^{\alpha}\partial_{\rho}W^{\beta} - W^{\alpha}\partial_{\rho} V^{\beta} \right)                                                                                                                                        \\[.5em]
+					                              & = \frac{\partial x^{\rho}}{\partial x^{\alpha}} \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} \left( V^{\alpha}\partial_{\rho}W^{\beta} - W^{\alpha}\partial_{\rho}V^{\beta} \right)                                                                                                                                                                                                \\[.5em]
+					                              & = \tensor{\delta}{^{\rho}_{\alpha} } \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} \left( V^{\alpha}\partial_{\rho} W^{\beta} - W^{\alpha}\partial_{\rho} V^{\beta} \right)                                                                                                                                                                                                         \\[.5em]
+					                              & = \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} \left( V^{\lambda}\partial_{\lambda}W^{\beta} - W^{\lambda}\partial_{\lambda} V^{\beta} \right) = \frac{\partial x^{\prime\mu}}{\partial x^{\beta}} \comm{V}{W}^{\beta},
+				      \end{aligned}
+			      \end{equation}
+			      and we are done.
+		      \end{proof}
+	\end{enumerate}
 \end{problem}
 \end{document}

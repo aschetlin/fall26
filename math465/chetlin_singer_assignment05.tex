@@ -104,8 +104,17 @@ Therefore, we can write \cref{eq:1} as
 where \( K \) is the Gaussian curvature of the surface at a given point.
 \end{problem}
 \begin{proof}
-  An asymptotic curve \(\alpha \subset S\) is one for which, for all \( p \in \alpha \), \( \langle L(T), T \rangle = 0 \), where \( T \) is the unit tangent vector of \(\alpha\) at \( p \).
-  Said differently, \( \langle D_{T}T, \nu \rangle = \langle \kappa N, \nu \rangle = 0 \).
+  Suppose \(\alpha \subset S \) is an (arc-length parametrized) asymptotic curve so that for all \( p \in S, \alpha(t) = p \), we have
+  \begin{equation}
+ \mathrm{I\!I}(\alpha^{\prime}(t)) = \langle L(T), T \rangle = \langle -D_T\nu, T \rangle = \langle D_T T, \nu \rangle = \langle T^{\prime}, \nu \rangle = \langle kN, \nu \rangle = 0,
+\end{equation}
+and since \( k \neq 0 \), \( \langle N, \nu \rangle = 0 \).
+The \( TN \) plane is thus the tangent plane \( T_pS \), which means \(\nu\) is the binormal vector \( \nu = B \), so that \(D_{T}\nu = \tau N \).
+We can calculate \( L_i^j \) in the \( \{T,N\} \) basis.
+\( L_i^j = g^{jk}\mathrm{I\!I}_{ki} \).
+We have that \( \langle L(T), T \rangle = 0, \langle L(T), N \rangle = \langle -D_T\nu, N \rangle = -\tau \), and \( \langle L(N), N \rangle = k_n(N) \).
+Since our basis is orthonormal, raising indices doesn't impact the matrix, so that \( L_1^1 = 0, L_1^2 = L_2^1 = -\pm \tau, L_2^2 = k_n(N) \).
+Then the Gauss curvature is \( L_1^1L_2^2 - (L_1^2)^2 = -\tau^2 = K \), and thus \( | \tau | = \sqrt{- K} \), as desired.
 \end{proof}
 
 \begin{problem}{3.3.3}
@@ -115,6 +124,49 @@ where \( K \) is the Gaussian curvature of the surface at a given point.
   \mathbf{x}(u,v) = (\cosh v \cos u, \cosh v \sin u, v).
   \end{equation}
 \end{problem}
+\begin{proof}
+  First of all,
+  \begin{equation}
+  \label{eq:29}
+  \begin{aligned}
+    \mathbf{x}_u = (-\cosh v \sin u, \cosh v \cos u, 0), \quad \mathbf{x}_v = (\sinh v \cos u, \sinh v \sin u, 1),
+  \end{aligned}
+\end{equation}
+and
+\begin{equation}
+\label{eq:30}
+\begin{aligned}
+  \mathbf{x}_{uu} &= (-\cosh v \cos u, -\cosh v \sin u, 0) \\
+  \mathbf{x}_{uv} &= (-\sinh v \sin u, \sinh v \cos u, 0) \\
+  \mathbf{x}_{vv} &= (\cosh v \cos u, \cosh v \sin u, 0),
+\end{aligned}
+\end{equation}
+and the unit normal is
+\begin{equation}
+\label{eq:31}
+\begin{aligned}
+\nu &= \frac{\left( \cosh v \cos u, \cosh v \sin u, -\cosh v \sinh v \right)}{\cosh^2 v} \\
+&= \frac{(\cos u, \sin u, -\sinh v)}{\cosh v}.
+\end{aligned}
+\end{equation}
+We can now calculate the coefficients of the second fundamental form as
+\begin{equation}
+\label{eq:32}
+\begin{aligned}
+  e &= \langle \mathbf{x}_{uu}, \nu \rangle = -1(\cos^2 u + \sin^2 u) = -1 \\
+  f &= \frac{1}{\cosh v}(-\sinh v \cos u \sin u + \sinh v \cos u \sin u) = 0 \\
+  g &= 1(\cos^2 u + \sin^2 u) = 1.
+\end{aligned}
+\end{equation}
+Now we solve for curves \(\alpha(t) = (u(t),v(t))\) for which \( e(u^{\prime})^2 + 2f(u^{\prime} v^{\prime}) + g(v^{\prime})^2 = 0 \), that is,
+\begin{equation}
+\label{eq:33}
+\begin{aligned}
+0 &= - (u^{\prime})^2 + (v^{\prime})^2,
+\end{aligned}
+\end{equation}
+so that \( u^{\prime} = \pm v^{\prime} \), giving the asymptotic curves as \( u \pm v = \text{const}. \)
+\end{proof}
 
 \begin{problem}{3.3.5}
   Consider the parametrized surface (Enneper's surface)
@@ -129,18 +181,171 @@ and show that
         \label{eq:5}
         E = G = (1 + u^2 + v^2)^2, \quad F = 0.
       \end{equation}
+        \begin{proof}
+          We first find our coordinate basis vectors,
+          \begin{equation}
+          \label{eq:8}
+          \mathbf{x}_u = \left( 1 - u^2 + v^2, 2vu, 2u \right), \quad \mathbf{x}_v = \left( 2uv, 1 - v^2 + u^2, -2v \right).
+        \end{equation}
+        Then
+        \begin{equation}
+          \begin{aligned}
+            E &= \langle \mathbf{x}_u, \mathbf{x}_u \rangle = (1-u^2 + v^2)^2 + 4v^2 u^2 + 4 u^2 \\
+              &= 1 + u^4 + v^4 - 2u^2 + 2v^2 -2u^2 v^2 + 4 v^2 u^2 + 4 u^2 \\
+            &= 1 + u^4 + v^4 + 2 v^2 + 2 u^2 + 2 v^2 u^2 = (1 + u^2 + v^2)^2,
+          \end{aligned}
+        \end{equation}
+        and
+        \begin{equation}
+        \label{eq:11}
+        \begin{aligned}
+          G &= \langle \mathbf{x}_v, \mathbf{x}_v \rangle = 4 u^2 v^2 + (1 - v^2 + u^2)^2 + 4 v^2 \\
+            &= 1 + v^4 + u^4 -2v^2 + 2 u^2 - 2 v^2 u^2 + 4 u^2 v^2 + 4 v^2 \\
+          &= 1 + v^4 + u^4 + 2 v^2 + 2 u^2 + 2 u^2 v^2 = (1 + v^2 + u^2)^2.
+        \end{aligned}
+      \end{equation}
+      Finally,
+      \begin{equation}
+      \label{eq:18}
+      \begin{aligned}
+        F &= \langle \mathbf{x}_u, \mathbf{x}_v \rangle = 2uv(1- u^2 + v^2) + 2uv( 1 - v^2 + u^2) - 4 u v \\
+        &= 4 uv - 4 uv = 0.
+      \end{aligned}
+      \end{equation}
+        \end{proof}
   \item The coefficients of the second fundamental form are
         \begin{equation}
         \label{eq:6}
         e = 2, \quad g = -2, \quad f = 0.
       \end{equation}
+        \begin{proof}
+          First of all, the second order partials are
+          \begin{equation}
+          \label{eq:19}
+          \begin{aligned}
+            \mathbf{x}_{uu} = \left( -2u, 2v, 2 \right), \ \mathbf{x}_{uv} = \mathbf{x}_{vu} = \left( 2v, 2u, 0 \right), \ \mathbf{x}_{vv} = \left( 2u, -2v, -2 \right),
+          \end{aligned}
+        \end{equation}
+        and the surface normal is
+        \begin{equation}
+        \label{eq:20}
+        \begin{aligned}
+        \nu &= \frac{\mathbf{x}_u \wedge \mathbf{x}_v }{| \mathbf{x}_u \wedge \mathbf{x}_v |}.
+        \end{aligned}
+      \end{equation}
+      We calculate
+      \begin{equation}
+        \begin{aligned}
+          &\left(-4v^2u - 2u(1-v^2 + u^2), 2v(1 - usr + v^2) + 4 u^2v, (1- u^2 + v^2)(1 - v^2 + u^2) -4 u^2 v^2\right) \\
+          &= \left(-2u(1 + v^2 + u^2), 2v(1 + v^2 + u^2), 1 - (u^2 + v^2)^2\right) \\
+          &= (1 + v^2 + u^2)(-2u, 2v, 1 - u^2 - v^2),
+        \end{aligned}
+      \end{equation}
+      and
+      \begin{equation}
+      \label{eq:21}
+      \begin{aligned}
+        | \mathbf{x}_u \wedge \mathbf{x}_v | &= (1 + u^2 + v^2) \sqrt{4 u^2 + 4 v^2 + (1 - u^2 - v^2)^2} \\
+                                        &= (1 + u^2 + v^2) \sqrt{4 u^2 + 4 v^2 + 1 + u^{4} + v^4 - 2 u^2 - 2 v^2 + 2 u^2 v^2} \\
+                                        &= (1 + u^2 + v^2) \sqrt{1 + 2(u^2 + v^2) + (u^2 + v^2)^2} \\
+        &= (1 + u^2 + v^2) \sqrt{(1 + u^2 + v^2)^2} = (1 + u^2 + v^2)^2.
+      \end{aligned}
+    \end{equation}
+    Therefore,
+    \begin{equation}
+    \label{eq:22}
+    \begin{aligned}
+      \nu = \frac{(-2u, 2v, 1 - u^2 - v^2)}{(1 + u^2 + v^2)}.
+    \end{aligned}
+  \end{equation}
+  Then we can calculate the coefficients as
+  \begin{equation}
+  \label{eq:23}
+  \begin{aligned}
+    e &= \langle \mathbf{x}_{uu}, \nu \rangle = \left\langle (-2u, 2v, 2), \left(\frac{-2u}{1 + u^2 + v^2}, \frac{2v}{1 + u^2 + v^2}, \frac{1 - u^2 - v^2}{1 + u^2 + v^2}\right) \right\rangle \\
+    &= \frac{4 u^2 + 4 v^2 + 2 - 2u^2 - 2 v^2}{1 + u^2 + v^2} = \frac{2(1 + u^2 + v^2)}{1 + u^2 + v^2} = 2,
+  \end{aligned}
+\end{equation}
+\begin{equation}
+\label{eq:25}
+\begin{aligned}
+  g &= \langle \mathbf{x}_{vv}, \nu \rangle = \left\langle (2u, -2v, -2), \left(\frac{-2u}{1 + u^2 + v^2}, \frac{2v}{1 + u^2 + v^2}, \frac{1 - u^2 - v^2}{1 + u^2 + v^2} \right) \right\rangle \\
+  &= \frac{-4u^2 - 4 v^2 -2 + 2 u^2 + 2 v^2}{1 + u^2 + v^2} = \frac{-2(1 + u^2 + v^2)}{1 + u^2 + v^2} = -2,
+\end{aligned}
+\end{equation}
+and
+\begin{equation}
+\label{eq:24}
+\begin{aligned}
+  f &= \langle \mathbf{x}_{uv}, \nu \rangle = \left\langle (2v, 2u, 0), \left(\frac{-2u}{1 + u^2 + v^2}, \frac{2v}{1 + u^2 + v^2}, \frac{1 - u^2 - v^2}{1 + u^2 + v^2} \right) \right\rangle \\
+  &= \frac{-4uv + 4uv}{1 + u^2 + v^2} = 0.
+\end{aligned}
+\end{equation}
+  \end{proof}
   \item The principal curvatures are
         \begin{equation}
         \label{eq:7}
         k_1 = \frac{2}{(1 + u^2 + v^2)^2}, \quad k_2 = - \frac{2}{(1 + u^2 + v^2)^2}.
       \end{equation}
+        \begin{proof}
+          The principal curvatures are the eigenvalues of the Weingarten map.
+          We have
+          \begin{equation}
+          \label{eq:26}
+          \mathrm{I\!I} \doteq \begin{pmatrix}
+2  & 0 \\
+0  & -2
+          \end{pmatrix},
+        \end{equation}
+        and then \( L_i^j = g^{jk}\mathrm{I\!I}_{ik} \), which written in matrix form is
+        \begin{equation}
+        \label{eq:27}
+        \begin{aligned}
+        \begin{pmatrix}
+L_1^1  & L_1^2 \\
+L_2^1  & L_2^2
+ \end{pmatrix} &= \begin{pmatrix}
+g^{11}  & g^{12} \\
+g^{21}  & g^{22}
+ \end{pmatrix} \begin{pmatrix}
+e  & f \\
+f  & g
+ \end{pmatrix} \\
+          &= \begin{pmatrix}
+(1 + u^2 + v^2)^{-2}  & 0 \\
+0                     & (1 + u^2 + v^2)^{-2}
+ \end{pmatrix} \begin{pmatrix}
+2  & 0 \\
+0  & -2
+ \end{pmatrix} \\
+          &= \begin{pmatrix}
+2(1 + u^2 + v^2)^{-2}  & 0 \\
+0                      & -2(1 + u^2 + v^2)^{-2}
+ \end{pmatrix}.
+        \end{aligned}
+      \end{equation}
+      This matrix is already diagonalized, so the eigenvalues lie on the diagonal, which match with \cref{eq:7}.
+\end{proof}
   \item The lines of curvature are the coordinate curves.
+        \begin{proof}
+          Since the matrix is globally diagonalized, that implies the basis vectors are the eigenvectors, that is, the principal directions.
+          Hence, the lines of curvature are the coordinate curves.
+        \end{proof}
   \item The asymptotic curves are \( u + v = \text{const.} \), \( u - v = \text{const.} \)
+        \begin{proof}
+          We seek curves \(\alpha \subset S\) such that for all \( t \), \( \mathrm{I\!I}(\alpha^{\prime}(t)) = 0 \).
+          Write \( \alpha^{\prime}(t) = \mathbf{x}_u V^u(t) + \mathbf{x}_v V^v(t) \) where \( V^{\mu} \) are the component functions of \( \alpha^{\prime}(t) \).
+          Then we have that
+          \begin{equation}
+          \label{eq:28}
+          \begin{aligned}
+            \mathrm{I\!I}(\alpha^{\prime}(t)) &= e (V^u)^2 + 2f(V^uV^v) + g(V^v)^2 \\
+            &= 2 (V^{u})^2 - 2(V^v)^2 = 0.
+          \end{aligned}
+        \end{equation}
+        This is satisfied when \( V^{u} = \pm V^v \), or, in other words, \( V^u \pm V^v = 0 \).
+        Note that \( V^u \pm V^v = \frac{\mathrm{d} }{\mathrm{d} t}(\alpha^1(t) \pm \alpha^2(t)) = 0\), so that \( \alpha^1 \pm \alpha^2 = \text{const.} \), as desired.
+        \end{proof}
 \end{enumerate}
 \end{problem}
 \end{document}

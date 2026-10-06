@@ -1,0 +1,144 @@
+\documentclass[11pt]{article}
+\usepackage{../homework}
+\profname{Dr. Michael Martens}
+\classcode{PHYS 313 Thermodynamics}
+\assignnum{Assignment 04}
+\duedate{07 October 2026}
+
+\begin{document}
+\begin{problem}{1}
+A system in thermal contact with a reservoir at temperature \( \tau \) has states \( s \) with energies \( \varepsilon_s \).
+The probability of finding the system in state \( s \) is
+\begin{equation}
+  \label{eq:p1-state-probability}
+  P(\varepsilon_s) = \frac{e^{-\varepsilon_s/\tau}}{Z},
+  \qquad \text{where} \qquad Z = \sum_s e^{-\varepsilon_s/\tau} = e^{-F/\tau}.
+\end{equation}
+\begin{enumerate}[label=(\alph*)]
+  \item Show that the entropy of the system can be written as
+  \begin{equation}
+    \label{eq:p1-gibbs-entropy}
+    \sigma = -\sum_s P(\varepsilon_s)\log P(\varepsilon_s).
+  \end{equation}
+  [Hint: Start with the expression for \( \log P(\varepsilon_s) \).]
+
+  This expression for the entropy is useful when the probabilities of the system being in each of its states are known but the partition function is not.
+\end{enumerate}
+\end{problem}
+
+The ideal gas (for Problems 2 and 3).
+We did not cover the ideal gas in class.
+A summary of its properties is given below.
+For a monatomic gas of \( N \) particles of mass \( M \) in a volume \( V \) at temperature \( \tau \):
+\begin{itemize}
+  \item \( U = \frac{3}{2}N\tau \)
+  \item \( pV = N\tau \)
+  \item \( \sigma = N\bigl[\log(n_Q/n) + \frac{5}{2}\bigr] \), where \( n = N/V \) and \( n_Q = (M\tau/2\pi\hbar^2)^{3/2} \)
+\end{itemize}
+Also pay attention to the change in the entropy of the system for a reversible process.
+If an isolated system undergoes a reversible process, its entropy \( \sigma_S \) remains constant.
+If a system in contact with a thermal reservoir undergoes a reversible process, the total entropy \( \sigma_S + \sigma_R \) does not change, but the entropy of the system can change, with \( \Delta\sigma_S + \Delta\sigma_R = 0 \).
+
+\begin{problem}{2}
+A monatomic ideal gas is in thermal equilibrium with a reservoir at temperature \( \tau \).
+The gas expands reversibly, its volume increasing by a small amount \( \delta V \), and it does work \( \delta W \) on its surroundings.
+Find the change in the energy of the gas \( \delta U \), the heat \( \delta Q \) flowing into the gas, and the change in its free energy \( \delta F \).
+Express each in terms of \( \delta W \).
+\end{problem}
+
+\begin{problem}{3}
+The same gas is now thermally isolated.
+It again expands reversibly, its volume increasing by \( \delta V \), and it does work \( \delta W \) on its surroundings.
+Find \( \delta U \), \( \delta Q \), the temperature change \( \delta\tau \), and \( \delta F \).
+Express each in terms of \( \delta W \).
+\end{problem}
+
+\begin{problem}{4}
+Treat the Sun and the Earth as perfect blackbodies.
+Use:
+\begin{equation}
+  \label{eq:p4-sun-earth-data}
+  \begin{aligned}
+    \text{Surface temperature of the Sun} \quad & T_{\odot} = 5800\,\mathrm{K} \\
+    \text{Radius of the Sun} \quad & R_{\odot} = 6.96\times 10^8\,\mathrm{m} \\
+    \text{Radius of the Earth} \quad & R_E = 6.37\times 10^6\,\mathrm{m} \\
+    \text{Earth--Sun distance} \quad & d = 1.50\times 10^{11}\,\mathrm{m}
+  \end{aligned}
+\end{equation}
+The Earth rotates fast enough that its surface temperature \( T_E \) may be taken as uniform.
+Estimate \( T_E \).
+\end{problem}
+
+\begin{problem}{5}
+A cavity of volume \( V \) is in thermal contact with a reservoir at temperature \( \tau \).
+\begin{enumerate}[label=(\alph*)]
+  \item Show that the number of thermal photons in the cavity is
+  \begin{equation}
+    \label{eq:p5-photon-number}
+    N = \frac{2\zeta(3)}{\pi^2}V\left(\frac{\tau}{\hbar c}\right)^3
+    \approx 0.244\,V\left(\frac{\tau}{\hbar c}\right)^3,
+  \end{equation}
+  where \( \zeta(3) = 1.202 \).
+  You may use \( \displaystyle\int_0^{\infty}\frac{x^2\,dx}{e^x-1} = 2\zeta(3) \).
+
+  \item The cosmic microwave background is blackbody radiation at \( T = 2.725\,\mathrm{K} \).
+  Estimate the number of CMB photons per cubic centimeter.
+
+  \item Using the Stefan--Boltzmann result \( U/V = \pi^2\tau^4/15\hbar^3c^3 \), find the average energy per photon in units of \( \tau \).
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{6}
+A cubical cavity of volume \( V = L^3 \) contains thermal radiation.
+The mode frequencies are
+\begin{equation}
+  \label{eq:p6-mode-frequencies}
+  \omega_j = \frac{\pi c}{L}\sqrt{n_x^2+n_y^2+n_z^2},
+\end{equation}
+where \( j \) labels the modes.
+A microstate of the radiation is specified by the number of photons \( s_j \) in each mode, and the total energy in the cavity is
+\begin{equation}
+  \label{eq:p6-cavity-energy}
+  U = \sum_j s_j\hbar\omega_j.
+\end{equation}
+\begin{enumerate}[label=(\alph*)]
+  \item The pressure is \( p = -(\partial U/\partial V)_{\sigma} \).
+  If the volume is changed slowly enough, the occupation numbers \( s_j \) do not change, so the entropy stays constant.
+  Use this to write the pressure of the photon gas as a sum over modes.
+
+  \item Show that
+  \begin{equation}
+    \label{eq:p6-frequency-volume-derivative}
+    \frac{d\omega_j}{dV} = -\frac{\omega_j}{3V}.
+  \end{equation}
+
+  \item Show that the pressure of thermal radiation is
+  \begin{equation}
+    \label{eq:p6-radiation-pressure}
+    p = \frac{U}{3V}.
+  \end{equation}
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{7}
+Two large parallel black plates are held at temperatures \( T_1 \) (upper) and \( T_2 \) (lower), with \( T_1 > T_2 \).
+The gap between them is evacuated, so energy crosses only by radiation.
+
+See figure 1 in the original problem set (the unnumbered diagram in Problem 7).
+The diagram labels the upper plate \( T_1 \), the intermediate shield \( T_s \) (part b), and the lower plate \( T_2 \).
+\begin{enumerate}[label=(\alph*)]
+  \item Find the net energy flux density \( J \) (power per unit area) from the upper plate to the lower one.
+
+  \item A thin black plane---a heat shield---is placed between the plates, parallel to both.
+  In the steady state, find the temperature \( T_s \) of the shield and the new net flux \( J_s \).
+
+  \item A black surface at room temperature (\( 300\,\mathrm{K} \)) faces a black surface at liquid-helium temperature (\( 4\,\mathrm{K} \)).
+  \begin{enumerate}[label=(\roman*)]
+    \item Find the net energy flux density \( J \) (power per unit area) from the room-temperature surface to the liquid helium.
+
+    \item A single heat shield is now placed between the room-temperature surface and the liquid helium.
+    Find the equilibrium temperature of the shield and the new net energy flux density.
+  \end{enumerate}
+\end{enumerate}
+\end{problem}
+\end{document}
