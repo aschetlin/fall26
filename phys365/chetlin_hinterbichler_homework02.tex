@@ -309,23 +309,23 @@
 		      Show that it is
 		      \begin{equation}
 			      \label{eq:6}
-			      ds^2 = \frac{4R^2}{((x^1)^2 + (x^2)^2 + R^2)^2}((dx^1)^2 + (dx^2)^2).
+			      ds^2 = \frac{4R^4}{((x^1)^2 + (x^2)^2 + R^2)^2}((dx^1)^2 + (dx^2)^2).
 		      \end{equation}
 		\item Consider the curve given in \( U_N \) coordinates by \( x^1(\lambda) = \lambda, x^2(\lambda) = 0, \lambda \in (-\infty, \infty) \).
 		      This is a curve traversing the circumference of the sphere.
 		      Using the arc-length formula
 		      \begin{equation}
 			      \label{eq:7}
-			      \int d\lambda \sqrt{g_{\mu\nu}(x(\lambda)) \frac{\mathrm{d} x^{\mu}}{\mathrm{d} \lambda} \frac{\mathrm{d} x^{\nu}}{\mathrm{d} \lambda}},
+			      \int \dd \lambda \sqrt{g_{\mu\nu}(x(\lambda)) \frac{\mathrm{d} x^{\mu}}{\mathrm{d} \lambda} \frac{\mathrm{d} x^{\nu}}{\mathrm{d} \lambda}},
 		      \end{equation}
 		      and the expression \cref{eq:6}, compute the length of the curve and see that it reproduces the circumference of the sphere.
           \begin{answer}
             With \( x^{\mu}(\lambda) = (\lambda, 0) \), we have \( \frac{\mathrm{d} x^1}{\mathrm{d} \lambda} = 1, \frac{\mathrm{d} x^{2}}{\mathrm{d} \lambda} = 0 \).
-            Hence the line element is \( ds^2 = \frac{4R^2}{(\lambda^2 + R^2)^2} \), and the arc-length integral is
+            Hence the line element is \( ds^2 = \frac{4R^4}{(\lambda^2 + R^2)^2} \), and the arc-length integral is
             \begin{equation}
             \label{eq:36}
             \begin{aligned}
-              L &= \int\limits_{-\infty}^{\infty} d\lambda \sqrt{ds^2} = 2R^2 \int\limits_{-\infty}^{\infty} \frac{d\lambda}{(\lambda^2 + R^2)} = \frac{2R}{R} \left( \atan( \frac{\lambda}{R} ) \right)\eval_{-\infty}^{\infty} \\
+              L &= \int\limits_{-\infty}^{\infty} \dd \lambda \sqrt{ds^2} = 2R^2 \int\limits_{-\infty}^{\infty} \frac{\dd \lambda}{(\lambda^2 + R^2)} = \frac{2R}{R} \left( \atan( \frac{\lambda}{R} ) \right)\eval_{-\infty}^{\infty} \\
               &= 2R \left( \frac{\pi}{2} - (- \frac{\pi}{2}) \right) = 2\pi R,
             \end{aligned}
           \end{equation}
