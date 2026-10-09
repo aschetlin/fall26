@@ -226,7 +226,7 @@
             \begin{equation}
             \label{eq:39}
             \begin{aligned}
-              (\varphi_S \circ \varphi_N^{-1})(x^1, x^2) &= \frac{1}{r^2 + R^2} \left( \frac{2R^2 x^{1}}{1 + (r^2 - R^2)/r^2 + R^2}, \frac{2 R^2 x^2}{1 + (r^2 - R^2)/(r^2 + R^2)} \right) \\
+              (\varphi_S \circ \varphi_N^{-1})(x^1, x^2) &= \frac{1}{r^2 + R^2} \left( \frac{2R^2 x^{1}}{1 + (r^2 - R^2)/(r^2 + R^2)}, \frac{2 R^2 x^2}{1 + (r^2 - R^2)/(r^2 + R^2)} \right) \\
                                          &= \left( \frac{2R^2 x^{1}}{r^2 + R^2 + r^2 - R^2}, \frac{2R^2 x^2}{r^2 + R^2 + r^2 - R^2} \right) \\
                                          &= \left( \frac{2R^2 x^{1}}{2r^2}, \frac{2R^2 x^2}{2r^2} \right) = \frac{R^2}{r^2}(x^1, x^2),
             \end{aligned}
@@ -311,6 +311,146 @@
 			      \label{eq:6}
 			      ds^2 = \frac{4R^4}{((x^1)^2 + (x^2)^2 + R^2)^2}((dx^1)^2 + (dx^2)^2).
 		      \end{equation}
+\begin{proof}
+    The transformation law for an (0,2) tensor is
+    \begin{equation}
+        \label{eq:metric-transformation}
+        T'_{\mu\nu}
+        = \frac{\partial x^\alpha}{\partial y^{\mu}}
+          \frac{\partial x^\beta}{\partial y^{\nu}}
+          T_{\alpha\beta}.
+        \end{equation}
+
+    Since the spherical metric is diagonal, with
+    \( g_{\theta\theta} = R^2 \),
+    \( g_{\phi\phi} = R^2\sin^2\theta \), and
+    \( g_{\theta\phi} = 0 \), \cref{eq:metric-transformation}
+    becomes
+    \begin{equation}
+        \label{eq:metric-transformation-explicit}
+        g'_{\mu\nu}
+        = R^2\left(
+            \frac{\partial\theta}{\partial x^{\mu}}
+            \frac{\partial\theta}{\partial x^{\nu}}
+            + \sin^2\theta
+            \frac{\partial\phi}{\partial x^{\mu}}
+            \frac{\partial\phi}{\partial x^{\nu}}
+        \right).
+    \end{equation}
+
+    From part (a), we have
+    \begin{equation}
+        \label{eq:stereographic-angular-coordinates}
+        \theta
+        = \acos\left(\frac{r^2-R^2}{r^2+R^2}\right),
+        \qquad
+        \phi = \atan(\frac{x^2}{x^{1}}).
+    \end{equation}
+
+    Then,
+    \begin{equation}
+        \label{eq:theta-stereographic-derivatives}
+        \begin{aligned}
+        \frac{\partial\theta}{\partial x^{\mu}} &= - \frac{1}{\sqrt{1-((r^2 - R^2)/(r^2 + R^2))^2}} \frac{(r^2 + R^2)(2x^\mu) - (r^2 - R^2)(2x^{\mu})}{(r^2 + R^2)^2} \\
+            &=-\frac{2Rx^{\mu}}{r(r^2+R^2)}
+        \end{aligned}
+    \end{equation}
+
+    Similarly, differentiating \(\phi\) gives
+    \begin{equation}
+        \label{eq:phi-stereographic-derivatives}
+        \frac{\partial\phi}{\partial x^1}
+        = -\frac{x^2}{r^2},
+        \qquad
+        \frac{\partial\phi}{\partial x^2}
+        = \frac{x^1}{r^2}.
+    \end{equation}
+
+    Furthermore, from \cref{eq:stereographic-angular-coordinates},
+    \begin{equation}
+        \label{eq:sin-theta-stereographic}
+        \sin^2\theta
+        = 1-\cos^2\theta
+        = 1-\left(\frac{r^2-R^2}{r^2+R^2}\right)^2
+        = \frac{4R^2r^2}{(r^2+R^2)^2}.
+    \end{equation}
+
+    We now compute the components of the transformed metric
+    using \cref{eq:metric-transformation-explicit}.
+    First,
+    \begin{equation}
+        \label{eq:metric-g11}
+        \begin{aligned}
+            g'_{11}
+            &= R^2\left[
+                \left(\frac{\partial\theta}{\partial x^1}\right)^2
+                + \sin^2\theta
+                \left(\frac{\partial\phi}{\partial x^1}\right)^2
+            \right] \\
+            &= R^2\left[
+                \frac{4R^2(x^1)^2}{r^2(r^2+R^2)^2}
+                + \frac{4R^2r^2}{(r^2+R^2)^2}
+                  \frac{(x^2)^2}{r^4}
+            \right] \\
+            &= \frac{4R^4}{r^2(r^2+R^2)^2}
+                \left((x^1)^2+(x^2)^2\right) \\
+            &= \frac{4R^4}{(r^2+R^2)^2}.
+        \end{aligned}
+    \end{equation}
+
+    Likewise,
+    \begin{equation}
+        \label{eq:metric-g22}
+        \begin{aligned}
+            g'_{22}
+            &= R^2\left[
+                \left(\frac{\partial\theta}{\partial x^2}\right)^2
+                + \sin^2\theta
+                \left(\frac{\partial\phi}{\partial x^2}\right)^2
+            \right] \\
+            &= \frac{4R^4}{r^2(r^2+R^2)^2}
+                \left((x^2)^2+(x^1)^2\right) \\
+            &= \frac{4R^4}{(r^2+R^2)^2}.
+        \end{aligned}
+    \end{equation}
+
+    For the off-diagonal component,
+    \begin{equation}
+        \label{eq:metric-g12}
+        \begin{aligned}
+            g'_{12}
+            &= R^2\left[
+                \frac{\partial\theta}{\partial x^1}
+                \frac{\partial\theta}{\partial x^2}
+                + \sin^2\theta
+                \frac{\partial\phi}{\partial x^1}
+                \frac{\partial\phi}{\partial x^2}
+            \right] \\
+            &= R^2\left[
+                \frac{4R^2x^1x^2}{r^2(r^2+R^2)^2}
+                - \frac{4R^2x^1x^2}{r^2(r^2+R^2)^2}
+            \right] \\
+            &= 0.
+        \end{aligned}
+    \end{equation}
+    By symmetry, \(g'_{21}=0\).
+
+    Combining \cref{eq:metric-g11,eq:metric-g22,eq:metric-g12}, we have
+    \begin{equation}
+        \label{eq:stereographic-metric-result}
+        \begin{aligned}
+            ds^2
+            &= g'_{\mu\nu}\,dx^\mu dx^\nu \\
+            &= \frac{4R^4}{(r^2+R^2)^2}
+               \left((dx^1)^2+(dx^2)^2\right) \\
+            &= \frac{4R^4}
+               {\left((x^1)^2+(x^2)^2+R^2\right)^2}
+               \left((dx^1)^2+(dx^2)^2\right),
+        \end{aligned}
+    \end{equation}
+    as desired.
+  \end{proof}
+
 		\item Consider the curve given in \( U_N \) coordinates by \( x^1(\lambda) = \lambda, x^2(\lambda) = 0, \lambda \in (-\infty, \infty) \).
 		      This is a curve traversing the circumference of the sphere.
 		      Using the arc-length formula
@@ -321,11 +461,11 @@
 		      and the expression \cref{eq:6}, compute the length of the curve and see that it reproduces the circumference of the sphere.
           \begin{answer}
             With \( x^{\mu}(\lambda) = (\lambda, 0) \), we have \( \frac{\mathrm{d} x^1}{\mathrm{d} \lambda} = 1, \frac{\mathrm{d} x^{2}}{\mathrm{d} \lambda} = 0 \).
-            Hence the line element is \( ds^2 = \frac{4R^4}{(\lambda^2 + R^2)^2} \), and the arc-length integral is
+            Hence the line element is \( ds^2 = \frac{4R^4}{(\lambda^2 + R^2)^2}d\lambda^2 \), and the arc-length integral is
             \begin{equation}
             \label{eq:36}
             \begin{aligned}
-              L &= \int\limits_{-\infty}^{\infty} \dd \lambda \sqrt{ds^2} = 2R^2 \int\limits_{-\infty}^{\infty} \frac{\dd \lambda}{(\lambda^2 + R^2)} = \frac{2R}{R} \left( \atan( \frac{\lambda}{R} ) \right)\eval_{-\infty}^{\infty} \\
+              L &= \int\limits_{-\infty}^{\infty} \dd \lambda \sqrt{g_{\mu\nu} \dot{x}^{\mu} \dot{x}^{\nu}} = 2R^2 \int\limits_{-\infty}^{\infty} \frac{\dd \lambda}{(\lambda^2 + R^2)} = \frac{2R^2}{R} \left( \atan( \frac{\lambda}{R} ) \right)\eval_{-\infty}^{\infty} \\
               &= 2R \left( \frac{\pi}{2} - (- \frac{\pi}{2}) \right) = 2\pi R,
             \end{aligned}
           \end{equation}
@@ -352,10 +492,46 @@
 		      The warp drive is distorting the spacetime in the region within \( \sim R \) of the spaceship's trajectory, in such a way that locally the path is always within the lightcone and hence time-like.
 		      Thus the trajectory can be achieved without ever locally exceeding the speed of light.
 		      In this sense, the warp drive allows the spaceship to travel ``faster than light,'' arriving at the star in a time \( \approx L/v < L \) as measured by clocks on Earth or the star.
+          \begin{answer}
+            The sketch is shown in \cref{fig:causal}.
+          \end{answer}
+            \begin{figure}
+              \includegraphics[width=\textwidth]{causal_structure.pdf}
+              \caption{Causal Structure of Spacetime with Warp Drive Metric}
+              \label{fig:causal}
+            \end{figure}
 		\item Show that, regardless of \( x_s(t) \) and \( V(r) \), the path is always timelike with respect to \cref{eq:8}.
 		      Thus the spaceship never has to move faster than the local speed of light.
+          \begin{proof}
+            Let \( x_s(t) \) be a path such that \( x_s(0) = 0 \) and \( x_s(T) = L \) for some \( T > 0 \).
+            Let \( V(r) \) be a \( C^{\infty} \) potential such that \( V(0) = 1 \) and \( V \xrightarrow{r \rightarrow \infty} 0  \).
+
+            Then, evaluating \cref{eq:8} for this path gives
+            \begin{equation}
+            \label{eq:43}
+            \begin{aligned}
+              ds^2 &= -dt^2 + (\dot{x}_s(t)dt - \dot{x}_s(t)V(|x_s(t) - x_s(t))dt)^2 \\
+              &= -dt^2 + (\dot{x}_s(t) - \dot{x}_s(t))^2dt^2 = -dt^2,
+            \end{aligned}
+            \end{equation}
+            showing that for all \( t > 0 \), \( ds^2 < 0 \), that is, the path is timelike.
+          \end{proof}
 		\item Find, for any \( x_s(t) \) and \( V(r) \), the time elapsed on the spaceship's clock.
 		      Will there be time dilation problems where the space travelers are younger/older than their Earth-bound twins after a round trip?
+          \begin{proof}
+            We again pick an arbitrary path and arbitrary potential satisfying the appropriate assumptions.
+            The path can be written as \( x^{\mu}(t) = (t, x_s(t)) \), so that the tangent vector is \( \frac{\mathrm{d} x^{\mu}}{\mathrm{d} t} = (1, \dot{x}_s(t)) \).
+            The time elapsed on the spaceship's clock is then
+            \begin{equation}
+            \label{eq:44}
+            \begin{aligned}
+              \tau &= \int\limits_0^T \dd t \sqrt{-g_{\mu\nu} \frac{\mathrm{d} x^{\mu}}{\mathrm{d} t} \frac{\mathrm{d} x^{\nu}}{\mathrm{d} t}} = \int\limits_0^T \dd t \sqrt{-(-1)} = T.
+            \end{aligned}
+            \end{equation}
+
+            Since the potential goes to zero suitably far from the spaceship, the metric is \( ds^2 \approx -dt^2 + dx^2 \), the Minkowski metric, so that their proper time is \( d\tau_{\text{obs}} \approx -dt \), exactly the same as \( d\tau_{\text{ship}} \).
+            Therefore, assuming the Earth is suitably far from the star, there are no issues of time dilation.
+          \end{proof}
 	\end{enumerate}
 \end{problem}
 
