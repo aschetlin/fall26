@@ -24,19 +24,46 @@ The probability of finding the system in state \( s \) is
 
   This expression for the entropy is useful when the probabilities of the system being in each of its states are known but the partition function is not.
         \begin{proof}
-          As suggested in the hint, we first calculate
-          \begin{equation}
-          \label{eq:1}
-          \begin{aligned}
-            \log P(\varepsilon_s) &= \log( \frac{e^{-\varepsilon_s/\tau}}{Z} ) = \log(\exp(-\varepsilon_s/\tau)) - \log Z \\
-            &= -\varepsilon_s/\tau - \sigma,
-          \end{aligned}
-        \end{equation}
-        which implies
-        \begin{equation}
-        \label{eq:2}
-        \sigma = -\varepsilon_s/\tau - \log(P(\varepsilon_{s})) = -\log(e^{\varepsilon_s/\tau} P(\varepsilon_{s}) )
-        \end{equation}
+    From the definition of \( P(\varepsilon_{s}) \),
+    \begin{equation}
+        \label{eq:p1-log-probability}
+        \begin{aligned}
+            \log P(\varepsilon_s)
+            &= \log\left(\frac{e^{-\varepsilon_s/\tau}}{Z}\right)\\
+            &= -\frac{\varepsilon_s}{\tau} - \log Z = \frac{F-\varepsilon_s}{\tau},
+        \end{aligned}
+    \end{equation}
+    where we have used \( \log Z = -F/\tau \).
+
+    Multiplying by \( -P(\varepsilon_s) \) and summing over all states,
+    \begin{equation}
+        \label{eq:p1-entropy-sum}
+        \begin{aligned}
+            -\sum_s P(\varepsilon_s)\log P(\varepsilon_s)
+            &= -\sum_s P(\varepsilon_s)\frac{F-\varepsilon_s}{\tau}\\
+            &= \frac{1}{\tau}\sum_s P(\varepsilon_s)\varepsilon_s
+            - \frac{F}{\tau}\sum_s P(\varepsilon_s)\\
+            &= \frac{U-F}{\tau},
+        \end{aligned}
+    \end{equation}
+    where we have used the normalization condition
+    \( \sum_s P(\varepsilon_s)=1 \) and the definition of the
+    average internal energy
+    \( U=\sum_s P(\varepsilon_s)\varepsilon_s \).
+
+    From the definition of free energy,
+    \begin{equation}
+        \label{eq:p1-helmholtz}
+        F=U-\tau\sigma,
+    \end{equation}
+    we obtain
+    \begin{equation}
+        \label{eq:p1-gibbs-entropy-result}
+        \boxed{
+            \sigma=\frac{U-F}{\tau}
+            =-\sum_s P(\varepsilon_s)\log P(\varepsilon_s)
+        }.
+    \end{equation}
         \end{proof}
 \end{enumerate}
 \end{problem}
@@ -98,6 +125,33 @@ Use:
 The Earth rotates fast enough that its surface temperature \( T_E \) may be taken as uniform.
 Estimate \( T_E \).
 \end{problem}
+\begin{answer}
+  By definition, the radiant energy flux density for the sun is \( J_{\odot} = \sigma_B T_{\odot}^4 \) with \(\sigma_B = \pi^2 k_B^4 / 60 \hbar^3 c^3 \), so that the power emitted by the sun is \( T_{\odot} = A_{\odot}J_{\odot} = 4\pi R_{\odot}^2\sigma_BT_{\odot}^4\).
+
+  Since this power is diffused radially out, at the surface of the Earth, the flux density from the Sun is \( J_{\oplus} = \frac{P_{\odot}}{4\pi d^2} \).
+
+  Now, the radiation only reaches one hemisphere of the Earth, and in particular the flux is only proportional to the area which is normal to the incoming flux, that is, if \(\Sigma\) is one hemisphere of the surface of the Earth
+  \begin{equation}
+  \label{eq:6}
+  \int\limits_{\Sigma} \cos\theta dA = \cos\theta R^2_{\oplus} \sin\theta \dd \theta \dd \phi = \pi R_{\oplus}^2,
+\end{equation}
+which means that the power at the surface of the Earth is \( P_{\text{in}} = \pi R_{\oplus}^2 J_{\oplus} = \frac{\pi R_{\oplus}^2 4\pi R_{\odot}^2\sigma_BT^4}{4\pi d^2} = \frac{\pi R_{\oplus}^2 R_{\odot}^2 \sigma_{B} T^{4}}{d^2} \).
+
+Then, the power radiated out by the Earth is, just like the Sun, \( P_{\text{out}} = 4\pi R_{\oplus}^2\sigma_BT_{\oplus}^2 \).
+Equilibrium occurs when
+\begin{equation}
+  \begin{aligned}
+    P_{\text{in}} &= P_{\text{out}} = \frac{\pi R_{\oplus}^2 R_{\odot}^2 \sigma_B T_{\odot}^4}{d^2} = 4\pi R_{\oplus}^2 \sigma_{B} T_{\oplus}^{4} \\
+    \Rightarrow &\frac{R_{\odot}^2 T_{\odot}^4}{d^2} = 4T_{\oplus}^{4},
+  \end{aligned}
+\label{eq:7}
+\end{equation}
+showing that \( T_{\oplus}^{4} = \frac{1}{4} \frac{R_{\odot}^2 T _{\odot}^4}{d^2} = 6.0 \times 10^{9} \), or
+\begin{equation}
+\label{eq:8}
+T_{\odot} = 2.8 \times 10^2 \text{K} \approx 280 \text{K}.
+\end{equation}
+\end{answer}
 
 \begin{problem}{5}
 A cavity of volume \( V \) is in thermal contact with a reservoir at temperature \( \tau \).
@@ -119,13 +173,120 @@ A cavity of volume \( V \) is in thermal contact with a reservoir at temperature
         so that the total number is \( N = \sum\limits_n \mathcal{S}_n \) which we can approximate for large \( n \) as
         \begin{equation}
         \label{eq:4}
-        \pi \int\limits_0^{\infty} \dd n n^2 \mathcal{S}_n = \pi \int\limits_0^{\infty} dn n^2 \frac{1}{\exp(\hbar n \pi )}
+        n = \int\limits_{0}^{\infty} \mathcal{S}_n dN
         \end{equation}
+        where \( n^2 = n_x^2 + n_y^2 + n_z^2 \).
+        Using the allowed energies of a photon \( E_n = \frac{\pi\hbar c}{L}n \), and the distribution of triples \( dN = \frac{\pi}{2} n^2 \dd{n} \), we have
+        \begin{equation}
+        \label{eq:9}
+        \begin{aligned}
+        N &= \pi \int\limits_0^{\infty}  \frac{\dd{n}n^2}{\exp(\pi\hbar c n/L\tau) - 1}.
+        \end{aligned}
+      \end{equation}
+      Making the substitution \( x = \frac{\pi\hbar c}{L\tau}n \), \( \dd{x} = \frac{\pi\hbar c}{L\tau} \dd{n} \), we have
+      \begin{equation}
+      \label{eq:10}
+      n^2 \dd{n} = \left( \frac{L\tau}{\pi\hbar c} \right)^2 x^2 \frac{L\tau}{\pi\hbar c} \dd{x},
+    \end{equation}
+    and hence
+    \begin{equation}
+    \label{eq:11}
+    \begin{aligned}
+      N &= \pi \left( \frac{L\tau}{\pi\hbar c} \right)^3 \int\limits_{0}^{\infty} \frac{x^2 \dd{x}}{\exp(x) - 1} = \left( \frac{L\tau}{\hbar c} \right)^3 \frac{1}{\pi^2} 2\zeta(3) \\
+      &= \frac{2\zeta(3)}{\pi^2} V \left( \frac{\tau}{\hbar c} \right)^3,
+    \end{aligned}
+  \end{equation}
+  as desired.
         \end{proof}
   \item The cosmic microwave background is blackbody radiation at \( T = 2.725\,\mathrm{K} \).
   Estimate the number of CMB photons per cubic centimeter.
+        \begin{answer}
+    From part (a), the number density of thermal photons is
+    \begin{equation}
+        \label{eq:p5-cmb-density}
+        \frac{N}{V}
+        = \frac{2\zeta(3)}{\pi^2}
+        \left(\frac{\tau}{\hbar c}\right)^3
+        \approx 0.244\left(\frac{k_B T}{\hbar c}\right)^3,
+    \end{equation}
+    where we have used \( \tau = k_B T \).
+
+    For the cosmic microwave background, \( T = 2.725\,\mathrm{K} \).
+    Using
+    \begin{equation}
+        \label{eq:p5-constants}
+        \begin{aligned}
+            k_B &= 1.380649 \times 10^{-23}\,\mathrm{J/K},\\
+            \hbar &= 1.054571817 \times 10^{-34}\,\mathrm{J\,s},\\
+            c &= 2.99792458 \times 10^8\,\mathrm{m/s},
+        \end{aligned}
+    \end{equation}
+    we substitute into \cref{eq:p5-cmb-density} to obtain
+    \begin{equation}
+        \label{eq:p5-cmb-result}
+        \begin{aligned}
+            \frac{N}{V}
+            &\approx 0.244
+            \left(
+                \frac{
+                    (1.380649 \times 10^{-23})(2.725)
+                }{
+                    (1.054571817 \times 10^{-34})
+                    (2.99792458 \times 10^8)
+                }
+            \right)^3\\
+            &\approx 4.11 \times 10^8\,\mathrm{m^{-3}}\\
+            &\approx \boxed{411\,\mathrm{cm^{-3}}}.
+        \end{aligned}
+    \end{equation}
+
+    Thus, there are approximately \( 411 \) CMB photons per cubic
+    centimeter of space.
+        \end{answer}
 
   \item Using the Stefan--Boltzmann result \( U/V = \pi^2\tau^4/15\hbar^3c^3 \), find the average energy per photon in units of \( \tau \).
+        \begin{answer}
+ The average energy per photon is the total energy of the radiation
+    divided by the number of photons,
+    \begin{equation}
+        \label{eq:p5-average-energy}
+        \langle E \rangle = \frac{U}{N} = \frac{U/V}{N/V}.
+    \end{equation}
+
+    From the Stefan--Boltzmann law, the energy density of blackbody
+    radiation is
+    \begin{equation}
+        \label{eq:p5-energy-density}
+        u = \frac{U}{V}
+        = \frac{\pi^2}{15}\frac{\tau^4}{\hbar^3 c^3}.
+    \end{equation}
+
+    From part (a), the photon number density is
+    \begin{equation}
+        \label{eq:p5-number-density}
+        n = \frac{N}{V}
+        = \frac{2\zeta(3)}{\pi^2}
+        \frac{\tau^3}{\hbar^3 c^3}.
+    \end{equation}
+
+    Substituting into \cref{eq:p5-average-energy}, we obtain
+    \begin{equation}
+        \label{eq:p5-average-energy-result}
+        \begin{aligned}
+            \langle E \rangle
+            &= \frac{u}{n} = \frac{
+                \dfrac{\pi^2}{15}\dfrac{\tau^4}{\hbar^3 c^3}
+            }{
+                \dfrac{2\zeta(3)}{\pi^2}
+                \dfrac{\tau^3}{\hbar^3 c^3}
+            }\\
+            &= \frac{\pi^4}{30\zeta(3)}\tau \approx \boxed{2.701\,\tau}.
+        \end{aligned}
+    \end{equation}
+
+    Thus, the average energy per thermal photon is approximately
+    \( 2.701 \) times the thermal energy scale \( \tau = k_B T \).
+        \end{answer}
 \end{enumerate}
 \end{problem}
 
@@ -147,7 +308,11 @@ A microstate of the radiation is specified by the number of photons \( s_j \) in
   If the volume is changed slowly enough, the occupation numbers \( s_j \) do not change, so the entropy stays constant.
   Use this to write the pressure of the photon gas as a sum over modes.
         \begin{answer}
-
+          We differentiate, holding \( s_j \) fixed,
+          \begin{equation}
+          \label{eq:12}
+          p = - \pdv{U}{V} = \sum\limits_j-\pdv{V}(s_j\hbar\omega_{j}) = -\hbar \sum\limits_j s_j \pdv{\omega_j}{V}.
+          \end{equation}
         \end{answer}
 
   \item Show that
@@ -155,12 +320,29 @@ A microstate of the radiation is specified by the number of photons \( s_j \) in
     \label{eq:p6-frequency-volume-derivative}
     \frac{d\omega_j}{dV} = -\frac{\omega_j}{3V}.
   \end{equation}
+        \begin{proof}
+          Each mode is \(\omega_j = \frac{\pi c}{L}\sqrt{n_{x}^2 + n_y^2 + n_z^2}\), and since \( L = V^{1/3} \), we have, writing \( n^2 = n_x^2 + n_y^2 + n_z^2 \),
+          \begin{equation}
+          \label{eq:13}
+          \begin{aligned}
+            \pdv{\omega_j}{V} &= \left( \pi c n \right) (- \frac{1}{3}V^{-4/3}) \\
+            &= \frac{\pi c n}{V^{1/3}} \left(\frac{-1}{3V}\right) = -\frac{\omega_j}{3V}.
+          \end{aligned}
+          \end{equation}
+        \end{proof}
 
   \item Show that the pressure of thermal radiation is
   \begin{equation}
     \label{eq:p6-radiation-pressure}
     p = \frac{U}{3V}.
   \end{equation}
+        \begin{proof}
+          Substituting \cref{eq:13} into \cref{eq:12} and recalling \cref{eq:p6-cavity-energy},
+          \begin{equation}
+          \label{eq:14}
+          p = -\hbar \sum\limits_{j} s_j \pdv{\omega_j}{V} = -\hbar \sum\limits_j s_j \frac{-\omega_j}{3V} = \frac{1}{3V} \sum\limits_{j} s_{j}\hbar\omega_{j} = \frac{U}{3V}.
+          \end{equation}
+        \end{proof}
 \end{enumerate}
 \end{problem}
 
@@ -169,19 +351,58 @@ Two large parallel black plates are held at temperatures \( T_1 \) (upper) and \
 The gap between them is evacuated, so energy crosses only by radiation.
 
 See figure 1 in the original problem set (the unnumbered diagram in Problem 7).
-The diagram labels the upper plate \( T_1 \), the intermediate shield \( T_s \) (part b), and the lower plate \( T_2 \).
 \begin{enumerate}[label=(\alph*)]
   \item Find the net energy flux density \( J \) (power per unit area) from the upper plate to the lower one.
+        \begin{answer}
+          The flux density from the upper plate is \( J_{1} = \sigma_BT_{1}^4 \) and from the lower plate \( J_2 = \sigma_BT_2^4 \), so that the net flux out of the lower plate is
+          \begin{equation}
+          \label{eq:15}
+          J_{\text{net}} = J_1 - J_{2} = \sigma_B(T_1^4 - T_2^4).
+        \end{equation}
+        \end{answer}
 
   \item A thin black plane---a heat shield---is placed between the plates, parallel to both.
   In the steady state, find the temperature \( T_s \) of the shield and the new net flux \( J_s \).
+        \begin{answer}
+          Since the shield is a black body, it absorbs all incident radiation, so that the net flux at the shield from the top plate is
+          \begin{equation}
+          \label{eq:16}
+          J_{\text{top}} = J_1 - J_s = \sigma_B(T_1^4 - T_s^4),
+        \end{equation}
+        and the net flux at the bottom plate is
+        \begin{equation}
+        \label{eq:17}
+        J_{\text{bottom}} = J_s - J_s = \sigma_B(T_s^4 - T_2^4).
+      \end{equation}
+
+      Now, for the system to be in equilibrium, the heat shield must be at constant temperature, i.e., \( J_{\text{top}} = J_{\text{bottom}} \).
+      Solving for \( T_s \) gives
+      \begin{equation}
+      \label{eq:18}
+      T_s^4 - T_2^4 = T_1^4 - T_s^4 \Rightarrow T_s^{4} = \frac{1}{2}(T_1^{4} + T_2^4).
+      \end{equation}
+
+      Finally, the net flux between the two plates is
+      \begin{equation}
+      \label{eq:19}
+      \begin{aligned}
+        J_s &= J_1 - J_s = \sigma_B(T_1^4 - T_s^4) = \sigma_B(T_1^4 - 1/2 T_1^4 - 1/2 T_2^{4}) \\
+        &= \sigma_B(\frac{1}{2} T_1^4 - \frac{1}{2} T_2^{4}) = \frac{1}{2} J.
+      \end{aligned}
+      \end{equation}
+        \end{answer}
 
   \item A black surface at room temperature (\( 300\,\mathrm{K} \)) faces a black surface at liquid-helium temperature (\( 4\,\mathrm{K} \)).
   \begin{enumerate}[label=(\roman*)]
     \item Find the net energy flux density \( J \) (power per unit area) from the room-temperature surface to the liquid helium.
-
+          \begin{answer}
+            From part (a), \( J = \sigma_B(300^4 - 4^4) = \pi^2k_B^4/60\hbar^3 c^3 (300^4 - 4^4) \approx 4.6 \times 10^2 \text{ W/m}^2\)
+          \end{answer}
     \item A single heat shield is now placed between the room-temperature surface and the liquid helium.
     Find the equilibrium temperature of the shield and the new net energy flux density.
+          \begin{answer}
+            From part (b), the shield cuts the flux in half, so that \( J = 2.3 \times 10^2 \text{ W/m}^2 \) and the temperature of the shield is \( (1/2(300^4 + 4^4))^{1/4} \approx 252.27 \text{ K}\).
+          \end{answer}
   \end{enumerate}
 \end{enumerate}
 \end{problem}
