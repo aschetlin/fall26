@@ -9,29 +9,56 @@
 \begin{document}
 All problems from Folland, \textit{Real Analysis} (2e).
 \begin{problem}{2.2.15}
-  If \( \{f_n\} \subset L^+ \), \( f_n \searrow f \) pointwise, and \( \int f_1 < \infty \), then \( \int f = \lim \int f_n \).
+	If \( \{f_n\} \subset L^+ \), \( f_n \searrow f \) pointwise, and \( \int f_1 < \infty \), then \( \int f = \lim \int f_n \).
 \end{problem}
+\begin{proof}
+	Define the sequence \( \{g_n\} = f_1 - f_n \); since \( f_1 \geq f_2 \geq \dots \geq f_n \), we have that \( f_1 - f_n \nearrow f_1 - f \).
+	Then, the monotone convergence theorem gives that
+	\begin{equation}
+		\label{eq:1}
+		\lim \int (f_1 - f_n) = \lim (\int f_1 - \int f_n ) = \int (f_1 - f) = \int f_1 - \int f.
+	\end{equation}
+	Notice that since \( \int f_1 < \infty \) is a constant, the right hand side can be written as
+	\begin{equation}
+		\label{eq:2}
+		\int f_1 - \lim \int f_n = \int f_1 - \int f,
+	\end{equation}
+	which gives \( -\lim f_n = - \int f \) or \( \int f = \lim \int f_n \).
+
+	The only subtlety is if \( f_1(x) = f_n(x) = \infty \) for some \( x \in \mathbb{R} \).
+	Since \( \int f_1 < \infty \), the set \( \{ x \in \mathbb{R} \mid f_1(x) = \infty \} \) must be measure zero, so that if we define
+	\begin{equation}
+		\label{eq:3}
+		g_n(x) = \begin{cases}
+			f_1(x) - f_n(x) & f_1(x) < \infty \\
+			0               & f_1(x) = \infty
+		\end{cases}
+	\end{equation}
+	we have that \( g_n(x) = f_1(x) - f_n(x) \) almost everywhere, so that we can appeal to Corollary 2.17 and our claim still follows.
+\end{proof}
 
 \begin{problem}{2.2.16}
-If \( f \in L^{+} \) and \( \int f < \infty \), for every \(\epsilon > 0\) there exists \( E \in \mathcal{M} \) such that \(\mu(E) < \infty\) and \( \int_E f > (\int f) - \epsilon \).
+	If \( f \in L^{+} \) and \( \int f < \infty \), for every \(\epsilon > 0\) there exists \( E \in \mathcal{M} \) such that \(\mu(E) < \infty\) and \( \int_E f > (\int f) - \epsilon \).
 \end{problem}
+\begin{proof}
+	We again consider the sets
+	\begin{equation}
+		\label{eq:4}
+		E_k \coloneq \{ x \in X\mid f(x) \geq 1/k\}, \quad E_1 \subset E_2 \subset \cdots, \quad \bigcup_{k=1}^{\infty} E_k = X.
+	\end{equation}
+	Which are the inverse images \( E_k = f^{-1}([1/k, \infty))  \) and are therefore measurable.
+	Defining the sequence \( f_n = f\chi_{E_{n}} \), we have that \( f_n \nearrow f \) and so by the monotone convergence theorem,
+	\begin{equation}
+		\label{eq:5}
+		\lim \int f_n = \lim \int f\chi_{E_n} = \lim \int_{E_n} f = \int f.
+	\end{equation}
 
-\begin{problem}{2.3.19}
-  Suppose \( \{f_n\} \subset L^1(\mu) \) and \( f_n \rightarrow f \) uniformly.
-  \begin{enumerate}[label=(\alph*)]
-    \item If \(\mu(X) < \infty\), then \( f \in L^1(\mu) \) and \( \int f_n \rightarrow \int f \).
-    \item If \(\mu(X) = \infty\), the conclusions of (a) can fail.
-          (Find examples on \( \mathbb{R} \)) with Lebesgue measure.
-  \end{enumerate}
-\end{problem}
-
-\begin{problem}{2.3.25}
-  Let \( f(x) = x^{-1/2} \) if \( 0 < x < 1 \), \( f(x) = 0 \) otherwise.
-  Let \( \{r_n\}_1^{\infty} \) be an enumeration of the rationals, and set \( g(x) = \sum\limits_1^{\infty} 2^{-n}f(x-r_n) \).
-  \begin{enumerate}[label=(\alph*)]
-    \item \( g \in L^1(m) \), and in particular \( g < \infty \) a.e.
-    \item g is discontinuous at every point and unbounded on every interval, and it remains so after any modification on a Lebesgue null set.
-    \item \( g^2 < \infty \) a.e., but \( g^2 \) is not integrable on any interval.
-  \end{enumerate}
-\end{problem}
+	By definition of a limit, we then have that \(\forall \epsilon > 0\) there is some \( N \in \mathbb{N} \) such that for any \( n \geq N \), \( |\int_{E_n} f - \int f| < \epsilon \).
+	Rewriting,
+	\begin{equation}
+		\label{eq:6}
+		- \epsilon < \int_{E_n} f - \int f < \epsilon,
+	\end{equation}
+	giving that \( \int f - \epsilon < \int_{E_n} f \), as desired.
+\end{proof}
 \end{document}

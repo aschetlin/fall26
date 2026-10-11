@@ -60,6 +60,13 @@ The gas expands reversibly, its volume increasing by a small amount \( \delta V 
 Find the change in the energy of the gas \( \delta U \), the heat \( \delta Q \) flowing into the gas, and the change in its free energy \( \delta F \).
 Express each in terms of \( \delta W \).
 \end{problem}
+\begin{answer}
+  The energy of an ideal gas is \( U = \frac{3}{2}N\tau \), that is, it entirely depends on the temperature; since \(\tau\) is constant, \(\Delta U = 0\).
+  Moreover, since \( \Delta U = \Delta Q - \Delta W = 0 \), we have \(\Delta Q = \Delta W\).
+  The free energy is \( F = U - \tau\sigma \), so that at constant temperature, \( \Delta F = \Delta U - \tau \Delta \sigma = -\tau \Delta \sigma\).
+
+  \(\Delta \sigma + \Delta \sigma_R = 0\), and \(\Delta \sigma_R = -\Delta \frac{Q}{\tau} \), meaning that \( \Delta \sigma = \Delta \frac{Q}{\tau} \), so we get \(\Delta F = -\tau(\Delta \frac{Q}{\tau}) = -\Delta W\).
+\end{answer}
 
 \begin{problem}{3}
 The same gas is now thermally isolated.
@@ -67,6 +74,14 @@ It again expands reversibly, its volume increasing by \( \delta V \), and it doe
 Find \( \delta U \), \( \delta Q \), the temperature change \( \delta\tau \), and \( \delta F \).
 Express each in terms of \( \delta W \).
 \end{problem}
+\begin{answer}
+  Thermal isolation means \(\Delta Q = 0\).
+  Reversible means \(\Delta \sigma = 0\).
+  We can find the change in energy since \( \Delta U = \Delta Q - \Delta W = -\Delta W \).
+  For \(\Delta \tau\), we know \( U = \frac{3}{2}N \tau \) for an ideal gas, so at constant \( N \), we have \( \Delta\tau = \frac{2}{3N}\Delta U = \frac{-2}{3N}\Delta W \).
+
+  Finally, since \( F = U - \tau\sigma \), \(\Delta F = \Delta U - \sigma \Delta \tau = -\Delta W - \frac{2}{3N}\Delta W \sigma = -\Delta W(1 - \frac{2\sigma}{3N})\).
+\end{answer}
 
 \begin{problem}{4}
 Treat the Sun and the Earth as perfect blackbodies.
@@ -95,7 +110,18 @@ A cavity of volume \( V \) is in thermal contact with a reservoir at temperature
   \end{equation}
   where \( \zeta(3) = 1.202 \).
   You may use \( \displaystyle\int_0^{\infty}\frac{x^2\,dx}{e^x-1} = 2\zeta(3) \).
-
+        \begin{proof}
+          We saw in class that the expected number of photons in a mode with frequency \(\omega_n\) is
+          \begin{equation}
+          \label{eq:3}
+          \langle \mathcal{S}_n \rangle = \frac{1}{\exp(\hbar \omega_n/\tau) - 1},
+        \end{equation}
+        so that the total number is \( N = \sum\limits_n \mathcal{S}_n \) which we can approximate for large \( n \) as
+        \begin{equation}
+        \label{eq:4}
+        \pi \int\limits_0^{\infty} \dd n n^2 \mathcal{S}_n = \pi \int\limits_0^{\infty} dn n^2 \frac{1}{\exp(\hbar n \pi )}
+        \end{equation}
+        \end{proof}
   \item The cosmic microwave background is blackbody radiation at \( T = 2.725\,\mathrm{K} \).
   Estimate the number of CMB photons per cubic centimeter.
 
@@ -120,6 +146,9 @@ A microstate of the radiation is specified by the number of photons \( s_j \) in
   \item The pressure is \( p = -(\partial U/\partial V)_{\sigma} \).
   If the volume is changed slowly enough, the occupation numbers \( s_j \) do not change, so the entropy stays constant.
   Use this to write the pressure of the photon gas as a sum over modes.
+        \begin{answer}
+
+        \end{answer}
 
   \item Show that
   \begin{equation}
