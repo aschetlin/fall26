@@ -1,0 +1,188 @@
+\documentclass[11pt]{article}
+\usepackage{../homework}
+
+\profname{Dr. David Singer}
+\classcode{MATH 465 Differential Geometry}
+\assignnum{Midterm, Take-Home Part}
+\duedate{14 October 2026}
+
+\begin{document}
+\begin{problem}{1}
+  Consider the planar curve \(\sigma(t) = (t\sin t + \cos t, -t\cos t +\sin t)\) for \( -2\pi \leq t \leq 8\pi \).
+  \begin{enumerate}[label=(\alph*)]
+    \item Reparametrize the curve by arc length.
+          \begin{answer}
+            The arc length is
+            \begin{equation}
+            \label{eq:3}
+            \begin{aligned}
+              s &= \int_{-2\pi}^{8\pi} | \sigma^{\prime}(t) | \dd{t} = \int_{-2\pi}^{8\pi} \left| (t\cos t + \sin t - \sin t, t\sin t - \cos t + \cos t) \right| \dd{t} \\
+              &= \int_{-2\pi}^{8\pi} \left| (t\cos t, t\sin t) \right| \dd{t} = \int_{-2\pi}^{8\pi} |t| \dd{t} = \int\limits_{-2\pi}^0 -t \dd{t} + \int\limits_0^{8\pi} t \dd{t}.
+            \end{aligned}
+          \end{equation}
+          Note that
+          \begin{equation}
+          \label{eq:5}
+          \int\limits_{-2\pi}^0 -t \dd{t} = 2\pi^2,
+          \end{equation}
+          so that
+          \begin{equation}
+          \label{eq:4}
+          \begin{aligned}
+          s(t) &= \begin{cases}
+            \int\limits_{-2\pi}^{t} -u \dd{u}, & -2\pi \leq t \leq 0 \\
+            2\pi^2 + \int\limits_0^{t} u \dd{u}, & 0 \leq t \leq 8\pi
+          \end{cases} \\
+            &= \begin{cases}
+              2\pi^2 - \frac{t^2}{2}, & -2\pi \leq t \leq 0 \\
+              2\pi^2 + \frac{t^2}{2}, & 0 \leq t \leq 8\pi
+            \end{cases}.
+          \end{aligned}
+        \end{equation}
+
+        To find the inverse, we invert each piece separately, so that the first piece gives
+        \begin{equation}
+        \label{eq:6}
+        \begin{aligned}
+          s &= 2\pi^2 - t^2 / 2 \\
+          \Rightarrow & t^2 = 4\pi^2 - 2s \\
+          \Rightarrow & t = -\sqrt{4\pi^2 - 2s},
+        \end{aligned}
+      \end{equation}
+      where we take the negative root because of the bounds, and the second gives
+      \begin{equation}
+      \label{eq:7}
+      \begin{aligned}
+        s &= 2\pi^2 + t^2 /2 \\
+        \Rightarrow & t^2 = 2s - 4\pi^2 \\
+        \Rightarrow & t = \sqrt{2s - 4\pi^2},
+      \end{aligned}
+    \end{equation}
+    or
+    \begin{equation}
+    \label{eq:p1-tofs}
+    t(s) = \begin{cases}
+      -\sqrt{4\pi^2 - 2s}, & 0 \leq s \leq 2\pi^2 \\
+      \sqrt{2s - 4\pi^2}, & 2\pi^2 \leq s \leq 34\pi^2
+    \end{cases}.
+  \end{equation}
+
+  Define \( \alpha(s) = -\sqrt{4\pi^2 - 2s} \), \(\beta(s) = \sqrt{2s - 4\pi^2}\).
+  Then, substituting \cref{eq:p1-tofs} into the equation for \(\sigma(t)\) gives
+  \begin{equation}
+  \label{eq:9}
+  \sigma(t(s)) = \begin{cases}
+    (\alpha(s)\sin\alpha(s) + \cos\alpha(s), -\alpha(s)\cos\alpha(s) + \sin\alpha(s)), & 0 \leq s \leq 2\pi^2 \\
+    (\beta(s)\sin\beta(s) + \cos\beta(s), -\beta(s)\cos\beta(s) + \sin\beta(s)), & 2\pi^2 \leq s \leq 34\pi^2
+  \end{cases}.
+  \end{equation}
+  Note that this is not differentiable everywhere, due to the misaligned left and right derivatives at \( s = 2\pi^2 \).
+          \end{answer}
+    \item Compute its Frenet frame \( (T(t), N(t)) \) and its (signed) curvature \( k(t) \) as functions of \( t \).
+          \begin{answer}
+            \( T(t) \) is, by definition, \(\sigma^{\prime}(t)/|\sigma^{\prime}(t)| = 1/|t|(t\cos t, t \sin t) \).
+            Then \( N(t) = T^{\prime}/|T^{\prime}| = \frac{t}{|t|}(-\sin t, \cos t) \).
+
+            Finally, the curvature is
+            \begin{equation}
+            \label{eq:17}
+            k(t) = \frac{| T^{\prime}(t) |}{| \sigma^{\prime}(t) |} = \frac{1}{|t|} \left|(-\sin t, \cos t)\right| = \frac{1}{|t|}.
+          \end{equation}
+
+          All of this is for \( t \neq 0 \), since the frame and curvature are not defined at \( t = 0 \).
+          \end{answer}
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{2}\hfill
+  \begin{enumerate}[label=(\alph*)]
+    \item What does it mean to say that \( (T,U,V) \) is an inertial frame along a curve \(\sigma(s)\)?
+          \begin{answer}
+            An inertial frame is an orthonormal adapted frame \( (T, U, T \times U) \) where \( T \) is the unit tangent vector, \( \langle T, U \rangle = 0 \), and \( U \) is relatively parallel to \( T \), that is, \( U^{\prime}(s) = \gamma(s) T(s) \) for some scalar function \(\gamma(s)\).
+          \end{answer}
+    \item Suppose \(\sigma(s)\) is a unit speed curve lying on the unit sphere with \(\sigma^{\prime}(s) = T\).
+          Let \( U(s) \) be the vector tangent to the sphere and orthogonal to \( T \) such that \( T \times U = V \) is the outward normal to the sphere.
+          Verify that \( (T,U,V) \) is inertial.
+          \begin{proof}
+            It suffices to check that \( U \) is relatively parallel to \( T \).
+            Since the frame is orthonormal by definition, we have that \(\langle U, U \rangle = 1\) and \( \langle U, V \rangle = 0 \).
+            The first identity means that
+            \begin{equation}
+            \label{eq:8}
+            \frac{\mathrm{d} }{\mathrm{d} s}\langle U, U \rangle = 2 \langle U^{\prime}, U \rangle = 0.
+          \end{equation}
+
+          Moreover, since \( \sigma \) lies on the surface of the sphere, we have \(\langle \sigma, \sigma \rangle = 1\), so that differentiation yields \( \langle \sigma, T \rangle = 0 \).
+          Moreover, \( U \) is tangent to the sphere, so \(\langle \sigma, U \rangle = 0\).
+          These two facts together with \( T \times U = V \) being the outward normal show that \(\sigma = V\), and \(\sigma^{\prime} = T = V^{\prime}\).
+          We then differentiate the second identity from earlier, giving
+          \begin{equation}
+          \label{eq:11}
+          \begin{aligned}
+          \frac{\mathrm{d} }{\mathrm{d} s}\langle U, V \rangle &= \langle U^{\prime}, V \rangle + \langle U, V^{\prime} \rangle = \langle U^{\prime}, V \rangle + \langle U, T \rangle = \langle U^{\prime}, V \rangle = 0.
+          \end{aligned}
+        \end{equation}
+
+        Using those two facts, we write \( U^{\prime} \) in the \( (T,U,V) \) basis as
+        \begin{equation}
+        \label{eq:12}
+        U^{\prime} = a T + b U + c V,
+      \end{equation}
+      but since \( U^{\prime} \) is orthogonal to both \( U \) and \( V \), we must have that
+      \begin{equation}
+      \label{eq:13}
+      U^{\prime} = a T,
+    \end{equation}
+    showing that \( U \) is relatively parallel to \( T \), and our claim follows.
+          \end{proof}
+    \item If \( T^{\prime}(s) = k_1U + k_2V \), express \( k_1 \) and \( k_2 \) in terms of the space curvature \( k \) of \(\sigma\).
+          \begin{answer}
+            Recall that, since \( \sigma \) is arc length parametrized, by definition \( | T^{\prime} | =  k\).
+            Then, we have
+            \begin{equation}
+              \label{eq:curv-sqs}
+              k^2 = k_1^2 + k_2^2.
+            \end{equation}
+
+            Since \( \langle T, V \rangle = 0 \),
+            \begin{equation}
+            \label{eq:14}
+            \begin{aligned}
+              \frac{\mathrm{d} }{\mathrm{d} s} \langle T, V \rangle &= \langle T^{\prime}, V \rangle + \langle T, V^{\prime} \rangle = \langle T^{\prime}, V \rangle + \langle T, T \rangle = k_2 + 1 = 0,
+            \end{aligned}
+          \end{equation}
+          showing that \( k_2 = -1 \).
+          It is immediate from \cref{eq:curv-sqs} that \( k_1 = \pm \sqrt{k^2 - 1} \).
+          \end{answer}
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{3}
+  The surface \( M \) given by \( z = xy^2 \) is parametrized by
+  \begin{equation}
+  \label{eq:1}
+  X(u,v) = (u,v,uv^2).
+\end{equation}
+\begin{enumerate}[label=(\alph*)]
+  \item Compute the coefficients of the first fundamental form in \( (u,v) \) coordinates and the unit normal vector field \(\nu(u,v)\).
+  \item Compute the coefficients of the second fundamental form of \( M \).
+  \item Compute the Gaussian curvature of \( M \) at a general point \( X(u,v) \) and specifically at \( P= X(1,1) \) and \( Q=X(0,0) \).
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{4}
+  Let \( M \) be a surface of revolution given by
+  \begin{equation}
+  \label{eq:2}
+  X(z,\theta) = (f(z)\cos\theta, f(z)\sin\theta, z).
+\end{equation}
+
+\begin{enumerate}[label=(\alph*)]
+  \item Show that any meridian is a line of curvature.
+        (A meridian is a curve along which \(\theta\) is constant.)
+  \item Why does it follow that any parallel is a line of curvature?
+        (A parallel is a curve along which \( z \) is constant.)
+\end{enumerate}
+\end{problem}
+
+\end{document}
