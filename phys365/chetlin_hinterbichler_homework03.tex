@@ -34,10 +34,20 @@ where the Riemann curvature and torsion are the following tensors defined in ter
       + \Gamma^\mu{}_{\alpha\lambda}T^{\lambda\nu\cdots}{}_{\beta\gamma\cdots}
       + \Gamma^\nu{}_{\alpha\lambda}T^{\mu\lambda\cdots}{}_{\beta\gamma\cdots}+\cdots \\
     &-\Gamma^\lambda{}_{\alpha\beta}T^{\mu\nu\cdots}{}_{\lambda\gamma\cdots}
-      -\Gamma^\lambda{}_{\alpha\gamma}T^{\mu\nu\cdots}{}_{\beta\lambda\cdots}-\cdots.)
+      -\Gamma^\lambda{}_{\alpha\gamma}T^{\mu\nu\cdots}{}_{\beta\lambda\cdots}-\cdots).
   \end{aligned}
 \end{equation}
 \end{problem}
+\begin{proof}
+  The Lie bracket is defined as
+  \begin{equation}
+  \label{eq:p1-lie-bracket}
+  \begin{aligned}
+    \comm{\nabla_{\mu}, \nabla_{\nu}}V^{\alpha} &= \nabla_{\mu}\nabla_{\nu}V^{\alpha} - \nabla_{\nu}\nabla_{\mu}V^{\alpha} \\
+    &= \partial_{\mu}(\nabla_{\nu}V^{\alpha}) + \Gamma^{\alpha}_{\mu\lambda}\nabla_{\nu}V^{\lambda} - \Gamma^{\lambda}_{\mu\nu}\nabla_{\lambda} V^{\alpha} - \partial_{\nu}(\nabla_{\mu}V^{\alpha}) + \Gamma^{\alpha}_{\nu\lambda}\nabla_{\mu}V^{\lambda} - \Gamma^{\lambda}_{\nu\mu}\nabla_{\lambda} V^{\alpha}
+  \end{aligned}
+  \end{equation}
+\end{proof}
 
 \begin{problem}{2}
 From now on we stick to the Levi-Civita connection.
@@ -48,6 +58,40 @@ Show that the differential Bianchi identity \(\nabla_{[\rho}R_{\sigma\lambda]\mu
 \end{equation}
 where \(G_{\mu\nu}=R_{\mu\nu}-\frac12 Rg_{\mu\nu}\) is the Einstein tensor.
 \end{problem}
+\begin{proof}
+  Writing out the differential Bianchi identity and appealing to the antisymmetry of the Riemann tensor in the first two indices,
+  \begin{equation}
+  \label{eq:p2-explicit-bianchi}
+  \begin{aligned}
+    \nabla_{[\rho} R_{\sigma\lambda]\mu\nu} &= \frac{1}{3!} \left( \nabla_{\rho}R_{\sigma\lambda\mu\nu} + \nabla_{\lambda} R_{\rho\sigma\mu\nu} + \nabla_{\sigma} R_{\lambda\rho\mu\nu} - \nabla_{\rho} R_{\lambda\sigma\mu\nu} - \nabla_{\lambda} R_{\sigma\rho\mu\nu} - \nabla_{\sigma}R_{\rho\lambda\mu\nu} \right) \\
+    &= \frac{1}{6} \left( 2\nabla_{\rho} R_{\sigma\lambda\mu\nu} + 2\nabla_{\lambda}R_{\rho\sigma\mu\nu} + 2\nabla_{\sigma} R_{\lambda\rho\mu\nu} \right) = 0
+  \end{aligned}
+\end{equation}
+showing that
+\begin{equation}
+\label{eq:p2-bianchi-zero}
+\nabla_{\rho}R_{\sigma\lambda\mu\nu} + \nabla_{\lambda}R_{\rho\sigma\mu\nu} + \nabla_{\sigma}R_{\lambda\rho\mu\nu} = 0.
+\end{equation}
+
+Now, we calculate
+\begin{equation}
+\label{eq:p2-diff-bianchi}
+\begin{aligned}
+  \nabla^{\nu}G_{\mu\nu} &= g^{\lambda\nu}\nabla_{\lambda}G_{\mu\nu} = g^{\lambda\nu}\nabla_{\lambda}\left( R_{\mu\nu} - \frac{1}{2}Rg_{\mu\nu} \right) \\
+              &= g^{\lambda\nu} \left( \partial_{\lambda} R_{\mu\nu} - \Gamma^{\alpha}_{\lambda\nu}R_{\mu\alpha} - \Gamma^{\alpha}_{\lambda\mu}R_{\alpha\nu} - \frac{1}{2}(g_{\mu\nu}\nabla_{\lambda}R + R \nabla_{\lambda}g_{\mu\nu}) \right) \\
+              &= g^{\lambda\nu} \left( \partial_{\lambda}R_{\mu\nu} - \Gamma^{\alpha}_{\lambda\nu}R_{\mu\alpha} - \Gamma^{\alpha}_{\lambda\mu} R_{\alpha\nu} - \frac{1}{2}g_{\mu\nu}\partial_{\lambda}R \right),
+\end{aligned}
+\end{equation}
+where we have used metric compatibility, \(\nabla_{\alpha}g_{\beta\nu} = 0\).
+
+Then, explicitly writing the contractions, \cref{eq:p2-diff-bianchi} becomes
+\begin{equation}
+\label{eq:p2-diff-bianchi-contract}
+\begin{aligned}
+  \nabla^{\nu}G_{\mu\nu} &= g^{\lambda\nu}(\partial_{\lambda}\tensor{R}{^{\sigma}_{\mu\sigma\nu}} - \Gamma^{\alpha}_{\lambda\nu}\tensor{R}{^{\sigma}_{\mu\sigma\alpha}} - \Gamma^{\alpha}_{\lambda\mu}\tensor{R}{^{\sigma}_{\alpha\sigma\nu}} - \frac{1}{2}g_{\mu\nu}\partial_{\lambda}g^{\alpha\beta}\tensor{R}{^{\sigma}_{\alpha\sigma\beta} })
+\end{aligned}
+\end{equation}
+\end{proof}
 
 \begin{problem}{3}
 Consider Euclidean \(\mathbb{R}^2\) with the standard cartesian coordinates \(x^1,x^2\) and metric \(ds^2=(dx^1)^2+(dx^2)^2\).

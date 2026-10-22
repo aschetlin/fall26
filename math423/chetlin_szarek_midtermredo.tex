@@ -1,0 +1,121 @@
+\documentclass[11pt]{article}
+\usepackage{../homework}
+
+\profname{Dr. Stanislaw Szarek}
+\classcode{MATH 423 Measure Theory}
+\assignnum{Midterm Corrections}
+\duedate{23 October 2026}
+
+\begin{document}
+\begin{problem}{2}
+  Given a measure space \( (X, \mathcal{M}, \mu) \) and a function \( f: X \rightarrow [0, +\infty] \) (not necessarily measurable) we define the \textit{lower} and \textit{upper} integrals of \( f \) by
+  \begin{equation}
+  \label{eq:p2-lower-int}
+  L(f) \coloneq \sup\left\{\int \varphi:0\leq \varphi\leq f, \varphi \text{ simple}\right\},
+\end{equation}
+\begin{equation}
+\label{eq:p2-upper-int}
+\begin{aligned}
+  U(f) \coloneq \inf\left\{\int\varphi: \varphi\geq f, \varphi \text{ simple}\right\},
+\end{aligned}
+\end{equation}
+with the convention that \( \inf \emptyset = +\infty \).
+We will consider \( (X, \mathcal{M}, \mu) = (\mathbb{R}, \mathcal{L}, m) \), and let \( N \subset [0,1) \) be the non-measurable set constructed in class.
+\begin{enumerate}[label=(\alph*)]
+  \item Show that the mapping \( f \mapsto L(f) \) is translation invariant.
+        \begin{proof}
+          Omitted.
+        \end{proof}
+  \item If \( U(f) < \infty \), then \( f \) is bounded and \( f \) vanishes outside a set of finite measure.
+        \begin{proof}
+          Suppose that \( U(f) < \infty \), so that for all \(\epsilon > 0\) there exists a simple function \(\varphi\) for which \( \int \varphi < U(f) + \epsilon \).
+          Let \( \varphi = \sum c_i\chi_{E_i} \leq f \) so that
+          \begin{equation}
+          \label{eq:1}
+          \int \varphi = \sum c_i m(E_i) < U(f) + \epsilon,
+        \end{equation}
+        and assume indirectly that for all \( M \in [0, +\infty) \) there is some \( x \in X \) such that \( f(x) > M \), that is, \( f \) is not bounded.
+        \end{proof}
+  \item Show that \( L(\chi_N) = 0 \) and \( U(\chi_N) > 0 \).
+        \begin{proof}
+          We first show that for any \( A \subset X \) for an arbitrary \( X \), we have
+          \begin{equation}
+          \label{eq:2}
+          L(\chi_A) = \sup \left\{ m(E): E \subset A, E \in \mathcal{L} \right\}.
+        \end{equation}
+        Any simple function \(\varphi \leq f\) is \( \sum\limits c_i \chi_{E_i} \) where \( E_i \subset A \) and \( 0 \leq c_i \leq 1 \).
+        If \( (E_{i_k}) \) is the subfamily for which \( c_{i_k} > 0 \), write \( E = \bigcup E_{i_k} \), \( E \subset A \) and \( E \in \mathcal{L} \) as a union of measurable sets.
+        Then, since \( c_{i_k} \leq 1 \),
+        \begin{equation}
+        \label{eq:3}
+        \int \varphi = \sum c_i m(E_i) = \sum c_{i_k} m(E_{i_k}) \leq \sum m(E_{i_k}) = m(E).
+      \end{equation}
+      Taking suprema establishes that \( L(\chi_A) \leq \sup \left\{ m(E): E \subset A, E \in \mathcal{L} \right\} \).
+      Conversely, let \( E \subset A \) be an arbitrary set such that \( E \in \mathcal{L} \); clearly \( \chi_E \) is a simple function which satisfies \( \chi_E \leq \chi_A \).
+      \( L(\chi_A) \) is an upper bound, so that
+      \begin{equation}
+      \label{eq:4}
+      \int \chi_E = m(\chi_{E}) \leq L(\chi_A),
+    \end{equation}
+    and taking suprema gives equality.
+
+    Now, for our specific case of \( A = N \), we have previously shown in homework 3 (Problem 1.5.29(a)) that for any measurable subset \( E \subset N \), \( m(A) = 0 \).
+    Hence, appealing to the relation in \cref{eq:2} we have that
+    \begin{equation}
+    \label{eq:5}
+    L(\chi_N) = \sup \left\{ m(E):E\subset N, E \in \mathcal{L} \right\} = \sup \left\{ 0 \right\} = 0.
+  \end{equation}
+
+  For the upper integral, we will show that for arbitrary \( A \),
+  \begin{equation}
+    \label{eq:6}
+    U(\chi_A) = \inf \left\{ m(E):E \supset A, E \in \mathcal{L}  \right\}.
+  \end{equation}
+  Since \(\chi_E\) for any \( E \supset A \) is a simple function satisfying \( \chi_E \geq \chi_A \) and \( U(\chi_A) \) is a lower bound, it is immediate that
+  \begin{equation}
+  \label{eq:7}
+  \int \chi_E = m(E) \geq U(\chi_A),
+\end{equation}
+so that we have \( U(\chi_A) \leq \inf \left\{ m(E): E \supset A, E \in \mathcal{L} \right\} \).
+On the other hand, simple functions \( \varphi \geq \chi_A \) are of the form
+\begin{equation}
+\label{eq:8}
+\varphi = \sum c_i\chi_{E_i}
+\end{equation}
+for \( 0 \leq c_i < \infty \).
+In particular, note that since \( \varphi \geq \chi_{A} \),
+\begin{equation}
+\label{eq:11}
+A \subset \varphi^{-1}([1, \infty)), \quad \varphi \geq \chi_{\varphi^{-1}([1,\infty))},
+\end{equation}
+which means that (since a simple function is in particular measurable)
+\begin{equation}
+\label{eq:12}
+\int \varphi = \sum c_i m(E_i) \geq m(\varphi^{-1}([1,\infty))) \geq \inf \left\{ m(E) : E \supset A, E \in \mathcal{L} \right\}.
+\end{equation}
+Taking the infimum over all simple \(\varphi \geq \chi_A\) gives the reverse inequality and thus equality.
+
+Now, suppose for contradiction that \( U(\chi_N) = 0 \), so that by the equality we have just proven, for all \( n \in \mathbb{N} \) there is a measurable \( E_n \supset N \) such that
+\begin{equation}
+\label{eq:14}
+m(E_n) < \frac{1}{n},
+\end{equation}
+and write \( E \coloneq \bigcap E_n \).
+Clearly \( E \) is measurable, \( N \subset E \), and, furthermore,
+\begin{equation}
+\label{eq:15}
+m(E) \leq m(E_n) < \frac{1}{n}
+\end{equation}
+for all \( n \), which gives \( m(E) = 0 \).
+However, since \( m \) is complete and \( N \subset E \), this implies \( m(N) = 0 \) and in particular that \( N \) is measurable, a contradiction.
+Therefore, \( U(\chi_N) > 0 \), as desired.
+
+\end{proof}
+  \item Show that \( L(\cdot) \) is not countably additive by proving one of the following (your choice):
+        \begin{enumerate}[label=(\roman*)]
+          \item if \( f = \chi_N \) and \( g = \chi_{[0,1)\setminus N} \), then \( L(f + g) \neq L(f) + L(g) \) or
+                \item if \( R = \mathbb{Q} \cap (-1,1) \) and \( f_r = \chi_{N_r} \) (notation from the handout), then \( L\left(\sum\limits_{r \in R} f_r\right) \neq \sum\limits_r L(f_r) \).
+        \end{enumerate}
+\end{enumerate}
+\end{problem}
+\end{document}
