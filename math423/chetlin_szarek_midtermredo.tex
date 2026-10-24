@@ -29,12 +29,20 @@ We will consider \( (X, \mathcal{M}, \mu) = (\mathbb{R}, \mathcal{L}, m) \), and
   \item If \( U(f) < \infty \), then \( f \) is bounded and \( f \) vanishes outside a set of finite measure.
         \begin{proof}
           Suppose that \( U(f) < \infty \), so that for all \(\epsilon > 0\) there exists a simple function \(\varphi\) for which \( \int \varphi < U(f) + \epsilon \).
-          Let \( \varphi = \sum c_i\chi_{E_i} \leq f \) so that
+          Let \( \varphi = \sum c_i\chi_{E_i} \geq f \) so that
           \begin{equation}
           \label{eq:1}
-          \int \varphi = \sum c_i m(E_i) < U(f) + \epsilon,
+          \int \varphi = \sum c_i m(E_i) < U(f) + \epsilon < \infty.
         \end{equation}
-        and assume indirectly that for all \( M \in [0, +\infty) \) there is some \( x \in X \) such that \( f(x) > M \), that is, \( f \) is not bounded.
+
+        First of all, since \(\varphi\) is simple it is finitely valued with real values and is therefore bounded; \( \varphi \geq f \) then directly shows that \( f \) is bounded.
+
+        Moreover, assuming \(\varphi = \sum c_i\chi_{E_i}\) is the standard representation, \( m(E_k) < \infty \) for all \( k \) with \( c_k > 0 \), so that
+        \begin{equation}
+        \label{eq:16}
+        m(\varphi^{-1}((0,\infty))) = m \left( \bigcup_{k=1}^n E_k \right) < \infty.
+      \end{equation}
+      Finally, since \( f \leq \varphi \), we must have that \( f^{-1}((0,\infty)) \subset \varphi^{-1}((0,\infty)) \), meaning that \( f \) vanishes outside of \( \varphi^{-1}((0,\infty)) \) which is, by \cref{eq:16}, of finite measure.
         \end{proof}
   \item Show that \( L(\chi_N) = 0 \) and \( U(\chi_N) > 0 \).
         \begin{proof}
@@ -43,7 +51,7 @@ We will consider \( (X, \mathcal{M}, \mu) = (\mathbb{R}, \mathcal{L}, m) \), and
           \label{eq:2}
           L(\chi_A) = \sup \left\{ m(E): E \subset A, E \in \mathcal{L} \right\}.
         \end{equation}
-        Any simple function \(\varphi \leq f\) is \( \sum\limits c_i \chi_{E_i} \) where \( E_i \subset A \) and \( 0 \leq c_i \leq 1 \).
+        Any simple function \(\varphi \leq f\) is, in standard (disjoint) representation, \( \sum\limits c_i \chi_{E_i} \) where \( E_i \subset A \) and \( 0 \leq c_i \leq 1 \).
         If \( (E_{i_k}) \) is the subfamily for which \( c_{i_k} > 0 \), write \( E = \bigcup E_{i_k} \), \( E \subset A \) and \( E \in \mathcal{L} \) as a union of measurable sets.
         Then, since \( c_{i_k} \leq 1 \),
         \begin{equation}
@@ -55,11 +63,11 @@ We will consider \( (X, \mathcal{M}, \mu) = (\mathbb{R}, \mathcal{L}, m) \), and
       \( L(\chi_A) \) is an upper bound, so that
       \begin{equation}
       \label{eq:4}
-      \int \chi_E = m(\chi_{E}) \leq L(\chi_A),
+      \int \chi_E = m(E) \leq L(\chi_A),
     \end{equation}
     and taking suprema gives equality.
 
-    Now, for our specific case of \( A = N \), we have previously shown in homework 3 (Problem 1.5.29(a)) that for any measurable subset \( E \subset N \), \( m(A) = 0 \).
+    Now, for our specific case of \( A = N \), we have previously shown in homework 3 (Problem 1.5.29(a)) that for any measurable subset \( E \subset N \), \( m(E) = 0 \).
     Hence, appealing to the relation in \cref{eq:2} we have that
     \begin{equation}
     \label{eq:5}
@@ -114,7 +122,32 @@ Therefore, \( U(\chi_N) > 0 \), as desired.
   \item Show that \( L(\cdot) \) is not countably additive by proving one of the following (your choice):
         \begin{enumerate}[label=(\roman*)]
           \item if \( f = \chi_N \) and \( g = \chi_{[0,1)\setminus N} \), then \( L(f + g) \neq L(f) + L(g) \) or
-                \item if \( R = \mathbb{Q} \cap (-1,1) \) and \( f_r = \chi_{N_r} \) (notation from the handout), then \( L\left(\sum\limits_{r \in R} f_r\right) \neq \sum\limits_r L(f_r) \).
+                \begin{proof}
+                  From part (c), we know that \( L(f) = 0 \), so that \( L(f) + L(g) = L(g) \).
+                  Then, note that \(\chi_N + \chi_{[0,1)\setminus N} = \chi_{[0,1)}\) which is a simple function and is thus integrable, so \( L(f+g)= L(\chi_{[0,1)}) = m([0,1)) = 1 \).
+
+                  Now, let \( E \subset [0,1) \setminus N \) be any measurable set, so that \( N \subset [0,1) \setminus E \).
+                  By the reasoning from part (c), \( U(\chi_N) > 0 \) is the infimum over the measures of such sets, so in particular
+                  \begin{equation}
+                  \label{eq:9}
+                  m([0,1) \setminus E) \geq U(\chi_{N}),
+                \end{equation}
+                but since \( E \subset [0,1) \), \( m([0,1) \setminus E) = m([0,1)) - m(E) = 1 - m(E) \), so that
+                \begin{equation}
+                \label{eq:10}
+                1 - m(E) \geq U(\chi_{N}) \text{ or } m(E) \leq 1 - U(\chi_N).
+              \end{equation}
+              Then, taking suprema on both sides shows that
+              \begin{equation}
+              \label{eq:13}
+              L(g) = \sup \left\{ m(E): E \subset [0,1) \setminus N, E \in \mathcal{L} \right\} \leq 1 - U(\chi_N) < 1,
+            \end{equation}
+            giving that \( L(f+g) = 1 > L(f) + L(g) \), and thus \( L(\cdot) \) is not additive.
+          \end{proof}
+          \item if \( R = \mathbb{Q} \cap (-1,1) \) and \( f_r = \chi_{N_r} \) (notation from the handout), then \( L\left(\sum\limits_{r \in R} f_r\right) \neq \sum\limits_r L(f_r) \).
+                \begin{proof}
+                  Omitted.
+                \end{proof}
         \end{enumerate}
 \end{enumerate}
 \end{problem}
