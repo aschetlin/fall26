@@ -1,0 +1,45 @@
+\documentclass[11pt]{article}
+\usepackage{../homework}
+
+\profname{Dr. David Singer}
+\classcode{MATH 465 Differential Geometry}
+\assignnum{Assignment 06}
+\duedate{26 October 2026}
+
+\begin{document}
+\begin{problem}{4.3.2}
+  Show that if \( \mathbf{x} \) is an isothermal parametrization, that is, \( E = G = \lambda(u,v) \) and \( F = 0 \), then
+  \begin{equation}
+  \label{eq:1}
+  K = - \frac{1}{2\lambda}\Delta(\log \lambda),
+\end{equation}
+where \(\Delta\varphi\) denotes the Laplacian of the function \(\varphi\).
+Conclude that when \( E = G = (u^2 + v^2 + c)^{-2} \) and \( F = 0 \), then \( K = \text{const.} = 4c \).
+\end{problem}
+
+\begin{problem}{4.3.3}
+  Verify that the surfaces
+  \begin{equation}
+  \label{eq:2}
+  \begin{aligned}
+    \mathbf{x}(u,v) &= (u\cos v, u\sin v, \log u), \quad u > 0 \\
+    \mathbf{\bar{x}}(u,v) &= (u\cos v, u \sin v, v),
+  \end{aligned}
+\end{equation}
+have equal Gaussian curvature at the points \( \mathbf{x}(u,v) \) and \( \mathbf{\bar{x}}(u,v) \) but that the mapping \( \mathbf{\bar{x}} \circ \mathbf{x}^{-1} \) is not an isometry.
+This shows that the converse of the Gauss theorem is not true.
+\end{problem}
+
+\begin{problem}{4.3.4}
+  Show that no neighborhood of a point in a sphere may be isometrically mapped into a plane.
+\end{problem}
+
+\begin{problem}{4.3.8}
+  Compute the Chrisoffel symbols for an open set of the plane, use the Gauss formula to compute \( K \) in both cases.
+  \begin{enumerate}[label=(\alph*)]
+    \item In Cartesian coordinates.
+    \item In polar coordinates.
+  \end{enumerate}
+\end{problem}
+
+\end{document}
