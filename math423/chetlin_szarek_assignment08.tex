@@ -4,25 +4,306 @@
 \profname{Dr. Stanislaw Szarek}
 \classcode{MATH 423 Measure Theory}
 \assignnum{Assignment 08}
-\duedate{21 October 2026}
+\duedate{26 October 2026}
 
 \begin{document}
+
 \begin{problem}{2.3.19}
-	Suppose \( \{f_n\} \subset L^1(\mu) \) and \( f_n \rightarrow f \) uniformly.
-	\begin{enumerate}[label=(\alph*)]
-		\item If \(\mu(X) < \infty\), then \( f \in L^1(\mu) \) and \( \int f_n \rightarrow \int f \).
-		\item If \(\mu(X) = \infty\), the conclusions of (a) can fail.
-		      (Find examples on \( \mathbb{R} \)) with Lebesgue measure.
-	\end{enumerate}
+  Suppose \( \{f_n\} \subset L^1(\mu) \) and \( f_n \rightarrow f \) uniformly.
+  \begin{enumerate}[label=(\alph*)]
+    \item If \( \mu(X) < \infty \), then \( f \in L^1(\mu) \) and \( \int f_n \rightarrow \int f \).
+          \begin{proof}
+            Since \( f_n \rightarrow f \) uniformly, for every \( \varepsilon > 0 \), there is an \( N \in \mathbb{N} \) such that
+            \begin{equation}
+              \label{eq:p1-uniform}
+              |f_n(x)-f(x)| < \varepsilon
+            \end{equation}
+            for all \( x \in X \) and \( n \geq N \).
+
+            Since \( f \) is the pointwise limit of measurable functions, it is measurable. For any \( n \geq N \), we have
+            \begin{equation}
+              \label{eq:p1-integrable}
+              \begin{aligned}
+                \int |f|
+                &\leq \int |f-f_n| + \int |f_n| \\
+                &\leq \varepsilon\mu(X) + \int |f_n| < \infty.
+              \end{aligned}
+            \end{equation}
+            Thus \( f \in L^1(\mu) \).
+
+            Furthermore, for \( n \geq N \),
+            \begin{equation}
+              \label{eq:p1-convergence}
+              \begin{aligned}
+                \left|\int f-\int f_n\right|
+                &= \left|\int(f-f_n)\right| \\
+                &\leq \int|f-f_n| \\
+                &\leq \varepsilon\mu(X).
+              \end{aligned}
+            \end{equation}
+            Since \( \varepsilon > 0 \) is arbitrary and \( \mu(X) < \infty \), we conclude that
+            \begin{equation}
+              \label{eq:p1-conclusion}
+              \lim_{n\to\infty}\int f_n=\int f.
+            \end{equation}
+          \end{proof}
+
+    \item If \( \mu(X)=\infty \), the conclusions of (a) can fail.
+          \begin{proof}
+            Consider \( \mathbb{R} \) with Lebesgue measure and let
+            \begin{equation}
+              \label{eq:p1-example1}
+              f_n(x)=\frac{1}{n}\chi_{[0,n]}(x).
+            \end{equation}
+            Each \( f_n\in L^1(m) \), and
+            \begin{equation}
+              \label{eq:p1-example1-uniform}
+              \|f_n\|_\infty=\frac{1}{n}\to 0.
+            \end{equation}
+            Thus \( f_n\to 0 \) uniformly, but
+            \begin{equation}
+              \label{eq:p1-example1-integral}
+              \int_{\mathbb{R}}f_n\,\dd{m}=1
+            \end{equation}
+            for every \( n \).
+          \end{proof}
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{2.3.22}
+  Let \( \mu \) be counting measure on \( \mathbb{N} \). Interpret Fatou's lemma and the monotone and dominated convergence theorems as statements about infinite series.
+
+  \begin{answer}
+    Under counting measure,
+    \begin{equation}
+      \label{eq:p2-counting}
+      \int_{\mathbb{N}}f\,\dd{\mu}
+      =\sum_{k=1}^{\infty}f(k)
+    \end{equation}
+    whenever \( f \) is nonnegative or integrable.
+
+    \textbf{Fatou's lemma.}
+    For any sequence of real-valued sequences \( a_{n,k}\geq 0 \),
+    \begin{equation}
+      \label{eq:p2-fatou}
+      \sum_{k=1}^{\infty}\liminf a_{n,k}
+      \leq
+      \liminf\sum_{k=1}^{\infty}a_{n,k}.
+    \end{equation}
+
+    \textbf{Monotone convergence theorem.}
+    If \( 0\leq a_{n,k}\leq a_{n+1,k} \) for all \( n,k \), i.e., \( a_{n,k} \nearrow a_{n} \) for some sequence \( a_n \), then
+    \begin{equation}
+      \label{eq:p2-mct}
+      \lim_{n\to\infty}\sum_{k=1}^{\infty}a_{n,k}
+      =
+      \sum_{k=1}^{\infty}\lim_{n\to\infty}a_{n,k}
+      = \sum\limits_{k=1}^{\infty} a_{n}.
+    \end{equation}
+
+    \textbf{Dominated convergence theorem.}
+    Suppose \( a_{n,k}\to a_k \) for each \( k \), and there exists a sequence \( (b_k) \) such that
+    \begin{equation}
+      \label{eq:p2-dct-hyp}
+      |a_{n,k}|\leq b_k,
+      \qquad
+      \sum_{k=1}^{\infty}b_k<\infty.
+    \end{equation}
+    Then
+    \begin{equation}
+      \label{eq:p2-dct}
+      \lim_{n\to\infty}\sum_{k=1}^{\infty}a_{n,k}
+      =
+      \sum\limits_{k=1}^{\infty} \lim_{n\rightarrow \infty} a_{n,k}
+      =
+      \sum_{k=1}^{\infty}a_k.
+    \end{equation}
+  \end{answer}
 \end{problem}
 
 \begin{problem}{2.3.25}
-	Let \( f(x) = x^{-1/2} \) if \( 0 < x < 1 \), \( f(x) = 0 \) otherwise.
-	Let \( \{r_n\}_1^{\infty} \) be an enumeration of the rationals, and set \( g(x) = \sum\limits_1^{\infty} 2^{-n}f(x-r_n) \).
-	\begin{enumerate}[label=(\alph*)]
-		\item \( g \in L^1(m) \), and in particular \( g < \infty \) a.e.
-		\item g is discontinuous at every point and unbounded on every interval, and it remains so after any modification on a Lebesgue null set.
-		\item \( g^2 < \infty \) a.e., but \( g^2 \) is not integrable on any interval.
-	\end{enumerate}
+  Let \( f(x)=x^{-1/2} \) if \( 0<x<1 \), and \( f(x)=0 \) otherwise.
+  Let \( \{r_n\}_{n=1}^{\infty} \) be an enumeration of the rationals, and set
+  \begin{equation}
+    \label{eq:p3-g}
+    g(x)=\sum_{n=1}^{\infty}2^{-n}f(x-r_n).
+  \end{equation}
+
+  \begin{enumerate}[label=(\alph*)]
+    \item \( g\in L^1(m) \), and in particular \( g<\infty \) a.e.
+          \begin{proof}
+            Since \( f\geq 0 \), each summand in the definition of \( g \) is nonnegative. By the monotone convergence theorem on the partial sums, and translation invariance of Lebesgue measure,
+            \begin{equation}
+              \label{eq:p3-integral}
+              \begin{aligned}
+                \int_{\mathbb{R}}g\,\dd{m}
+                &=\sum_{n=1}^{\infty}2^{-n}
+                  \int_{\mathbb{R}}f(x-r_n)\,\dd{x}\\
+                &=\sum_{n=1}^{\infty}2^{-n}
+                  \int_0^1x^{-1/2}\,\dd{x}\\
+                &=2\sum_{n=1}^{\infty}2^{-n}
+                =2<\infty.
+              \end{aligned}
+            \end{equation}
+            Hence \( g\in L^1(m) \), so \( g<\infty \) a.e.
+          \end{proof}
+
+    \item \( g \) is discontinuous at every point and unbounded on every interval, and it remains so after any modification on a Lebesgue null set.
+          \begin{proof}
+            Let \( I \) be any nonempty open interval and choose \( r_k\in I\cap\mathbb{Q} \).
+            There exists \( 1 > \delta>0 \) such that
+            \begin{equation}
+              \label{eq:p3-delta}
+              (r_k,r_k+\delta)\subset I.
+            \end{equation}
+            For every \( x\in(r_k,r_k+\delta) \),
+            \begin{equation}
+              \label{eq:p3-lower}
+              g(x)\geq 2^{-k}f(x-r_k)
+              =\frac{2^{-k}}{\sqrt{x-r_k}}.
+            \end{equation}
+            Given any \( M>0 \), choose \( \eta \) so that
+            \begin{equation}
+              \label{eq:p3-small-delta}
+              0<\eta<\min\{\delta,4^{-k}M^{-2}\}.
+            \end{equation}
+            Then \( g(x)>M \) for every \( x\in(r_k,r_k+\eta) \).
+            Thus \( g \) is unbounded on every interval.
+
+            Moreover, the set on which \( g>M \) has positive measure in every nonempty open interval.
+            Consequently, if \( \widetilde g=g \) outside a null set \( N \), then
+            \begin{equation}
+              \label{eq:p3-modification}
+              (r_k,r_k+\eta)\setminus N\neq\emptyset,
+            \end{equation}
+            so \( \widetilde g \) is also unbounded on every interval.
+
+            A real-valued function continuous at a point is bounded in some neighborhood of that point. Since \( g \), and every modification of \( g \) on a null set, is unbounded in every neighborhood of every point, none can be continuous at any point.
+          \end{proof}
+
+    \item \( g^2<\infty \) a.e., but \( g^2 \) is not integrable on any interval.
+          \begin{proof}
+            By part (a), \( g<\infty \) a.e., so \( g^2<\infty \) a.e.
+
+            Let \( I \) be any nonempty open interval and choose \( r_k\in I\cap\mathbb{Q} \).
+            Choose \( 1>\delta>0 \) such that
+            \begin{equation}
+              \label{eq:p3-square-interval}
+              (r_k,r_k+\delta)\subset I.
+            \end{equation}
+            By nonnegativity of the summands defining \( g \),
+            \begin{equation}
+              \label{eq:p3-square-bound}
+              g(x)^2\geq 4^{-k}f(x-r_k)^2
+              =\frac{4^{-k}}{x-r_k}
+            \end{equation}
+            for \( r_k<x<r_k+\delta \). Therefore,
+            \begin{equation}
+              \label{eq:p3-square-divergence}
+              \begin{aligned}
+                \int_I g^2\,\dd{m}
+                &\geq 4^{-k}
+                \int_{r_k}^{r_k+\delta}
+                \frac{1}{x-r_k}\,\dd{x}\\
+                &=4^{-k}\int_0^\delta\frac{1}{u}\,\dd{u}
+                =\infty.
+              \end{aligned}
+            \end{equation}
+            Our claim follows.
+          \end{proof}
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{2.3.28(a,b)}
+  Compute the following limits and justify the calculations.
+  \begin{enumerate}[label=(\alph*)]
+    \item \( \displaystyle\lim_{n\to\infty}
+      \int_0^\infty(1+x/n)^{-n}\sin(x/n)\,\dd{x} \)
+
+          \begin{proof}
+            Let
+            \begin{equation}
+              \label{eq:p4-a-fn}
+              f_n(x)=(1+x/n)^{-n}\sin(x/n).
+            \end{equation}
+            For each fixed \( x\geq 0 \),
+            \begin{equation}
+              \label{eq:p4-a-pointwise}
+              \lim_{n\to\infty}f_n(x)
+              =e^{-x}\cdot 0=0.
+            \end{equation}
+
+            To apply dominated convergence, we find an integrable bound independent of \( n \).
+            By the binomial theorem, for \( n\geq 2 \) and \( x\geq 0 \),
+            \begin{equation}
+              \label{eq:p4-a-binomial}
+              \begin{aligned}
+                (1+x/n)^n
+                &\geq 1+x+\binom{n}{2}\frac{x^2}{n^2}\\
+                &=1+x+\frac{n-1}{2n}x^2\\
+                &\geq 1+x+\frac{x^2}{4}.
+              \end{aligned}
+            \end{equation}
+            Since \( |\sin(x/n)|\leq 1 \), we have
+            \begin{equation}
+              \label{eq:p4-a-domination}
+              |f_n(x)|
+              \leq \frac{1}{1+x+x^2/4}
+              \eqqcolon h(x).
+            \end{equation}
+            The function \( h \) is integrable on \( [0,\infty) \), since it is bounded near zero and decays as \( x^{-2} \) at infinity.
+
+            Thus, by the dominated convergence theorem,
+            \begin{equation}
+              \label{eq:p4-a-limit}
+              \begin{aligned}
+                \lim_{n\to\infty}
+                \int_0^\infty(1+x/n)^{-n}\sin(x/n)\,\dd{x}
+                &=\int_0^\infty\lim_{n\to\infty}f_n(x)\,\dd{x}\\
+                &=0.
+              \end{aligned}
+            \end{equation}
+          \end{proof}
+
+    \item \( \displaystyle\lim_{n\to\infty}
+      \int_0^1(1+nx^2)(1+x^2)^{-n}\,\dd{x} \)
+
+          \begin{proof}
+            Let
+            \begin{equation}
+              \label{eq:p4-b-fn}
+              f_n(x)=\frac{1+nx^2}{(1+x^2)^n}.
+            \end{equation}
+            By basic calculus,
+            \begin{equation}
+              \label{eq:p4-b-pointwise}
+              \lim_{n\to\infty}f_n(x)=0
+            \end{equation}
+            for every \( x\in(0,1] \). At \( x=0 \), \( f_n(0)=1 \), so \( f_n\to 0 \) almost everywhere on \( [0,1] \).
+
+            We can bound this denominator as
+            \begin{equation}
+              \label{eq:p4-b-bernoulli}
+              (1+x^2)^n\geq 1+nx^2,
+            \end{equation}
+            so that
+            \begin{equation}
+              \label{eq:p4-b-domination}
+              0\leq f_n(x)\leq 1
+            \end{equation}
+            for all \( x\in[0,1] \) and \( n\geq 1 \).
+
+            Since \( 1\in L^1([0,1]) \), the dominated convergence theorem gives
+            \begin{equation}
+              \label{eq:p4-b-limit}
+              \begin{aligned}
+                \lim_{n\to\infty}
+                \int_0^1(1+nx^2)(1+x^2)^{-n}\,\dd{x}
+                &=\int_0^1\lim_{n\to\infty}f_n(x)\,\dd{x}\\
+                &=0.
+              \end{aligned}
+            \end{equation}
+          \end{proof}
+  \end{enumerate}
 \end{problem}
 \end{document}

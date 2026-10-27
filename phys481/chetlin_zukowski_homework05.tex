@@ -24,6 +24,14 @@
     \right).
   \end{equation}
 \end{problem}
+\begin{answer}
+  No, it is not entangled.
+  It can be expressed as a composite state, with \( \ket{\psi_1} = \frac{1}{\sqrt{2}}(\ket{+}_1 + \ket{-}_{1}) \) and \( \ket{\psi_2} = \frac{1}{\sqrt{2}}(\ket{+}_2 - \ket{-}_{2}) \), so that
+  \begin{equation}
+  \label{eq:1}
+  \ket{\psi_{1}} \otimes \ket{\psi_{2}} = \frac{1}{2} (\ket{+}_1\ket{+}_2 - \ket{+}_1\ket{-}_2 + \ket{-}_1\ket{+}_2 - \ket{-}_1\ket{-}_2) = \ket{\varphi}.
+  \end{equation}
+\end{answer}
 
 \begin{problem}{2}
   A collection of particles are prepared in the state
@@ -35,9 +43,29 @@
   \end{equation}
   \begin{enumerate}[label=(\alph*)]
     \item Is the state \(\ket{\psi}\) an eigenstate of \(S_{1z}\) (the operator associated with measuring the \(z\)-component of spin of particle 1 only)?
-      If so, what is the eigenvalue? If not, why not?
+          If so, what is the eigenvalue? If not, why not?
+          \begin{answer}
+            No.
+            Acting \( S_{1z} \) on \( \ket{\psi} \) gives
+            \begin{equation}
+            \label{eq:2}
+            \begin{aligned}
+              S_{1z}\ket{\psi} &= \frac{1}{\sqrt{2}} \left( S_{1z}\ket{+}_{1,z}\ket{-}_{2z} - S_{1z}\ket{-}_{1,z}\ket{+}_{2,z} \right) \\
+                            &= \frac{1}{\sqrt{2}} \left( \frac{\hbar}{2}\ket{+}_{1,z}\ket{-}_{2,z} + \frac{\hbar}{2}\ket{-}_{1,z}\ket{+}_{2,z} \right) \\
+                            &= \frac{1}{\sqrt{2}} \frac{\hbar}{2} \left( \ket{+}_{1,z}\ket{-}_{2,z} + \ket{-}_{1,z}\ket{+}_{2,z} \right),
+            \end{aligned}
+          \end{equation}
+          which is not a scalar multiple of \( \ket{\psi} \).
+          \end{answer}
     \item Is the state \(\ket{\psi}\) an eigenstate of the ``total \(z\)-component of spin operator'' \(S_{1z}+S_{2z}\)?
-      If so, what is the eigenvalue? If not, why not?
+          If so, what is the eigenvalue? If not, why not?
+          \begin{answer}
+            Yes, it has eigenvalue \( 0 \). Acting \( S_{2z} \) on \( \ket{\psi} \) gives
+            \begin{equation}
+              S_{2z}\ket{\psi} = -\frac{1}{\sqrt{2}} \frac{\hbar}{2} \left( \ket{+}_{1,z}\ket{-}_{2,z} + \ket{-}_{1,z}\ket{+}_{2,z}  \right) = -S_{1z}\ket{\psi},
+            \end{equation}
+            which means that \( (S_{1z} + S_{2z})\ket{\psi} = 0 \).
+          \end{answer}
   \end{enumerate}
   Alice (observer \#1) orients her detector in the \(\hat{n}\) direction, where \(\hat{n}\) is characterized by the polar angle \(\theta=2\pi/3\), and azimuthal angle \(\phi=0\).
   Bob (observer \#2) orients his detector in the \(\hat{z}\) direction.
@@ -46,6 +74,54 @@
       After many runs, what is the probability they get a different outcome (i.e. one measures \(+\hbar/2\), the other measures \(-\hbar/2\))?
       Please show/explain your work.
   \end{enumerate}
+  \begin{answer}
+Since \( \phi=0 \), the eigenstates of Alice's spin
+  operator along \( \hat{n} \) are
+  \begin{equation}
+    \label{eq:p2-n-basis}
+    \begin{aligned}
+      \ket{+}_{n}
+      &= \cos\frac{\theta}{2}\ket{+}_z
+      + \sin\frac{\theta}{2}\ket{-}_z,\\
+      \ket{-}_{n}
+      &= -\sin\frac{\theta}{2}\ket{+}_z
+      + \cos\frac{\theta}{2}\ket{-}_z.
+    \end{aligned}
+  \end{equation}
+  The probability that Alice measures \( +\hbar/2 \)
+  and Bob measures \( -\hbar/2 \) is
+  \begin{equation}
+    \label{eq:p2-prob-1}
+    \begin{aligned}
+      P(+_n,-_z)
+      &= \left|
+        (\bra{+}_{1,n}\otimes\bra{-}_{2,z})
+        \ket{\psi}
+      \right|^2\\
+      &= \frac{1}{2}
+      \left|\braket{+_n}{+_z}\right|^2\\
+      &= \frac{1}{2}\cos^2\frac{\theta}{2}.
+    \end{aligned}
+  \end{equation}
+  Similarly,
+  \begin{equation}
+    \label{eq:p2-prob-2}
+    P(-_n,+_z)
+    = \frac{1}{2}\cos^2\frac{\theta}{2}.
+  \end{equation}
+  Since these outcomes are mutually exclusive, the
+  probability of obtaining different outcomes is
+  \begin{equation}
+    \label{eq:p2-prob-different}
+    \begin{aligned}
+      P(\text{different})
+      &= P(+_n,-_z)+P(-_n,+_z)\\
+      &= \cos^2\frac{\theta}{2}
+      = \cos^2\frac{\pi}{3}
+      = \frac{1}{4}.
+    \end{aligned}
+  \end{equation}
+  \end{answer}
 \end{problem}
 
 \begin{problem}{3}
@@ -69,8 +145,38 @@
   \end{center}
   \begin{enumerate}[label=(\alph*)]
     \item Find the output state.
+          \begin{answer}
+            Working step by step,
+            \begin{equation}
+            \label{eq:6}
+            \begin{aligned}
+              &\frac{1}{\sqrt{2}}(\ket{0} + \ket{1}) \otimes \ket{0} \rightarrow \frac{1}{\sqrt{2}}(\ket{1} + \ket{0}) \otimes \ket{0} = \frac{1}{\sqrt{2}}(\ket{10} + \ket{00}) \\
+              &\rightarrow \frac{1}{\sqrt{2}} \left( \frac{1}{\sqrt{2}}\ket{1}_1(\ket{0}_{2} + \ket{1}_{2}) + \ket{0}_1\ket{0}_{2}\right) = \frac{1}{\sqrt{2}} \left( \frac{1}{\sqrt{2}}(\ket{10} + \ket{11}) + \ket{00} \right) \\
+              &\rightarrow \frac{1}{\sqrt{2}}\left( \frac{1}{\sqrt{2}}(-\ket{10} - \ket{11}) + \ket{00} \right) \rightarrow \frac{1}{\sqrt{2}} \left( \frac{1}{\sqrt{2}}(-\ket{10} + \ket{11}) + \ket{00} \right),
+            \end{aligned}
+          \end{equation}
+          so the output state is
+          \begin{equation}
+          \label{eq:7}
+          \frac{1}{\sqrt{2}}\ket{00} - \frac{1}{2}\ket{10} + \frac{1}{2}\ket{11}.
+          \end{equation}
+          \end{answer}
     \item Is the output state entangled?
+          \begin{answer}
+            Yes, as it cannot be written as a tensor product of two single bit states.
+            In fact, the determinant of the coefficient matrix is \( \frac{1}{2 \sqrt{2}} \neq 0 \), which means the state cannot be separated.
+          \end{answer}
     \item What is the probability that a measurement on qubit 2 (after it has gone through the circuit) results in a 0?
+          \begin{answer}
+            The probability is
+            \begin{equation}
+            \label{eq:8}
+            \begin{aligned}
+              &\left| \bra{10}(\frac{1}{\sqrt{2}}\ket{00} - \frac{1}{2}\ket{10} + \frac{1}{2}\ket{11}) \right|^2 + \left| \bra{00}(\frac{1}{\sqrt{2}}\ket{00} - \frac{1}{2}\ket{10} + \frac{1}{2}\ket{11}) \right|^2 \\
+              &= \frac{1}{4} + \frac{1}{2} = \frac{3}{4}.
+            \end{aligned}
+            \end{equation}
+          \end{answer}
   \end{enumerate}
 \end{problem}
 
@@ -92,4 +198,22 @@
     \end{tikzpicture}
   \end{center}
 \end{problem}
+\begin{answer}
+  The first step of the circuit acts as
+  \begin{equation}
+  \label{eq:3}
+  a\ket{00} + b\ket{01} + c\ket{10} + d\ket{11} \rightarrow a\ket{00} + b\ket{01} + c\ket{11} + d\ket{10},
+\end{equation}
+then the second step is
+\begin{equation}
+\label{eq:4}
+a\ket{00} + b\ket{11} + c\ket{01} + d\ket{10},
+\end{equation}
+and finally the third step is
+\begin{equation}
+\label{eq:5}
+a\ket{00} + b\ket{10} + c\ket{01} + d\ket{11},
+\end{equation}
+which means that the circuit swaps the two qubit states, a suitable name could then be a SWAP gate.
+\end{answer}
 \end{document}
