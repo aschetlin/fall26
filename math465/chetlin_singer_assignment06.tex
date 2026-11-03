@@ -16,6 +16,72 @@
 where \(\Delta\varphi\) denotes the Laplacian of the function \(\varphi\).
 Conclude that when \( E = G = (u^2 + v^2 + c)^{-2} \) and \( F = 0 \), then \( K = \text{const.} = 4c \).
 \end{problem}
+\begin{proof}
+  We apply the Gauss formula,
+  \begin{equation}
+  \label{eq:3}
+  K = - \frac{1}{E} \left( \partial_u\Gamma_{12}^2 - \partial_v\Gamma_{11}^2 + \Gamma_{12}^1\Gamma_{11}^2 + \Gamma_{12}^2\Gamma_{12}^2 - \Gamma_{11}^2 \Gamma_{22}^2 - \Gamma_{11}^1\Gamma_{12}^2 \right),
+\end{equation}
+and calculate the Christoffel symbols as
+\begin{equation}
+\label{eq:4}
+\Gamma_{ij}^k = \frac{1}{2} g^{kl} \left( \partial_ig_{jl} + \partial_jg_{il} - \partial_lg_{ij} \right),
+\end{equation}
+so that
+\begin{equation}
+\label{eq:5}
+\begin{aligned}
+  \Gamma_{11}^1 &= \frac{1}{2E} \left( \partial_1E \right) = \frac{1}{2\lambda} \pdv{\lambda}{u}, \\
+  \Gamma_{11}^2 &= \frac{1}{2G} \left( -\partial_2E \right) = - \frac{1}{2\lambda} \pdv{\lambda}{v}, \\
+  \Gamma_{12}^{1} &= \frac{1}{2E} \left( \partial_2E \right) = \frac{1}{2\lambda} \pdv{\lambda}{v}, \\
+  \Gamma_{12}^2 &= \frac{1}{2G} \left( \partial_1G \right) = \frac{1}{2\lambda}\pdv{\lambda}{u}, \\
+  \Gamma_{22}^1 &= \frac{1}{2E} \left( -\partial_1G \right) = - \frac{1}{2\lambda}\pdv{\lambda}{u}, \\
+  \Gamma_{22}^2 &= \frac{1}{2G} \left( \partial_2G \right) = \frac{1}{2\lambda}\pdv{\lambda}{v},
+\end{aligned}
+\end{equation}
+and
+\begin{equation}
+\label{eq:6}
+\partial_u\Gamma_{12}^2 = \frac{1}{2\lambda}\pdv[2]{\lambda}{u} - \frac{1}{2\lambda^2}\left(\pdv{\lambda}{u}\right)^2, \qquad \partial_v\Gamma_{11}^2 = - \frac{1}{2\lambda}\pdv[2]{\lambda}{v} + \frac{1}{2\lambda^2}\left(\pdv{\lambda}{v}\right)^2.
+\end{equation}
+
+All together, then, we have that
+\begin{equation}
+\label{eq:7}
+\begin{aligned}
+  K &= -\frac{1}{\lambda}\left( \frac{1}{2\lambda}\left(\pdv[2]{\lambda}{u} + \lambda\pdv[2]{\lambda}{v}\right) - \frac{1}{2\lambda^2}\left(\left( \pdv{\lambda}{u} \right)^2 - \left( \pdv{\lambda}{v} \right)^2\right) \right. \\
+  &\qquad \left. - \frac{1}{2\lambda^2}\left( \pdv{\lambda}{v} \right)^2 + \frac{1}{2\lambda^2}\left( \pdv{\lambda}{u} \right)^2 + \frac{1}{2\lambda^2}\left( \pdv{\lambda}{v} \right)^2 - \frac{1}{2\lambda^2}\left( \pdv{\lambda}{u} \right)^2 \right) \\
+  &= - \frac{1}{2\lambda}\left( \frac{\Delta\lambda}{\lambda} - \frac{|\vec{\nabla}\lambda|^2}{\lambda^2} \right).
+\end{aligned}
+\end{equation}
+
+However,
+\begin{equation}
+\label{eq:8}
+\begin{aligned}
+  \Delta(\log\lambda) &= \pdv[2]{\log\lambda}{u} + \pdv[2]{\log\lambda}{v} = \pdv{u}(\frac{1}{\lambda}\pdv{\lambda}{u}) + \pdv{v}(\frac{1}{\lambda}\pdv{\lambda}{v}) \\
+           &= - \frac{1}{\lambda^2}\pdv{\lambda}{u}\pdv{\lambda}{u} + \frac{1}{\lambda}\pdv[2]{\lambda}{u} - \frac{1}{\lambda^2}\pdv{\lambda}{v}\pdv{\lambda}{u} + \frac{1}{\lambda}\pdv[2]{\lambda}{v} \\ &= \frac{\Delta\lambda}{\lambda} - \frac{|\vec{\nabla}\lambda|^2}{\lambda^2},
+\end{aligned}
+\end{equation}
+which shows that \cref{eq:7} is precisely \( - \frac{1}{2\lambda}\Delta(\log\lambda) \), as desired.
+
+Finally, if \( E = G = (u^2 + v^2 + c)^{-2} \), then
+\begin{equation}
+\label{eq:9}
+\begin{aligned}
+  \Delta(\log\lambda) &= -2 \Delta \log(u^2 + v^2 + c) = -2 \left( \partial_u \frac{2u}{u^2 + v^2 + c} + \partial_v \frac{2v}{u^2 + v^2 + c} \right) \\
+           &= -2 \left( \frac{4(u^2 + v^2 + c) - 4(u^2 + v^2)}{(u^2 + v^2 + c)^2} \right)
+             = \frac{-8c}{(u^2 + v^2 + c)^2},
+\end{aligned}
+\end{equation}
+so that
+\begin{equation}
+\label{eq:10}
+\begin{aligned}
+  K = - \frac{1}{2\lambda} \Delta(\log\lambda) = 4c.
+\end{aligned}
+\end{equation}
+\end{proof}
 
 \begin{problem}{4.3.3}
   Verify that the surfaces
@@ -29,16 +95,98 @@ Conclude that when \( E = G = (u^2 + v^2 + c)^{-2} \) and \( F = 0 \), then \( K
 have equal Gaussian curvature at the points \( \mathbf{x}(u,v) \) and \( \mathbf{\bar{x}}(u,v) \) but that the mapping \( \mathbf{\bar{x}} \circ \mathbf{x}^{-1} \) is not an isometry.
 This shows that the converse of the Gauss theorem is not true.
 \end{problem}
+\begin{proof}
+  To begin with, we calculate the coefficients of the first fundamental form.
+  \begin{equation}
+  \label{eq:11}
+  \begin{aligned}[t]
+    \mathbf{x}_u &= (\cos v, \sin v, 1/u), \\
+    \mathbf{x}_v &= (-u\sin v, u\cos v, 0), \\
+    E &= 1 + \frac{1}{u^2}, \\
+    F &= 0, \\
+    G &= u^2.
+  \end{aligned}
+  \qquad
+  \begin{aligned}[t]
+    \mathbf{\bar{x}}_u &= (\cos v, \sin v, 0), \\
+    \mathbf{\bar{x}}_v &= (-u\sin v, u\cos v, 1), \\
+    \bar{E} &= 1, \\
+    \bar{F} &= 0, \\
+    \bar{G} &= 1 + u^2.\\
+  \end{aligned}
+  \end{equation}
+
+  We then apply the result from Exercise 4.3.1 which gives, for orthogonal coordinates,
+  \begin{equation}
+  \label{eq:12}
+  K = - \frac{1}{2 \sqrt{EG}} \left[ \left( \frac{E_v}{\sqrt{EG}} \right)_v + \left( \frac{G_u}{\sqrt{EG}} \right)_{u} \right],
+\end{equation}
+and we immediately see that since
+\begin{equation}
+\label{eq:13}
+\begin{aligned}
+  EG &= u^2 + 1 = \bar{E}\bar{G} \\
+  E_v &= 0 = \bar{E}_v \\
+  G_u &= 2u = \bar{G}_u,
+\end{aligned}
+\end{equation}
+\cref{eq:12} gives that
+\begin{equation}
+\label{eq:14}
+K = \bar{K},
+\end{equation}
+as desired.
+
+However, \( \mathbf{\bar{x}} \circ \mathbf{x}^{-1} = (u\cos v, u\sin v, v) \), so it suffices to show that \( \mathrm{I} \neq \bar{\mathrm{I}} \), which we have already done in \cref{eq:13}.
+\end{proof}
 
 \begin{problem}{4.3.4}
   Show that no neighborhood of a point in a sphere may be isometrically mapped into a plane.
 \end{problem}
+\begin{proof}
+  At all points \( p \in \mathbb{R}^2, q \in S^2 \), the Gaussian curvatures are \( K_p = 0, K_q = 1 \).
+  Since curvature is preserved under (local) isometries, no such map can exist for any pair of points \( (p,q) \), and hence no local isometries are admitted from the sphere to the plane.
+\end{proof}
 
 \begin{problem}{4.3.8}
   Compute the Chrisoffel symbols for an open set of the plane, use the Gauss formula to compute \( K \) in both cases.
   \begin{enumerate}[label=(\alph*)]
     \item In Cartesian coordinates.
+          \begin{proof}
+            In Cartesian coordinates, the first fundamental form is \( ds^2 = \dd{x}^2 + \dd{y}^2 \) which is constant and diagonal, so all the Christoffel symbols vanish.
+            Hence, the Gauss formula gives \( K = 0 \) everywhere.
+          \end{proof}
     \item In polar coordinates.
+          \begin{proof}
+            The polar coordinates are
+            \begin{equation}
+            \label{eq:15}
+            \mathbf{x}(r,\theta) = (r\cos\theta, r\sin\theta),
+          \end{equation}
+          which gives the first fundamental form as
+          \begin{equation}
+          \label{eq:16}
+          E = 1, F = 0, G = r^2.
+        \end{equation}
+        We can then calculate the Christoffel symbols,
+        \begin{equation}
+        \label{eq:17}
+        \begin{aligned}
+          \Gamma_{11}^1 &= \Gamma_{11}^2 = \Gamma_{12}^1 = \Gamma_{21}^1 = \Gamma_{22}^2 = 0. \\
+          \Gamma_{22}^1 &= \frac{1}{2}(-2r) = -r. \\
+          \Gamma_{12}^2 &= \Gamma_{21}^2 = \frac{1}{2r^2}(2r) = \frac{1}{r}.
+        \end{aligned}
+      \end{equation}
+      Then, from the Gauss formula for an orthogonal coordinate system, we have
+      \begin{equation}
+      \label{eq:18}
+      \begin{aligned}
+        K &= - \frac{1}{2 \sqrt{EG}} \left[ \left( \frac{E_v}{\sqrt{EG}} \right)_v + \left( \frac{G_u}{\sqrt{EG}} \right)_{u} \right] \\
+        &= - \frac{1}{2r} \left[ \left( \frac{2r}{2r}_u \right) \right] = 0,
+      \end{aligned}
+      \end{equation}
+      which matches part (a), as it must.
+          \end{proof}
   \end{enumerate}
 \end{problem}
 
