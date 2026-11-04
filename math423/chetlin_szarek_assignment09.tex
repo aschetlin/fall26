@@ -1,0 +1,58 @@
+\documentclass[11pt]{article}
+\usepackage{../homework}
+
+\profname{Dr. Stanislaw Szarek}
+\classcode{MATH 423 Measure Theory}
+\assignnum{Assignment 09}
+\duedate{02 November 2026}
+
+\begin{document}
+All problems from Folland, \textit{Real Analysis} (2e).
+
+\begin{problem}{2.3.27}
+  Let \( f_n(x) = ae^{-nax} - be^{-nbx} \) where \( 0 < a < b \).
+  \begin{enumerate}[label=(\alph*)]
+    \item \( \sum\limits_1^{\infty} \int\limits_0^{\infty} |f_n(x)|\dd{x} = \infty \).
+          \begin{proof}
+            Since \( |f_n| \) is non-negative and continuous, it is measurable and in \( L^+ \), so that we may interchange the sum and the integral.
+            Then,
+            \begin{equation}
+            \label{eq:2}
+            \int\limits_0^{\infty} \sum\limits_{1}^{\infty} | ae^{-nax} - be^{-nbx} | \dd{x},
+          \end{equation}
+          \end{proof}
+    \item \( \sum\limits_1^{\infty}\int\limits_0^{\infty} f_n(x)\dd{x}  = 0 \).
+    \item \( \sum\limits_1^{\infty} f_n \in L^1([0,\infty], m) \), and \( \int\limits_0^{\infty} \sum\limits_1^{\infty} f_n(x) \dd{x} = \log(b/a) \).
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{2.3.31(a)}
+  Derive the formula by expanding part of the integrand into an infinite series and justifying th term-byterm integration. Exercise 29 may be useful.
+  \begin{enumerate}[label=(\alph*)]
+          \item For \( a>0 \), \( \int\limits_{-\infty}^{\infty} e^{-x^2}\cos ax\dd{x} = \sqrt{\pi} e^{-a^2/4} \).
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{2.4.39}
+  If \( f_n \rightarrow f \) almost uniformly, then \( f_n \rightarrow f \) a.e. and in measure.
+\end{problem}
+\begin{proof}
+  By definition, \( f_n \rightarrow f \) almost uniformly means that for every \(\epsilon > 0\) there is \( E \subset X \) with \(\mu(E) < \epsilon\) and \( f_n \rightarrow f \) uniformly on \( X \setminus E \).
+  In particular, for all \( n \in \mathbb{N} \) there is \( E_n \) with \(\mu(E_n) < 1/n\), whence we define
+  \begin{equation}
+  \label{eq:1}
+  E = \bigcap_n E_n.
+\end{equation}
+By continuity from above (\( \mu(E_1) < 1 \)),
+\begin{equation}
+\label{eq:3}
+\mu(E) = \lim \mu(E_n) = 0.
+\end{equation}
+\end{proof}
+
+\begin{problem}{2.4.42}
+  Let \(\mu\) be the counting measure on \( \mathbb{N} \).
+  Then \( f_n \rightarrow f \) in measure iff \( f_n \rightarrow f \) uniformly.
+\end{problem}
+
+\end{document}

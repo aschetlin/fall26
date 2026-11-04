@@ -13,7 +13,7 @@
 		[\nabla_\mu,\nabla_\nu]V^\alpha
 		= R^\alpha{}_{\lambda\mu\nu}V^\lambda - T^\lambda{}_{\mu\nu}\nabla_\lambda V^\alpha,
 	\end{equation}
-	where the Riemann curvature and torsion are the following tensors defined in terms of the connection:
+	where the Riemann curvature and torsion are the following tensors defined in terms of the connection
 	\begin{equation}
 		\label{eq:p1-torsion}
 		T^\lambda{}_{\mu\nu} = \Gamma^\lambda{}_{\mu\nu}-\Gamma^\lambda{}_{\nu\mu},
@@ -39,14 +39,24 @@
 	\end{equation}
 \end{problem}
 \begin{proof}
-	The Lie bracket is defined as
-	\begin{equation}
-		\label{eq:p1-lie-bracket}
+	The commutator is defined as
+	\begin{equation*}
 		\begin{aligned}
-			\comm{\nabla_{\mu}, \nabla_{\nu}}V^{\alpha} & = \nabla_{\mu}\nabla_{\nu}V^{\alpha} - \nabla_{\nu}\nabla_{\mu}V^{\alpha}                                                                                                                                                                                                                                   \\
-			                                            & = \partial_{\mu}(\nabla_{\nu}V^{\alpha}) + \Gamma^{\alpha}_{\mu\lambda}\nabla_{\nu}V^{\lambda} - \Gamma^{\lambda}_{\mu\nu}\nabla_{\lambda} V^{\alpha} - \partial_{\nu}(\nabla_{\mu}V^{\alpha}) + \Gamma^{\alpha}_{\nu\lambda}\nabla_{\mu}V^{\lambda} - \Gamma^{\lambda}_{\nu\mu}\nabla_{\lambda} V^{\alpha}
+      \comm{\nabla_{\mu}, \nabla_{\nu}}V^{\alpha} &= \nabla_{\mu}\nabla_{\nu}V^{\alpha} - \nabla_{\nu}\nabla_{\mu}V^{\alpha} \\
+                               &= \partial_{\mu}\nabla_{\nu}V^{\alpha} + \Gamma_{\mu\lambda}^{\alpha}\nabla_{\nu}V^{\lambda} - \Gamma_{\mu\nu}^{\lambda}\nabla_{\lambda}V^{\alpha}
+                                 - \partial_{\nu}\nabla_{\mu}V^{\alpha} - \Gamma_{\nu\lambda}^{\alpha}\nabla_{\mu}V^{\lambda} + \Gamma_{\nu\mu}^{\lambda}\nabla_{\lambda}V^{\alpha} \\[1ex]
+                               &= \partial_{\mu}\left( \partial_{\nu}V^{\alpha} + \Gamma_{\nu\lambda}^{\alpha}V^{\lambda} \right) + \Gamma_{\mu\lambda}^{\alpha}\left( \partial_{\nu}V^{\lambda} + \Gamma_{\nu\sigma}^{\lambda}V^{\sigma} \right) - \Gamma_{\mu\nu}^{\lambda}\left( \partial_{\lambda}V^{\alpha} + \Gamma_{\lambda\sigma}^{\alpha}V^{\sigma} \right) \\
+                               &\quad - \partial_{\nu}\left( \partial_{\mu}V^{\alpha} + \Gamma_{\mu\lambda}^{\alpha}V^{\lambda} \right) - \Gamma_{\nu\lambda}^{\alpha}\left( \partial_{\mu}V^{\lambda} + \Gamma_{\mu\sigma}^{\lambda}V^{\sigma} \right) + \Gamma_{\nu\mu}^{\lambda}\left( \partial_{\lambda}V^{\alpha} + \Gamma_{\lambda\sigma}^{\alpha}V^{\sigma} \right) \\[1ex]
+                               &= \Gamma_{\nu\lambda}^{\alpha}\partial_{\mu}V^{\lambda} + V^{\lambda}\partial_{\mu}\Gamma_{\nu\lambda}^{\alpha} + \Gamma_{\mu\lambda}^{\alpha}\partial_{\nu}V^{\lambda} + \Gamma_{\mu\lambda}^{\alpha}\Gamma_{\nu\sigma}^{\lambda}V^{\sigma} - \Gamma_{\mu\nu}^{\lambda}\partial_{\lambda}V^{\alpha} - \Gamma_{\mu\nu}^{\lambda}\Gamma_{\lambda\sigma}^{\alpha}V^{\sigma} \\
+                               &\quad -\Gamma_{\mu\lambda}^{\alpha}\partial_{\nu}V^{\lambda} - V^{\lambda}\partial_{\nu}\Gamma_{\mu\lambda}^{\alpha} - \Gamma_{\nu\lambda}^{\alpha}\partial_{\mu}V^{\lambda} - \Gamma_{\nu\lambda}^{\alpha}\Gamma_{\mu\sigma}^{\lambda}V^{\sigma} + \Gamma_{\nu\mu}^{\lambda}\partial_{\lambda}V^{\alpha} + \Gamma_{\nu\mu}^{\lambda}\Gamma_{\lambda\sigma}^{\alpha}V^{\sigma} \\[1ex]
+                               &= V^{\lambda}\left( \partial_{\mu}\Gamma_{\nu\lambda}^{\alpha} - \partial_{\nu}\Gamma_{\mu\lambda}^{\alpha} \right) + V^{\sigma} \left( \Gamma_{\mu\lambda}^{\alpha}\Gamma_{\nu\sigma}^{\lambda} - \Gamma_{\nu\lambda}^{\alpha}\Gamma_{\mu\sigma}^{\lambda} - \Gamma_{\mu\nu}^{\lambda}\Gamma_{\lambda\sigma}^{\alpha} + \Gamma_{\nu\mu}^{\lambda}\Gamma_{\lambda\sigma}^{\alpha} \right) \\
+                               &\quad + \Gamma_{\nu\lambda}^{\alpha}\left( \partial_{\mu}V^{\lambda} - \partial_{\mu}V^{\lambda} \right) + \Gamma_{\mu\lambda}^{\alpha}\left( \partial_{\nu}V^{\lambda} - \partial_{\nu}V^{\lambda} \right) + \partial_{\lambda}V^{\alpha}\left( \Gamma_{\nu\mu}^{\lambda} - \Gamma_{\mu\nu}^{\lambda} \right) \\[1ex]
+                               &= V^{\lambda}\left( \partial_{\mu}\Gamma_{\nu\lambda}^{\alpha} - \partial_{\nu}\Gamma_{\mu\lambda}^{\alpha} + \Gamma_{\mu\sigma}^{\alpha}\Gamma_{\nu\lambda}^{\sigma} - \Gamma_{\nu\sigma}^{\alpha}\Gamma_{\mu\lambda}^{\sigma} \right) \\
+                               &\quad - \Gamma_{\sigma\lambda}^{\alpha}V^{\lambda}\left( \Gamma_{\mu\nu}^{\sigma} - \Gamma_{\nu\mu}^{\sigma} \right) + \partial_{\lambda}V^{\alpha}\left( \Gamma_{\nu\mu}^{\lambda} - \Gamma_{\mu\nu}^{\lambda} \right)\\[1ex]
+                               &= \tensor{R}{^{\alpha}_{\lambda\mu\nu}} V^{\lambda} - (\Gamma_{\mu\nu}^{\sigma} - \Gamma_{\nu\mu}^{\sigma})(\Gamma_{\sigma\lambda}^{\alpha} V^{\lambda} + \partial_{\sigma} V^{\alpha}) \\
+      &= \tensor{R}{^{\alpha}_{\lambda\mu\nu}} V^{\lambda} - 2\Gamma_{[\mu\nu]}^{\sigma}(\nabla_{\sigma}V^{\alpha}) = \tensor{R}{^{\alpha}_{\lambda\mu\nu} }V^{\lambda} - \tensor{T}{^{\sigma}_{\mu\nu} }\nabla_{\sigma}V^{\alpha}.
 		\end{aligned}
-	\end{equation}
+	\end{equation*}
 \end{proof}
 
 \begin{problem}{2}
@@ -77,20 +87,33 @@
 	\begin{equation}
 		\label{eq:p2-diff-bianchi}
 		\begin{aligned}
-			\nabla^{\nu}G_{\mu\nu} & = g^{\lambda\nu}\nabla_{\lambda}G_{\mu\nu} = g^{\lambda\nu}\nabla_{\lambda}\left( R_{\mu\nu} - \frac{1}{2}Rg_{\mu\nu} \right)                                                                                                   \\
-			                       & = g^{\lambda\nu} \left( \partial_{\lambda} R_{\mu\nu} - \Gamma^{\alpha}_{\lambda\nu}R_{\mu\alpha} - \Gamma^{\alpha}_{\lambda\mu}R_{\alpha\nu} - \frac{1}{2}(g_{\mu\nu}\nabla_{\lambda}R + R \nabla_{\lambda}g_{\mu\nu}) \right) \\
-			                       & = g^{\lambda\nu} \left( \partial_{\lambda}R_{\mu\nu} - \Gamma^{\alpha}_{\lambda\nu}R_{\mu\alpha} - \Gamma^{\alpha}_{\lambda\mu} R_{\alpha\nu} - \frac{1}{2}g_{\mu\nu}\partial_{\lambda}R \right),
+			\nabla^{\nu}G_{\mu\nu} &= g^{\lambda\nu}\nabla_{\lambda}G_{\mu\nu} = g^{\lambda\nu}\nabla_{\lambda}\left( R_{\mu\nu} - \frac{1}{2}Rg_{\mu\nu} \right) = g^{\lambda\nu}\left( \nabla_{\lambda}R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}\nabla_{\lambda}R \right) \\
+      &= \nabla^{\nu}R_{\mu\nu} - \frac{1}{2}\delta^{\lambda}_{\mu}\nabla_{\lambda}R = \nabla^{\nu}R_{\mu\nu} - \frac{1}{2}\nabla_{\mu}R.
 		\end{aligned}
 	\end{equation}
 	where we have used metric compatibility, \(\nabla_{\alpha}g_{\beta\nu} = 0\).
 
-	Then, explicitly writing the contractions, \cref{eq:p2-diff-bianchi} becomes
-	\begin{equation}
-		\label{eq:p2-diff-bianchi-contract}
-		\begin{aligned}
-			\nabla^{\nu}G_{\mu\nu} & = g^{\lambda\nu}(\partial_{\lambda}\tensor{R}{^{\sigma}_{\mu\sigma\nu}} - \Gamma^{\alpha}_{\lambda\nu}\tensor{R}{^{\sigma}_{\mu\sigma\alpha}} - \Gamma^{\alpha}_{\lambda\mu}\tensor{R}{^{\sigma}_{\alpha\sigma\nu}} - \frac{1}{2}g_{\mu\nu}\partial_{\lambda}g^{\alpha\beta}\tensor{R}{^{\sigma}_{\alpha\sigma\beta} })
-		\end{aligned}
-	\end{equation}
+  We now contract \cref{eq:p2-bianchi-zero} to get
+  \begin{equation}
+  \label{eq:8}
+  \begin{aligned}
+    g^{\rho\mu}\left( \nabla_{\rho}R_{\sigma\lambda\mu\nu} + \nabla_{\lambda}R_{\rho\sigma\mu\nu} + \nabla_{\sigma}R_{\lambda\rho\mu\nu} \right) &= \nabla^{\mu}R_{\sigma\lambda\mu\nu} + \nabla_{\lambda}R^{\mu}{}_{\sigma\mu\nu} + \nabla_{\sigma}R_{\lambda}{}^{\mu}{}_{\mu\nu} \\
+    &= \nabla^{\mu}R_{\sigma\lambda\mu\nu} + \nabla_{\lambda}R_{\sigma\nu} - \nabla_{\sigma}R_{\lambda\nu} = 0,
+  \end{aligned}
+\end{equation}
+and contract again, so that
+\begin{equation}
+\label{eq:15}
+\begin{aligned}
+  g^{\lambda\nu}\left( \nabla^{\mu}R_{\sigma\lambda\mu\nu} + \nabla_{\lambda}R_{\sigma\nu} - \nabla_{\sigma}R_{\lambda\nu} \right) &= \nabla^{\mu}R_{\sigma\mu} + \nabla^{\nu}R_{\sigma\nu} - \nabla_{\sigma}R \\
+  &= 2\nabla^{\mu}R_{\sigma\mu} - \nabla_{\sigma}R = 0.
+\end{aligned}
+\end{equation}
+Finally, the expression obtained in \cref{eq:p2-diff-bianchi} is precisely \( \frac{1}{2} \) of the equation obtained in \cref{eq:15}, which proves that
+\begin{equation}
+\label{eq:16}
+\nabla^{\nu}G_{\mu\nu} = 0.
+\end{equation}
 \end{proof}
 
 \begin{problem}{3}
@@ -114,12 +137,36 @@
 			      \left.\frac{\partial y^{\lambda'}}{\partial x^\alpha}\right|_{x(y)},
 		      \end{equation}
 		      convert the cartesian connection into polar coordinates.
+          \begin{answer}
+            Since the connection vanishes in cartesian coordinates, we need only consider the nonlinear component of the transformation law.
+            Writing \(\mathbf{x}=(r\cos\theta,r\sin\theta)\), the inverse Jacobian rows are
+            \begin{equation}
+              \left(\partial_{x^1}r,\partial_{x^2}r\right)=(\cos\theta,\sin\theta),\qquad
+              \left(\partial_{x^1}\theta,\partial_{x^2}\theta\right)=\frac1r(-\sin\theta,\cos\theta).
+              \label{eq:p3-inverse-jacobian}
+            \end{equation}
+            The second derivatives of the coordinate transformation are
+            \begin{equation}
+              \partial_r^2\mathbf{x}=0,\qquad
+              \partial_r\partial_\theta\mathbf{x}=(-\sin\theta,\cos\theta),\qquad
+              \partial_\theta^2\mathbf{x}=-r(\cos\theta,\sin\theta).
+              \label{eq:p3-second-derivatives}
+            \end{equation}
+            Taking their dot products with the rows in \cref{eq:p3-inverse-jacobian} gives
+            \begin{equation}
+              \Gamma^r{}_{\theta\theta}=-r,\qquad
+              \Gamma^\theta{}_{r\theta}=\Gamma^\theta{}_{\theta r}=\frac1r,
+              \label{eq:p3-transformed-connection}
+            \end{equation}
+            with all other components zero.
+
+          \end{answer}
 		\item Check your answer to part a. by computing the connection directly from the metric in polar coordinates,
 		      \begin{equation}
 			      \label{eq:p3-polar-metric}
 			      ds^2=dr^2+r^2d\theta^2,
 		      \end{equation}
-		      using the formula for the connection in terms of the metric:
+		      using the formula for the connection in terms of the metric
 		      \begin{equation}
 			      \label{eq:p3-levi-civita-connection}
 			      \Gamma^\rho{}_{\mu\nu}
@@ -130,7 +177,7 @@
 			      \begin{equation}
 				      \label{eq:1}
 				      \begin{aligned}
-					      \Gamma_{rr}^r &= \frac{1}{2}g^{rr} \left( \partial_rg_{rr} + \partial_rg_{rr} - \partial_rg_{rr} \right) + \frac{1}{2}g^{r\theta} \left( \partial_rg_{r\theta} + \partial_rg_{r\theta} + \partial_{\theta}g_{rr} \right) = 0 \\
+					      \Gamma_{rr}^r &= \frac{1}{2}g^{rr} \left( \partial_rg_{rr} + \partial_rg_{rr} - \partial_rg_{rr} \right) + \frac{1}{2}g^{r\theta} \left( \partial_rg_{r\theta} + \partial_rg_{r\theta} - \partial_{\theta}g_{rr} \right) = 0 \\
                 \Gamma_{r\theta}^r &= \Gamma_{\theta r}^r = 0 \\
                 \Gamma_{rr}^{\theta} &= 0 \\
                 \Gamma_{r\theta}^{\theta} &= \Gamma_{\theta r}^{\theta} = \frac{1}{2}g^{\theta\theta} \left( \partial_rg_{\theta\theta} + \partial_{\theta}g_{r\theta} - \partial_{\theta}g_{r\theta} \right) = \frac{1}{r} \\
@@ -140,6 +187,22 @@
 			      \end{equation}
 		      \end{answer}
 		\item Compute the Riemann curvature in polar coordinates directly from the connection using the expression \cref{eq:p1-riemann} and verify that it vanishes (as it must since this is just flat space).
+          \begin{answer}
+
+            In two dimensions, we saw in class that the Riemann tensor has only one independent component. We calculate
+            \begin{equation}
+              \label{eq:13}
+              \begin{aligned}
+                R^r{}_{\theta r\theta}
+                &=\partial_r\Gamma^r{}_{\theta\theta}
+                -\partial_\theta\Gamma^r{}_{r\theta}
+                +\Gamma^r{}_{r\lambda}\Gamma^\lambda{}_{\theta\theta}
+                -\Gamma^r{}_{\theta\lambda}\Gamma^\lambda{}_{r\theta}\\
+                &=-1-0+0-(-r)\frac1r=0.
+              \end{aligned}
+            \end{equation}
+            Since \(R_{r\theta r\theta}=g_{rr}R^r{}_{\theta r\theta}=0\), all components vanish.
+          \end{answer}
 	\end{enumerate}
 \end{problem}
 
@@ -155,15 +218,89 @@
 	\begin{enumerate}[label=(\alph*)]
 		\item Parallel transport on flat space conforms to our intuition that a vector remains constant as it is transported along the curve, so we expect \(V^\mu(\lambda)=(0,1)\) for all \(\lambda\) along the curve.
 		      Verify that this indeed satisfies the parallel transport equation \cref{eq:p4-parallel-transport}.
+          \begin{proof}
+            The Christoffel symbols vanish in cartesian coordinates, so that \cref{eq:p4-parallel-transport} becomes
+            \begin{equation}
+            \label{eq:17}
+            \dv{\lambda}V^{\mu} = 0.
+          \end{equation}
+          Since \( \dv{\lambda}V^{\mu} = (0,0) \), it is immediate that this satisfies the equation.
+          \end{proof}
 		\item Consider now the same setup in polar coordinates.
 		      The equation for the curve is now
 		      \begin{equation}
 			      \label{eq:p4-polar-curve}
 			      r(\lambda)=1,\qquad\theta(\lambda)=\lambda,
 		      \end{equation}
-		      and the initial vector is pointed in the \(\theta\) direction: \(\left.V^\mu\right|_{\lambda=0}=(0,1)\).
-		      Solve the parallel transport equation \cref{eq:p4-parallel-transport} directly in polar coordinates with these initial conditions, using the connection coefficients you found in problem 1.
+		      and the initial vector is pointed in the \(\theta\) direction, \(\left.V^\mu\right|_{\lambda=0}=(0,1)\).
+		      Solve the parallel transport equation \cref{eq:p4-parallel-transport} directly in polar coordinates with these initial conditions, using the connection coefficients you found in problem 3.
 		      Show that the resulting vector points in the \(r\) direction at the end of the curve, \(\left.V^\mu\right|_{\lambda=\pi/2}=(1,0)\), and is in fact the same vector you get by parallel transporting in cartesian coordinates.
+          \begin{proof}
+            We have two equations to consider,
+            \begin{equation}
+            \label{eq:18}
+            \begin{aligned}
+              0 &= \dv{\lambda}V^r + \Gamma_{\nu\rho}^r \dv{x^{\nu}}{\lambda}V^{\rho} \\
+                &= \dv{\lambda}V^r + \Gamma_{rr}^r\dv{x^r}{\lambda}V^r + \Gamma_{r\theta}^r\dv{x^r}{\lambda}V^{\theta} + \Gamma_{\theta r}^r\dv{x^{\theta}}{\lambda}V^r + \Gamma_{\theta\theta}^r\dv{x^{\theta}}{\lambda}V^{\theta} \\
+                &= \dv{\lambda}V^r - r\dv{x^{\theta}}{\lambda}V^{\theta} \\
+              &= \dv{\lambda}V^r - V^{\theta} = 0,
+            \end{aligned}
+          \end{equation}
+          and
+          \begin{equation}
+          \label{eq:19}
+          \begin{aligned}
+            0 &= \dv{\lambda}V^{\theta} + \Gamma_{rr}^{\theta}\dv{x^r}{\lambda}V^r + \Gamma_{r\theta}^{\theta}\dv{x^r}{\lambda}V^{\theta} + \Gamma_{\theta r}^{\theta}\dv{x^{\theta}}{\lambda}V^r + \Gamma_{\theta\theta}^{\theta}\dv{x^{\theta}}{\lambda}V^{\theta} \\
+            &= \dv{\lambda}V^{\theta} + V^r = 0.
+          \end{aligned}
+        \end{equation}
+
+        This is a coupled system of 1st order ODEs, which has eigenvalues \( \pm i \) and corresponding eigenvectors \( v_1 = \begin{pmatrix}
+1 \\
+i
+ \end{pmatrix}, v_2 = \begin{pmatrix}
+1 \\
+   -i
+ \end{pmatrix} \).
+ The general solution is \( \begin{pmatrix}
+V^r \\
+V^{\theta}
+ \end{pmatrix} = c_1e^{i\lambda} \begin{pmatrix}
+1 \\
+i
+ \end{pmatrix} + c_2e^{-i\lambda} \begin{pmatrix}
+1 \\
+-i
+ \end{pmatrix}\).
+ The initial condition means that \( c_1 + c_2 = 0 \) and \( i(c_1-c_2) = 1 \), giving \( c_1 = -i/2, c_2 = i/2 \).
+ Therefore,
+ \begin{equation}
+ \label{eq:21}
+ \begin{aligned}
+   V^r &= \sin \lambda \\
+   V^{\theta} &= \cos\lambda.
+ \end{aligned}
+\end{equation}
+
+We calculate \( V^{\mu}(\lambda = \pi/2) = (1,0) \), as desired.
+Transforming back to cartesian coordinates along the entire curve,
+\begin{equation}
+\label{eq:22}
+\begin{aligned}
+ V^{\prime 1}&=\frac{\partial x^1}{\partial r}V^r+\frac{\partial x^1}{\partial\theta}V^\theta
+ =\cos\theta\,V^r-r\sin\theta\,V^\theta,\\
+ V^{\prime 2}&=\frac{\partial x^2}{\partial r}V^r+\frac{\partial x^2}{\partial\theta}V^\theta
+ =\sin\theta\,V^r+r\cos\theta\,V^\theta.
+\end{aligned}
+\end{equation}
+Substituting \(r=1\), \(\theta=\lambda\), and \cref{eq:21} gives
+\begin{equation}
+\label{eq:23}
+V^{\prime1}=\cos\lambda\sin\lambda-\sin\lambda\cos\lambda=0,\qquad
+V^{\prime2}=\sin^2\lambda+\cos^2\lambda=1.
+\end{equation}
+Thus this is the same constant Cartesian vector as in part (a).
+\end{proof}
 	\end{enumerate}
 \end{problem}
 
@@ -187,9 +324,15 @@
   \begin{aligned}
     \laplacian{\varphi} &= g^{\mu\nu}\nabla_{\mu}\partial_{\nu}\varphi = g^{\mu\nu} \left( \partial_{\mu}\partial_{\nu}\varphi - \Gamma^{\alpha}_{\mu\nu}\partial_{\alpha}\varphi \right) \\
                   &= g^{rr} \left[ \pdv[2]{\varphi}{r} - \left( \Gamma_{rr}^r\partial_r\varphi + \Gamma_{rr}^{\theta}\partial_{\theta}\varphi \right) \right] + g^{\theta\theta} \left[ \pdv[2]{\varphi}{\theta} - \left( \Gamma_{\theta\theta}^r\partial_r\varphi + \Gamma_{\theta\theta}^{\theta}\partial_{\theta}\varphi \right) \right] \\
-                  &= \left[ \pdv[2]{\varphi}{r} \right] + \frac{1}{r^2} \left[ \pdv[2]{\varphi}{\theta} + r\partial_r\varphi \right]
+                  &= \left[ \pdv[2]{\varphi}{r} \right] + \frac{1}{r^2} \left[ \pdv[2]{\varphi}{\theta} + r\pdv{\varphi}{r} \right].
   \end{aligned}
-  \end{equation}
+\end{equation}
+
+Now, noting that by the chain rule, \( \pdv*{r}(r\pdv*{\varphi}{r}) = r\pdv*[2]{\varphi}{r} + \pdv*{\varphi}{r}\), we get
+\begin{equation}
+\label{eq:14}
+\nabla^2\varphi = \frac{1}{r}\pdv{r}\left( r\pdv{\varphi}{r} \right) + \frac{1}{r^2}\pdv[2]{\varphi}{\theta}.
+\end{equation}
 \end{answer}
 
 \begin{problem}{6. Derivation of the Schwarzschild solution}
@@ -214,11 +357,36 @@
 		G_{\mu\nu}=0.
 	\end{equation}
 	\begin{enumerate}[label=(\alph*)]
-		\item Show that the vacuum Einstein equations \cref{eq:p6-vacuum-einstein} are equivalent to the vanishing of the Ricci tensor:
+		\item Show that the vacuum Einstein equations \cref{eq:p6-vacuum-einstein} are equivalent to the vanishing of the Ricci tensor
 		      \begin{equation}
 			      \label{eq:p6-vacuum-ricci}
 			      R_{\mu\nu}=0.
 		      \end{equation}
+          \begin{proof}
+            Since the Einstein tensor is \( G_{\mu\nu} = R_{\mu\nu} - \frac{1}{2}Rg_{\mu\nu} \), the vacuum equations \cref{eq:p6-vacuum-einstein} are
+            \begin{equation}
+            \label{eq:9}
+              0 = R_{\mu\nu} - \frac{1}{2}Rg_{\mu\nu} \iff R_{\mu\nu} = \frac{1}{2}Rg_{\mu\nu}.
+          \end{equation}
+          We can then contract both sides of the equation,
+          \begin{equation}
+          \label{eq:10}
+          \begin{aligned}
+            g^{\mu\nu}R_{\mu\nu} = R = \frac{1}{2}g^{\mu\nu}Rg_{\mu\nu} = 2R,
+          \end{aligned}
+        \end{equation}
+        \begin{equation}
+        \label{eq:11}
+       \Rightarrow R = 2R,
+      \end{equation}
+      showing that the Ricci scalar satisfies \( R = 0 \).
+      Substituting this back into \cref{eq:9} gives
+      \begin{equation}
+      \label{eq:12}
+      R_{\mu\nu} = 0.
+      \end{equation}
+      Conversely, if \(R_{\mu\nu}=0\), then \(R=0\) and hence \(G_{\mu\nu}=0\).
+          \end{proof}
 		\item Compute the non-vanishing components of the Ricci tensor.
 		      You should find
 		      \begin{equation}
@@ -230,6 +398,84 @@
 				      R_{\phi\phi}     & =\sin^2\theta\,R_{\theta\theta}.
 			      \end{aligned}
 		      \end{equation}
+          \begin{answer}
+            We first calculate the Christoffel symbols,
+            \begin{equation}
+            \label{eq:4}
+            \Gamma_{\mu\nu}^{\lambda} = \frac{1}{2}g^{\lambda\sigma} \left( \partial_{\mu}g_{\nu\sigma} + \partial_{\nu}g_{\mu\sigma} - \partial_{\sigma}g_{\mu\nu} \right).
+            \end{equation}
+            Since the metric is diagonal, any \(\Gamma_{\mu\nu}^{\lambda}\) with all three indices distinct vanish; moreover, if none of the indices are either \( r \) or \(\theta\), the symbols vanish.
+            There are nine surviving components (up to symmetry in the lower indices), which are \( \Gamma_{rr}^r, \Gamma_{tt}^r, \Gamma_{\theta\theta}^r, \Gamma_{\phi\phi}^r, \Gamma_{r\theta}^{\theta}, \Gamma_{rt}^{t}, \Gamma_{r\phi}^{\phi}, \Gamma_{\theta\phi}^{\phi}, \Gamma_{\phi\phi}^{\theta} \).
+            They are as follows
+            \begin{equation}
+            \label{eq:p6-christoffels}
+            \begin{aligned}
+              \Gamma_{tr}^t &= \frac{A^{\prime}}{2A}, \\
+              \Gamma_{tt}^r &= \frac{A^{\prime}}{2B}, \quad \Gamma_{rr}^r = \frac{B^{\prime}}{2B}, \quad \Gamma_{\theta\theta}^r = - \frac{r}{B}, \quad \Gamma_{\phi\phi}^r = -\frac{r\sin^2\theta}{B}, \\
+              \Gamma_{r\theta}^{\theta} &= \frac{1}{r}, \quad \Gamma_{\phi\phi}^{\theta} = -\sin\theta\cos\theta, \\
+              \Gamma_{r\phi}^{\phi} &= \frac{1}{r}, \quad \Gamma_{\theta\phi}^{\phi} = \cot\theta.
+            \end{aligned}
+          \end{equation}
+
+          Then, the Riemann tensor is
+          \begin{equation}
+          \label{eq:5}
+          \tensor{R}{^{\mu}_{\alpha\nu\beta} } = \partial_{\nu}\Gamma_{\beta\alpha}^{\mu} - \partial_{\beta}\Gamma_{\nu\alpha}^{\mu} + \Gamma_{\nu\lambda}^{\mu}\Gamma_{\beta\alpha}^{\lambda} - \Gamma_{\beta\lambda}^{\mu}\Gamma_{\nu\alpha}^{\lambda},
+          \end{equation}
+          and the Ricci tensor is the contraction over the 1st and 3rd indices,
+          \begin{equation}
+          \label{eq:p6-ricci}
+          R_{\alpha\beta} = \partial_{\rho}\Gamma_{\beta\alpha}^{\rho} - \partial_{\beta}\Gamma_{\rho\alpha}^{\rho} + \Gamma_{\rho\lambda}^{\rho}\Gamma_{\beta\alpha}^{\lambda} - \Gamma_{\beta\lambda}^{\rho}\Gamma_{\rho\alpha}^{\lambda}.
+        \end{equation}
+        To organize the sums, write
+        \begin{equation}
+          \label{eq:p6-traces}
+          S\coloneq \Gamma^\rho{}_{\rho r}=\frac{A'}{2A}+\frac{B'}{2B}+\frac2r,
+          \qquad \Gamma^\rho{}_{\rho\theta}=\cot\theta.
+        \end{equation}
+        Then
+        \begin{equation}
+          \label{eq:7}
+          \begin{aligned}
+            R_{tt}
+            &=\left(\frac{A'}{2B}\right)'+S\frac{A'}{2B}
+              -2\frac{A'}{2A}\frac{A'}{2B}\\
+            &=\frac{A''}{2B}-\frac{A'B'}{4B^2}
+              -\frac{A'^2}{4AB}+\frac{A'}{rB}.
+          \end{aligned}
+        \end{equation}
+        Similarly,
+        \begin{equation}
+          \label{eq:3}
+          \begin{aligned}
+            R_{rr}
+            &=\left(\frac{B'}{2B}\right)'-S'
+              +S\frac{B'}{2B}
+              -\left[\left(\frac{A'}{2A}\right)^2
+              +\left(\frac{B'}{2B}\right)^2+\frac2{r^2}\right]\\
+            &=-\frac{A''}{2A}+\frac{A'B'}{4AB}
+              +\frac{A'^2}{4A^2}+\frac{B'}{rB}.
+          \end{aligned}
+        \end{equation}
+        The angular components are
+        \begin{equation}
+          \label{eq:6}
+          \begin{aligned}
+            R_{\theta\theta}
+            &=\left(-\frac rB\right)'+\csc^2\theta
+              -\frac rB S+\frac2B-\cot^2\theta\\
+            &=-\frac{rA'}{2AB}+\frac{rB'}{2B^2}-\frac1B+1,\\
+            R_{\phi\phi}
+            &=\sin^2\theta\left[\left(-\frac rB\right)'
+              -\frac rB S+\frac2B\right]
+              +(\sin^2\theta-\cos^2\theta)-\cos^2\theta+2\cos^2\theta\\
+            &=\sin^2\theta\,R_{\theta\theta}.
+          \end{aligned}
+        \end{equation}
+        Where we have used \(\csc^2\theta-\cot^2\theta=1\).
+        The off-diagonal components vanish by symmetry; time reflection \(t\mapsto-t\) forces \(R_{ti}=0\) for spatial indices \(i\).
+        Spherical symmetry forces the mixed radial-angular components to vanish and the angular block to be proportional to the sphere metric, so \(R_{r\theta}=R_{r\phi}=R_{\theta\phi}=0\).
+          \end{answer}
 		\item Form the combination \(\frac BA R_{tt}+R_{rr}=0\) and show that it reduces to the equation
 		      \begin{equation}
 			      \label{eq:p6-log-derivative-relation}
@@ -241,6 +487,17 @@
 			      \label{eq:p6-reciprocal-relation}
 			      B=\frac1A.
 		      \end{equation}
+
+          \begin{proof}
+            The indicated combination gives
+            \begin{equation}
+              \label{eq:p6-combination}
+              0=\frac BA R_{tt}+R_{rr}
+              =\frac1r\left(\frac{A'}A+\frac{B'}B\right).
+            \end{equation}
+            We note that since \( (AB)^{\prime} = AB^{\prime} + A^{\prime}B \), \cref{eq:p6-combination} can be written as \( (AB)^{\prime}/AB \).
+            Hence \((AB)'=0\), so \(AB=c\) and \(B=c/A\). Taking \(r\to\infty\) gives \(c=1\), and therefore \(B=1/A\).
+          \end{proof}
 		\item Plug \cref{eq:p6-reciprocal-relation} into \(R_{\theta\theta}\) and show that this gives the equation
 		      \begin{equation}
 			      \label{eq:p6-radial-equation}
@@ -252,7 +509,27 @@
 			      A(r)=1-\frac{R_S}r,
 		      \end{equation}
 		      with \(R_S\) an integration constant.
+
+          \begin{proof}
+            Substituting \(B=1/A\) and \(B'=-A'/A^2\) yields
+            \begin{equation}
+              \label{eq:p6-angular-reduced}
+              0=R_{\theta\theta}=-\frac{rA'}2-\frac{rA'}2-A+1
+              =-rA'-A+1.
+            \end{equation}
+            Thus \((rA)'=1\), and integration gives \(rA=r+C\). Writing \(C=-R_S\), we obtain \(A=1-R_S/r\).
+          \end{proof}
 		\item Show that \cref{eq:p6-radial-solution} and \cref{eq:p6-reciprocal-relation} together solve \(R_{tt}=0\) and \(R_{rr}=0\) and thus give a solution to the full Einstein equations.
+
+          \begin{proof}
+            With \(B=1/A\), the remaining components simplify to
+            \begin{equation}
+              \label{eq:p6-remaining-ricci}
+              R_{tt}=\frac A2\left(A''+\frac{2A'}r\right),\qquad
+              R_{rr}=-\frac1{2A}\left(A''+\frac{2A'}r\right).
+            \end{equation}
+            For \(A=1-R_S/r\), we have \(A'=R_S/r^2\) and \(A''=-2R_S/r^3\), so the parentheses vanish. Together with \(R_{\theta\theta}=0\), \(R_{\phi\phi}=\sin^2\theta R_{\theta\theta}=0\), and the vanishing off-diagonal components, this proves \(R_{\mu\nu}=0\), hence \(G_{\mu\nu}=0\).
+          \end{proof}
 		\item We now have the metric
 		      \begin{equation}
 			      \label{eq:p6-schwarzschild-parameter-metric}
@@ -267,6 +544,22 @@
 			      R_S=2GM.
 		      \end{equation}
 		      This is the Schwarzschild radius.
+
+          \begin{answer}
+            In spherical coordinates the flat background metric is
+            \(\eta_{\mu\nu}=\operatorname{diag}(-1,1,r^2,r^2\sin^2\theta)\).
+            For \(|R_S|/r\ll1\),
+            \begin{equation}
+              \label{eq:p6-weak-field}
+              g_{tt}=-1+\frac{R_S}{r},\qquad
+              g_{rr}=1+\frac{R_S}{r}+O\!\left(\frac{R_S^2}{r^2}\right).
+            \end{equation}
+            Consequently \(h_{00}=g_{tt}-\eta_{tt}=R_S/r\). Comparing with the Newtonian relation gives
+            \begin{equation}
+              \label{eq:p6-mass-identification}
+              \frac{R_S}{r}=-2\Phi=\frac{2GM}{r},\qquad R_S=2GM.
+            \end{equation}
+          \end{answer}
 	\end{enumerate}
 	The final metric for the Schwarzschild solution thus reads
 	\begin{equation}

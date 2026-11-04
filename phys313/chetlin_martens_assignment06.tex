@@ -1,5 +1,6 @@
 \documentclass[11pt]{article}
 \usepackage{../homework}
+\usepackage{tikz}
 \profname{Dr. Michael Martens} % Instructor not specified in the source.
 \classcode{Physics 313}
 \assignnum{Homework 6}
@@ -29,14 +30,14 @@ The volume \(V\) of each container is the same, and there are a total of \(N\) c
           \begin{equation}
             \label{eq:1}
             \begin{aligned}
-          \tau\log(N_1/Vn_q) &= \tau\log(N_2/Vn_q) + q\varphi,
+          \tau\log(N_1/Vn_Q) &= \tau\log(N_2/Vn_Q) + q\varphi,
             \end{aligned}
           \end{equation}
           and since \( N_2 = N - N_1 \),
           \begin{equation}
           \label{eq:2}
           \begin{aligned}
-            &\tau(\log(N_1/Vn_q) - \log((N-N_1)/Vn_q)) = q\varphi \\
+            &\tau(\log(N_1/Vn_Q) - \log((N-N_1)/Vn_Q)) = q\varphi \\
             \Rightarrow & \log(N_1/(N-N_1)) = \frac{q\varphi}{\tau} \\
             \Rightarrow & N_1 = (N-N_{1})\exp(\frac{q\varphi}{\tau}) \\
             \Rightarrow & N_1(1 + \exp( \frac{q\varphi}{\tau} )) = N\exp( \frac{q\varphi}{\tau} ) \\
@@ -74,7 +75,7 @@ Treat the vapor as an ideal gas of atoms of mass \(M\).
           The partition function is
           \begin{equation}
           \label{eq:4}
-          Z_{s} = \exp(N\varepsilon_0/\tau),
+          Z_{s} = \exp(N_s\varepsilon_0/\tau),
         \end{equation}
         the free energy is
         \begin{equation}
@@ -102,10 +103,35 @@ Treat the vapor as an ideal gas of atoms of mass \(M\).
         \end{answer}
   \item Explain in words why atoms do not all stay in the solid, where their energy is lowest, and why they do not all evaporate.
   Then explain why the vapor pressure does not depend on how much solid is in the container.
-  \item The vapor pressure of water is \(2.34\,\mathrm{kPa}\) at \(20\,{}^\circ\mathrm{C}\) and \(4.25\,\mathrm{kPa}\) at \(30\,{}^\circ\mathrm{C}\).
+  \begin{answer}
+At nonzero temperature, occupying the many available vapor states increases the entropy. Equilibrium minimizes \(F=U-\tau\sigma\), balancing this entropy gain against the binding energy lost by leaving the solid. As vapor accumulates, its chemical potential increases until it equals that of the solid.
+The solid has \(\mu_s=-\varepsilon_0\), independent of \(N_s\), so the equilibrium vapor concentration and pressure are independent of the amount of solid, provided some solid remains. If there is too little material to reach the saturation concentration, it all evaporates.
+\end{answer}
+\item The vapor pressure of water is \(2.34\,\mathrm{kPa}\) at \(20\,{}^\circ\mathrm{C}\) and \(4.25\,\mathrm{kPa}\) at \(30\,{}^\circ\mathrm{C}\).
   Neglecting the slow variation of the prefactor \(\tau n_Q\) with temperature, use your result from part (b) to estimate \(\varepsilon_0\) for water in eV.
   (Our model is of a solid, but the same reasoning applies to a liquid.)
   Compare with the latent heat of vaporization of water, \(44\,\mathrm{kJ/mol}\).
+\begin{answer}
+Writing \(\tau=k_BT\) and treating the prefactor as constant gives
+\begin{equation}
+\label{eq:p2-pressure-ratio}
+\log\frac{p_2}{p_1}=\frac{\varepsilon_0}{k_B}\left(\frac{1}{T_1}-\frac{1}{T_2}\right).
+\end{equation}
+Thus, with \(T_1=293.15\,\mathrm K\), \(T_2=303.15\,\mathrm K\), and \(k_B=8.61733\times10^{-5}\,\mathrm{eV/K}\),
+\begin{equation}
+\label{eq:p2-binding-estimate}
+\varepsilon_0=\frac{k_B\log(4.25/2.34)}{1/293.15-1/303.15}
+\simeq\boxed{0.457\,\mathrm{eV}}.
+\end{equation}
+The given latent heat per molecule is
+\begin{equation}
+\label{eq:p2-latent-heat}
+\frac{44\times10^3\,\mathrm{J/mol}}{N_A}
+\frac{1\,\mathrm{eV}}{1.60218\times10^{-19}\,\mathrm J}
+\simeq0.456\,\mathrm{eV},
+\end{equation}
+which agrees with the estimate to within about \(0.2\%\).
+\end{answer}
 \end{enumerate}
 \end{problem}
 
@@ -121,24 +147,113 @@ where \(k\) is a positive constant.
 Take \(\sigma\to0\) as \(\tau\to0\).
 \begin{enumerate}[label=(\alph*)]
   \item Using \((\partial\sigma/\partial U)_V=1/\tau\), show that the entropy is \(\sigma=\frac32 kV\tau^2\).
-  \item Show that the entropy as a function of energy and volume is \(\sigma(U,V)=\frac32(kVU^2)^{1/3}\).
+  \begin{answer}
+At fixed \(V\), the chain rule gives
+\begin{equation}
+\label{eq:p3-entropy-derivative}
+\left(\frac{\partial\sigma}{\partial\tau}\right)_V
+=\left(\frac{\partial\sigma}{\partial U}\right)_V
+\left(\frac{\partial U}{\partial\tau}\right)_V
+=\frac{1}{\tau}(3kV\tau^2)=3kV\tau.
+\end{equation}
+Using the zero-temperature condition,
+\begin{equation}
+\label{eq:p3-entropy-result}
+\sigma(V,\tau)=\int_0^\tau 3kVt\,dt=\boxed{\frac32kV\tau^2}.
+\end{equation}
+\end{answer}
+\item Show that the entropy as a function of energy and volume is \(\sigma(U,V)=\frac32(kVU^2)^{1/3}\).
   (Hint: use the expressions for \(U\) and \(\sigma\) to eliminate \(\tau\).)
-  \item Use the differential of \(\sigma(U,V)\) to show that
+  \begin{answer}
+Since \(\tau=(U/kV)^{1/3}\),
+\begin{equation}
+\label{eq:p3-entropy-uv}
+\sigma(U,V)=\frac32kV\left(\frac{U}{kV}\right)^{2/3}
+=\boxed{\frac32(kVU^2)^{1/3}}.
+\end{equation}
+\end{answer}
+\item Use the differential of \(\sigma(U,V)\) to show that
   \begin{equation}
     \label{eq:p3-isentropic-derivative}
     \left(\frac{\partial U}{\partial V}\right)_\sigma=-\frac{U}{2V}.
   \end{equation}
   The pressure is \(p=-(\partial U/\partial V)_\sigma\).
   Express \(p\) in terms of \(\tau\).
-  \item The system is in contact with a reservoir at \(\tau\) and expands reversibly by a small amount \(\Delta V\).
+  \begin{answer}
+Differentiating the result of part (b) gives
+\begin{equation}
+\label{eq:p3-entropy-differential}
+d\sigma=\frac{\sigma}{3V}\,dV+\frac{2\sigma}{3U}\,dU.
+\end{equation}
+Setting \(d\sigma=0\) yields
+\begin{equation}
+\label{eq:p3-pressure-result}
+\left(\frac{\partial U}{\partial V}\right)_\sigma=-\frac{U}{2V},
+\qquad p=\frac{U}{2V}=\boxed{\frac12k\tau^3}.
+\end{equation}
+\end{answer}
+\item The system is in contact with a reservoir at \(\tau\) and expands reversibly by a small amount \(\Delta V\).
   Using \(F=U-\tau\sigma\) and \(W=-\Delta F\), find the work \(W\) done by the system, the change in its energy \(\Delta U\), and the heat \(Q\) that flows in from the reservoir.
   What is the ratio \(W/Q\) of the work done to the heat that enters the system?
-  \item Now the system is thermally isolated and expands reversibly (at constant \(\sigma\)) by the same small \(\Delta V\), starting from the same state.
+  \begin{answer}
+The free energy is
+\begin{equation}
+\label{eq:p3-free-energy}
+F=kV\tau^3-\tau\left(\frac32kV\tau^2\right)=-\frac12kV\tau^3.
+\end{equation}
+Consequently, at constant \(\tau\),
+\begin{equation}
+\label{eq:p3-isothermal-work}
+W_\tau=-\Delta F=\frac12k\tau^3\Delta V,
+\qquad \Delta U_\tau=k\tau^3\Delta V.
+\end{equation}
+Using \(\Delta U=Q-W\), we obtain
+\begin{equation}
+\label{eq:p3-isothermal-heat}
+Q_\tau=\Delta U_\tau+W_\tau=\frac32k\tau^3\Delta V,
+\qquad \boxed{\frac{W_\tau}{Q_\tau}=\frac13}.
+\end{equation}
+\end{answer}
+\item Now the system is thermally isolated and expands reversibly (at constant \(\sigma\)) by the same small \(\Delta V\), starting from the same state.
   Find \(W\), \(\Delta U\), and \(Q\), and the ratio \(W_\tau/W_\sigma\) of the work in part (d) to the work here.
   Explain the result.
-  \item Now consider the isothermal and isentropic expansions of the previous two parts, but instead of an infinitesimal change in volume let the volume change by a finite amount: it doubles from \(V_1\) to \(2V_1\), starting at temperature \(\tau_1\).
+  \begin{answer}
+Thermal isolation implies \(Q_\sigma=0\). To first order in \(\Delta V\), with \(\tau\) denoting the initial temperature,
+\begin{equation}
+\label{eq:p3-isentropic-work-small}
+\begin{aligned}
+W_\sigma&=p\Delta V=\frac12k\tau^3\Delta V,\\
+\Delta U_\sigma&=-W_\sigma=-\frac12k\tau^3\Delta V,\qquad \frac{W_\tau}{W_\sigma}\longrightarrow1.
+\end{aligned}
+\end{equation}
+The ratio tends to one as \(\Delta V\to0\), because both processes start at the same pressure. The isentropic process cools as it expands, but the resulting difference in work enters at second order in \(\Delta V\).
+\end{answer}
+\item Now consider the isothermal and isentropic expansions of the previous two parts, but instead of an infinitesimal change in volume let the volume change by a finite amount: it doubles from \(V_1\) to \(2V_1\), starting at temperature \(\tau_1\).
   Find the work done in each process.
   Which process delivers more work, and why?
+\begin{answer}
+For the isothermal process, the pressure is constant, so
+\begin{equation}
+\label{eq:p3-finite-isothermal}
+\boxed{W_\tau=\int_{V_1}^{2V_1}\frac12k\tau_1^3\,dV
+=\frac12kV_1\tau_1^3}.
+\end{equation}
+For the isentropic process, \(V\tau^2=V_1\tau_1^2\), and hence
+\begin{equation}
+\label{eq:p3-adiabatic-temperature}
+\tau(V)=\tau_1\left(\frac{V_1}{V}\right)^{1/2}.
+\end{equation}
+It follows that
+\begin{equation}
+\label{eq:p3-finite-isentropic}
+\begin{aligned}
+W_\sigma
+&=\frac12k\tau_1^3V_1^{3/2}\int_{V_1}^{2V_1}V^{-3/2}\,dV\\
+&=\boxed{kV_1\tau_1^3\left(1-\frac{1}{\sqrt2}\right)}.
+\end{aligned}
+\end{equation}
+Thus \(W_\tau/W_\sigma=1+1/\sqrt2\simeq1.707\). The isothermal process delivers more work because heat from the reservoir maintains its temperature and pressure, whereas the isolated system cools and its pressure falls.
+\end{answer}
 \end{enumerate}
 \end{problem}
 
@@ -160,6 +275,29 @@ Consider a lattice of fixed hydrogen atoms; suppose that each atom can exist in 
 \end{center}
 Find the condition that the average number of electrons per atom be unity.
 The condition will involve \(\delta\), \(\lambda\), and \(\tau\).
+\begin{answer}
+
+Let \(\lambda=e^{\mu/\tau}\). The Gibbs sum for one atom is
+\begin{equation}
+\label{eq:p4-gibbs}
+\mathcal Z=\lambda e^{\Delta/(2\tau)}+e^{\delta/(2\tau)}
++\lambda^2e^{-\delta/(2\tau)}+\lambda e^{-\Delta/(2\tau)}.
+\end{equation}
+The average number of electrons is
+\begin{equation}
+\label{eq:p4-average}
+\ev{N}=\frac{\lambda e^{\Delta/(2\tau)}+\lambda e^{-\Delta/(2\tau)}
++2\lambda^2e^{-\delta/(2\tau)}}{\mathcal Z}.
+\end{equation}
+Setting \(\ev N=1\) cancels the contributions from the two neutral states and gives
+\begin{equation}
+\label{eq:p4-condition}
+\lambda^2e^{-\delta/(2\tau)}=e^{\delta/(2\tau)},
+\qquad \boxed{\lambda^2=e^{\delta/\tau}},
+\qquad \mu=\frac{\delta}{2}.
+\end{equation}
+Equivalently, the positive and negative ions must have equal probabilities.
+\end{answer}
 \end{problem}
 
 \begin{problem}{5. Carbon Monoxide Poisoning (K\&K 5.8)}
@@ -184,194 +322,39 @@ Neglect any spin multiplicity factors.
   \item First consider the system in the absence of CO.
   Evaluate \(\varepsilon_A\) such that 90 percent of the heme sites are occupied by \(\mathrm{O}_2\).
   Express the answer in eV per \(\mathrm{O}_2\).
-  \item Now admit the CO under the specified conditions.
-  Find \(\varepsilon_B\) such that only 10 percent of the heme sites are occupied by \(\mathrm{O}_2\).
-\end{enumerate}
-\end{problem}
-
-\begin{problem}{6. Hydrogen Bonding to a Carbon Atom}
-The Gibbs sum for several identical, distinguishable sites
-
-Consider a classical ideal gas of monatomic hydrogen (this can occur at the right combination of density \(n_H\) and temperature \(\tau\)).
-There is also a single carbon atom mixed in.
-The H gas has chemical potential \(\mu=\tau\log(n_H/n_{QH})\).
-The carbon atom has 4 available bonds and can therefore bind as many as 4 hydrogen atoms.
-When fully bonded, this forms a methane molecule.
-Let \(\varepsilon_u\) be the energy of an unattached (dangling) bond on the carbon atom and let \(\varepsilon_a\) be the energy of a C--H bond.
-\begin{enumerate}[label=(\alph*)]
-  \item What is the Gibbs sum for one of the four bonds on the carbon atom?
-  \item What is the Gibbs sum for all four bonds?
-  Assume that the four bonds are non-interacting and distinguishable.
-  [Hint: use the same method as we used to go from the partition function for one atom of ideal gas to \(N\) atoms, but in this case the systems are distinguishable.]
-  \item What is the average number of H atoms bonded to the C?
-  Express the answer in terms of \(\tau\), \(n_H\), \(n_{QH}\), and \(\Delta=\varepsilon_u-\varepsilon_a\).
-  [Hint: use \(\ev{N}=\lambda\,\partial(\log\mathcal{Z})/\partial\lambda\).]
-\end{enumerate}
-\end{problem}
-
-\begin{problem}{7. A Site That Holds Zero, One, or Two Particles}
-What the chemical potential does, and what the temperature does
-
-A binding site (a defect in a crystal, or a small quantum dot) is in thermal and diffusive contact with a reservoir at temperature \(\tau\) and chemical potential \(\mu\).
-The site has four states:
-\begin{center}
-  \begin{tabular}{clc}
-    \hline
-    \(N\) & State & Energy \\
-    \hline
-    0 & empty & 0 \\
-    1 & ground & \(\varepsilon_1\) \\
-    1 & excited & \(\varepsilon_2>\varepsilon_1\) \\
-    2 & doubly occupied & \(\varepsilon_3=2\varepsilon_1+u\) \\
-    \hline
-  \end{tabular}
-\end{center}
-Here \(u>0\) is the repulsion between two particles on the same site.
-For the numerical parts take \(\varepsilon_1=\varepsilon_0\), \(\varepsilon_2=2\varepsilon_0\), and \(\varepsilon_3=3\varepsilon_0\), so that \(u=\varepsilon_0\).
-\begin{enumerate}[label=(\alph*)]
-  \item Write the Gibbs sum \(\mathcal{Z}\) for the site, in terms of \(\lambda=e^{\mu/\tau}\).
-  \item The probability of the state with \(N\) particles and energy \(\varepsilon_s\) is \(P(N,s)=\lambda^N e^{-\varepsilon_s/\tau}/\mathcal{Z}\).
-  By summing over the states, find \(\ev{N}\) and \(\ev{U}\).
-  Check your \(\ev{N}\) against \(\lambda\,\partial(\log\mathcal{Z})/\partial\lambda\).
-  \item Find \(\ev{N}\) and \(\ev{U}\) in the limits (i) \(\tau\to\infty\) at fixed \(\mu\); (ii) \(\mu\to+\infty\) at finite temperature; (iii) \(\mu\to-\infty\) at finite temperature.
-  \item Now let \(\tau\to0\).
-  Write each term of \(\mathcal{Z}\) in the form \(\exp[(N\mu-\varepsilon_s)/\tau]\).
-  Which state wins as \(\tau\to0\)?
-  Find \(\ev{N}\) and \(\ev{U}\) in that limit for \(\mu=0.5\,\varepsilon_0\), \(\mu=1.5\,\varepsilon_0\), and \(\mu=2.5\,\varepsilon_0\), and then for the borderline values \(\mu=\varepsilon_0\) and \(\mu=2\varepsilon_0\).
-  \item Sketch \(\ev{N}\) as a function of \(\mu\) at a low temperature, \(\tau\ll u\).
-  Where are the steps, and how wide are they?
-  Does the excited level \(\varepsilon_2\) appear anywhere in your sketch?
-\end{enumerate}
-\end{problem}
-\end{document}\documentclass[11pt]{article}
-\usepackage{../homework}
-\profname{} % Instructor not specified in the source.
-\classcode{Physics 313}
-\assignnum{Homework 6}
-\duedate{} % Due date not specified in the source.
-\semester{} % Semester not specified in the source.
-
-\begin{document}
-Problems 1 and 2 use one idea: when particles can move between two places, they arrange themselves so that their chemical potential is the same in both.
-Problem 3 returns to the free energy for a system that is not an ideal gas.
-Problems 4--7 use the Gibbs sum.
-
-\begin{problem}{1. Charged Particles and a Battery}
-Two containers at different electrostatic potentials
-
-Two containers of positively charged particles, each with charge \(q\), are connected as shown.
-
-See the unnumbered figure for Problem 1 on page 1 in the original problem set.
-
-The containers are in thermal contact with a reservoir at temperature \(\tau\).
-A battery is connected between the two containers so that the container on the right is at the higher electrostatic potential \(\varphi\).
-The density of the particles is low enough that the Coulomb interaction between individual particles can be ignored and the particles treated as an ideal gas.
-The volume \(V\) of each container is the same, and there are a total of \(N\) charged particles.
-\begin{enumerate}[label=(\alph*)]
-  \item Find an expression for the number of particles \(N_1\) in the left container as a function of the temperature \(\tau\) and the electrostatic potential \(\varphi\).
-  \item Find the value of \(q\varphi/\tau\) such that \(N_1=2N_2\).
-\end{enumerate}
-\end{problem}
-
-\begin{problem}{2. Vapor Pressure}
-A gas in equilibrium with its own solid
-
-A closed container holds a solid, and the space above it is filled with the vapor of the same substance, at temperature \(\tau\).
-Atoms continually leave the solid and rejoin it.
-
-Use the simplest possible model of the solid: each atom in the solid sits in a single quantum state with energy \(-\varepsilon_0\), measured relative to a free atom at rest.
-(This ignores the vibrations of the atoms in the solid.)
-Treat the vapor as an ideal gas of atoms of mass \(M\).
-\begin{enumerate}[label=(\alph*)]
-  \item The solid contains \(N_s\) atoms.
-  Find its partition function, its free energy \(F_s\), and its chemical potential \(\mu_s=(\partial F_s/\partial N_s)_\tau\).
-  \item In equilibrium, find the concentration \(n\) of atoms in the vapor and the vapor pressure \(p\).
-  \item Explain in words why atoms do not all stay in the solid, where their energy is lowest, and why they do not all evaporate.
-  Then explain why the vapor pressure does not depend on how much solid is in the container.
-  \item The vapor pressure of water is \(2.34\,\mathrm{kPa}\) at \(20\,{}^\circ\mathrm{C}\) and \(4.25\,\mathrm{kPa}\) at \(30\,{}^\circ\mathrm{C}\).
-  Neglecting the slow variation of the prefactor \(\tau n_Q\) with temperature, use your result from part (b) to estimate \(\varepsilon_0\) for water in eV.
-  (Our model is of a solid, but the same reasoning applies to a liquid.)
-  Compare with the latent heat of vaporization of water, \(44\,\mathrm{kJ/mol}\).
-\end{enumerate}
-\end{problem}
-
-\begin{problem}{3. Work at Constant Temperature and at Constant Entropy}
-A model system that is not an ideal gas
-
-A system has energy
+  \begin{answer}
+Take the vacant site's energy to be zero and write \(\lambda_A=10^{-5}\). Without CO, the single-site Gibbs sum and oxygen occupancy are
 \begin{equation}
-  \label{eq:p3-energy}
-  U=kV\tau^3,
+\label{eq:p5-oxygen-occupancy}
+\mathcal Z_0=1+\lambda_Ae^{-\varepsilon_A/\tau},
+\qquad f_A=\frac{\lambda_Ae^{-\varepsilon_A/\tau}}{1+\lambda_Ae^{-\varepsilon_A/\tau}}.
 \end{equation}
-where \(k\) is a positive constant.
-Take \(\sigma\to0\) as \(\tau\to0\).
-\begin{enumerate}[label=(\alph*)]
-  \item Using \((\partial\sigma/\partial U)_V=1/\tau\), show that the entropy is \(\sigma=\frac32 kV\tau^2\).
-  \item Show that the entropy as a function of energy and volume is \(\sigma(U,V)=\frac32(kVU^2)^{1/3}\).
-  (Hint: use the expressions for \(U\) and \(\sigma\) to eliminate \(\tau\).)
-  \item Use the differential of \(\sigma(U,V)\) to show that
-  \begin{equation}
-    \label{eq:p3-isentropic-derivative}
-    \left(\frac{\partial U}{\partial V}\right)_\sigma=-\frac{U}{2V}.
-  \end{equation}
-  The pressure is \(p=-(\partial U/\partial V)_\sigma\).
-  Express \(p\) in terms of \(\tau\).
-  \item The system is in contact with a reservoir at \(\tau\) and expands reversibly by a small amount \(\Delta V\).
-  Using \(F=U-\tau\sigma\) and \(W=-\Delta F\), find the work \(W\) done by the system, the change in its energy \(\Delta U\), and the heat \(Q\) that flows in from the reservoir.
-  What is the ratio \(W/Q\) of the work done to the heat that enters the system?
-  \item Now the system is thermally isolated and expands reversibly (at constant \(\sigma\)) by the same small \(\Delta V\), starting from the same state.
-  Find \(W\), \(\Delta U\), and \(Q\), and the ratio \(W_\tau/W_\sigma\) of the work in part (d) to the work here.
-  Explain the result.
-  \item Now consider the isothermal and isentropic expansions of the previous two parts, but instead of an infinitesimal change in volume let the volume change by a finite amount: it doubles from \(V_1\) to \(2V_1\), starting at temperature \(\tau_1\).
-  Find the work done in each process.
-  Which process delivers more work, and why?
-\end{enumerate}
-\end{problem}
-
-\begin{problem}{4. States of Positive and Negative Ionization (K\&K 5.7)}
-A Gibbs sum with four states and a varying number of electrons
-
-Consider a lattice of fixed hydrogen atoms; suppose that each atom can exist in four states:
-\begin{center}
-  \begin{tabular}{lcc}
-    \hline
-    State & Number of electrons & Energy \\
-    \hline
-    Ground & 1 & \(-\Delta/2\) \\
-    Positive ion & 0 & \(-\delta/2\) \\
-    Negative ion & 2 & \(+\delta/2\) \\
-    Excited & 1 & \(+\Delta/2\) \\
-    \hline
-  \end{tabular}
-\end{center}
-Find the condition that the average number of electrons per atom be unity.
-The condition will involve \(\delta\), \(\lambda\), and \(\tau\).
-\end{problem}
-
-\begin{problem}{5. Carbon Monoxide Poisoning (K\&K 5.8)}
-Two gases competing for the same binding site
-
-Background.
-Oxygen is carried from the lungs to the rest of the body by hemoglobin, the protein that fills red blood cells.
-Each hemoglobin molecule contains four heme groups.
-A heme is a flat ring of carbon and nitrogen atoms with a single iron atom at its center, and that iron atom is where an \(\mathrm{O}_2\) molecule binds.
-Hemoglobin works as a carrier because the binding is reversible: in the lungs, where the oxygen concentration is high, the heme sites fill up; in the tissues, where it is low, they let go.
-A heme site is thus a tiny system in diffusive contact with a reservoir of dissolved gas, and the gas's activity \(\lambda=e^{\mu/\tau}\) sets how full the sites are.
-
-Carbon monoxide binds to the same iron atom, and more tightly.
-A CO molecule that occupies a heme site blocks it from carrying oxygen.
-That is carbon monoxide poisoning: even a small amount of CO in the air can tie up most of the hemoglobin, and the tissues are starved of oxygen while the blood is, in every other respect, normal.
-
-The problem.
-Model each heme site as a system that may be vacant, or occupied by one \(\mathrm{O}_2\) molecule with energy \(\varepsilon_A\), or occupied by one CO molecule with energy \(\varepsilon_B\).
-Let \(N\) fixed heme sites be in equilibrium with \(\mathrm{O}_2\) and CO in the gas phase at concentrations such that the activities are \(\lambda(\mathrm{O}_2)=1\times10^{-5}\) and \(\lambda(\mathrm{CO})=1\times10^{-7}\), all at body temperature, \(37\,{}^\circ\mathrm{C}\).
-Neglect any spin multiplicity factors.
-\begin{enumerate}[label=(\alph*)]
-  \item First consider the system in the absence of CO.
-  Evaluate \(\varepsilon_A\) such that 90 percent of the heme sites are occupied by \(\mathrm{O}_2\).
-  Express the answer in eV per \(\mathrm{O}_2\).
-  \item Now admit the CO under the specified conditions.
+Requiring \(f_A=0.9\) gives \(\lambda_Ae^{-\varepsilon_A/\tau}=9\). At \(T=310.15\,\mathrm K\), \(\tau=k_BT\simeq0.0267267\,\mathrm{eV}\), so
+\begin{equation}
+\label{eq:p5-oxygen-energy}
+\boxed{\varepsilon_A=-\tau\log\frac{9}{10^{-5}}\simeq-0.366\,\mathrm{eV}}.
+\end{equation}
+\end{answer}
+\item Now admit the CO under the specified conditions.
   Find \(\varepsilon_B\) such that only 10 percent of the heme sites are occupied by \(\mathrm{O}_2\).
+\begin{answer}
+With CO present, write \(\lambda_B=10^{-7}\). The Gibbs sum is
+\begin{equation}
+\label{eq:p5-both-gases}
+\mathcal Z=1+\lambda_Ae^{-\varepsilon_A/\tau}+\lambda_Be^{-\varepsilon_B/\tau}.
+\end{equation}
+The oxygen weight is still 9. Thus
+\begin{equation}
+\label{eq:p5-co-weight}
+0.1=\frac{9}{10+\lambda_Be^{-\varepsilon_B/\tau}},
+\qquad \lambda_Be^{-\varepsilon_B/\tau}=80.
+\end{equation}
+Therefore
+\begin{equation}
+\label{eq:p5-co-energy}
+\boxed{\varepsilon_B=-\tau\log\frac{80}{10^{-7}}\simeq-0.548\,\mathrm{eV}}.
+\end{equation}
+\end{answer}
 \end{enumerate}
 \end{problem}
 
@@ -386,12 +369,41 @@ When fully bonded, this forms a methane molecule.
 Let \(\varepsilon_u\) be the energy of an unattached (dangling) bond on the carbon atom and let \(\varepsilon_a\) be the energy of a C--H bond.
 \begin{enumerate}[label=(\alph*)]
   \item What is the Gibbs sum for one of the four bonds on the carbon atom?
-  \item What is the Gibbs sum for all four bonds?
+  \begin{answer}
+An unattached bond contains no bound H atom, whereas an attached bond contains one. Therefore, with \(\lambda=e^{\mu/\tau}=n_H/n_{QH}\),
+\begin{equation}
+\label{eq:p6-single-bond}
+\boxed{\mathcal Z_1=e^{-\varepsilon_u/\tau}+\lambda e^{-\varepsilon_a/\tau}}.
+\end{equation}
+\end{answer}
+\item What is the Gibbs sum for all four bonds?
   Assume that the four bonds are non-interacting and distinguishable.
   [Hint: use the same method as we used to go from the partition function for one atom of ideal gas to \(N\) atoms, but in this case the systems are distinguishable.]
-  \item What is the average number of H atoms bonded to the C?
+  \begin{answer}
+The four distinguishable, non-interacting bonds give
+\begin{equation}
+\label{eq:p6-four-bonds}
+\boxed{\mathcal Z=\mathcal Z_1^4
+=\sum_{j=0}^4\binom4j\lambda^j
+e^{-[(4-j)\varepsilon_u+j\varepsilon_a]/\tau}}.
+\end{equation}
+The binomial coefficient counts the choices of the \(j\) occupied bonds; there is no division by \(4!\).
+\end{answer}
+\item What is the average number of H atoms bonded to the C?
   Express the answer in terms of \(\tau\), \(n_H\), \(n_{QH}\), and \(\Delta=\varepsilon_u-\varepsilon_a\).
   [Hint: use \(\ev{N}=\lambda\,\partial(\log\mathcal{Z})/\partial\lambda\).]
+\begin{answer}
+Differentiating at fixed \(\tau\),
+\begin{equation}
+\label{eq:p6-average}
+\begin{aligned}
+\ev N&=\lambda\frac{\partial\log\mathcal Z}{\partial\lambda}
+=\frac{4\lambda e^{-\varepsilon_a/\tau}}{e^{-\varepsilon_u/\tau}+\lambda e^{-\varepsilon_a/\tau}}\\
+&=\frac{4\lambda e^{\Delta/\tau}}{1+\lambda e^{\Delta/\tau}}
+=\boxed{\frac{4}{1+(n_{QH}/n_H)e^{-\Delta/\tau}}}.
+\end{aligned}
+\end{equation}
+\end{answer}
 \end{enumerate}
 \end{problem}
 
@@ -416,17 +428,120 @@ Here \(u>0\) is the repulsion between two particles on the same site.
 For the numerical parts take \(\varepsilon_1=\varepsilon_0\), \(\varepsilon_2=2\varepsilon_0\), and \(\varepsilon_3=3\varepsilon_0\), so that \(u=\varepsilon_0\).
 \begin{enumerate}[label=(\alph*)]
   \item Write the Gibbs sum \(\mathcal{Z}\) for the site, in terms of \(\lambda=e^{\mu/\tau}\).
-  \item The probability of the state with \(N\) particles and energy \(\varepsilon_s\) is \(P(N,s)=\lambda^N e^{-\varepsilon_s/\tau}/\mathcal{Z}\).
+  \begin{answer}
+Summing the four state weights gives
+\begin{equation}
+\label{eq:p7-gibbs}
+\boxed{\mathcal Z=1+\lambda e^{-\varepsilon_1/\tau}
++\lambda e^{-\varepsilon_2/\tau}+\lambda^2e^{-\varepsilon_3/\tau}}.
+\end{equation}
+\end{answer}
+\item The probability of the state with \(N\) particles and energy \(\varepsilon_s\) is \(P(N,s)=\lambda^N e^{-\varepsilon_s/\tau}/\mathcal{Z}\).
   By summing over the states, find \(\ev{N}\) and \(\ev{U}\).
   Check your \(\ev{N}\) against \(\lambda\,\partial(\log\mathcal{Z})/\partial\lambda\).
-  \item Find \(\ev{N}\) and \(\ev{U}\) in the limits (i) \(\tau\to\infty\) at fixed \(\mu\); (ii) \(\mu\to+\infty\) at finite temperature; (iii) \(\mu\to-\infty\) at finite temperature.
-  \item Now let \(\tau\to0\).
+  \begin{answer}
+The averages are
+\begin{equation}
+\label{eq:p7-averages}
+\begin{aligned}
+\ev N&=\frac{\lambda e^{-\varepsilon_1/\tau}+\lambda e^{-\varepsilon_2/\tau}
++2\lambda^2e^{-\varepsilon_3/\tau}}{\mathcal Z},\\
+\ev U&=\frac{\varepsilon_1\lambda e^{-\varepsilon_1/\tau}
++\varepsilon_2\lambda e^{-\varepsilon_2/\tau}
++\varepsilon_3\lambda^2e^{-\varepsilon_3/\tau}}{\mathcal Z}.
+\end{aligned}
+\end{equation}
+Direct differentiation verifies
+\begin{equation}
+\label{eq:p7-derivative-check}
+\lambda\frac{\partial\log\mathcal Z}{\partial\lambda}
+=\frac{\lambda}{\mathcal Z}\left(e^{-\varepsilon_1/\tau}
++e^{-\varepsilon_2/\tau}+2\lambda e^{-\varepsilon_3/\tau}\right)=\ev N.
+\end{equation}
+\end{answer}
+\item Find \(\ev{N}\) and \(\ev{U}\) in the limits (i) \(\tau\to\infty\) at fixed \(\mu\); (ii) \(\mu\to+\infty\) at finite temperature; (iii) \(\mu\to-\infty\) at finite temperature.
+  \begin{answer}
+As \(\tau\to\infty\) at fixed \(\mu\), all four weights tend to one, so
+\begin{equation}
+\label{eq:p7-high-temperature}
+\ev N\longrightarrow\frac{0+1+1+2}{4}=1,
+\qquad \ev U\longrightarrow\frac{\varepsilon_1+\varepsilon_2+\varepsilon_3}{4}
+=\frac32\varepsilon_0
+\end{equation}
+for the specified energies. At finite positive temperature, the \(\lambda^2\) term dominates as \(\mu\to+\infty\), whereas the empty-state term dominates as \(\mu\to-\infty\). Hence
+\begin{equation}
+\label{eq:p7-extreme-mu}
+\begin{aligned}
+\mu\to+\infty&\quad\Longrightarrow\quad(\ev N,\ev U)\to(2,\varepsilon_3),\\
+\mu\to-\infty&\quad\Longrightarrow\quad(\ev N,\ev U)\to(0,0).
+\end{aligned}
+\end{equation}
+\end{answer}
+\item Now let \(\tau\to0\).
   Write each term of \(\mathcal{Z}\) in the form \(\exp[(N\mu-\varepsilon_s)/\tau]\).
   Which state wins as \(\tau\to0\)?
   Find \(\ev{N}\) and \(\ev{U}\) in that limit for \(\mu=0.5\,\varepsilon_0\), \(\mu=1.5\,\varepsilon_0\), and \(\mu=2.5\,\varepsilon_0\), and then for the borderline values \(\mu=\varepsilon_0\) and \(\mu=2\varepsilon_0\).
-  \item Sketch \(\ev{N}\) as a function of \(\mu\) at a low temperature, \(\tau\ll u\).
+  \begin{answer}
+The Gibbs sum can be written as
+\begin{equation}
+\label{eq:p7-low-temperature-weights}
+\mathcal Z=e^{0/\tau}+e^{(\mu-\varepsilon_1)/\tau}
++e^{(\mu-\varepsilon_2)/\tau}+e^{(2\mu-\varepsilon_3)/\tau}.
+\end{equation}
+The state maximizing \(N\mu-\varepsilon_s\), equivalently minimizing \(\varepsilon_s-\mu N\), wins as \(\tau\to0^+\). The excited singly occupied state never wins because its exponent is always smaller than that of the singly occupied ground state. The transitions occur at \(\mu=\varepsilon_1\) and \(\mu=\varepsilon_3-\varepsilon_1=\varepsilon_1+u\).
+For the specified energies, the limits are
+\begin{center}
+\begin{tabular}{ccll}
+\hline
+\(\mu/\varepsilon_0\)&Dominant state(s)&\(\ev N\)&\(\ev U\)\\
+\hline
+\(0.5\)&empty&\(0\)&\(0\)\\
+\(1.5\)&single ground&\(1\)&\(\varepsilon_0\)\\
+\(2.5\)&double&\(2\)&\(3\varepsilon_0\)\\
+\(1\)&empty and single ground&\(1/2\)&\(\varepsilon_0/2\)\\
+\(2\)&single ground and double&\(3/2\)&\(2\varepsilon_0\)\\
+\hline
+\end{tabular}
+\end{center}
+\end{answer}
+\item Sketch \(\ev{N}\) as a function of \(\mu\) at a low temperature, \(\tau\ll u\).
   Where are the steps, and how wide are they?
   Does the excited level \(\varepsilon_2\) appear anywhere in your sketch?
+\begin{answer}
+At zero temperature the occupancy is a staircase,
+\begin{equation}
+\label{eq:p7-staircase}
+\ev N=\begin{cases}
+0,&\mu<\varepsilon_1,\\
+1,&\varepsilon_1<\mu<\varepsilon_1+u,\\
+2,&\mu>\varepsilon_1+u.
+\end{cases}
+\end{equation}
+For \(\tau\ll\min(u,\varepsilon_2-\varepsilon_1)\), the steps are rounded according to
+\begin{equation}
+\label{eq:p7-rounded-steps}
+\begin{aligned}
+\ev N&\simeq\frac{1}{1+e^{(\varepsilon_1-\mu)/\tau}}
+&&\text{near }\mu=\varepsilon_1,\\
+\ev N&\simeq1+\frac{1}{1+e^{(\varepsilon_1+u-\mu)/\tau}}
+&&\text{near }\mu=\varepsilon_1+u.
+\end{aligned}
+\end{equation}
+Each step has width of order \(\tau\) in chemical potential; its 10--90 percent width is \(2\tau\log9\simeq4.39\tau\). The plateau between steps has width approximately \(u\). The following sketch (made exhaustively using Tikz which is why this homework was turned in so late) uses the specified energies.
+\begin{center}
+\begin{tikzpicture}[x=2cm,y=1.1cm]
+\draw[->] (0,0)--(3.2,0) node[right] {\(\mu/\varepsilon_0\)};
+\draw[->] (0,0)--(0,2.5) node[above] {\(\ev N\)};
+\foreach \x in {1,2} {\draw (\x,0.04)--(\x,-0.04) node[below] {\(\x\)};}
+\foreach \y in {1,2} {\draw (0.03,\y)--(-0.03,\y) node[left] {\(\y\)};}
+\draw[densely dashed,gray] (1,0)--(1,1.15);
+\draw[densely dashed,gray] (2,0)--(2,2.15);
+\draw[thick,domain=0:3,samples=160,smooth,variable=\t]
+plot ({\t},{1/(1+exp(max(-8,min(8,(1-\t)/0.065))))+1/(1+exp(max(-8,min(8,(2-\t)/0.065))))});
+\end{tikzpicture}
+\end{center}
+The excited level produces no additional step, since it has the same particle number as the lower single-particle state.
+\end{answer}
 \end{enumerate}
 \end{problem}
 \end{document}

@@ -1,0 +1,59 @@
+\documentclass[11pt]{article}
+\usepackage{../homework}
+\profname{Dr. Claire Zukowski}
+\classcode{PHYS 331 Quantum Mechanics I}
+\assignnum{Problem Set 6}
+\duedate{4 November 2026}
+\begin{document}
+
+\begin{problem}{1}
+  Calculate \(\ev{x}\), \(\ev{p}\), \(\ev{x^2}\), \(\ev{p^2}\), \(\Delta x\), and \(\Delta p\) for the \(n^{\text{th}}\) excited energy eigenstate of the infinite square well.
+  Check that the uncertainty principle is satisfied.
+  What state comes closest to saturating the uncertainty limit \(\Delta x\Delta p \geq \frac{\hbar}{2}\)?
+\end{problem}
+
+\begin{problem}{2}
+  A particle of mass \(m\) is in an infinite square well (\(V=0\) from \(x=0\) to \(a\) and \(V=\infty\) elsewhere).
+  You may use all results from class/textbook without re-deriving them.
+  Suppose the particle has been prepared in a (very roughly) localized state
+  \begin{equation}
+    \label{eq:p2-initial-wavefunction}
+    \psi(x,t=0)=
+    \begin{cases}
+      A\,x/a & 0<x<a,\\
+      0 & \text{elsewhere}.
+    \end{cases}
+  \end{equation}
+  \begin{enumerate}[label=(\alph*)]
+    \item Determine the normalization constant, \(A\).
+
+    \item The initial state can be expanded in the eigenstates of the infinite well, \(\psi(x,t=0)=\sum_n c_n\phi_n(x)\).
+      Derive an expression, in terms of \(n\), for the \(c_n\) coefficients.
+
+    \item Compute the probability for measuring the energy to be \(9\pi^2\hbar^2/(2ma^2)\) at \(t=0\).
+
+    \item As an approximation, let's truncate the expansion at \(n=3\) (including the \(n=1,2,3\) terms).
+      Write an expression for the full, time-dependent wave function.
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}{3}
+  Consider a ``half-infinite'' square well in which the potential energy is \(\infty\) for \(x<0\), zero for \(0<x<a\), and finite (with a value \(V\)) for \(x>a\).
+  \begin{enumerate}[label=(\alph*)]
+    \item The energy eigenstates are almost exactly the same as one set of the solutions to the finite well problem (i.e., either McIntyre Eq.~5.80 or 5.81, with corresponding eigenvalue Eq.~5.83 or 5.85).
+      WHICH of those equations are the right ones here?
+      Briefly, explain.
+      There is going to be one minor difference from the McIntyre solution (in normalization).
+      What is that difference?
+
+    \item Give a qualitative (graphical) argument that the energy eigenvalues of this finite well are close to the usual results for an infinite well where \(V_0\) goes to \(\infty\) at \(x=0\) and \(x=a\).
+      \begin{itemize}[label=--]
+        \item Are the finite well energies a little smaller or a little larger than the ``ideal'' infinite well energies?
+          Why?
+        \item As you go higher and higher in (allowed) energy states, are the differences in energy eigenvalues between this finite well and the infinite well getting ``closer and closer'' or more and more different?
+          How/why?
+      \end{itemize}
+  \end{enumerate}
+\end{problem}
+
+\end{document}
