@@ -1,0 +1,70 @@
+\documentclass[11pt]{article}
+\usepackage{../homework}
+
+\profname{Dr. David Singer}
+\classcode{MATH 465 Differential Geometry}
+\assignnum{Assignment 07}
+\duedate{02 November 2026}
+
+\begin{document}
+All numbered problems from Do Carmo, \textit{Differential Geometry of Curves and Surfaces} (2e).
+\begin{problem}{1}
+  The paraboloid of revolution \( M \) can be parametrized by \( \mathbf{x}(r,\theta) = (r\cos\theta, r\sin\theta, r^2) \).
+  Compute the first fundamental form of \( M \) and the Gaussian curvature \( K(r,\theta) \) of \( M \).
+\end{problem}
+\begin{answer}
+  First of all,
+  \begin{equation}
+  \label{eq:1}
+  \begin{aligned}
+    \mathbf{x}_r &= (\cos\theta, \sin\theta, 2r) \\
+    \mathbf{x}_{\theta} &= (-r\sin\theta, r\cos\theta, 0).
+  \end{aligned}
+\end{equation}
+Thus, the first fundamental form is
+\begin{equation}
+\label{eq:2}
+ds^2 = (1+4r^2)dr^2 + r^2d\theta^2.
+\end{equation}
+
+Since the coordinates are orthgonal, we can use the Gauss formula,
+\begin{equation}
+\label{eq:3}
+\begin{aligned}
+  K &= - \frac{1}{2 \sqrt{EG}} \left[ \left( \frac{E_v}{\sqrt{EG}} \right)_v + \left( \frac{G_u}{\sqrt{EG}} \right)_u \right] \\
+    &= - \frac{1}{2\sqrt{r^2 + 4r^4}} \left( \frac{2r}{\sqrt{r^2 + 4r^{4}}} \right)_{r} \\
+    &= - \frac{1}{2r\sqrt{1+4r^2}} \left( \frac{2}{\sqrt{1+4r^2}} \right)_r \\
+    &= - \frac{1}{2r\sqrt{1+4r^2}} \left( -\frac{8r}{(1+4r^2)^{3/2}} \right) \\
+    &= \frac{4}{(1+4r^2)^2}.
+\end{aligned}
+\end{equation}
+\end{answer}
+
+\begin{problem}{2}
+  Compute the total curvature \( \int\int_M K \dd{A} \) of \( M \).
+  Note that \( \dd{A} = \sqrt{EG - F^2}\dd{r}\dd{\theta} \).
+\end{problem}
+\begin{answer}
+  The area form is
+  \begin{equation}
+  \label{eq:4}
+  \dd{A} = \sqrt{EG - F^2}\dd{r}\dd{\theta} = r \sqrt{1 + 4r^2}\dd{r}\dd{\theta}.
+\end{equation}
+Thus, the total curvature is
+\begin{equation}
+\label{eq:5}
+\begin{aligned}
+  \int\int_M K \dd{A} &= \int_0^{2\pi}\int_0^{\infty} \frac{4}{(1+4r^2)^2} r \sqrt{1 + 4r^2}\dd{r}\dd{\theta} \\
+  &= 8\pi \int_0^{\infty} \frac{r}{(1 + 4r^2)^{3/2}}\dd{r}.
+\end{aligned}
+\end{equation}
+Substitute \( y = 1 + 4r^2 \) so that \( \dd{y} = 8r\dd{x} \).
+Then,
+\begin{equation}
+\label{eq:6}
+\begin{aligned}
+\int\int_M K \dd{A} &= \pi \int_1^{\infty} \frac{\dd{y}}{y^{3/2}} = -\pi\frac{2}{y^{1/2}}\eval_1^{\infty} = 2\pi.
+\end{aligned}
+\end{equation}
+\end{answer}
+\end{document}

@@ -11,6 +11,79 @@
   Check that the uncertainty principle is satisfied.
   What state comes closest to saturating the uncertainty limit \(\Delta x\Delta p \geq \frac{\hbar}{2}\)?
 \end{problem}
+\begin{answer}
+  The \( n^{th} \) eigenstate for the infinite square well for a particule of mass \( n \) in a well of length \( L \) is
+  \begin{equation}
+  \label{eq:1}
+  \varphi_n = \sqrt{\frac{2}{L}}\sin(\frac{n\pi x}{L}), \quad E_n = \frac{n^2 \pi^2 \hbar^2}{2mL^2}.
+\end{equation}
+
+We then calculate,
+\begin{equation}
+\label{eq:2}
+\begin{aligned}
+  \ev{x} &= \ev{x}{\varphi} = \frac{2}{L} \int\limits_0^L x\sin^2\left(\frac{n\pi x}{L}\right) \dd{x} = \frac{2}{L}\left( \frac{L^2}{4} \right) \\
+  &= \frac{L}{2}.
+\end{aligned}
+\end{equation}
+
+\begin{equation}
+\label{eq:3}
+\begin{aligned}
+  \ev{p} &= \ev{p}{\varphi} = \frac{2}{L} \int\limits_0^L \sin(\frac{n\pi x}{L}) i\hbar\frac{n\pi}{L}\cos(\frac{n\pi x}{L})\dd{x} = 0,
+\end{aligned}
+\end{equation}
+where the last equality follows from the orthogonality of sine and cosine.
+
+\begin{equation}
+\label{eq:4}
+\begin{aligned}
+  \ev{x^2} &= \ev{x^2}{\varphi} = \frac{2}{L} \int\limits_0^L x^2 \sin^2(\frac{n\pi x}{L}) \dd{x} \\
+           &= \frac{2}{L}\left( L^3(\frac{1}{6} - \frac{1}{4\pi^2n^2}) \right) = L^2\left(\frac{1}{3} - \frac{1}{2\pi^2 n^2}\right).
+\end{aligned}
+\end{equation}
+\begin{equation}
+\label{eq:5}
+\begin{aligned}
+  \ev{p^2} &= \ev{p^2}{\varphi} = \frac{2}{L} \int\limits_0^L \sin(\frac{n\pi x}{L})\frac{n^2\hbar^2\pi^2}{L^2}\sin(\frac{n\pi x}{L}) \dd{x} \\
+  &= \frac{n^2 \pi^2 \hbar^2}{L^2}.
+\end{aligned}
+\end{equation}
+
+With these values we can calculate
+\begin{equation}
+\label{eq:6}
+\Delta x = \sqrt{\ev{x^2} - \ev{x}^2} = L\sqrt{\frac{1}{3} - \frac{1}{2\pi^2n^2} - \frac{1}{4}}
+\end{equation}
+\begin{equation}
+\label{eq:7}
+\Delta p = \sqrt{\ev{p^2} - \ev{p}^2}
+= \frac{n\pi\hbar}{L}.
+\end{equation}
+
+Thus,
+\begin{equation}
+\label{eq:8}
+\begin{aligned}
+\Delta x \Delta p
+&= L\sqrt{\frac{1}{12} - \frac{1}{2\pi^2n^2}}
+\frac{n\pi\hbar}{L} \\
+&= \hbar\sqrt{\frac{n^2\pi^2}{12} - \frac{1}{2}}
+\geq \frac{\hbar}{2},
+\end{aligned}
+\end{equation}
+where the inequality follows since \(n \geq 1\) and
+\(\pi^2 > 9\).
+
+Finally, since \(\Delta x\Delta p\) is increasing in
+\(n\), the ground state \(n=1\) comes closest to
+saturating the uncertainty principle, with
+\begin{equation}
+\label{eq:9}
+\Delta x\Delta p
+= \hbar\sqrt{\frac{\pi^2}{12} - \frac{1}{2}}.
+\end{equation}
+\end{answer}
 
 \begin{problem}{2}
   A particle of mass \(m\) is in an infinite square well (\(V=0\) from \(x=0\) to \(a\) and \(V=\infty\) elsewhere).
@@ -26,14 +99,140 @@
   \end{equation}
   \begin{enumerate}[label=(\alph*)]
     \item Determine the normalization constant, \(A\).
-
+\begin{answer}
+    We normalize the initial wave function by requiring
+    \begin{equation}
+      \label{eq:p2-normalization}
+      \begin{aligned}
+        1
+        &= \int_{-\infty}^{\infty}
+        |\psi(x,0)|^2\dd{x} \\
+        &= \frac{|A|^2}{a^2}\int_0^a x^2\dd{x} \\
+        &= \frac{|A|^2a}{3}.
+      \end{aligned}
+    \end{equation}
+    Choosing \(A\) real and positive gives
+    \begin{equation}
+      \label{eq:p2-A}
+      \boxed{A=\sqrt{\frac{3}{a}}}.
+    \end{equation}
+          \end{answer}
     \item The initial state can be expanded in the eigenstates of the infinite well, \(\psi(x,t=0)=\sum_n c_n\phi_n(x)\).
       Derive an expression, in terms of \(n\), for the \(c_n\) coefficients.
+          \begin{answer}
+   Recall that the normalized eigenfunctions of the
+    infinite square well are
+    \begin{equation}
+      \label{eq:p2-eigenfunctions}
+      \phi_n(x)=\sqrt{\frac{2}{a}}
+      \sin\left(\frac{n\pi x}{a}\right).
+    \end{equation}
+    By orthonormality, the expansion coefficients are
+    \begin{equation}
+      \label{eq:p2-cn}
+      \begin{aligned}
+        c_n
+        &= \int_0^a \phi_n^*(x)\psi(x,0)\dd{x} \\
+        &= \frac{\sqrt{6}}{a^2}
+        \int_0^a x\sin\left(\frac{n\pi x}{a}\right)
+        \dd{x}.
+      \end{aligned}
+    \end{equation}
+
+    Integrating by parts,
+    \begin{equation}
+      \label{eq:p2-integral}
+      \begin{aligned}
+        &\int_0^a x\sin\left(\frac{n\pi x}{a}\right)
+        \dd{x} \\
+        &\quad =
+        \left[
+        -\frac{ax}{n\pi}
+        \cos\left(\frac{n\pi x}{a}\right)
+        +\frac{a^2}{n^2\pi^2}
+        \sin\left(\frac{n\pi x}{a}\right)
+        \right]_0^a \\
+        &\quad =-\frac{a^2}{n\pi}(-1)^n.
+      \end{aligned}
+    \end{equation}
+
+    Substituting gives
+    \begin{equation}
+      \label{eq:p2-coefficients}
+      \boxed{c_n=\frac{(-1)^{n+1}\sqrt{6}}{n\pi}}.
+    \end{equation}
+          \end{answer}
 
     \item Compute the probability for measuring the energy to be \(9\pi^2\hbar^2/(2ma^2)\) at \(t=0\).
+          \begin{answer}
+  The energy eigenvalues are
+    \begin{equation}
+      \label{eq:p2-energies}
+      E_n=\frac{n^2\pi^2\hbar^2}{2ma^2}.
+    \end{equation}
+    Thus, the specified energy corresponds to \(n=3\).
+
+    The probability of measuring this energy is
+    \begin{equation}
+      \label{eq:p2-probability}
+      \begin{aligned}
+        P(E_3)
+        &= |c_3|^2 \\
+        &= \left|
+        \frac{(-1)^4\sqrt{6}}{3\pi}
+        \right|^2 \\
+        &= \boxed{\frac{2}{3\pi^2}}.
+      \end{aligned}
+    \end{equation}
+          \end{answer}
 
     \item As an approximation, let's truncate the expansion at \(n=3\) (including the \(n=1,2,3\) terms).
       Write an expression for the full, time-dependent wave function.
+          \begin{answer}
+    The time evolution of an energy eigenstate is
+    \begin{equation}
+      \label{eq:p2-time-evolution}
+      \phi_n(x,t)=\phi_n(x)e^{-iE_nt/\hbar}.
+    \end{equation}
+    Therefore, the full wave function is
+    \begin{equation}
+      \label{eq:p2-full-series}
+      \psi(x,t)
+      =\sum_{n=1}^{\infty}
+      c_n\phi_n(x)e^{-iE_nt/\hbar}.
+    \end{equation}
+
+    Truncating at \(n=3\) gives
+    \begin{equation}
+      \label{eq:p2-truncated}
+      \begin{aligned}
+        \psi(x,t)\approx{}&
+        c_1\phi_1(x)e^{-iE_1t/\hbar}
+        +c_2\phi_2(x)e^{-iE_2t/\hbar}\\
+        &+c_3\phi_3(x)e^{-iE_3t/\hbar}.
+      \end{aligned}
+    \end{equation}
+
+    Substituting the coefficients and eigenfunctions,
+    \begin{equation}
+      \label{eq:p2-final}
+      \boxed{
+      \begin{aligned}
+        \psi(x,t)\approx
+        \frac{\sqrt{12/a}}{\pi}
+        \bigg[
+        &\sin\left(\frac{\pi x}{a}\right)
+        e^{-i\pi^2\hbar t/(2ma^2)}\\
+        &-\frac12\sin\left(\frac{2\pi x}{a}\right)
+        e^{-i4\pi^2\hbar t/(2ma^2)}\\
+        &+\frac13\sin\left(\frac{3\pi x}{a}\right)
+        e^{-i9\pi^2\hbar t/(2ma^2)}
+        \bigg],
+      \end{aligned}
+      }
+    \end{equation}
+    for \(0<x<a\), and zero elsewhere.
+          \end{answer}
   \end{enumerate}
 \end{problem}
 
@@ -45,7 +244,76 @@
       Briefly, explain.
       There is going to be one minor difference from the McIntyre solution (in normalization).
       What is that difference?
+\begin{answer}
+    The correct solutions are the odd eigenfunctions
+    in McIntyre Eq.~5.81, with the corresponding
+    energy eigenvalue condition in Eq.~5.85.
 
+    Since the potential is infinite for \(x<0\),
+    the wave function must vanish at \(x=0\).
+    Of the two families of solutions for the
+    symmetric finite square well, only the odd
+    solutions satisfy this condition, since
+    \(\sin(0)=0\), whereas \(\cos(0)=1\).
+
+    The bound-state wave function therefore has
+    the form
+    \begin{equation}
+      \label{eq:p3-wavefunction}
+      \psi(x)=
+      \begin{cases}
+        0, & x\leq 0,\\
+        C\sin(kx), & 0<x<a,\\
+        C\sin(ka)e^{-q(x-a)}, & x\geq a,
+      \end{cases}
+    \end{equation}
+    where
+    \begin{equation}
+      \label{eq:p3-parameters}
+      k=\frac{\sqrt{2mE}}{\hbar},
+      \qquad
+      q=\frac{\sqrt{2m(V-E)}}{\hbar}.
+    \end{equation}
+
+    Continuity of the derivative at \(x=a\) gives
+    \begin{equation}
+      \label{eq:p3-boundary}
+      kC\cos(ka)=-qC\sin(ka),
+    \end{equation}
+    and hence
+    \begin{equation}
+      \label{eq:p3-energy-condition}
+      \boxed{-k\cot(ka)=q},
+    \end{equation}
+    precisely the condition in McIntyre Eq.~5.85.
+
+    The only difference in normalization is that
+    the original odd eigenfunctions are normalized
+    over the entire real line, whereas here the
+    wave function is supported only on \(x>0\).
+
+    Since the probability density of an odd
+    eigenfunction is even, its integral over
+    \(x>0\) is exactly one-half of its integral
+    over the entire real line. Therefore, the
+    normalization constant must be larger by
+    a factor of \(\sqrt{2}\).
+
+    Equivalently, if \(\varphi_{\mathrm{odd}}\)
+    denotes the normalized odd finite-well
+    eigenfunction from McIntyre, then
+    \begin{equation}
+      \label{eq:p3-normalization}
+      \boxed{
+      \psi(x)=
+      \begin{cases}
+        0, & x\leq 0,\\
+        \sqrt{2}\,\varphi_{\mathrm{odd}}(x),
+        & x>0.
+      \end{cases}
+      }
+    \end{equation}
+\end{answer}
     \item Give a qualitative (graphical) argument that the energy eigenvalues of this finite well are close to the usual results for an infinite well where \(V_0\) goes to \(\infty\) at \(x=0\) and \(x=a\).
       \begin{itemize}[label=--]
         \item Are the finite well energies a little smaller or a little larger than the ``ideal'' infinite well energies?
@@ -53,6 +321,15 @@
         \item As you go higher and higher in (allowed) energy states, are the differences in energy eigenvalues between this finite well and the infinite well getting ``closer and closer'' or more and more different?
           How/why?
       \end{itemize}
+          \begin{answer}
+            Based on the graph we drew in class, as the potential increases the energy increases asymptotically to that of the finite well.
+            However, the finite well energies are all slightly smaller than the ideal infinite well.
+            This can be explained by both the graph, where the asymptotic approach is from below, or by the quantum tunneling in the finite well.
+            As you go higher in energy states, the differences are more different, again explained by the graph, since the finite well eventually begins to decrease down to meet the horizontal axis.
+          \end{answer}
+          \begin{figure}
+            \includegraphics[width=\textwidth]{IMG_0351.jpeg}
+          \end{figure}
   \end{enumerate}
 \end{problem}
 

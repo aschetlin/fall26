@@ -10,49 +10,293 @@
 All problems from Folland, \textit{Real Analysis} (2e).
 
 \begin{problem}{2.3.27}
-  Let \( f_n(x) = ae^{-nax} - be^{-nbx} \) where \( 0 < a < b \).
+  Let \( f_n(x) = ae^{-nax} - be^{-nbx} \), where \( 0 < a < b \).
   \begin{enumerate}[label=(\alph*)]
-    \item \( \sum\limits_1^{\infty} \int\limits_0^{\infty} |f_n(x)|\dd{x} = \infty \).
-          \begin{proof}
-            Since \( |f_n| \) is non-negative and continuous, it is measurable and in \( L^+ \), so that we may interchange the sum and the integral.
-            Then,
-            \begin{equation}
-            \label{eq:2}
-            \int\limits_0^{\infty} \sum\limits_{1}^{\infty} | ae^{-nax} - be^{-nbx} | \dd{x},
-          \end{equation}
-          \end{proof}
-    \item \( \sum\limits_1^{\infty}\int\limits_0^{\infty} f_n(x)\dd{x}  = 0 \).
-    \item \( \sum\limits_1^{\infty} f_n \in L^1([0,\infty], m) \), and \( \int\limits_0^{\infty} \sum\limits_1^{\infty} f_n(x) \dd{x} = \log(b/a) \).
+    \item Show that
+      \begin{equation}
+        \label{eq:p2327-a}
+        \sum_{n=1}^{\infty}\int_0^\infty |f_n(x)|\dd{x} = \infty.
+      \end{equation}
+      \begin{proof}
+        Since \( |f_n| \) is nonnegative and continuous, it is measurable.
+        Moreover,
+        \begin{equation}
+          \label{eq:p2327-bound}
+          |f_n(x)| \leq ae^{-nax} + be^{-nbx},
+        \end{equation}
+        so \( f_n \in L^1 \).
+
+        Making the substitution \( u = nx \), we obtain
+        \begin{equation}
+          \label{eq:p2327-substitution}
+          \begin{aligned}
+            \int_0^\infty |f_n(x)|\dd{x}
+            &= \int_0^\infty |ae^{-nax}-be^{-nbx}|\dd{x} \\
+            &= \frac{1}{n}\int_0^\infty |ae^{-au}-be^{-bu}|\dd{u}.
+          \end{aligned}
+        \end{equation}
+
+        Let
+        \begin{equation}
+          \label{eq:p2327-constant}
+          C = \int_0^\infty |ae^{-au}-be^{-bu}|\dd{u}.
+        \end{equation}
+        By the bound above, \( C < \infty \).
+        Furthermore, since \( a < b \) and by continuity, \( C > 0 \).
+
+        Therefore,
+        \begin{equation}
+          \label{eq:p2327-divergence}
+          \begin{aligned}
+            \sum_{n=1}^\infty \int_0^\infty |f_n(x)|\dd{x}
+            &= C\sum_{n=1}^\infty \frac{1}{n} \\
+            &= \infty.
+          \end{aligned}
+        \end{equation}
+      \end{proof}
+
+    \item Show that
+      \begin{equation}
+        \label{eq:p2327-b}
+        \sum_{n=1}^\infty\int_0^\infty f_n(x)\dd{x} = 0.
+      \end{equation}
+      \begin{proof}
+        By part (a), each \( f_n \in L^1 \).
+        Thus, applying the Dominated Convergence Theorem to
+        \( f_n\chi_{[0,R]} \) as \( R \to \infty \), we may evaluate
+        the Lebesgue integral using ordinary calculus.
+
+        We obtain
+        \begin{equation}
+          \label{eq:p2327-integral}
+          \begin{aligned}
+            \int_0^\infty f_n(x)\dd{x}
+            &= \lim_{R\to\infty}
+               \int_0^R \left(ae^{-nax}-be^{-nbx}\right)\dd{x} \\
+            &= \lim_{R\to\infty}
+               \left[-\frac{e^{-nax}}{n}
+               +\frac{e^{-nbx}}{n}\right]_0^R \\
+            &= \frac{1}{n}-\frac{1}{n} \\
+            &= 0.
+          \end{aligned}
+        \end{equation}
+        Consequently,
+        \begin{equation}
+          \label{eq:p2327-zero}
+          \sum_{n=1}^\infty\int_0^\infty f_n(x)\dd{x}
+          = \sum_{n=1}^\infty 0 = 0.
+        \end{equation}
+      \end{proof}
+
+    \item Show that \( \sum_{n=1}^\infty f_n \in L^1([0,\infty),m) \)
+      and
+      \begin{equation}
+        \label{eq:p2327-c}
+        \int_0^\infty \sum_{n=1}^\infty f_n(x)\dd{x}
+        = \log(b/a).
+      \end{equation}
+      \begin{proof}
+        For \( x > 0 \), both series converge as
+        \begin{equation}
+          \label{eq:p2327-geometric}
+          \begin{aligned}
+            \sum_{n=1}^\infty f_n(x)
+            &= a\sum_{n=1}^\infty e^{-nax}
+               -b\sum_{n=1}^\infty e^{-nbx} \\
+            &= \frac{ae^{-ax}}{1-e^{-ax}}
+               -\frac{be^{-bx}}{1-e^{-bx}} \\
+            &= \frac{a}{e^{ax}-1}
+               -\frac{b}{e^{bx}-1}.
+          \end{aligned}
+        \end{equation}
+        Denote this function by \( g(x) \).
+        At \( x=0 \), the original series diverges, but since
+        \( \{0\} \) has measure zero, we may redefine \( g(0)=0 \)
+        without affecting its integrability or integral. (See last homework set).
+
+        We first show that \( g \geq 0 \).
+        Consider
+        \begin{equation}
+          \label{eq:p2327-h}
+          h(t)=\frac{t}{e^t-1}, \qquad t>0.
+        \end{equation}
+        Differentiating,
+        \begin{equation}
+          \label{eq:p2327-h-derivative}
+          h'(t)=\frac{e^t(1-t)-1}{(e^t-1)^2}.
+        \end{equation}
+        Since \(\dv*{t} e^t(1-t) = -te^t<0 \) for \( t>0 \) and equals \( 1 \) at \( t=0 \),
+        we have \( h'(t)<0 \).
+        Thus \( h \) is strictly decreasing.
+
+        Since \( 0<a<b \), for every \( x>0 \) we have \( ax<bx \),
+        whence
+        \begin{equation}
+          \label{eq:p2327-nonnegative}
+          g(x)=\frac{1}{x}\left(h(ax)-h(bx)\right)>0.
+        \end{equation}
+
+        Now,
+        \begin{equation}
+          \label{eq:p2327-antiderivative}
+          \frac{d}{dx}\log(1-e^{-cx})
+          =\frac{c}{e^{cx}-1}.
+        \end{equation}
+        Hence, for \( 0<\varepsilon<R \),
+        \begin{equation}
+          \label{eq:p2327-compact-integral}
+          \begin{aligned}
+            \int_\varepsilon^R g(x)\dd{x}
+            &= \left[
+                \log(1-e^{-ax})-\log(1-e^{-bx})
+               \right]_\varepsilon^R \\
+            &= \log\left(\frac{1-e^{-aR}}{1-e^{-bR}}\right)
+               -\log\left(
+                 \frac{1-e^{-a\varepsilon}}
+                      {1-e^{-b\varepsilon}}
+               \right).
+          \end{aligned}
+        \end{equation}
+
+        Passing to the limit \( \epsilon\to0^{+} \),
+        \begin{equation}
+          \label{eq:p2327-limit}
+          \begin{aligned}
+            \lim_{\varepsilon\to0^+}
+            \frac{1-e^{-a\varepsilon}}
+                 {1-e^{-b\varepsilon}}
+            &= \lim_{\varepsilon\to0^+}
+               \frac{(1-e^{-a\varepsilon})/\varepsilon}
+                    {(1-e^{-b\varepsilon})/\varepsilon} \\
+            &= \frac{a}{b}.
+          \end{aligned}
+        \end{equation}
+        Therefore,
+        \begin{equation}
+          \label{eq:p2327-final}
+          \lim_{\substack{\varepsilon\to0^+\\R\to\infty}}
+          \int_\varepsilon^R g(x)\dd{x}
+          = -\log(a/b)
+          = \log(b/a).
+        \end{equation}
+
+        Since \( g \geq 0 \), the MCT
+        applied to \( g\chi_{[1/k,k]} \) shows that
+        \begin{equation}
+          \label{eq:p2327-mct}
+          \int_0^\infty g(x)\dd{x}
+          = \lim_{k\to\infty}\int_{1/k}^k g(x)\dd{x}
+          = \log(b/a)<\infty.
+        \end{equation}
+        Thus \( g\in L^1([0,\infty),m) \), and
+        \begin{equation}
+          \label{eq:p2327-conclusion}
+          \int_0^\infty\sum_{n=1}^\infty f_n(x)\dd{x}
+          =\log(b/a).
+        \end{equation}
+      \end{proof}
   \end{enumerate}
 \end{problem}
 
 \begin{problem}{2.3.31(a)}
-  Derive the formula by expanding part of the integrand into an infinite series and justifying th term-byterm integration. Exercise 29 may be useful.
-  \begin{enumerate}[label=(\alph*)]
-          \item For \( a>0 \), \( \int\limits_{-\infty}^{\infty} e^{-x^2}\cos ax\dd{x} = \sqrt{\pi} e^{-a^2/4} \).
-  \end{enumerate}
+	Derive the formula by expanding part of the integrand into an infinite series and justifying the term-by-term integration. Exercise 29 may be useful.
+	\begin{enumerate}[label=(\alph*)]
+		\item For \( a>0 \), \( \int\limits_{-\infty}^{\infty} e^{-x^2}\cos ax\dd{x} = \sqrt{\pi} e^{-a^2/4} \).
+	\end{enumerate}
+	\begin{proof}
+		Write \( \cos ax = \sum\limits_0^{\infty} \frac{(-1)^{n}(ax)^{2n}}{(2n)!} \), so that our equation becomes
+		\begin{equation}
+			\label{eq:17}
+			\begin{aligned}
+				\int\limits_{-\infty}^{\infty} e^{-x^2} \sum\limits_0^{\infty} \frac{(-1)^n(ax)^{2n}}{(2n)!} \dd{x} & = \int\limits_{-\infty}^{\infty} \sum\limits_0^{\infty} e^{-x^2} \frac{(-1)^na^{2n}x^{2n}}{(2n)!} \dd{x}.
+			\end{aligned}
+		\end{equation}
+		We note that, with \( f_n \coloneq \frac{(-1)^ne^{-x^2}x^{2n}a^{2n}}{(2n)!}\),
+		\begin{equation}
+			\label{eq:18}
+			\begin{aligned}
+				\int\limits_{-\infty}^{\infty} |f_n(x)|\dd{x} & = \int\limits_{-\infty}^{\infty} e^{-x^2}x^{2n} \frac{a^{2n}}{(2n)!} \dd{x}                                                                         \\
+				                                              & = \sqrt{\pi} \frac{(2n)!}{4^nn!} \frac{a^{2n}}{(2n)!} = \sqrt{\pi} \frac{a^{2n}}{4^{n}n!} = \sqrt{\pi} \left( \frac{a^2}{4} \right)^n \frac{1}{n!},
+			\end{aligned}
+		\end{equation}
+		which means that
+		\begin{equation}
+			\label{eq:19}
+			\sum\limits_0^{\infty} \int\limits_{-\infty}^{\infty} |f_n(x)|\dd{x} = \sum\limits_0^{\infty} \sqrt{\pi} \left( \frac{a^2}{4} \right)^{n} \frac{1}{n!} = \sqrt{\pi}e^{a^2/4} < \infty,
+		\end{equation}
+		so by Theorem 2.25 we may interchange the sum and integral to get
+		\begin{equation}
+			\label{eq:20}
+			\begin{aligned}
+				\int\limits_{-\infty}^{\infty} e^{-x^2}\cos ax \dd{x} & = \sum\limits_0^{\infty} \int\limits_{-\infty}^{\infty} e^{-x^2}x^{2n} \frac{(-1)^na^{2n}}{(2n)!} \dd{x}  \\
+				                                                      & = \sum\limits_0^{\infty} \sqrt{\pi} \left( \frac{-a^2}{4} \right)^n  \frac{1}{n!} = \sqrt{\pi}e^{-a^2/4},
+			\end{aligned}
+		\end{equation}
+		as desired.
+	\end{proof}
 \end{problem}
 
 \begin{problem}{2.4.39}
-  If \( f_n \rightarrow f \) almost uniformly, then \( f_n \rightarrow f \) a.e. and in measure.
+	If \( f_n \rightarrow f \) almost uniformly, then \( f_n \rightarrow f \) a.e. and in measure.
 \end{problem}
 \begin{proof}
-  By definition, \( f_n \rightarrow f \) almost uniformly means that for every \(\epsilon > 0\) there is \( E \subset X \) with \(\mu(E) < \epsilon\) and \( f_n \rightarrow f \) uniformly on \( X \setminus E \).
-  In particular, for all \( n \in \mathbb{N} \) there is \( E_n \) with \(\mu(E_n) < 1/n\), whence we define
-  \begin{equation}
-  \label{eq:1}
-  E = \bigcap_n E_n.
-\end{equation}
-By continuity from above (\( \mu(E_1) < 1 \)),
-\begin{equation}
-\label{eq:3}
-\mu(E) = \lim \mu(E_n) = 0.
-\end{equation}
+	By definition, \( f_n \rightarrow f \) almost uniformly means that for every \(\epsilon > 0\) there is \( E \subset X \) with \(\mu(E) < \epsilon\) and \( f_n \rightarrow f \) uniformly on \( X \setminus E \).
+	In particular, for all \( n \in \mathbb{N} \) there is \( E_n \) with \(\mu(E_n) < 1/n\), whence we define
+	\begin{equation}
+		\label{eq:1}
+		E = \bigcap_n E_n.
+	\end{equation}
+	Noting that
+	\begin{equation}
+		\label{eq:4}
+		0 \leq \mu(E) \leq \mu(E_n) \xrightarrow{n \rightarrow \infty} 0,
+	\end{equation}
+	we see that \( \mu(E) = 0. \)
+	Furthermore, \( X \setminus E = X \setminus \bigcap_n E_n = \bigcup_n X \setminus E_{n} \), so that if \( x \in X \setminus E \), \( f_n(x) \rightarrow f(x) \), showing that \( f_{n} \rightarrow f \) outside of a null set, that is, \( f_n \rightarrow f \) a.e.
+
+	It remains to show that for all \( \epsilon > 0 \),
+	\begin{equation}
+		\label{eq:5}
+		\mu(A_n) = \mu(\{ x: |f_n(x) - f(x)| \geq \epsilon \}) \xrightarrow{n \rightarrow \infty} 0.
+	\end{equation}
+	Fix \(\epsilon > 0\), \(\delta > 0\).
+	Since \( f_n \rightarrow f \) almost uniformly, there exists \( F \) with \( \mu(F) < \delta \) such that \( f_n \rightarrow f \) uniformly on \( X \setminus F \), that is, there exists \( N_{\epsilon} \) such that for all \( x \in X \setminus F \) and \( n \geq N_{\epsilon} \),
+	\begin{equation}
+		\label{eq:14}
+		|f_n(x)-f(x)| < \epsilon.
+	\end{equation}
+	Consequently, \( X \setminus F \subset \{x: |f_n(x) - f(x)| < \epsilon\} \), which means in fact
+	\begin{equation}
+		\label{eq:15}
+		\{x: |f_n(x) - f(x)| \geq \epsilon\} = A_n \subset F,
+	\end{equation}
+	and therefore for all \( n \geq N_{\epsilon} \),
+	\begin{equation}
+		\label{eq:16}
+		\mu(A_n) \leq \mu(F) < \delta.
+	\end{equation}
+	Since \(\delta>0\) was arbitrary, we have that \( \mu(A_n) \rightarrow 0 \), as desired.
 \end{proof}
 
 \begin{problem}{2.4.42}
-  Let \(\mu\) be the counting measure on \( \mathbb{N} \).
-  Then \( f_n \rightarrow f \) in measure iff \( f_n \rightarrow f \) uniformly.
+	Let \(\mu\) be the counting measure on \( \mathbb{N} \).
+	Then \( f_n \rightarrow f \) in measure iff \( f_n \rightarrow f \) uniformly.
 \end{problem}
+\begin{proof}
+	(\(\Rightarrow\)) Let \( (a_n)_k \) be a sequence of sequences, \( a_n \) a sequence, and suppose that, for all \(\epsilon > 0\),
+	\begin{equation}
+		\label{eq:12}
+		\mu(\{ n \in \mathbb{N}: |a_{n_k} - a_n| \geq \epsilon\}) \xrightarrow{k \rightarrow \infty} 0.
+	\end{equation}
+	This means that for all \( m \in \mathbb{N} \) there is some \( K_{m} \) for which all natural numbers \( k \geq K_{m} \) satisfy \( \mu(\{n: |a_{n_k} - a_n| \geq 1/m \}) < 1/m \).
+	Now, since \( \mu \) is the counting measure, this means that for any \( m \geq 2 \), for \( k \geq K_m \),
+	\begin{equation}
+		\label{eq:13}
+		\mu(\{n: |a_{n_k} - a_n| \geq 1/m\}) = 0,
+	\end{equation}
+	or, for every \( m \geq 2 \), there exists \( K_m \) such that for all \( n \) and all \( k \geq K_m \), \( |a_{n_k} - a_n| < 1/m \), precisely the definition of uniform convergence.
+
+	(\(\Leftarrow\)) Conversely, suppose that \( f_n \rightarrow f \) uniformly. Since \textit{a fortiori} \( f_n \rightarrow f \) almost uniformly, by Problem 2.4.39, we immediately get \( f_{n} \rightarrow f \) in measure.
+\end{proof}
 
 \end{document}
