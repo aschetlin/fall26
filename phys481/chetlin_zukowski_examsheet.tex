@@ -1,0 +1,289 @@
+% PHYS 331 — Exam 2 Formula Sheet
+% Reorganized from E1 Formulae.pdf (two handwritten pages).
+% Letter paper, two pages, intended for double-sided printing.
+%
+% EDITING GUIDE
+%   1. Add formulas under the section that best fits them.
+%   2. Insert new sections with \sectionheading{Section Name}.
+%   3. The blank areas at the bottoms of the four columns are intentional.
+%   4. After editing, check that the resulting PDF remains exactly two pages.
+%   5. If needed, lower \fontsize{9.3}{11} on the line below or reduce
+%      the gaps defined by \sectionheading, rather than changing paper size.
+
+\documentclass[letterpaper,9pt]{extarticle}
+\usepackage[letterpaper,top=0.4in,bottom=0.50in,left=0.53in,right=0.53in]{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{braket}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{ragged2e}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\abovedisplayskip}{4pt plus 1pt minus 1pt}
+\setlength{\belowdisplayskip}{4pt plus 1pt minus 1pt}
+\setlength{\abovedisplayshortskip}{2pt plus 1pt}
+\setlength{\belowdisplayshortskip}{3pt plus 1pt}
+\setlength{\arraycolsep}{3.2pt}
+\renewcommand{\arraystretch}{1.05}
+\definecolor{heading}{HTML}{26384A}
+\definecolor{hairline}{HTML}{9BA7AE}
+\newcommand{\pageheading}[2]{%
+  {\large\bfseries\color{heading} PHYS 331 \enspace/\enspace Exam 2 Formula Sheet}%
+  \hfill {\footnotesize\color{heading} #1 \quad\textbullet\quad #2}\par
+  \vspace{3pt}\color{hairline}\hrule height 0.6pt\color{black}\vspace{9pt}}
+\newcommand{\sectionheading}[1]{%
+  \par\vspace{9pt}\noindent{\bfseries\color{heading} #1}\par
+  \vspace{2pt}{\color{hairline}\hrule height 0.32pt}\vspace{5pt}}
+\newcommand{\explain}[1]{\par{\footnotesize\color{heading}#1}\par\vspace{1pt}}
+\newcommand{\columnbreakspace}{\vspace*{0pt}}
+
+\begin{document}
+\fontsize{9.3}{11}\selectfont
+\pageheading{Avi Chetlin}{PHYS 331 E2}
+\noindent
+\begin{minipage}[t]{0.485\textwidth}
+\sectionheading{Measurement and Expectation Values}
+Probability of obtaining the eigenvalue associated with $\ket{a}$
+\begin{equation*}
+  p(a)=\bigl|\braket{a|\psi}\bigr|^2.
+\end{equation*}
+For an observable $\hat A$ with eigenvalues $a_n$,
+\begin{equation*}
+  \braket{\hat A}=\braket{\psi|\hat A|\psi}
+  =\sum_n a_n p_n.
+\end{equation*}
+
+\sectionheading{Projectors and State Reduction}
+Projection operator and corresponding outcome probability
+\begin{align*}
+  \hat P_a &= \ket{a}\!\bra{a}, \\
+  p_a &= \braket{\psi|\hat P_a|\psi}
+      =\braket{\psi|a}\braket{a|\psi}.
+\end{align*}
+Normalized state after projection onto the $n$th eigenspace
+\begin{equation*}
+  \ket{\psi'}=\frac{\hat P_n\ket{\psi}}
+  {\sqrt{\braket{\psi|\hat P_n|\psi}}}.
+\end{equation*}
+
+\sectionheading{Operators in an Orthonormal Basis}
+If $\{\ket{a_i}\}$ is an orthonormal basis, then
+\begin{equation*}
+  A_{ij}=\braket{a_i|\hat A|a_j},\qquad
+  [\hat A]_{\{a_i\}}=(A_{ij}).
+\end{equation*}
+For example,
+\begin{equation*}
+  [\hat A]_{\{a_i\}}=
+  \begin{pmatrix}
+   \braket{a_1|\hat A|a_1} & \braket{a_1|\hat A|a_2} & \cdots\\
+   \braket{a_2|\hat A|a_1} & \braket{a_2|\hat A|a_2} & \cdots\\
+   \vdots & \vdots & \ddots
+  \end{pmatrix}.
+\end{equation*}
+Conjugation identities
+\begin{align*}
+  \braket{\phi|\psi} &= \braket{\psi|\phi}^{*},\\
+  \braket{\phi|\hat A|\psi}
+  &= \braket{\psi|\hat A^{\dagger}|\phi}^{*}.
+\end{align*}
+
+\sectionheading{Quantum Information}
+Bit flip/NOT gate
+\begin{equation*}
+\label{eq:1}
+X = \sigma_z; X\ket{0} = \ket{1}, X\ket{1} = \ket{0}.
+\end{equation*}
+Phase gate
+\begin{equation*}
+\label{eq:2}
+Z = \sigma_{z}; Z\ket{0} = \ket{0}, Z\ket{1} = -\ket{1}.
+\end{equation*}
+\begin{equation*}
+Y = iZX = \sigma_y.
+\end{equation*}
+Hadamard gate
+\begin{equation*}
+H\ket{0} = \frac{1}{\sqrt{2}}(\ket{1} + \ket{0}), H\ket{1} = \frac{1}{\sqrt{2}}(-\ket{1}+\ket{0}).
+\end{equation*}
+\begin{equation*}
+H \doteq \frac{1}{\sqrt{2}} \begin{pmatrix}
+1  & 1 \\
+1  & -1
+ \end{pmatrix}.
+\end{equation*}
+Controlled gates
+
+
+
+% ADD ADDITIONAL GENERAL-FORMALISM ENTRIES HERE.
+\end{minipage}\hfill
+\begin{minipage}[t]{0.485\textwidth}
+\columnbreakspace
+\sectionheading{Uncertainties}
+Standard deviation of an observable
+\begin{align*}
+ \Delta A
+ &=\sqrt{\braket{\hat A^2}-\braket{\hat A}^{2}}\\
+ &=\sqrt{\braket{\psi|\hat A^2|\psi}
+          -\braket{\psi|\hat A|\psi}^{2}}.
+\end{align*}
+Robertson uncertainty relation
+\begin{equation*}
+ \Delta A\,\Delta B\geq\frac12
+ \left|\braket{[\hat A,\hat B]}\right|.
+\end{equation*}
+
+\sectionheading{Spin-$\tfrac12$ Matrices}
+In the $S_z$ eigenbasis,
+\begin{align*}
+ \hat S_x&=\frac{\hbar}{2}\begin{pmatrix}0&1\\1&0\end{pmatrix},&
+ \hat S_y&=\frac{\hbar}{2}\begin{pmatrix}0&-i\\i&0\end{pmatrix},\\[5pt]
+ \hat S_z&=\frac{\hbar}{2}\begin{pmatrix}1&0\\0&-1\end{pmatrix}.&&
+\end{align*}
+Eigenvector matrices as written in the original notes
+\begin{align*}
+ P_{z\to x}&=\frac{1}{\sqrt{2}}
+    \begin{pmatrix}1&1\\1&-1\end{pmatrix},\\[4pt]
+ P_{z\to y}&=\frac{1}{\sqrt{2}}
+    \begin{pmatrix}1&1\\i&-i\end{pmatrix},\\[4pt]
+ P_{z\to z}&=\begin{pmatrix}1&0\\0&1\end{pmatrix}.
+\end{align*}
+
+\sectionheading{Spin Algebra}
+\begin{equation*}
+ \hat S^2=\hat S_x^2+\hat S_y^2+\hat S_z^2
+ =\frac{3\hbar^2}{4}I.
+\end{equation*}
+For cyclic $(i,j,k)=(x,y,z)$,
+\begin{equation*}
+ [\hat S_i,\hat S_j]=i\hbar\hat S_k.
+\end{equation*}
+
+\sectionheading{Position and Momentum}
+\begin{align*}
+  \hat{x}\ket{x} &= x\ket{x} \\
+  \ket{\psi} &= \sum_i \ket{x_i}\braket{x_i | \psi} \\
+  \psi(x) &= \braket{x_i | \psi}.
+\end{align*}
+Probability
+\begin{align*}
+|\braket{x | \psi}|^2 &= |\psi(x)|^2 \\
+\mathbb{P}(x_1 < x < x_{2})&=\int\limits_{x_1}^{x_2} |\psi(x)|^2 dx
+\end{align*}
+Momentum operator
+\begin{align*}
+\hat{p} = -i\hbar \frac{d}{dx}, \quad \langle \hat{p} \rangle = \int\limits_{-\infty}^{\infty} \psi^{*}(-i\hbar \frac{d\psi}{dx}) dx
+\end{align*}
+\begin{align*}
+\left[ - \frac{\hbar^2}{2m}\frac{d^2}{dx^2} + V(x) \right]\varphi(x) = E\varphi(x)
+\end{align*}
+
+\end{minipage}
+
+\newpage
+\pageheading{Avi Chetlin}{PHYS 331 E2}
+\noindent
+\begin{minipage}[t]{0.485\textwidth}
+\columnbreakspace
+\sectionheading{Spin Along an Arbitrary Direction}
+Unit vector in spherical coordinates
+\begin{equation*}
+ \hat{\mathbf n}=(\sin\theta\cos\phi,\,
+ \sin\theta\sin\phi,\,\cos\theta).
+\end{equation*}
+Spin along $\hat{\mathbf n}$
+\begin{align*}
+ \hat S_n &=\mathbf{\hat S}\cdot\hat{\mathbf n}\\
+ &=\hat S_x\sin\theta\cos\phi
+ +\hat S_y\sin\theta\sin\phi
+ +\hat S_z\cos\theta\\
+ &=\frac{\hbar}{2}\begin{pmatrix}
+ \cos\theta &e^{-i\phi}\sin\theta\\
+ e^{i\phi}\sin\theta&-\cos\theta
+ \end{pmatrix}.
+\end{align*}
+The eigenkets in the $S_z$ eigenbasis are
+\begin{align*}
+ \ket{+}_{\hat n}
+ &=\cos\frac\theta2\ket{+}
+ +e^{i\phi}\sin\frac\theta2\ket{-},\\[3pt]
+ \ket{-}_{\hat n}
+ &=\sin\frac\theta2\ket{+}
+ -e^{i\phi}\cos\frac\theta2\ket{-}.
+\end{align*}
+
+\sectionheading{General Spin $s$}
+For $m=-s,-s+1,\ldots,s$,
+\begin{align*}
+ \hat S^2\ket{s,m}&=s(s+1)\hbar^2\ket{s,m},\\
+ \hat S_z\ket{s,m}&=m\hbar\ket{s,m}.
+\end{align*}
+
+\sectionheading{Square Wells}
+Infinite
+\begin{align*}
+  \varphi_n(x) &= \sqrt{\frac{2}{L}} \sin(\frac{n\pi}{L}x), \quad E_n = \frac{n^2 \pi^2 \hbar^2}{2mL^2}, \\
+  \psi(x) &= \sum\limits_n c_n\varphi_n(x) = \sum_n \left(\int_0^{L} \varphi^{*}_n(x)\psi(x) dx \right) \varphi_n(x)
+\end{align*}
+Finite
+\begin{align*}
+\varphi_{even} &= \begin{cases}
+  Ae^{qx}, &x \leq -a \\
+  D\cos kx, & -a < x < a \\
+  Ae^{-qx}, & x \geq a,
+\end{cases}, \quad k\tan(ka)=q \\
+  z &\coloneq ka = \sqrt{\frac{2mEa^2}{\hbar^2}}, z_0 = \sqrt{\frac{2mV_{0}a^2}{\hbar^2}} \\
+  z\tan z &= \sqrt{z_{0}^2 - z^2}
+\end{align*}
+
+\end{minipage}\hfill
+\begin{minipage}[t]{0.485\textwidth}
+\columnbreakspace
+\sectionheading{Time Evolution}
+Time-dependent Schr\"odinger equation
+\begin{equation*}
+ i\hbar\frac{\partial}{\partial t}\ket{\psi(t)}
+ =\hat H\ket{\psi(t)}.
+\end{equation*}
+Energy eigenstates
+\begin{equation*}
+ \hat H\ket{E_n}=E_n\ket{E_n}.
+\end{equation*}
+Stationary-Hamiltonian expansion
+\begin{align*}
+ \ket{\psi}&=\sum_n c_n\ket{E_n},\\
+ c_n(t)&=e^{-iE_n t/\hbar}c_n(0),\\
+ \ket{\psi(t)}&=\sum_n c_n(0)e^{-iE_nt/\hbar}\ket{E_n}.
+\end{align*}
+
+\sectionheading{Spin in a Uniform Magnetic Field}
+Magnetic moment and Hamiltonian
+\begin{align*}
+ \boldsymbol\mu&=g\frac{q}{2m}\mathbf{\hat S},&
+ \boldsymbol\mu_e&\simeq-\frac{e}{m_e}\mathbf{\hat S},\\
+ \hat H&=-\boldsymbol\mu\cdot\mathbf B.
+\end{align*}
+If $\mathbf B=B_0\hat{\mathbf z}$,
+\begin{align*}
+ \hat H&=\frac{eB_0}{m_e}\hat S_z
+ =\omega_0\hat S_z,\\
+ \omega_0&:=\frac{eB_0}{m_e},\\
+ \hat H\ket{\pm}&=\pm\frac{\hbar\omega_0}{2}\ket{\pm}.
+\end{align*}
+
+\sectionheading{Complex and Trigonometric Identities}
+\begin{align*}
+ ie^{i\phi}&=e^{i(\phi+\pi/2)},&
+ -e^{i\phi}&=e^{i(\phi+\pi)},\\
+ e^{i\phi}+e^{-i\phi}&=2\cos\phi,\\
+ e^{i\phi}-e^{-i\phi}&=2i\sin\phi,\\
+ \cos\theta&=-\cos(\theta+\pi),\\
+ \sin\theta&=-\sin(\theta+\pi).
+\end{align*}
+
+% ADD ADDITIONAL DYNAMICS AND COMPLEX-IDENTITY ENTRIES HERE.
+\end{minipage}
+\end{document}

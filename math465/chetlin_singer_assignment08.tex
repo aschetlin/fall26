@@ -1,0 +1,59 @@
+\documentclass[11pt]{article}
+\usepackage{../homework}
+
+\profname{Dr. David Singer}
+\classcode{MATH 465 Differential Geometry}
+\assignnum{Assignment 08}
+\duedate{09 November 2026}
+
+\begin{document}
+\begin{problem}{4.4.18}
+  Consider a geodesic which starts at a point \( p \) in the upper part \( z > 0 \) of a hyperboloid of revolution \( x^2 + y^2 - z^2 = 1 \) and makes an angle \(\theta\) with the parallel passing through \( p \) in such a way that \( \cos\theta = 1 /r \), where \( r \) is the distance from \( p \) to the \( z \) axis.
+  Show that by following the geodesic in the direction of decreasing parallels, it approaches asymptotically the parallel \( x^2 + y^2 = 1, z = 0 \).
+\end{problem}
+
+\begin{problem}{4.4.19}
+  Show that when the differential equations of the geodesics are referred to the arc length then the second equation is, except for the coordinate curves, a consequence of the first equation.
+\end{problem}
+
+\begin{problem}{4.4.20}
+  Let \( T \) be a torus of revolution which we shall assume to be parametrized by
+  \begin{equation}
+  \label{eq:1}
+  \mathbf{x}(u,v) = ((r\cos u + a)\cos v, (r\cos u + a)\sin v, r \sin u).
+\end{equation}
+Prove that
+\begin{enumerate}[label=\alph*.]
+  \item If a geodesic is tangent to the parallel \( u = \pi / 2 \), then it is entirely contained in the region of \( T \) given by
+        \begin{equation}
+        \label{eq:3}
+        - \frac{\pi}{2} \leq u \leq \frac{\pi}{2}.
+      \end{equation}
+  \item A geodesic that intersects the parallel \( u = 0 \) under an angle \(\theta\) (\( 0 < \theta < \pi/2 \)) also intersects the parallel \( u = \pi\) if
+        \begin{equation}
+        \label{eq:4}
+        \cos\theta < \frac{a-r}{a+r}.
+        \end{equation}
+\end{enumerate}
+\end{problem}
+
+\begin{problem}{4.6.2}
+  Show that the equations of geodesics in polar coordinates \( (E=1, F = 0) \) are given by
+  \begin{equation}
+  \label{eq:5}
+  \begin{aligned}
+    0 &= \rho^{\prime\prime} - \frac{1}{2}G_{\rho}(\theta^{\prime})^2 \\
+    0 &= \theta^{\prime\prime} + \frac{G_{\rho}}{G}\rho^{\prime}\theta^{\prime} + \frac{1}{2} \frac{G_{\theta}}{G}(\theta^{\prime})^2.
+  \end{aligned}
+  \end{equation}
+\end{problem}
+
+\begin{problem}{4.6.7}
+  Let \( (\rho,\theta) \) be a system of geodesic polar coordinates \( (E=1, E=0) \) on a surface, and let \( \gamma(\rho(s),\theta(s)) \) be a geodesic that makes an angle \(\varphi(s)\) with the curves \( \theta = \text{const.} \) For definiteness, the curves \(\theta = \text{const.}\) are oriented in the sense of incresae \(\rho\), and \(\varphi\) is measured from \(\theta = \text{const.}\) to \(\gamma\) in the orientation given by the parametrization (\(\rho,\theta\)).
+  Show that
+  \begin{equation}
+  \label{eq:6}
+  \dv{\varphi}{s} + (\sqrt{G})_{\rho}\dv{\theta}{s} = 0.
+  \end{equation}
+\end{problem}
+\end{document}
