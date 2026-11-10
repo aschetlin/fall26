@@ -220,7 +220,36 @@ Each of the parallel curves have tangent vector \( (0,1) \), meaning all three a
   \label{eq:29}
   k^2 = k_g^2 + k_n^2,
 \end{equation}
-and that we can get the normal curvature as \( \mathrm{I \!I}(T) \) where \( T \) is the unit tangent vector.
+and that we can calculate the normal curvature as \( \mathrm{I \!I}(T) \) where \( T \) is the unit tangent vector.
+The tangent vector to the upper parallel is
+\begin{equation}
+\label{eq:30}
+\dot{c}^{\mu}(\lambda) = (0,1),
+\end{equation}
+which has squared norm \( \mathrm{I}(\dot{c}^{\mu}) = (r\cos\theta + a)^2 = a^2 \), so that the unit tangent is
+\begin{equation}
+\label{eq:31}
+T = (0, 1/a).
+\end{equation}
+Then,
+\begin{equation}
+\label{eq:32}
+k_n = \mathrm{I \!I}(T) = -\cos\theta(r\cos\theta + a)(1 / a)^2 = 0.
+\end{equation}
+Therefore, \( k_g^2 = k^2 \).
+We also know that we can write in local coordinates the upper parallel as
+\begin{equation}
+\label{eq:33}
+\mathbf{x} \circ c^{\mu}(\lambda) = (a\cos\varphi, a\sin\varphi, r),
+\end{equation}
+since \( \cos(\pi/2) = 0, \sin(\pi/2) = 1 \).
+This is just a circle of radius \( a \) at \( z = r \), so that the curvature is obviously \( k = 1/a \).
+
+Putting that all together,
+\begin{equation}
+\label{eq:34}
+k_g^2 = k^2 = \frac{1}{a^2} \Rightarrow k_g = 1/a.
+\end{equation}
 \end{answer}
 
 \begin{problem}{4.5.3}
@@ -229,6 +258,17 @@ and that we can get the normal curvature as \( \mathrm{I \!I}(T) \) where \( T \
   Prove that \( N(A) \) and \( N(B) \) have the same area.
 \end{problem}
 \begin{proof}
-
+  We apply the Gauss-Bonet theorem to both regions.
+  Since the boundary is a geodesic, they have \( k_g \equiv 0 \).
+  Moreover, since its a single smooth boundary, there are no corners and hence no external angles.
+  Therefore, the Gauss-Bonet theorem says that
+  \begin{equation}
+  \label{eq:35}
+  \begin{aligned}
+    \text{area}(N(A)) &= \int_{A} K\dd\sigma = 2\pi\chi(A), \\
+    \text{area}(N(B)) &= \int_{B} K\dd\sigma = 2\pi\chi(B),
+  \end{aligned}
+\end{equation}
+but both \( A \) and \( B \) have \( \chi(A) = \chi(B) = 1 \), so that our claim follows.
 \end{proof}
 \end{document}

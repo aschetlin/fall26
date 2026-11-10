@@ -41,17 +41,17 @@
       Then \( a_n \rightarrow l \).
     \end{lem}
     \begin{proof}
-      Fix some \(\epsilon > 0\), and set \( A = \{a_n: |a_{n} - l| \} \geq \epsilon\).
-      If \( A \) is a finite set, we are done, all but finitely many \( a_n \) are \(\epsilon\)-close to \( l \), that is, \( a_n \rightarrow l \).
-      If, on the other hand, \( A \) is finite, it defines a subsequence \( a_{n_k} \) of \( a_n \).
+      Fix some \(\epsilon > 0\), and set \( A_{\epsilon} = \{n : |a_{n} - l| \} \geq \epsilon\).
+      If \( A_{\epsilon} \) is a finite set, we are done since all but finitely many \( a_n \) are \(\epsilon\)-close to \( l \), that is, \( a_n \rightarrow l \).
+      If, on the other hand, \( A_{\epsilon} \) is infinite, it defines a subsequence \( a_{n_k} \) of \( a_n \).
       Then, by assumption, there is a further subsequence \( a_{n_{k_i}} \rightarrow l \).
-      That is, infinitely many elements of \( A \) are actually \(\epsilon\)-close, a contradiction.
+      That is, infinitely many elements \( a_{n} \) are actually \(\epsilon\)-close, a contradiction.
     \end{proof}
 
     Since our sequences \( I_n, I_{n_k}, I_{n_{k_i}} \) satisfy the assumptions of the lemma with \( l = \int f \), it is immediate that
     \begin{equation}
     \label{eq:5}
-    \int f_n \rightarrow f,
+    \int f_n \rightarrow \int f,
   \end{equation}
   as desired.
   \end{proof}
@@ -59,14 +59,19 @@
           \begin{proof}
             We want to show that \( \int |f_n - f| \rightarrow 0 \).
             We proceed quite similarly to part (a).
-            Part (a) showed that \( f \in L^1(\mu) \) since \( \int f = \lim \int f_n < \infty \).
+            Part (a) showed that \( f \in L^1(\mu) \) since \( \int f = \lim \int f_n < \infty \) and each \( |f_n| \leq g \).
             Again, for any subsequence \( f_{n_k} \), \( f_{n_k} \rightarrow f \) in measure, from which we can find a further subsequence \( f_{n_{k_i}} \rightarrow f \) a.e.
             This in particular means that
             \begin{equation}
             \label{eq:21}
-            |f_{n_{k_i}} - f| \rightarrow 0,
+            |f_{n_{k_i}} - f| \rightarrow 0.
           \end{equation}
-          and that, by Exercise 2.2.15, since \( |f_{n_{k_i}} - f| \in L^+ \) and decreases to \( 0 \),
+          Since both \( f \) and \( f_n \) are dominated by \( g \in L^1 \), and \( (f_{n_{k_i}}) \subset (f_{n}) \), we have that
+          \begin{equation}
+          \label{eq:26}
+          0 \leq |f_{n_{k_i}} - f| \leq |f_{n_{k_i}}| + |f| \le 2g,
+        \end{equation}
+        so that the DCT gives
           \begin{equation}
             I_{n_{k_i}} \coloneq \int |f_{n_{k_i}} - f| \rightarrow 0.
           \end{equation}
@@ -86,56 +91,46 @@
 \end{problem}
 \begin{proof}
   To begin with, let \( \bigcup_{k=1}^{\infty} E_k \times F_{k} \) be a cover of \( D \).
-  Since \( D \) is compact, we can take a finite subcover \( D \subset \bigcup_{k=1}^n E_k \times F_k \).
-  Now, if \( (a,b) \in D \), then \( (a,b) \in \bigcup_{k=1}^{n} E_k \times F_k \), but by definition of \( D \), \( a = b = x \), so that \( (x,x) \in \bigcup_{k=1}^{n} E_k \times F_k \), meaning \( x \in E_k \cap F_k \neq \emptyset \) and \( D \subset \bigcup_{k=1}^{n} (E_k \cap F_k) \times (E_k \cap F_k) \).
+  Now, if \( (a,b) \in D \), then \( (a,b) \in \bigcup_{k=1}^{\infty} E_k \times F_k \), but by definition of \( D \), \( a = b = x \), so that \( (x,x) \in \bigcup_{k=1}^{\infty} E_k \times F_k \), meaning \( x \in E_k \cap F_k \neq \emptyset \) and \( D \subset \bigcup_{k=1}^{\infty} (E_k \cap F_k) \times (E_k \cap F_k) \).
 
-  Now, this means that for every \( x \in [0,1] \), \( x \in \bigcup_{k=1}^{n} E_k \cap F_k \), or in other words,
+  Now, this means that for every \( x \in [0,1] \), \( x \in \bigcup_{k=1}^{\infty} E_k \cap F_k \), or in other words,
   \begin{equation}
   \label{eq:6}
-  [0,1] \subset \bigcup_{k=1}^{n} E_k \cap F_k,
+  [0,1] \subset \bigcup_{k=1}^{\infty} E_k \cap F_k,
 \end{equation}
 which implies
 \begin{equation}
 \label{eq:7}
-m([0,1]) = 1 \leq m(\bigcup_{k=1}^{n} E_k \cap F_k).
+m([0,1]) = 1 \leq m(\bigcup_{k=1}^{\infty} E_k \cap F_k).
 \end{equation}
-Since every countable set has Lebesgue measure \( 0 \), that means at least one pair \( E_k \cap F_k \) is uncountable.
-Furthermore,
-\begin{equation}
-\label{eq:11}
-(\mu \times \nu)\left( \bigcup_{k=1}^n (E_k \cap F_k) \times (E_k \cap F_k) \right) = \sum\limits_1^n \mu(E_k \cap F_k)\nu(E_k \cap F_k) = \infty,
-\end{equation}
-since the counting measure of any uncountable set is infinite. (There is an implicit disjointification argument here).
+Since every countable set has Lebesgue measure \( 0 \), that means at least one pair \( E_k \cap F_k \) has \( m(E_k \cap F_k) > 0 \).
+Therefore, \(\mu(E_k) > 0\) and \( \nu(F_k) = \infty \) since \( E_k \cap F_k \) having positive Lebesgue measure means \( F_k \) is infinite.
 
-Now, by definition,
+Thus every countable rectangle covering \( D \) satisfies
 \begin{equation}
-\label{eq:8}
-\begin{aligned}
-  \int \chi_D \dd{\mu \times \nu} &= (\mu \times \nu)(D) = \inf \left\{(\mu \times \nu)\left(\bigcup_1^{\infty} R_k \right):R_k\text{ rectangles covering D} \right\}.
-\end{aligned}
+\label{eq:27}
+\sum\limits_{k=1}^{\infty} \mu(E_k)\nu(F_k) = \infty,
 \end{equation}
-However, as we established, any cover of \( D \) by rectangles has measure \(\infty\), so that
+whence taking the infimum over all such covers shows that
 \begin{equation}
-\label{eq:12}
-\int \chi_D \dd{\mu \times \nu} = \infty.
+\label{eq:28}
+(\mu \times \nu)(D) = \infty.
 \end{equation}
 
 The other two integrals are much easier.
 \begin{equation}
 \label{eq:9}
 \begin{aligned}
-  \iint \chi_D \dd{\mu} \dd{\nu} &= \int \left( \int \chi^{y}_D(x,y) \dd\mu(x) \right)\dd\nu(y) \\
-                      &= \int \left( \mu(D^y) \right) \dd\nu(y) = \int \left( \mu(\{x: (x,y) \in D\}) \right) \dd{\nu} = \int \left( \mu(\{y\}) \right) \dd{\nu} \\
-  &= \int 0 \dd{\nu} = 0.
+  \iint \chi_D \dd{\mu} \dd{\nu} &= \int \qty\Big(\int\chi_D(x,y) \dd\mu(x)) \dd\nu(y) \\
+  &= \int \mu(\{y\}) \dd\nu(y) = \int 0 \dd\nu = 0.
 \end{aligned}
 \end{equation}
 
 \begin{equation}
 \label{eq:10}
 \begin{aligned}
-  \iint \chi_D \dd{\nu}\dd{\mu} &= \int \left( \int (\chi_{D})_x \dd\nu(x) \right) \dd\mu(y) = \int \left( \nu(D_x) \right) \dd\mu \\
-                     &= \int \nu(\{x: (x,y) \in D\}) \dd\mu = \int \nu(\{y\}) \dd\mu = \int \dd{\mu} \\
-  &= \mu([0,1]) = 1.
+  \iint \chi_D \dd{\nu}\dd{\mu} &= \int \qty\Big(\chi_D(x,y) \dd\nu(y)) \dd\mu(x) \\
+  &= \int \nu(\{x\}) \dd\mu(y) = \int_{[0,1]} \dd\mu = 1.
 \end{aligned}
 \end{equation}
 \end{proof}
@@ -143,7 +138,7 @@ The other two integrals are much easier.
 \begin{problem}{2.5.48}
   Let \( X = Y = \mathbb{N} \), \( \mathcal{M} = \mathcal{N} = \mathcal{P}(\mathbb{N}) \), \( \mu = \nu = \text{counting measure} \).
   Define \( f(m,n) = 1 \) if \( m = n \), \( f(m,n) = -1 \) if \( m = n+1 \), and \( f(m,n) = 0 \) otherwise.
-  Then \( \int |f| \dd{\mu \times \nu} = \infty \), and \( \iint f \dd{\mu}\dd{\nu} \) and \( \iint f \dd{\nu}\dd{\mu} \) exist and are unequal.
+  Then \( \int |f| \dd{(\mu \times \nu)} = \infty \), and \( \iint f \dd{\mu}\dd{\nu} \) and \( \iint f \dd{\nu}\dd{\mu} \) exist and are unequal.
 \end{problem}
 \begin{proof}
   Let \( A \in \mathbb{N} \times \mathbb{N} \) be an arbitrary set.
@@ -151,6 +146,31 @@ The other two integrals are much easier.
   Suppose that \( E_i \) contains \( q \) points and \( F_i \) contains \( p \) points.
   Then \( \mu(E_i) = q \), \( \mu(F_i) = p \), and \( (\mu \times \nu)(E_i \times F_i) = qp \).
   Since \( E_i \times F_i \) is the rectangle generated by a ``base'' of \( q \) points and a ``height'' of \( p \) points, it has \( qp \) points, so \( \mu \times \nu \) is a counting measure. (This is essentially the statement that \( \text{card}(E \times F) = \text{card}(E)\text{card}(F) \).)
+
+  For the integral against the product measure, note that
+  \begin{equation}
+  \label{eq:23}
+  \begin{aligned}
+  |f| &= \begin{cases}
+    1 & \text{if } x = y \\
+    1 & \text{if } x = y + 1,\\
+    0 & \text{else}
+  \end{cases} \\
+    &= \chi_D + \chi_{D_{-1}},
+  \end{aligned}
+\end{equation}
+where \( D = \{(x,y) \in \mathbb{N} \times \mathbb{N} : x = y\} \) and \( D_{-1} = \{(x,y): x = y+1\} \).
+In particular, \( |f| \geq \chi_D \), so that
+\begin{equation}
+\label{eq:24}
+\int |f| \dd(\mu \times \nu) \geq \int \chi_D \dd(\mu \times \nu) = (\mu \times \nu)(D) = \infty
+\end{equation}
+where the last equality follows since \( \{(x,x) \in \mathbb{N} \times \mathbb{N}\} \) is a countably infinite set (there is a bijection between it and \( \mathbb{N} \) via the natural projection on either coordinate).
+This shows that
+\begin{equation}
+\label{eq:25}
+\int |f| \dd(\mu \times \nu) = \infty.
+\end{equation}
 
   For the two iterated integrals, consider the \( x \) and \( y \) sections of \( f \),
   \begin{equation}
@@ -184,16 +204,14 @@ These two equalities show that
 \begin{equation}
 \label{eq:19}
 \begin{aligned}
-  \iint f \dd{\mu}(x)\dd{\nu}(y) &= \int \left( \int f^y(x)\chi_{\{y\}} \dd{\mu}(x) \right) \dd{\nu}(y) \\
-  &= \int \left( \sum\limits_{x=1}^{\infty} f^y(x)\chi_{\{y\}} \right) \dd{\nu}(y) = \int 0\dd{\nu} = 0,
+  \iint f(x,y) \ \dd\mu(x)\dd\nu(y) &= \int \left( \sum\limits_{x \in \mathbb{N}} f(x,y) \right) \dd\nu(y) = \sum\limits_{y \in \mathbb{N}} \sum\limits_{x \in \mathbb{N}} f(x,y) = 0,
 \end{aligned}
 \end{equation}
 but
 \begin{equation}
 \label{eq:20}
 \begin{aligned}
-  \iint f \dd{\nu}(y)\dd{\mu}(x) &= \int \left( \int f_x(y)\chi_{\{x\}}\dd{\nu}(y) \right) \dd{\mu}(x) \\
-  &= \int \left( \sum\limits_{y=1}^{\infty} f_x(y)\chi_{\{x\}} \right) \dd{\mu}(x) = \int \chi_{\{1\}} \dd{\mu}(x) = \mu(\{1\}) = 1.
+  \iint f(x,y) \ \dd\nu(y)\dd\mu(x) = \int \left( \sum\limits_{y \in \mathbb{N}} f(x,y) \right) \dd\mu(x) = \sum\limits_{x \in \mathbb{N}} \sum\limits_{y \in \mathbb{N}} f(x,y) = 1.
 \end{aligned}
 \end{equation}
 \end{proof}

@@ -11,10 +11,44 @@
   Consider a geodesic which starts at a point \( p \) in the upper part \( z > 0 \) of a hyperboloid of revolution \( x^2 + y^2 - z^2 = 1 \) and makes an angle \(\theta\) with the parallel passing through \( p \) in such a way that \( \cos\theta = 1 /r \), where \( r \) is the distance from \( p \) to the \( z \) axis.
   Show that by following the geodesic in the direction of decreasing parallels, it approaches asymptotically the parallel \( x^2 + y^2 = 1, z = 0 \).
 \end{problem}
+\begin{proof}
+  Let \(\gamma(s)\) be an arc-length parametrized geodesic with \(\gamma(0) = p\), and from Clairaut's theorem,
+  \begin{equation}
+  \label{eq:8}
+  r(s)\cos\theta(s) = r(0)\cos\theta(0) = \text{const.}
+\end{equation}
+Let \(  \)
+\end{proof}
 
 \begin{problem}{4.4.19}
-  Show that when the differential equations of the geodesics are referred to the arc length then the second equation is, except for the coordinate curves, a consequence of the first equation.
+  Show that when the differential equations of the geodesics,
+  \begin{equation}
+  \label{eq:geodesic}
+  \begin{aligned}
+    &u^{\prime\prime} + \Gamma^1_{11}(u^{\prime})^2 + 2 \Gamma^1_{12}u^{\prime}v^{\prime} + \Gamma^1_{22}(v^{\prime})^2 = 0, \\
+    &v^{\prime\prime} + \Gamma^2_{11}(u^{\prime})^2 + 2 \Gamma^2_{12}u^{\prime}v^{\prime} + \Gamma^2_{22}(v^{\prime})^2 = 0,
+  \end{aligned}
+\end{equation}
+are referred to the arc length then the second equation is, except for the coordinate curves, a consequence of the first equation.
 \end{problem}
+\begin{proof}
+  Let \( \gamma(s) = (u(s), v(s)). \)
+  The tangent vector is \( T = \dot{u}X_u + \dot{v}X_v \), so that the geodesic equation \( \nabla_T T = 0 \) implies
+  \begin{equation}
+    \label{eq:2}
+    \langle \nabla_T T, X_u \rangle = \langle \nabla_T T, X_v \rangle = 0.
+  \end{equation}
+  Since the tangent vector satisfies \( \langle T, T \rangle = c \in \mathbb{R} \),
+  \begin{equation}
+  \label{eq:10}
+  \begin{aligned}
+    0 &= \frac{\mathrm{d} }{\mathrm{d} t}\langle T, T \rangle = 2 \langle \nabla_T T, T \rangle = 2 \langle \nabla_T T, \dot{u}X_u + \dot{v}X_v \rangle \\
+    &= 2 \left( \dot{u}\langle \nabla_T T, X_u \rangle + \dot{v} \langle\nabla_T T, X_{v} \rangle \right).
+  \end{aligned}
+\end{equation}
+If the left-hand summand in the last equality is \( 0 \), (that is, the first geodesic equation is satisfied), then clearly the right-hand summand is also zero (since the total sum is zero).
+The only exception is if one of \( \dot{u} = 0 \) or \( \dot{v} = 0 \), which only happens for a coordinate curve.
+\end{proof}
 
 \begin{problem}{4.4.20}
   Let \( T \) be a torus of revolution which we shall assume to be parametrized by
@@ -29,11 +63,17 @@ Prove that
         \label{eq:3}
         - \frac{\pi}{2} \leq u \leq \frac{\pi}{2}.
       \end{equation}
+        \begin{proof}
+
+        \end{proof}
   \item A geodesic that intersects the parallel \( u = 0 \) under an angle \(\theta\) (\( 0 < \theta < \pi/2 \)) also intersects the parallel \( u = \pi\) if
         \begin{equation}
         \label{eq:4}
         \cos\theta < \frac{a-r}{a+r}.
         \end{equation}
+        \begin{proof}
+
+        \end{proof}
 \end{enumerate}
 \end{problem}
 
@@ -47,6 +87,9 @@ Prove that
   \end{aligned}
   \end{equation}
 \end{problem}
+\begin{proof}
+
+\end{proof}
 
 \begin{problem}{4.6.7}
   Let \( (\rho,\theta) \) be a system of geodesic polar coordinates \( (E=1, E=0) \) on a surface, and let \( \gamma(\rho(s),\theta(s)) \) be a geodesic that makes an angle \(\varphi(s)\) with the curves \( \theta = \text{const.} \) For definiteness, the curves \(\theta = \text{const.}\) are oriented in the sense of incresae \(\rho\), and \(\varphi\) is measured from \(\theta = \text{const.}\) to \(\gamma\) in the orientation given by the parametrization (\(\rho,\theta\)).
@@ -56,4 +99,7 @@ Prove that
   \dv{\varphi}{s} + (\sqrt{G})_{\rho}\dv{\theta}{s} = 0.
   \end{equation}
 \end{problem}
+\begin{proof}
+
+\end{proof}
 \end{document}
