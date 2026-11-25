@@ -1,0 +1,176 @@
+\documentclass[11pt]{article}
+\usepackage{../homework}
+\profname{Dr. Claire Zukowski}
+\classcode{PHYS 331}
+\assignnum{Problem Set \#7}
+\duedate{20 November 2026 at 11:00\,am}
+\semester{Fall 2026}
+\begin{document}
+\begin{problem}{1}
+For the case of scattering through a finite square well, work through the algebra to derive the transmission and reflection coefficients, Eqs.~(6.92) and (6.94) of McIntyre, starting from Eq.~(6.89) which we worked out in class.
+\end{problem}
+\begin{answer}
+Matching \(\psi\) and \(\psi'/i\) at \(x=a\) gives
+\begin{align}
+  Ce^{ik_2a}+De^{-ik_2a} &= Fe^{ik_1a}, \label{eq:right-value}\\
+  k_2(Ce^{ik_2a}-De^{-ik_2a}) &= k_1Fe^{ik_1a}. \label{eq:right-slope}
+\end{align}
+Adding \cref{eq:right-slope} to \(k_2\) times \cref{eq:right-value}
+eliminates \(D\). Thus \(2k_2Ce^{ik_2a}=(k_2+k_1)Fe^{ik_1a}\), so
+\begin{equation}
+  C=\frac{F(k_1+k_2)}{2k_2}e^{ia(k_1-k_2)}. \label{eq:C}
+\end{equation}
+Subtracting \(k_2\) times \cref{eq:right-value} from \cref{eq:right-slope} gives
+\(-2k_2De^{-ik_2a}=(k_1-k_2)Fe^{ik_1a}\), hence
+\begin{equation}
+  D=-\frac{F(k_1-k_2)}{2k_2}e^{ia(k_1+k_2)}. \label{eq:D}
+\end{equation}
+
+At \(x=-a\), the matching conditions are
+\begin{align}
+  Ae^{-ik_1a}+Be^{ik_1a} &= Ce^{-ik_2a}+De^{ik_2a}, \label{eq:left-value}\\
+  k_1(Ae^{-ik_1a}-Be^{ik_1a}) &= k_2(Ce^{-ik_2a}-De^{ik_2a}). \label{eq:left-slope}
+\end{align}
+Substituting \cref{eq:C,eq:D} into \cref{eq:left-value} and factoring
+out the common phase gives
+\begin{align}
+  Ae^{-ik_1a}+Be^{ik_1a}
+  &=\frac{F}{2k_2}\Big[(k_1+k_2)e^{ia(k_1-k_2)}e^{-ik_2a}
+     -(k_1-k_2)e^{ia(k_1+k_2)}e^{ik_2a}\Big] \notag\\
+  &=\frac{Fe^{ik_1a}}{2k_2}\Big[(k_1+k_2)e^{-2ik_2a}
+      -(k_1-k_2)e^{2ik_2a}\Big]. \label{eq:value-exp}
+\end{align}
+Euler's formula reduces \cref{eq:value-exp} to
+\begin{equation}
+  Ae^{-ik_1a}+Be^{ik_1a}
+  =Fe^{ik_1a}\left[\cos(2k_2a)-i\frac{k_1}{k_2}\sin(2k_2a)\right].
+  \label{eq:value}
+\end{equation}
+Substituting \cref{eq:C,eq:D} into \cref{eq:left-slope}, we obtain
+\begin{align}
+  k_1(Ae^{-ik_1a}-Be^{ik_1a})
+  &=\frac{Fe^{ik_1a}}{2}\Big[(k_1+k_2)e^{-2ik_2a}
+     +(k_1-k_2)e^{2ik_2a}\Big] \notag\\
+  &=Fe^{ik_1a}\big[k_1\cos(2k_2a)-ik_2\sin(2k_2a)\big].
+  \label{eq:slope}
+\end{align}
+
+Adding \(k_1\) times \cref{eq:value} to \cref{eq:slope} eliminates \(B\)
+and gives
+\begin{equation}
+  2k_1Ae^{-ik_1a}
+  =Fe^{ik_1a}\left[2k_1\cos(2k_2a)
+     -i\left(\frac{k_1^2}{k_2}+k_2\right)\sin(2k_2a)\right].
+  \label{eq:isolate-A}
+\end{equation}
+Solving \cref{eq:isolate-A} for \(F/A\) gives
+\begin{equation}
+  \frac{F}{A}
+  =\frac{e^{-2ik_1a}}{\displaystyle\cos(2k_2a)
+    -i\frac{k_1^2+k_2^2}{2k_1k_2}\sin(2k_2a)}. \label{eq:F-over-A}
+\end{equation}
+Subtracting \cref{eq:slope} from \(k_1\) times \cref{eq:value} leaves
+\begin{equation}
+  \label{eq:isolate-B}2k_1Be^{ik_1a}
+  =iFe^{ik_1a}\left(k_2-\frac{k_1^2}{k_2}\right)\sin(2k_2a).
+\end{equation}
+Dividing by \(2k_1Fe^{ik_1a}\) gives
+\begin{equation}
+  \frac{B}{F}=i\frac{k_2^2-k_1^2}{2k_1k_2}\sin(2k_2a). \label{eq:B-over-F}
+\end{equation}
+
+Taking the squared modulus in \cref{eq:F-over-A} gives
+\begin{align}
+  \frac{1}{T}
+  &=\cos^2(2k_2a)
+     +\frac{(k_1^2+k_2^2)^2}{4k_1^2k_2^2}\sin^2(2k_2a) \notag\\
+  &=1+\left[\frac{(k_1^2+k_2^2)^2}{4k_1^2k_2^2}-1\right]\sin^2(2k_2a).\label{eq:inverse-T}
+\end{align}
+Since \((k_1^2+k_2^2)^2-4k_1^2k_2^2=(k_1^2-k_2^2)^2\), taking the
+reciprocal yields
+\begin{equation}
+  \boxed{T=\left[1+\frac{(k_1^2-k_2^2)^2}{4k_1^2k_2^2}
+    \sin^2(2k_2a)\right]^{-1}.} \label{eq:T}
+\end{equation}
+Finally, writing \(B/A=(B/F)(F/A)\) and using \cref{eq:B-over-F,eq:T}
+gives
+\begin{align}
+  R &= \left|\frac{B}{F}\right|^2 T
+     =\frac{(k_1^2-k_2^2)^2}{4k_1^2k_2^2}\sin^2(2k_2a)\,T,\notag\\
+  R & =\frac{(k_1^2-k_2^2)^2\sin^2(2k_2a)}
+      {4k_1^2k_2^2+(k_1^2-k_2^2)^2\sin^2(2k_2a)}\notag \\
+  &= \boxed{\frac{1}{1 + \frac{4k_{1}^2k_2^2}{(k_1^2 - k_2^2)\sin^2(2k_2a)}}.}
+      \label{eq:R}
+\end{align}
+\end{answer}
+\begin{problem}{2}
+Free particles are often modeled as “wave packets”, meaning we might start with an initial Gaussian wave function, \(\psi(x,t=0)=Ae^{-ax^2}\), with \(A\) and \(a\) both real and positive constants.
+\end{problem}
+\begin{enumerate}[label=\arabic*.]
+\item Normalize \(\psi(x,t=0)\), and then calculate the Fourier transform\newline
+\(\phi(p)=\int_{-\infty}^{\infty}\psi(x)\frac{1}{\sqrt{2\pi\hbar}}e^{-ipx/\hbar}\dd{x}\)
+for this wave function. Hint: There is a trick to do integrals of the form
+\(\int_{-\infty}^{\infty}e^{-(ax^2+bx)}\dd{x}\), called “completing the square”:
+Let \(y=\sqrt{a}(x+b/2a)\) and note that \((ax^2+bx)=y^2-b^2/(4a)\).
+        Also note the handy integral: \(\int_{-\infty}^{\infty}e^{-cz^2}\dd{z}=\sqrt{\pi/c}\).
+        \begin{answer}
+Normalization gives
+\begin{equation}\label{eq:normalization}
+ 1=A^2\int_{-\infty}^{\infty}e^{-2ax^2}\dd{x}
+   =A^2\sqrt{\frac{\pi}{2a}},\qquad A=\left(\frac{2a}{\pi}\right)^{1/4}.
+\end{equation}
+Completing the square gives \(-ax^2-ipx/\hbar=-a(x+ip/(2a\hbar))^2-p^2/(4a\hbar^2)\).
+Using the Gaussian integral
+\(\int_{\infty}^{\infty}e^{-cu^2+bu}\dd{u}=\sqrt{\pi/c}\,e^{b^2/(4c)}\)
+for \(\operatorname{Re} c>0\) and complex \(b\), we obtain
+\begin{equation}\label{eq:momentum-packet}
+ \phi(p)=\frac{A}{\sqrt{2\pi\hbar}}\sqrt{\frac{\pi}{a}}e^{-p^2/(4a\hbar^2)}
+ =\boxed{\left(\frac{1}{2\pi a\hbar^2}\right)^{1/4}e^{-p^2/(4a\hbar^2)}}.
+\end{equation}
+ \end{answer}
+\item Now calculate the time dependence wave function \(\psi(x,t)\). Hint: See McIntyre 6.40.
+The answer there is \(\psi(x,t)=\left(\frac{2a}{?}\right)^{1/4}
+\frac{e^{-ax^2/(1+i\Omega t)}}{\sqrt{1+i\Omega t}}\), with \(\Omega=2a\hbar/m\).
+(You will need to work out what the dimensionless constant indicated by the ‘?’ above.)
+        \begin{answer}
+Each momentum component has energy \(p^2/(2m)\). Multiplying \cref{eq:momentum-packet} by \(e^{-ip^2t/(2m\hbar)}\) and taking the inverse Fourier transform gives
+\begin{equation}\label{eq:time-integral}
+ \psi(x,t)=\frac{A}{2\hbar\sqrt{\pi a}}\int_{-\infty}^{\infty}
+ \exp\left[-\frac{1+i\Omega t}{4a\hbar^2}p^2+\frac{ix}{\hbar}p\right]\dd{p}.
+\end{equation}
+The Gaussian integral with \(c=(1+i\Omega t)/(4a\hbar^2)\) and \(b=ix/\hbar\) yields
+\begin{equation}\label{eq:time-packet}
+ \boxed{\psi(x,t)=\left(\frac{2a}{\pi}\right)^{1/4}
+ \frac{e^{-ax^2/(1+i\Omega t)}}{\sqrt{1+i\Omega t}}.}
+\end{equation}
+Thus, \( ? = \pi \). (it's always \(\pi\)!!)
+\end{answer}
+
+\item Find the probability density \(\abs{\psi(x,t)}^2\). Simplify your result by expressing it in terms of a new quantity defined as \(\omega=\sqrt{a/(1+(\Omega t)^2)}\).
+        \begin{answer}
+Since \(\operatorname{Re}[(1+i\Omega t)^{-1}]=1/[1+(\Omega t)^2]\), \cref{eq:time-packet} gives
+\begin{equation}\label{eq:density}
+ |\psi(x,t)|^2=\sqrt{\frac{2a}{\pi}}\frac{e^{-2ax^2/[1+(\Omega t)^2]}}{\sqrt{1+(\Omega t)^2}}
+ =\boxed{\sqrt{\frac{2}{\pi}}\,\omega e^{-2\omega^2x^2}}.
+\end{equation}
+\end{answer}
+\item Sketch \(\abs{\psi(x,t)}^2\) you found in part c as a function of \(x\), first at \(t=0\), and then again for a rather large time \(t\). Then, here are some questions to address specifically:
+\begin{enumerate}[label=\alph*.]
+        \textbf{Graph is on following page.}
+\item What happen qualitatively to \(\abs{\psi(x,t)}^2\) as time goes on?
+        \begin{answer}
+The wave stays centered at \(x=0\). As \(t\) increases from zero, it broadens and its peak falls, while the total probability remains one.
+\end{answer}
+\item What do the quantities \(\omega\) and \(\Omega\) defined above represent or tell you?
+        \begin{answer}
+Comparing \cref{eq:density} with the standard form for a Gaussian, \(e^{-x^2/(2\sigma_x^2)}\) gives
+\(\sigma_x(t)=1/(2\omega)=\sqrt{1+(\Omega t)^2}/(2\sqrt a)\).
+Thus \(\omega\) measures inverse width. At \(t=1/\Omega\), the width is \(\sqrt{2}\) times its initial value, so \(1/\Omega\) sets the time it takes to spread out.
+
+\end{answer}
+\end{enumerate}
+\end{enumerate}
+\begin{figure}[t]
+  \includegraphics{hw7graph.pdf}
+\end{figure}
+\end{document}
