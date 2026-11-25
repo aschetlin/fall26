@@ -1,0 +1,93 @@
+\documentclass[11pt]{article}
+\usepackage{../homework}
+
+\profname{Dr. David Singer}
+\assignnum{Midterm 2 Corrections}
+\duedate{16 November 2026}
+\classcode{MATH 465 Differential Geometry}
+
+\begin{document}
+\begin{problem}{2}
+  Suppose a surface \( S \) is topologically equivalent to a cylinder (product of a line and a circle).
+  Suppose the Gaussian curvature \( K < 0 \) everywhere on \( S \).
+  Show that it has at most one simple closed geodesic.
+
+  (You may assume that a simple closed curve on \( S \) either bounds a disc or wraps once around the cylinder.)
+  You might use a sketch or two to demonstrate the result; there may be multiple cases to consider.
+\end{problem}
+\begin{proof}
+  A simplification I realized after the exam is that simple closed geodesics can't bound discs at all.
+  This is because the characteristic of a disk is \( 1 \), so the Gauss-Bonnet theorem would give \( \int_{D} K \dd{A} = 2\pi \), which can't be true since \( K < 0 \).
+  Hence, the only simple closed geodesics here wrap around the cylinder once.
+  Therefore, there are only two cases to consider.
+  Let \(\gamma_1\), \(\gamma_2\) be two unique, simple, closed geodesics.
+  \begin{itemize}
+    \item Suppose \( \gamma_1 \) and \(\gamma_2\) are disjoint.
+          Then, the region between them is an annulus \( A \),(since they both wrap around once), which has characteristic \( 0 \).
+          Then we immediately get a contradiction from the Gauss-Bonnet theorem, \( \int_{A} K \dd{A} = 0\), which can't be since \( K < 0 \) everywhere.
+    \item Suppose instead that \(\gamma_1\) and \(\gamma_2\) intersect (which must occur under some angle \(\theta \neq 0\) by uniqueness).
+          Then, there is a region, \( D \), between the two curves with corners given by the intersection points.
+          With \(\theta_1, \theta_2\) the exterior angles, the characteristic of the region is again \( 1 \), sothe Gauss-Bonnet theorem gives
+          \begin{equation}
+          \label{eq:7}
+          \int_D K \dd{A} + \theta_1 + \theta_2 = 2\pi.
+        \end{equation}
+          This means that \( \int_D K \dd{A} = 2\pi - \theta_1 - \theta_{2} = \pi - \theta_1 + \pi - \theta_2\).
+          However, notice the right hand side is now exactly the sum of the \textit{interior} angles of \( D \), which must be positive.
+          This once again contradicts \( K < 0 \).
+  \end{itemize}
+  Both cases are contradictions, so \( S \) can have at most one simple closed geodesic.
+\end{proof}
+
+\begin{problem}{4}
+  Let \( U = \{(x,y) \in \mathbb{R}^2 : y > 0\} \), as in the previous problem.
+  \begin{enumerate}[label=(\alph*)]
+    \item Parametrize the curve \( x = c \) by arclength to get a curve \(\gamma(s)\) with \(\gamma(0) = (c,1)\).
+          \begin{answer}
+            Omitted.
+          \end{answer}
+    \item Verify that the \(\gamma(s)\) from the previous part is a geodesic.
+          \begin{proof}
+            The only Christoffel symbols that don't vanish are
+            \begin{equation}
+            \label{eq:2}
+            \begin{aligned}
+              \Gamma_{xy}^x = - \frac{1}{y}, \quad \Gamma_{xx}^y = \frac{1}{y}, \quad \Gamma_{yy}^y = - \frac{1}{y},
+            \end{aligned}
+          \end{equation}
+          which when plugged into the geodesic equations give
+          \begin{equation}
+          \label{eq:3}
+          \ddot{x} - \frac{2 \dot{x} \dot{y}}{y} = 0, \quad \ddot{y} + \frac{(\dot{x})^2 - (\dot{y})^2}{y} = 0.
+        \end{equation}
+        Plugging in the curve from (a), \( \gamma(s) = (c, e^s) \), the first equation is obviously fulfilled, and for the second one we get
+        \begin{equation}
+        \label{eq:4}
+        \ddot{y} = \frac{(\dot{y})^2}{y}.
+      \end{equation}
+      Since \( y = e^s \), this says \( e^s = e^s \), and thus \(\gamma\) is a geodesic.
+          \end{proof}
+    \item Using the isometry \( T \), we get a new geodesic \( T \circ \gamma(s) \).
+          Describe the image geometrically as a subset of \( U \).
+          \begin{answer}
+            We have two cases.
+            \begin{itemize}
+              \item \( c = 0 \): \( (T \circ \gamma)(s) = (0, \frac{1}{e^s}) \), which is the vertical line at \( x = 0 \).
+              \item \( c \neq 0 \): Write \( (u,v) = T(x,y) \), so that \( u = -c/(c^2 + e^{2s}), v = e^{2s}/(c^2 + e^{2s}) \).
+                    Then,
+              \begin{equation}
+              \label{eq:5}
+              u^2 + v^2 = \frac{c^2 + e^{2s}}{c^2 + e^{2s}} = \frac{1}{c^2 + e^{2s}} = \frac{-u}{c}.
+            \end{equation}
+                    We can therefore write
+                    \begin{equation}
+                    \label{eq:6}
+                    (u + \frac{1}{2c})^2 + v^2 = \frac{1}{4c^2},
+                  \end{equation}
+                    and since \( y > 0 \), so too is \( v > 0 \), so this describes an upper semicircle with radius \( \frac{1}{2c} \) centered at \( u = - \frac{1}{2c} \).
+            \end{itemize}
+          \end{answer}
+  \end{enumerate}
+\end{problem}
+
+\end{document}
