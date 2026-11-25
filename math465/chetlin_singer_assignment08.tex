@@ -12,12 +12,47 @@
   Show that by following the geodesic in the direction of decreasing parallels, it approaches asymptotically the parallel \( x^2 + y^2 = 1, z = 0 \).
 \end{problem}
 \begin{proof}
-  Let \(\gamma(s)\) be an arc-length parametrized geodesic with \(\gamma(0) = p\), and from Clairaut's theorem,
+  Let \(\gamma(s) = (u(s), v(s))\) be the unique arc-length parametrized geodesic with \(\gamma(0) = p\), and from Clairaut's theorem,
   \begin{equation}
   \label{eq:8}
-  r(s)\cos\theta(s) = r(0)\cos\theta(0) = \text{const.}
+  r(s)\cos\theta(s) = r(0)\cos\theta(0) = \text{const.} = 1.
 \end{equation}
-Let \(  \)
+The tangent vector to \(\gamma(s)\), \( T \), is of unit length and points toward \( z=0 \), so that
+\begin{equation}
+\label{eq:12}
+T = -\sin\theta X_u + \cos\theta X_{v},
+\end{equation}
+which means that \( \dv{u}{s} = -\sin\theta \).
+From \cref{eq:8}, \( \cos\theta = \frac{1}{r(s)} \), so that
+\begin{equation}
+\label{eq:13}
+\dv{u}{s} = - \sqrt{1 - \cos^2\theta} = -\sqrt{1 - \frac{1}{r^2(s)}}.
+\end{equation}
+
+Since \( r(s) \geq 1 \) everywhere, \( \dv*{u}{s} \leq 0 \) everywhere, hence \( u \) decreases for all \( s \).
+However, since \( u(0) > 0 \), if \( u(s_1) < 0 \) for some \( s_1 \) by continuity at some point \( s_0 \), \( u(s_{0}) = 0 \).
+At \( s_0 \) we would then have \( r(s_0)\cos\theta(s_0) = \cos\theta(s_0) = 1 \), which implies \(\theta(s_0) = 0\).
+However, by the existence and uniqueness theorem, no two distinct geodesics can intersect tangentially, so \( u(s) > 0 \) for all \( s \).
+
+Therefore, \( \dv*{u}{s} \) must be strictly less than zero.
+We thus have the vertical angle \( u(s) \) of the geodesic as a bounded monotone function, and thus it much approach some limiting value \( u_{\infty} \geq 0\).
+In particular, \( u_{\infty} = 0 \), since if \( u_{\infty} > 0 \) then \( r > 1 \) so that \( \lim \dv*{u}{s} < 0 \), which can't be true for a limiting value.
+
+All of this shows that
+\begin{equation}
+\label{eq:15}
+\lim_{s\rightarrow\infty} r(s) = 1,
+\end{equation}
+or
+\begin{equation}
+\label{eq:16}
+\lim_{s\rightarrow \infty} \cos\theta(s) = 1,
+\end{equation}
+so
+\begin{equation}
+\label{eq:17}
+\theta(s) \rightarrow 0.
+\end{equation}
 \end{proof}
 
 \begin{problem}{4.4.19}
@@ -64,7 +99,25 @@ Prove that
         - \frac{\pi}{2} \leq u \leq \frac{\pi}{2}.
       \end{equation}
         \begin{proof}
-
+          Let \( A \) be the upper parallel of \( T \). Let \(\gamma(s)\) be the unique unit-speed geodesic such that \(\gamma(0) = p \in A\), and if \( \theta(s) \) is the angle between \(\gamma\) and the parallel \( u = \pi/2 \), \(\theta(0) = 0\).
+          Since this is unit-speed, its tangent vector is
+          \begin{equation}
+          \label{eq:18}
+          \gamma^{\prime} = \sin\theta X_u + \cos\theta X_{v}.
+        \end{equation}
+        That is, \(\gamma^{\prime}(0) = X_v\).
+        By Clairaut's theorem, we have \( \rho\cos\theta = \text{const.} \), meaning our geodesic has Clairaut constant \( \rho \) since \( \cos\theta(0) = 1 \).
+        Moreover, since \(\gamma(0)\) lies on the upper parallel, it has \(\rho_{0} = a\), so that for all \( s \), \( \rho(s)\cos\theta(s) = a \).
+        Since \( \cos\theta(s) \leq 1 \),
+        \begin{equation}
+        \label{eq:20}
+        \rho(s) \geq a.
+      \end{equation}
+      The only region of the torus that satisfies this corresponds to the right semicircle of the generating curve, i.e., the region
+      \begin{equation}
+      \label{eq:21}
+      - \frac{\pi}{2} \leq u \leq \frac{\pi}{2}.
+      \end{equation}
         \end{proof}
   \item A geodesic that intersects the parallel \( u = 0 \) under an angle \(\theta\) (\( 0 < \theta < \pi/2 \)) also intersects the parallel \( u = \pi\) if
         \begin{equation}
@@ -72,7 +125,40 @@ Prove that
         \cos\theta < \frac{a-r}{a+r}.
         \end{equation}
         \begin{proof}
+          Suppose \(\gamma(s)\) is the arc-length geodesic for which \(\gamma(0) = (0, v(s)) \), \(\gamma^{\prime} = \cos\theta X_v + \sin\theta X_u\), \( 0 < \theta < \pi/2 \).
+          By Clairaut's relation, we have that \( \rho\cos\theta = \text{const.} \), so that here, since \(\rho_0 = a + r\), \( \cos\theta(s) = \frac{c}{a+r} \leq 1\).
 
+          Suppose that additionally, there is some \( s_0 \) for which \(\gamma(s_0) = (\pi, v(s_{0}))\).
+          Then we would have
+          \begin{equation}
+            (a-r)\cos\theta(s_0) = c = (a+r)\cos\theta(0).
+          \end{equation}
+          We know that \( 0 < \cos\theta(s) \leq 1 \), so again
+          \begin{equation}
+          \label{eq:22}
+          \rho \geq c = (a+r)\cos\theta(0).
+        \end{equation}
+        Hence,
+        \begin{equation}
+        \label{eq:23}
+        (a-r) \geq (a+r)\cos\theta(0),
+      \end{equation}
+      which implies
+      \begin{equation}
+      \label{eq:24}
+      \cos\theta(0) \leq \frac{a - r}{a + r}.
+    \end{equation}
+    However, if \( \cos\theta(0) = \frac{a-r}{a+r} \), then we would have \( (a+r)\cos\theta(s) = a-r \), meaning the Clairaut constant would be \( (a-r) \), and hence at \( s_0 \),
+    \begin{equation}
+    \label{eq:25}
+    (a-r)\cos\theta(s_0) = a-r \Rightarrow \cos\theta(s_0) = 1 \Rightarrow \theta(s_0) = 0,
+  \end{equation}
+  but this cannot be since then the geodesic would coincide with the inner parallel (which is also a geodesic), contradicting the uniqueness theorem.
+  This shows that in fact
+  \begin{equation}
+  \label{eq:26}
+  \cos\theta(0) < \frac{a-r}{a+r}.
+  \end{equation}
         \end{proof}
 \end{enumerate}
 \end{problem}
@@ -88,11 +174,29 @@ Prove that
   \end{equation}
 \end{problem}
 \begin{proof}
-
+  The equations of geodesics are shown in \cref{eq:geodesic}.
+  Our coordinates are \( u = \rho \), \( v = \theta \).
+  Since the metric is \( ds^2 = d\rho^2 + G d\theta^2 \), we can calculate the Christoffel symbols,
+  \begin{equation}
+  \label{eq:27}
+  \begin{aligned}
+    \Gamma_{11}^{1} &= 0, \quad \Gamma_{12}^1 = 0, \quad \Gamma_{22}^1 = -\frac{1}{2}G_{\rho}, \\
+    \Gamma_{11}^2 &= 0, \quad \Gamma_{12}^2 = \frac{1}{2G}G_{\rho}, \quad \Gamma_{22}^2 = \frac{1}{2G}G_{\theta}.
+  \end{aligned}
+\end{equation}
+Plugging these in, we get two equations,
+\begin{equation}
+\label{eq:28}
+\begin{aligned}
+  0 &= \rho^{\prime\prime} - \frac{1}{2}G_{\rho} (\theta^{\prime})^2, \\
+  0 &= \theta^{\prime\prime} + \frac{1}{G}G_{\rho} \rho^{\prime}\theta^{\prime} + \frac{1}{2G}G_{\theta}(\theta^{\prime})^2,
+\end{aligned}
+\end{equation}
+as desired.
 \end{proof}
 
 \begin{problem}{4.6.7}
-  Let \( (\rho,\theta) \) be a system of geodesic polar coordinates \( (E=1, E=0) \) on a surface, and let \( \gamma(\rho(s),\theta(s)) \) be a geodesic that makes an angle \(\varphi(s)\) with the curves \( \theta = \text{const.} \) For definiteness, the curves \(\theta = \text{const.}\) are oriented in the sense of incresae \(\rho\), and \(\varphi\) is measured from \(\theta = \text{const.}\) to \(\gamma\) in the orientation given by the parametrization (\(\rho,\theta\)).
+  Let \( (\rho,\theta) \) be a system of geodesic polar coordinates \( (E=1, F=0) \) on a surface, and let \( \gamma(\rho(s),\theta(s)) \) be a geodesic that makes an angle \(\varphi(s)\) with the curves \( \theta = \text{const.} \) For definiteness, the curves \(\theta = \text{const.}\) are oriented in the sense of increasing \(\rho\), and \(\varphi\) is measured from \(\theta = \text{const.}\) to \(\gamma\) in the orientation given by the parametrization (\(\rho,\theta\)).
   Show that
   \begin{equation}
   \label{eq:6}
@@ -100,6 +204,36 @@ Prove that
   \end{equation}
 \end{problem}
 \begin{proof}
+  Since \(\gamma\) makes an angle \(\varphi(s)\) with the \(\rho\)-coordinate curves, we have that
+  \begin{equation}
+  \label{eq:29}
+  \gamma^{\prime} = \sin\varphi(s) \frac{X_{\theta}}{\sqrt{G}} + \cos\varphi(s) X_{\rho},
+\end{equation}
+since \( X_{\theta}/\sqrt{G} \) is the unit coordinate vector.
+This tells us that
+\begin{equation}
+\label{eq:30}
+\dv{\theta}{s} = \frac{\sin\varphi(s)}{\sqrt{G}}, \quad \dv{\rho}{s} = \cos\varphi(s).
+\end{equation}
 
+From Problem 4.6.2, the \(\rho\)-component of the geodesic equation is
+\begin{equation}
+\label{eq:31}
+\rho^{\prime\prime} - \frac{1}{2}G_{\rho}(\theta^{\prime})^2 = 0.
+\end{equation}
+Differentiating the second part of \cref{eq:30} and plugging in gives
+\begin{equation}
+\label{eq:32}
+-\varphi^{\prime}(s)\sin\varphi(s) - \frac{1}{2}G_{\rho}(\frac{\sin^2\varphi(s)}{G}) = 0.
+\end{equation}
+Then, dividing both sides of the equation by \(\sin\varphi(s)\) yields
+\begin{equation}
+\label{eq:33}
+\begin{aligned}
+  0 &= \varphi^{\prime} + \frac{1}{2}G_{\rho} \frac{\sin\varphi(s)}{G} = \varphi^{\prime} + \frac{G_{\rho}}{2 \sqrt{G}} \frac{\sin\varphi(s)}{\sqrt{G}} \\
+  &= \varphi^{\prime} + (\sqrt{G})_{\rho} \theta^{\prime},
+\end{aligned}
+\end{equation}
+as desired.
 \end{proof}
 \end{document}
