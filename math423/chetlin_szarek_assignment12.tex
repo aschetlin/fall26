@@ -1,0 +1,123 @@
+\documentclass[11pt]{article}
+\usepackage{../homework}
+
+\profname{Dr. Stanislaw Szarek}
+\classcode{MATH 423 Measure Theory}
+\assignnum{Assignment 12}
+\duedate{23 November 2026}
+
+\begin{document}
+All problems from Folland, \textit{Real Analysis} (2e).
+
+\begin{problem}{2.7.63}
+  The technique used to prove Proposition 2.54 can also be used to integrate any polynomial over \( S^{n-1} \).
+  In fact, suppose \( f(x) = \prod\limits_1^n x_j^{\alpha_j} \ (\alpha_j \in \mathbb{N} \cup \{0\}) \) is a monomial.
+  Then \( \int f \dd{\sigma} = 0 \) if any \(\alpha_j\) is odd, and if all \(\alpha_j\)'s are even,
+  \begin{equation}
+  \label{eq:1}
+  \int f \dd{\sigma} = \frac{2\Gamma(\beta_{1}) \cdots \Gamma(\beta_n)}{\Gamma(\beta_1 + \dots + \beta_{n})}, \text{ where } \beta_j = \frac{\alpha_{j}+1}{2}.
+  \end{equation}
+\end{problem}
+\begin{proof}
+  We consider the auxiliary integral \( \int f(x) e^{-|x|^2} \dd{x} \).
+  First of all, defining \( g = f e^{-|x|^2}\), we have, after expanding the definition of \( f \), using \( |x|^2 = \sum\limits_1^n x_j^2 \), and appealing to Tonelli's theorem,
+  \begin{equation}
+    \label{eq:7}
+    \begin{aligned}
+      \int_{\mathbb{R}^{n}} |g| = \int \prod_1^n |x_{j}|^{\alpha_{j}} e^{-x_{j}^2} \dd{m} = \prod_1^n \int_{-\infty}^{\infty} |x_j|^{\alpha_j} e^{-x_j^2} \dd{x_{j}}.
+    \end{aligned}
+  \end{equation}
+  Each factor is finite, since, writing \( t = x_j^2 \) and appealing to the symmetry,
+  \begin{equation}
+  \label{eq:8}
+  \begin{aligned}
+    \int |x_j|^{\alpha_j} e^{-x_j^2} \dd{x_j} &= 2 \int_0^{\infty} |x_j|^{\alpha_j} e^{-x_j^2} \dd{x_j} \\
+    &= \int_0^{\infty} t^{(\alpha_j - 1)/2} e^{-t} \dd{t} = \Gamma\left(\frac{\alpha_{j} + 1}{2}\right) < \infty.
+  \end{aligned}
+\end{equation}
+This shows that \( g \in L_1 \), so that for the remainder of the problem we may appeal to Fubini's theorem freely (note that in particular Theorem 2.49 will give integrability of \( f \) against the surface area measure.)
+
+We can immediately eliminate the case where any of \(\alpha_j\) are odd.
+Since the Lebesgue integral is invariant under reflection (\( u = -x \) gives \( \int h(x) = \int h(-x)  \) since the determinant of such a transformation has norm \( 1 \)), and since we can split the integral into a product of each component as in \cref{eq:7}, if any of the \(\alpha_j\) are odd, that component is an odd function.
+Invariance under reflection then says that
+\begin{equation}
+\label{eq:9}
+\int x_j^{\alpha_j} \dd{x_j} = \int (-x_j)^{\alpha_j},
+\end{equation}
+but since \( \alpha_j \) is odd, \( (-x_j)^{\alpha_j} = -(x_j)^{\alpha_j} \), so that both sides of \cref{eq:9} must vanish.
+Therefore, we can consider only the case when all \( \alpha_j \) are even.
+
+Now, by Theorem 2.49 we can also use a polar coordinate substitution so that
+\begin{equation}
+\label{eq:5}
+\begin{aligned}
+  \int f e^{-|x|^2} \dd{x} &= \int\limits_0^{\infty} \int\limits_{S^{n-1}} f(r x^{\prime}) r^{n-1} e^{-r^2} \dd{\sigma} \dd{r} \\
+                        &= \int\limits_0^{\infty} \int\limits_{S^{n-1}} \prod_1^{n}(r x_j^{\prime})^{\alpha_j} r^{n-1} e^{-r^2} \dd{\sigma} \dd{r} \\
+                        &= \int\limits_0^{\infty} \int\limits_{S^{n-1}} \left( \prod_1^n x^{\prime \alpha_j}_j \right) r^{\alpha_1 + \dots + \alpha_n + n - 1} e^{-r^2} \dd{\sigma} \dd{r} \\
+                        &= \frac{1}{2} \int\limits_0^{\infty} t^{(\alpha_1 + \dots + \alpha_n + n)/2 - 1} e^{-t} \dd{t} \int f(x^{\prime}) \dd{\sigma} \\
+                        &= \frac{1}{2} \Gamma((\alpha_1 + \dots + \alpha_n + n)/2) \int f \dd{\sigma} \\
+                        &= \frac{1}{2} \Gamma(\beta_1 + \dots + \beta_n) \int f \dd{\sigma},
+\end{aligned}
+\end{equation}
+where \( \beta_j \coloneq (\alpha_j + 1)/2 \).
+
+Finally, returning to \cref{eq:8} and obeying the product gives (since for even \(\alpha_j\), the absolute value is superfluous)
+\begin{equation}
+\label{eq:10}
+\int_{\mathbb{R}^2} f \dd{x} = \prod_1^n \Gamma(\beta_j),
+\end{equation}
+
+and therefore, dividing \cref{eq:5} leaves us with
+\begin{equation}
+\label{eq:11}
+\int f \dd{\sigma} = \frac{2\Gamma(\beta_{1})\Gamma(\beta_2) \cdots \Gamma(\beta_n)}{\Gamma(\beta_1 + \Gamma(\beta_2) + \dots + \beta_{n})}.
+\end{equation}
+\end{proof}
+
+\begin{prop}
+  Let \(\nu\) be a signed measure on \( (X, \mathcal{M}) \).
+  If \( \{E_j\} \) is an increasing sequence in \( \mathcal{M} \), then \( \nu(\bigcup_1^{\infty} E_j) = \lim_{j\rightarrow \infty} \nu(E_j)\).
+  If \( \{E_j\} \) is a decreasing sequence in \( \mathcal{M} \) and \( \nu(E_1) \) is finite, then \( \nu(\bigcap_1^{\infty}) = \lim_{j\rightarrow\infty} \nu(E_j) \).
+\end{prop}
+
+\begin{problem}{3.1.1}
+Prove Proposition 3.1.
+\end{problem}
+\begin{proof}
+  We begin with the increasing case (continuity from below).
+  Note that if, for some \( k \in \mathbb{N} \), \( \nu(E_k) = \infty\), then since the sequence increases we have \( \lim_{j\rightarrow \infty} \nu(E_j) = \infty = \nu(\bigcup_1^{\infty}E_j)\).
+  It suffices to just consider the finite case.
+  Just as in the positive measure case, set \( E_0 = \emptyset \).
+  Then,
+  \begin{equation}
+  \label{eq:2}
+  \begin{aligned}
+    \nu(\bigcup_1^{\infty} E_j) &= \nu(\bigcup_1^{\infty} (E_j \setminus E_{j-1})) = \sum\limits_1^{\infty} \nu(E_j \setminus E_{j-1}) \\
+    &= \lim_{N \rightarrow \infty} \sum\limits_1^N \nu(E_j \setminus E_{j-1}),
+  \end{aligned}
+\end{equation}
+and since this sum is telescoping, as \( \nu(E_j \setminus E_{j-1}) = \nu(E_j) - \nu(E_{j-1}) \), we see that each of the partial sums is \( \sum\limits_1^n \nu(E_j \setminus E_{j-1}) = \nu(E_j) \), so that with \cref{eq:2} we get
+\begin{equation}
+\label{eq:3}
+\nu(\bigcup_1^{\infty} E_j) = \lim_{j\rightarrow\infty} \nu(E_j).
+\end{equation}
+
+For the decreasing case (continuity from above), assuming \( \nu(E_1) \) is finite, the sequence \( F_j = E_1 \setminus E_j \) is an increasing sequence with \(\nu(F_j) = \nu(E_1) - \nu(E_j)\) and \( \bigcup_1^{\infty} F_j = E_1 \setminus \bigcap_1^{\infty} E_j\).
+If any of \( E_{j} \) satisfy \( \nu(E_j) = -\infty \), then clearly the corresponding \( F_j \) will have \( \nu(F_j) = \infty \), in which case, just as for the first half, the remaining tail will all have infinite measure, so the result holds vacuously.
+
+We can then appeal to the previous result to get that
+\begin{equation}
+\label{eq:12}
+\begin{aligned}
+  \nu(E_1) &= \nu(\bigcup_1^{\infty} F_j) + \nu(\bigcap_1^{\infty} E_j) = \lim_{j \rightarrow \infty} \nu(F_j) + \nu(\bigcap_1^{\infty} E_j) \\
+  &= \lim_{j \rightarrow \infty} (\nu(E_1) - \nu(E_j)) + \nu(\bigcap_1^{\infty} E_j),
+\end{aligned}
+\end{equation}
+and since by assumption \(\nu(E_1) \) is finite, subtracting that constant value from both sides gives
+\begin{equation}
+\label{eq:13}
+\nu(\bigcap_1^{\infty} E_j) = \lim_{j\rightarrow \infty} \nu(E_j),
+\end{equation}
+as desired.
+\end{proof}
+\end{document}
